@@ -1,350 +1,153 @@
-<body>
-        <h3 id="result-wrap">--益智五子棋--</h3>
-        <canvas id="chess" width="450px" height="450px"></canvas>
-        <div class="btn-wrap">
-            <div id="restart" class="restart">
-                <span>重新开始</span>
-            </div>
-            <div id="goback" class="goback ">
-                <span>悔棋</span>
-            </div>
-            <div id="return" class="return unable">
-                <span>撤销悔棋</span>
-            </div>
-        </div>
-        <script type="text/javascript" charset="utf-8">
-            var over = false;
-            var me = true; //我
-            var _nowi = 0, _nowj = 0; //记录自己下棋的坐标
-            var _compi = 0, _compj = 0; //记录计算机当前下棋的坐标
-            var _myWin = [], _compWin = []; //记录我，计算机赢的情况
-            var backAble = false, returnAble = false; 
-            var resultTxt = document.getElementById('result-wrap');
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
 
-            var chressBord = [];//棋盘
-            for(var i = 0; i < 15; i++){
-                chressBord[i] = [];
-                for(var j = 0; j < 15; j++){
-                    chressBord[i][j] = 0;
-                }
-            }
+	<body>
+		<canvas id="mycanvas" width="400" height="400"></canvas>
 
-            //赢法的统计数组
-            var myWin = [];
-            var computerWin = [];
+	</body>
+	<script type="text/javascript">
+		var c = document.getElementById("mycanvas");
+		var ctx = c.getContext("2d");
+function run(){
+	   ctx.clearRect(0,0,500,500);
+		var now = new Date(); //定义时间
+		var sec = now.getSeconds(); //获取秒
+		var minute = now.getMinutes(); //获取分钟
+		var hour = now.getHours(); //获取小时
+		//小时必须获取浮点类型，产生偏移（小时+分钟比）
+		hour = hour + minute / 60;
+		//将24小时转换为12小时
+		hour = hour > 12 ? hour - 12 : hour;
 
-            //赢法数组
-            var wins = [];
-            for(var i = 0; i < 15; i++){
-                wins[i] = [];
-                for(var j = 0; j < 15; j++){
-                    wins[i][j] = [];
-                }
-            }
+		var width = ctx.canvas.width;
+		var height = ctx.canvas.height;
+		var a = width / 2;
 
-            var count = 0; //赢法总数
-            //横线赢法
-            for(var i = 0; i < 15; i++){
-                for(var j = 0; j < 11; j++){
-                    for(var k = 0; k < 5; k++){
-                        wins[i][j+k][count] = true;
-                    }
-                    count++;
-                }
-            }
 
-            //竖线赢法
-            for(var i = 0; i < 15; i++){
-                for(var j = 0; j < 11; j++){
-                    for(var k = 0; k < 5; k++){
-                        wins[j+k][i][count] = true;
-                    }
-                    count++;
-                }
-            }
 
-            //正斜线赢法
-            for(var i = 0; i < 11; i++){
-                for(var j = 0; j < 11; j++){
-                    for(var k = 0; k < 5; k++){
-                        wins[i+k][j+k][count] = true;
-                    }
-                    count++;
-                }
-            }
+		// var img = new Image();
+		// img.src = "timg1.jpg";
+		// ctx.save();
+		
+		// ctx.beginPath();
+		// img.onload = function() {
+		// 	ctx.drawImage(img, (-a + 10), -a);
 
-            //反斜线赢法
-            for(var i = 0; i < 11; i++){ 
-                for(var j = 14; j > 3; j--){
-                    for(var k = 0; k < 5; k++){
-                        wins[i+k][j-k][count] = true;
-                    }
-                    count++;
-                }
-            }
-            // debugger;
-            for(var i = 0; i < count; i++){
-                myWin[i] = 0;
-                _myWin[i] = 0;
-                computerWin[i] = 0;
-                _compWin[i] = 0;
-            }
-            var chess = document.getElementById("chess");
-            var context = chess.getContext('2d');
+		// }
+		// ctx.closePath();
 
-            context.strokeStyle = '#bfbfbf'; //边框颜色
+		// ctx.globalCompositeOperation = "copy";
 
-            var backbtn = document.getElementById("goback");
-            var returnbtn = document.getElementById("return");
+		ctx.restore();
+		ctx.save();
+		ctx.translate(a, a);
+		ctx.arc(0, 0, a - 10, (Math.PI / 180) * 0, (Math.PI / 180) * 360, false);
+		ctx.clip();
+		ctx.lineWidth = 12;
+		ctx.strokeStyle = 'red';
+		ctx.stroke();
+		ctx.closePath();
 
-            window.onload = function(){
-                drawChessBoard(); // 画棋盘
-            }
+		//时针刻度
+		for (var i = 0; i < 12; i++) {
+			
+			ctx.save();
+			//设置时针的样式
+			ctx.lineWidth = 7;
+			ctx.strokeStyle = "#ff0000";
+			//设置异次元空间原点
+			ctx.translate(0, 0);
+			//设置旋转角度
+			ctx.rotate(i * 30 * Math.PI / 180);
+			
+			ctx.beginPath();
+			ctx.moveTo(0, -170); //画线， 从坐标0，-170开始
+			ctx.lineTo(0, -190); //到坐标0，-190结束
+			ctx.stroke();
+			ctx.closePath();
+			ctx.restore();
+		}
+		//分针刻度
+		for (var i = 0; i < 60; i++) {
+			ctx.save();
+			ctx.lineWidth = 5;
+			ctx.strokeStyle = "#00aa00";
+			ctx.translate(0, 0);
+			ctx.rotate(i * 6 * Math.PI / 180);
+			
+			ctx.beginPath();
+			ctx.moveTo(0, -180);
+			ctx.lineTo(0, -190);
+			ctx.stroke();
+			ctx.closePath();
+			ctx.restore();
+		}
 
-            document.getElementById("restart").onclick = function(){
-                window.location.reload();
-            }
-            // 我，下棋
-            chess.onclick = function(e){
-                if(over){
-                    return;
-                }
-                if(!me){
-                    return;
-                }
-                // 悔棋功能可用
-                backbtn.className = backbtn.className.replace( new RegExp( "(\\s|^)unable(\\s|$)" )," " ); 
-                var x = e.offsetX;
-                var y = e.offsetY;
-                var i = Math.floor(x / 30);
-                var j = Math.floor(y / 30);
-                _nowi = i;
-                _nowj = j;
-                if(chressBord[i][j] == 0){
-                    oneStep(i,j,me);
-                    chressBord[i][j] = 1; //我，已占位置        
-                                
-                    for(var k = 0; k < count; k++){ // 将可能赢的情况都加1
-                        if(wins[i][j][k]){
-                            // debugger;
-                            myWin[k]++;
-                            _compWin[k] = computerWin[k];
-                            computerWin[k] = 6;//这个位置对方不可能赢了
-                            if(myWin[k] == 5){
-                                // window.alert('你赢了');
-                                resultTxt.innerHTML = '恭喜，你赢了！';
-                                over = true;
-                            }
-                        }
-                    }
-                    if(!over){
-                        me = !me;
-                        computerAI();
-                    }
-                }         
-            }
-            // 悔棋
-            backbtn.onclick = function(e){
-                if(!backAble) { return;}
-                over = false;
-                me = true;
-                // resultTxt.innerHTML = 'o(╯□╰)o，悔棋中';
-                // 撤销悔棋功能可用
-                returnbtn.className = returnbtn.className.replace( new RegExp( "(\\s|^)unable(\\s|$)" )," " ); 
-                // 我，悔棋
-                chressBord[_nowi][_nowj] = 0; //我，已占位置 还原
-                minusStep(_nowi, _nowj); //销毁棋子                                  
-                for(var k = 0; k < count; k++){ // 将可能赢的情况都减1
-                    if(wins[_nowi][_nowj][k]){
-                        myWin[k]--;
-                        computerWin[k] = _compWin[k];//这个位置对方可能赢
-                    }
-                }
+		//时针
+		ctx.save();
+		//时针样式
+		ctx.lineWidth = 7;
+		ctx.strokeStyle = "#550000";
+		ctx.translate(0, 0);
+		ctx.rotate(hour * 30 * Math.PI / 180);
+		ctx.beginPath();
+		ctx.moveTo(0, -140);
+		ctx.lineTo(0, 10);
+		ctx.stroke();
+		ctx.closePath();
 
-                // 计算机相应的悔棋
-                chressBord[_compi][_compj] = 0; //计算机，已占位置 还原
-                minusStep(_compi, _compj); //销毁棋子                                  
-                for(var k = 0; k < count; k++){ // 将可能赢的情况都减1
-                    if(wins[_compi][_compj][k]){
-                        computerWin[k]--;
-                        myWin[k] = _myWin[i];//这个位置对方可能赢
-                    }
-                }
-                resultTxt.innerHTML = '--益智五子棋--';
-                returnAble = true;
-                backAble = false;
-            }
-            // 撤销悔棋
-            returnbtn.onclick = function(e){
-                if(!returnAble) { return; }
-                   // 我，撤销悔棋
-                chressBord[_nowi][_nowj] = 1; //我，已占位置 
-                oneStep(_nowi,_nowj,me);                              
-                for(var k = 0; k < count; k++){ 
-                    if(wins[_nowi][_nowj][k]){
-                        myWin[k]++;
-                        _compWin[k] = computerWin[k];
-                        computerWin[k] = 6;//这个位置对方不可能赢
-                    }
-                    if(myWin[k] == 5){
-                        resultTxt.innerHTML = '恭喜，你赢了！';
-                        over = true;
-                    }
-                }
+		ctx.restore();
 
-                // 计算机撤销相应的悔棋
-                chressBord[_compi][_compj] = 2; //计算机，已占位置   
-                oneStep(_compi,_compj,false);                               
-                for(var k = 0; k < count; k++){ // 将可能赢的情况都减1
-                    if(wins[_compi][_compj][k]){
-                        computerWin[k]++;
-                        _myWin[k] = myWin[k];
-                        myWin[k] = 6;//这个位置对方不可能赢
-                    }
-                    if(computerWin[k] == 5){
-                        resultTxt.innerHTML = 'o(╯□╰)o，计算机赢了，继续加油哦！';
-                        over = true;
-                    }
-                }
-                returnbtn.className += ' '+ 'unable';
-                returnAble = false;
-                backAble = true;
-            }
-            // 计算机下棋
-            var computerAI = function (){
-                var myScore = [];
-                var computerScore = [];
-                var max = 0;
-                var u = 0, v = 0;
-                for(var i = 0; i < 15; i++){
-                    myScore[i] = [];
-                    computerScore[i] = [];
-                    for(var j = 0; j < 15; j++){
-                        myScore[i][j] = 0;
-                        computerScore[i][j] = 0;
-                    }
-                }
-                for(var i = 0; i < 15; i++){
-                    for(var j = 0; j < 15; j++){
-                        if(chressBord[i][j] == 0){
-                            for(var k = 0; k < count; k++){
-                                if(wins[i][j][k]){
-                                    if(myWin[k] == 1){
-                                        myScore[i][j] += 200;
-                                    }else if(myWin[k] == 2){
-                                        myScore[i][j] += 400;
-                                    }else if(myWin[k] == 3){
-                                        myScore[i][j] += 2000;
-                                    }else if(myWin[k] == 4){
-                                        myScore[i][j] += 10000;
-                                    }
-                                    
-                                    if(computerWin[k] == 1){
-                                        computerScore[i][j] += 220;
-                                    }else if(computerWin[k] == 2){
-                                        computerScore[i][j] += 420;
-                                    }else if(computerWin[k] == 3){
-                                        computerScore[i][j] += 2100;
-                                    }else if(computerWin[k] == 4){
-                                        computerScore[i][j] += 20000;
-                                    }                        
-                                }
-                            }
-                            
-                            if(myScore[i][j] > max){
-                                max  = myScore[i][j];
-                                u = i;
-                                v = j;
-                            }else if(myScore[i][j] == max){
-                                if(computerScore[i][j] > computerScore[u][v]){
-                                    u = i;
-                                    v = j;    
-                                }
-                            }
-                            
-                            if(computerScore[i][j] > max){
-                                max  = computerScore[i][j];
-                                u = i;
-                                v = j;
-                            }else if(computerScore[i][j] == max){
-                                if(myScore[i][j] > myScore[u][v]){
-                                    u = i;
-                                    v = j;    
-                                }
-                            }
-                            
-                        }
-                    }
-                }
-                _compi = u;
-                _compj = v;
-                oneStep(u,v,false);
-                chressBord[u][v] = 2;  //计算机占据位置
-                for(var k = 0; k < count; k++){
-                    if(wins[u][v][k]){
-                        computerWin[k]++;
-                        _myWin[k] = myWin[k];
-                        myWin[k] = 6;//这个位置对方不可能赢了
-                        if(computerWin[k] == 5){
-                            resultTxt.innerHTML = 'o(╯□╰)o，计算机赢了，继续加油哦！';
-                            over = true;
-                        }
-                    }
-                }
-                if(!over){
-                    me = !me;
-                }
-                backAble = true;
-                returnAble = false;
-                var hasClass = new RegExp('unable').test(' ' + returnbtn.className + ' ');
-                if(!hasClass) {
-                    returnbtn.className += ' ' + 'unable';
-                }
-            }
-            //绘画棋盘
-            var drawChessBoard = function() {
-                for(var i = 0; i < 15; i++){
-                    context.moveTo( i * 30 , 0);
-                    context.lineTo( i * 30 ,420);
-                    context.stroke();
-                    context.moveTo(0 ,  i * 30);
-                    context.lineTo(420 , i * 30);
-                    context.stroke();
-                }
-            }
-            //画棋子
-            var oneStep = function(i,j,me) {
-                context.beginPath();
-                context.arc(15 + i * 30, 15 + j * 30, 13, 0, 2 * Math.PI);// 画圆
-                context.closePath();
-                //渐变
-                var gradient = context.createRadialGradient(15 + i * 30 + 2, 15 + j * 30 - 2, 13, 15 + i * 30 + 2, 15 + j * 30 - 2, 0);
+		//分针
+		ctx.save();
+		//分针样式
+		ctx.lineWidth = 5;
+		ctx.strokeStyle = "#ffff00";
+		ctx.translate(0, 0);
+		ctx.rotate(minute * 6 * Math.PI / 180);
+		ctx.beginPath();
+		ctx.moveTo(0, -160);
+		ctx.lineTo(0, 15);
+		ctx.stroke();
+		ctx.closePath();
 
-                if(me){
-                    gradient.addColorStop(0,'#0a0a0a');
-                    gradient.addColorStop(1,'#636766');
-                }else{
-                    gradient.addColorStop(0,'#d1d1d1');
-                    gradient.addColorStop(1,'#f9f9f9');
-                }
-                context.fillStyle = gradient;
-                context.fill();
-            }
-            //销毁棋子
-            var minusStep = function(i,j) {
-                //擦除该圆
-                context.clearRect((i) * 30, (j) * 30, 30, 30);
+		ctx.restore();
 
-                // 重画该圆周围的格子
-                context.beginPath();
-                context.moveTo(15+i*30 , j*30);
-                context.lineTo(15+i*30 , j*30 + 30);
-                context.moveTo(i*30, j*30+15);
-                context.lineTo((i+1)*30 , j*30+15);
-    
-                context.stroke();
-            }
-        </script>
-    
+		//秒针
+		ctx.save();
+		ctx.lineWidth = 3;
+		ctx.strokeStyle = "#f00";
+		ctx.translate(0, 0);
+		ctx.rotate(sec * 6 * Math.PI / 180);
+		ctx.beginPath();
+		ctx.moveTo(0, -185);
+		ctx.lineTo(0, 20);
+		ctx.stroke();
+		ctx.closePath();
 
-</body>
+		//画出时针，分针，秒针交叉点
+		// ctx.beginPath();
+		// ctx.strokeStyle = "#f00";
+		// ctx.arc(0, 0, 5, 0, 360, false);
+		// ctx.fillStyle = "#fff"; //填充颜色
+		// ctx.fill(); //填充
+		// ctx.stroke();
+		// ctx.closePath();
+
+		//秒针装饰
+		// ctx.beginPath();
+		// ctx.strokeStyle = "#f00";
+		// ctx.arc(0, -160, 5, 0, 360, false);
+		// ctx.fill();
+		// ctx.stroke();
+		// ctx.closePath();
+		ctx.restore();
+		}
+		run();
+		setInterval(run,1000);
+	</script>
+</html>
