@@ -2,69 +2,114 @@
 <html lang="en" style="font-size: 100px;">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport"  content="initial-scale=0.5,maximum-scale=0.5,width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="initial-scale=0.5,maximum-scale=0.5, minimum-scale=0.5,width=device-width, height=device-height, user-scalable=no"
+    />
+    <title>Document</title>
     <title>meituan</title>
     <script
       type="text/javascript"
       src="https://api.map.baidu.com/api?v=2.0&ak=47FQtS6XkphGqmZ5nSEj6WTSTwE8SGaT"
     ></script>
     <style>
-        *{
-            margin: 0;
-            padding: 0;
-        }
-        body{
-            /* css 继承 */
-            font-size: 0.25rem;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        /* css 继承 */
+        font-size: 0.25rem;
+      }
       #map {
         width: 100vw;
         height: 100vh;
       }
-      img{
-          max-width: 100%;
+      img {
+        max-width: 100%;
       }
-      .poi-item-wrapper{
-          background-color: #fff;
-          padding: 0.24rem 0 0 0.3rem;
-          border-bottom: 1px solid #e5e5e5;
+      .poi-item-wrapper {
+        background-color: #fff;
+        padding: 0.24rem 0 0 0.3rem;
+        border-bottom: 1px solid #e5e5e5;
       }
-      .poi-item-wrapper .poi-info-wrapper{
-          display: flex;
+      .poi-item-wrapper .poi-info-wrapper {
+        display: flex;
       }
-      .poi-item-wrapper .image-wrapper{
-          position: relative;
-          margin-top: 0.05rem;
-          width: 1.6rem;
-          height: 1.61rem;
+      .poi-item-wrapper .image-wrapper {
+        position: relative;
+        margin-top: 0.05rem;
+        width: 1.6rem;
+        height: 1.61rem;
       }
-      .poi-item-wrapper .poi-info{
-          margin-left: 0.18rem;
+      .poi-item-wrapper .poi-info {
+        margin-left: 0.18rem;
+        flex: 1;
       }
+      .poi-item-wrapper .poi-info .price-wrapper {
+        position: relative;
+        font-size: 0.24rem;
+        line-height: 0.33rem;
+        margin-top: 0.06rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        height: 2rem;
+      }
+      .poi-item-wrapper .poi-info .location {
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 0.33rem;
+        line-height: 0.33rem;
+        font-size: 0.24rem;
+        font-family: PingFangSC-Regular;
+        color: #666666;
+        letter-spacing: 0.2px;
+      }
+      .poi-item-wrapper .poi-info .stars{
+          position: absolute;
+      }
+      .poi-item-wrapper .poi-info .stars ul li{
+        list-style:none; float:left; font-size:30px; margin:5px; color:#f00; cursor:pointer;
+      }
+      
     </style>
   </head>
   <body>
     <!-- html  +  css -->
     <!-- 附近的商家 info-->
+    <!-- shop 业务  list UI词汇量 -->
     <div class="shop-list">
-        <div class="poi-item-wrapper">
-           <div class="poi-item-wrapper">
-               <div class="image-wrapper">
-                   <div class="imgbox">
-                    <img src="https://p1.meituan.net/deal/__41310118__4499941.jpg@380w_214h_1e_1c" alt="">
-                   </div>
-               </div>
-               <div class="poi-info">
-                   <div class="poi-name">黄记黄焖鸡米饭</div>
-                   <div class="price-wrapper">
-                       <div class="location">4.1km</div>
-                   </div>
-               </div>
-           </div> 
+      <!-- point 每个商家的点，item 项目，wrapper包裹，一个盒子 -->
+      <div class="poi-item-wrapper">
+        <div class="poi-info-wrapper">
+          <div class="image-wrapper">
+            <div class="imgbox">
+              <img
+                src="https://p1.meituan.net/deal/__41310118__4499941.jpg@380w_214h_1e_1c"
+                alt=""
+              />
+            </div>
+          </div>
+          <div class="poi-info">
+            <div class="poi-name">黄记黄焖鸡米饭</div>
+            <div class="price-wrapper">
+                <div class="stars">
+                    <ul>
+                        <li>&#9733;</li>
+                        <li>&#9733;</li>
+                        <li>&#9733;</li>
+                        <li>&#9733;</li>
+                        <li>&#9733;</li>
+                    </ul>
+                </div>
+              <div class="location">4.1km</div>
+            </div>
+          </div>
         </div>
-        <div class="poi-item-wrapper">
-
-        </div>
+      </div>
+      <div class="poi-item-wrapper"></div>
     </div>
     <!-- <div id="map"></div> -->
     <script>
@@ -73,8 +118,8 @@
       // 命名规范  117.215332,29.29914
       const myLatitude = "29.279944",
         myLongitude = "117.201207",
-        kfcLatitude = "29.29914",
-        kfcLongitude = "117.215332";
+        kfcLatitude = "29.281303",
+        kfcLongitude = "117.193796";
 
       //sdk 有点大， 它在远方
       //js 事件机制
@@ -85,18 +130,20 @@
           // 如果大于1000m 返回 4.1km
           //否者 整数  963m
           if (distance < 1000) {
-            return parseInt(distance);
+            return parseInt(distance)+"m";
           } else {
-            (distance / 1000).toFixed(1);
+            return (distance / 1000).toFixed(1)+"km";
           }
         }
-         const map = new BMap.Map("map"); //实例化地图
+        const map = new BMap.Map(); //实例化地图
         // map.centerAndZoom("南昌", 17);
         //两点之间距离
         const myPoint = new BMap.Point(myLongitude, myLatitude);
         const kfcPoint = new BMap.Point(kfcLongitude, kfcLatitude);
         const distance = parseDistance(map.getDistance(myPoint, kfcPoint));
         console.log(distance);
+        document.querySelector('.poi-name').innerHTML="肯德基";
+        document.querySelector('.location').innerHTML=distance;
       };
     </script>
   </body>
