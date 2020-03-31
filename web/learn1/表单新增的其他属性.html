@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		<form action="" id="myForm">
+			<!-- placeholder，提示文本，占位符 -->
+			<!-- autofocus，自动聚焦，也就是不用点击文本框，可以直接输入文本 -->
+			<!-- autocomplete 自动完成，其实也就是有历史记录 on：开 off：关
+			     使用这个的两个前提：1.必须成功提交过才有记录 2 当前添加autocomplete的元素必须有name属性-->
+			用户名：<input type="text" placeholder="please enter your name" name="userName" autocomplete="on"><br>
+			<!-- multiple 可以选择一个或者多个文件
+			     在email中可以输入多个邮箱地址，以逗号分割-->
+			文件：<input type="file" name="files" multiple /><br>
+			<input type="submit"  /><br>
+		</form>
+		<form action="">
+			<!-- 指定表单id，那么在将来指定id号的表单进行数据提交的时候，也会将表单元素的数据一起提交 -->
+			地址：<input type="text" name="adress" form="myForm"><br>
+		</form>
+	</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cat</title>
+    <style>
+       /* css 选择器 */
+       /* . 类选择 */
+       .body{
+        background: url("./cat/maoshenti.png");
+        width: 117px;
+        height: 201px;
+        /* 水平居中 垂直居中 */
+        /* position: absolute relative */
+        /* absolute 绝对定位，相对于父级第一个设置了定位属性的元素来定位，
+           如果没有相对于 body定位 */
+        position: absolute;
+        /* 定位多少合适 */
+        left: 50%;
+        top: 50%;
+        /* 微调一点 相对于猫的身体 长50% 宽50% */
+        /* 往 x y z 轴偏 */
+        /* 相对于自己的宽高计算百分比 */
+        /* transform: translate3d(-50%,-50%,0); */
+        
+       }
+       .weiba{
+           /* 相对于body定位 */
+           position: absolute;
+           background: url("./cat/maowei.png");
+           width: 64px;
+           height: 194px;
+           left: 0;
+           top: -182px;
+           /* 摇摆(rotate) 起来 */
+           /* ease-in-out 动画速度 */
+            animation: ani 3s ease-in-out infinite alternate;
+            /* 以尾巴根部选择 默认50% 50% 中心点来旋转 */
+            transform-origin: 50% 100%;
+            
+       }
+       /* 关键帧：动画里面几个关键的点 */
+       /* 定义一个叫 ani 的动画 */
+       @keyframes ani{
+           /* 0%起点，100%终点 */
+           /* 逆时针 5deg */
+           100%{
+            transform: rotate(-5deg);
+           }
+       }
+      .maozhua{
+          background: url("./cat/maozhua.png");
+          width: 34px;
+          height: 81px;
+         animation: anis 3s ease-in-out infinite alternate;
+          position: absolute;
+          top: 90%;
+          left: 60%;
+          transform-origin: 50% 0%;
+          z-index: -1;
+      } 
+      @keyframes anis{
+          100%{
+              transform: rotate(10deg);
+          }
+      }
+    </style>
+</head>
+<body>
+   <div class="cat">
+       <!-- 猫的组成 -->
+        <div class="body">
+            <div class="weiba"></div>
+            <div class="maozhua"></div>
+        </div>
+       
+   </div> 
+</body>
+</html>

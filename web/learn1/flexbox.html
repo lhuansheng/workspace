@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		.container{
+			/* flex-direction: row;
+			flex-wrap: wrap;//使得能够自动换行 */
+			/* flex-flow: row wrap; 这个是flex-direction和flex-wrap的混合  */
+			display: flex;
+			/* 项目在主轴上的对其方式 */
+			justify-content: space-evenly;
+			/* justify_content value:
+			 flex_start(默认值)
+			 flex-end
+			 space-around
+			 space-between
+			 space-evenly*/
+			height: 37.5rem;
+			background-color: grey;
+			/* 项目在交叉轴上的对齐方式(需要设置高度) */
+			align-items: baseline;
+			/* align-items value:
+			 stretch(默认值)
+			 flex-start
+			 flex-end
+			 center
+			 baseline
+			 */
+			/* 只有多轴线才会起作用 */
+			align-content: center;
+			/* flex-start
+			 flex-end
+			 center
+			 space-around
+			 space-between
+			 stretch(默认值)*/
+		}
+		.item{
+			background-color: aquamarine;
+			border: aliceblue solid 0.0625rem;
+			padding: 1rem;
+			margin: 0.75rem;
+			text-align: center;
+			/* flex:1; 分配空间大小  */
+/* 			width: 18.75rems; */
+			flex-basis: 100rems;/* 有跟width同样的属性 */
+			
+		}
+		.item2{
+			/* 可以单独对自己设置属性 */
+			align-self: center;
+			order: 1;
+			/* order可以对不同项目进行排序 */
+		}
+		.item1{
+			order: 3;
+		}
+		.item3{
+			order: 2;
+		}
+	</style>
+	<body>
+		<div class="container">
+			<div class="item item1">item1</div>
+			<div class="item item2">item2</div>
+			<div class="item item3">item3</div>
+			
+		</div>
+	</body>
+</html>

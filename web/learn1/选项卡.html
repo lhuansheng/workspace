@@ -1,0 +1,56 @@
+<>
+	<!DOCTYPE html>
+	<html>
+		<head>
+			<meta charset="utf-8">
+			<title>选项卡</title>
+			<style type="text/css">
+				#div1 .active {
+					background-color: skyblue;
+				}
+
+				#div1 div {
+					width: 200px;
+					height: 200px;
+					background-color: #ccc;
+					border: 1px solid #999;
+					display: none;
+				}
+			</style>
+		</head>
+		<script type="text/javascript">
+			window.onload = function() {
+				var oDiv = document.getElementById("div1");
+				var aBtn = oDiv.getElementsByTagName("input");
+				var aDiv = oDiv.getElementsByTagName("div");
+
+				for (var i = 0; i < aBtn.length; i++) {
+					aBtn[i].index = i;
+					aBtn[i].onclick = function() {
+						//alert(this.value);
+						for (var i = 0; i < aBtn.length; i++) {
+							aDiv[i].style.display = "none";
+							aBtn[i].className = "";
+						}
+						this.className = "active";
+						aDiv[this.index].style.display = "block";
+					}
+				}
+			}
+		</script>
+		<body>
+			<div id="div1">
+				<input type="button" value="事件" class="active" />
+				<input type="button" value="小猫" />
+				<input type="button" value="小兔" />
+				<input type="button" value="小林" />
+				<div style="display: block;">1111</div>
+				<div>22222</div>
+				<div>333</div>
+				<div>11444411</div>
+
+			</div>
+		</body>
+	</html>
+
+</>

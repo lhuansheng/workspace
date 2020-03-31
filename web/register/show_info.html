@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		用户名：<span id="userName"></span></br>
+		密码：<span id="password"></span>
+	</body>
+	<script type="text/javascript">
+		window.onload = function() {
+			var userName = document.getElementById("userName");
+			var password = document.getElementById("password");
+			var url = decodeURI(location.href);
+			var getValue = url.split('?')[1];
+
+			userName.innerHTML = getValue.split('&')[0].split('=')[1];
+			password.innerHTML = getValue.split('&')[1].split('=')[1];
+
+		}
+	</script>
+</html>

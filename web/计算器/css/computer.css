@@ -1,0 +1,33 @@
+body{
+	margin: 0rem;
+	padding: 0rem;
+}
+table {
+	margin: 0.625rem auto;
+	border: 1px solid darkgray;
+	background-color: darkgray;
+	
+}
+.num {
+	width: 80px;
+	height: 60px;
+	background-color: #CCFFFF;
+	font-size: 1.5rem;
+}
+
+.screen {
+	width: 335px;
+	height: 70px;
+	font-size: 1.5rem;
+	color: white;
+	background-color: black;
+	text-align: right;
+}
+#zero{
+	width: 170px;
+	height: 60px;
+}
+#equal{
+	width: 80px;
+	height: 120px;
+}
