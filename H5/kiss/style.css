@@ -1,0 +1,224 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-color: #78e08f;
+}
+
+.container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 232px;
+  transform: translate(-50%, -50%);
+  font-size: 0;
+}
+.ball {
+  border: 8px solid;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: #fff;
+  display: inline-block;
+  vertical-align: top;
+  position: relative;
+}
+.face {
+  width: 70px;
+  height: 30px;
+  position: absolute;
+  right: 0;
+  top: 30px;
+  border-top-right-radius: 15px;
+}
+/* 伪类,没有真实html结构的属性（提升代码性能） */
+.face::before {
+  /* 一点要放content */
+  content: "";
+  width: 18px;
+  height: 8px;
+  background-color: #badc58;
+  position: absolute;
+  right: -8px;
+  top: 20px;
+  border-radius: 50%;
+}
+.face::after {
+  content: "";
+  width: 18px;
+  height: 8px;
+  background-color: #badc58;
+  position: absolute;
+  left: -5px;
+  top: 20px;
+  border-radius: 50%;
+}
+.eye {
+  width: 15px;
+  height: 14px;
+  border-radius: 50%;
+  border-bottom: 5px solid #000;
+  position: absolute;
+}
+.eye-l {
+  left: 10px;
+}
+.eye-r {
+  right: 5px;
+}
+.mouth {
+  width: 30px;
+  height: 14px;
+  border-radius: 50%;
+  border-bottom: 5px solid #000;
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  transform: translate(3px);
+}
+
+.face-r {
+  left: 0;
+  top: 37px;
+  animation: facer 4s ease infinite;
+}
+.face-r::before {
+  width: 10px;
+  height: 10px;
+  right: -4px;
+}
+.face-r::after {
+  width: 10px;
+  height: 10px;
+  right: -4px;
+}
+.eye-r-p {
+  border-top: 5px solid #000;
+  border-bottom: none;
+}
+.kiss-m {
+  position: absolute;
+  left: 20px;
+  top: 22px;
+  opacity: 0;
+  animation: kissm 4s ease infinite;
+}
+.kiss {
+  width: 13px;
+  height: 10px;
+  background-color: #fff;
+  border-radius: 50%;
+  border-left: 5px solid #000;
+}
+#l-ball {
+  animation: close 4s ease infinite;
+  z-index: 1;
+}
+#r-ball {
+  animation: away 4s ease infinite;
+}
+
+.face-l {
+  animation: facel 4s ease infinite;
+}
+.mouth-r{
+    animation: monthr 4s ease infinite;
+}
+@keyframes close {
+  0% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(20px);
+  }
+  35% {
+    transform: translate(20px);
+  }
+  55% {
+    transform: translate(0);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+@keyframes away {
+  0% {
+    transform: translate(0) rotate(0);
+  }
+  43% {
+    transform: translate(0) rotate(0);
+  }
+  50% {
+    transform: translate(20px) rotate(20deg);
+  }
+ 
+  70%{
+    transform: translate(-30px) rotate(0deg);
+  }
+  80% {
+    transform: translate(-30px) rotate(0);
+  }
+  85% {
+    transform: translate(0) rotate(0);
+  }
+  100% {
+    transform: translate(0) rotate(0);
+  }
+}
+@keyframes facel {
+  0% {
+    transform: translate(0) rotate(0);
+  }
+  10% {
+    transform: translate(0) rotate(0);
+  }
+  20% {
+    transform: translate(5px) rotate(-2deg);
+  }
+  28% {
+    transform: translate(0) rotate(0);
+  }
+  35% {
+    transform: translate(5px) rotate(-2deg);
+  }
+  50% {
+    transform: translate(0) rotate(0);
+  }
+  100% {
+    transform: translate(0) rotate(0);
+  }
+}
+
+@keyframes kissm {
+    55%{
+        opacity: 0;
+    }
+    60% {
+        opacity: 1;
+        
+      }
+    80%{
+        opacity: 1;
+    }
+    85%{
+        opacity: 0;
+    }
+}
+@keyframes monthr {
+    55%{
+        opacity: 1;
+    }
+    60% {
+        opacity: 0;
+        
+      }
+    80%{
+        opacity: 0;
+    }
+    85%{
+        opacity: 1;
+    }
+}
