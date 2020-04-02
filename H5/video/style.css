@@ -1,0 +1,46 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background:#4c4c4c url(https://unsplash.it/1500/900?image=1021) ;
+    /* cover 充满整个容器 */
+    background-size: cover;
+}
+.wrapper{
+    width: 850px;
+    display: flex;
+}
+video{
+    /* box-shadow: 右边宽度 下边宽度 模糊程度  阴影颜色
+    如果前两个值都为0那就四边都有阴影 */
+    box-shadow: 0 0 1px 3px rgba(0, 0, 0, 0.1);
+   
+}
+.speed{
+    background: #efefef;
+    flex: 1;
+    display: flex;
+    /* align-items: 要求speed的子容器在y轴应该如何对齐 */
+    align-items: flex-start;
+    margin: 10px;
+    border-radius: 50px;
+    box-shadow: 0 0 1px 3px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+.speed-bar{
+    width: 100%;
+    height: 16.3%;
+    background: linear-gradient(-170deg,#2367ae 0%,#e16ecf 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2px;
+    color: #fff;
+    cursor: pointer;
+    
+}
