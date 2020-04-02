@@ -118,14 +118,14 @@ body {
   z-index: 1;
 }
 #r-ball {
-  animation: away 4s ease infinite;
+  animation: kiss 4s ease infinite;
 }
 
 .face-l {
   animation: facel 4s ease infinite;
 }
-.mouth-r{
-    animation: monthr 4s ease infinite;
+.mouth-r {
+  animation: monthr 4s ease infinite;
 }
 @keyframes close {
   0% {
@@ -144,27 +144,21 @@ body {
     transform: translate(0);
   }
 }
-@keyframes away {
-  0% {
-    transform: translate(0) rotate(0);
-  }
-  43% {
+@keyframes kiss {
+  40% {
     transform: translate(0) rotate(0);
   }
   50% {
-    transform: translate(20px) rotate(20deg);
+    transform: translate(30px) rotate(20deg);
   }
- 
-  70%{
-    transform: translate(-30px) rotate(0deg);
+
+  60% {
+    transform: translate(-33px) rotate(0deg);
   }
-  80% {
-    transform: translate(-30px) rotate(0);
+  67% {
+    transform: translate(-33px) rotate(0);
   }
-  85% {
-    transform: translate(0) rotate(0);
-  }
-  100% {
+  77% {
     transform: translate(0) rotate(0);
   }
 }
@@ -193,32 +187,34 @@ body {
 }
 
 @keyframes kissm {
-    55%{
-        opacity: 0;
-    }
-    60% {
-        opacity: 1;
-        
-      }
-    80%{
-        opacity: 1;
-    }
-    85%{
-        opacity: 0;
-    }
+  55% {
+    opacity: 0;
+  }
+  55.1% {
+    opacity: 1;
+  }
+  66% {
+    opacity: 1;
+  }
+  66.1%{
+    opacity: 0;
+  }
+  85% {
+    opacity: 0;
+  }
 }
 @keyframes monthr {
-    55%{
-        opacity: 1;
-    }
-    60% {
-        opacity: 0;
-        
-      }
-    80%{
-        opacity: 0;
-    }
-    85%{
-        opacity: 1;
-    }
+  54.9% {
+    opacity: 1;
+  }
+  55.1% {
+    opacity: 0;
+  }
+  66% {
+    opacity: 0;
+  }
+  66.1%{
+    opacity: 1;
+  }
+  
 }
