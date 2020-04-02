@@ -82,7 +82,7 @@
     <!-- shop 业务  list UI词汇量 -->
     <div class="shop-list">
       <!-- point 每个商家的点，item 项目，wrapper包裹，一个盒子 -->
-      <div class="poi-item-wrapper">
+      <!-- <div class="poi-item-wrapper">
         <div class="poi-info-wrapper">
           <div class="image-wrapper">
             <div class="imgbox">
@@ -108,24 +108,118 @@
             </div>
           </div>
         </div>
-      </div>
-      <div class="poi-item-wrapper"></div>
+      </div> -->
+      <!-- <div class="poi-item-wrapper"></div> -->
     </div>
     <!-- <div id="map"></div> -->
     <script>
       // 1.距离
       // 2.点 经纬度  117.201207,29.279944
       // 命名规范  117.215332,29.29914
-      const myLatitude = "29.279944",
-        myLongitude = "117.201207",
-        kfcLatitude = "29.281303",
-        kfcLongitude = "117.193796";
+       const myLatitude = "28.734118",
+         myLongitude = "115.823207";
+      //   kfcLatitude = "29.281303",
+      //   kfcLongitude = "117.193796";
+      //坐标  店名 评分,  ...{}  JSON 对象字面量
+        const shops = [
+          
+          {
+            name:'肯德基(榴云路店)',
+            pos:["115.845447","28.740599"],
+            logo:'https://p1.meituan.net/deal/__41310118__4499941.jpg@380w_214h_1e_1c'
+          },
+          {
+            name:'牛男手造(莲塘店)',
+            pos:["115.947719","28.546228"],
+            logo:'http://store.is.autonavi.com/showpic/96dd514604d5fb75aa1e2be980c2d90e?type=pic'
+          },
+          {
+            name:'莲塘老鸭子店',
+            pos:["115.933514","28.554123"],
+            logo:'https://p1.meituan.net/deal/__41310118__4499941.jpg@380w_214h_1e_1c'
+          },
+          {
+            name:'莲塘老鸭子店',
+            pos:["115.933514","28.554123"],
+            logo:'https://p1.meituan.net/deal/__41310118__4499941.jpg@380w_214h_1e_1c'
+          },
+          {
+            name:'莲塘老鸭子店',
+            pos:["115.933514","28.554123"],
+            logo:'https://p1.meituan.net/deal/__41310118__4499941.jpg@380w_214h_1e_1c'
+          },
+          {
+            name:'莲塘老鸭子店',
+            pos:["115.933514","28.554123"],
+            logo:'https://p1.meituan.net/deal/__41310118__4499941.jpg@380w_214h_1e_1c'
+          },
+          {
+            name:'莲塘老鸭子店',
+            pos:["115.933514","28.554123"],
+            logo:'https://p1.meituan.net/deal/__41310118__4499941.jpg@380w_214h_1e_1c'
+          },
+          {
+            name:'莲塘老鸭子店',
+            pos:["115.933514","28.554123"],
+            logo:'https://p1.meituan.net/deal/__41310118__4499941.jpg@380w_214h_1e_1c'
+          },
+          {
+            name:'莲塘老鸭子店',
+            pos:["115.933514","28.554123"],
+            logo:'https://p1.meituan.net/deal/__41310118__4499941.jpg@380w_214h_1e_1c'
+          },
+          {
+            name:'莲塘老鸭子店',
+            pos:["115.933514","28.554123"],
+            logo:'https://p1.meituan.net/deal/__41310118__4499941.jpg@380w_214h_1e_1c'
+          }
+        ];
 
       //sdk 有点大， 它在远方
       //js 事件机制
       window.onload = function() {
         // 开始我们的js 编程
+        const shopContainer = document.querySelector('.shop-list');
+        const map = new BMap.Map(); //实例化地图
+        const myPoint = new BMap.Point(myLongitude, myLatitude);
 
+       
+
+        for(let i=0;i<shops.length;i++){
+          let shopPoint = new BMap.Point(shops[i].pos[0],shops[i].pos[1]);
+          let distance = parseDistance(
+           map.getDistance(myPoint, shopPoint)
+          );
+          shopContainer.innerHTML += `
+          <div class="poi-item-wrapper">
+        <div class="poi-info-wrapper">
+          <div class="image-wrapper">
+            <div class="imgbox">
+              <img
+                src="${shops[i].logo}"
+                alt=""
+              />
+            </div>
+          </div>
+          <div class="poi-info">
+            <div class="poi-name">${shops[i].name}</div>
+            <div class="price-wrapper">
+                <div class="stars">
+                    <ul>
+                        <li>&#9733;</li>
+                        <li>&#9733;</li>
+                        <li>&#9733;</li>
+                        <li>&#9733;</li>
+                        <li>&#9733;</li>
+                    </ul>
+                </div>
+              <div class="location">${distance}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+          `
+        }
         function parseDistance(distance) {
           // 如果大于1000m 返回 4.1km
           //否者 整数  963m
@@ -134,16 +228,16 @@
           } else {
             return (distance / 1000).toFixed(1)+"km";
           }
-        }
-        const map = new BMap.Map(); //实例化地图
+        } 
+        
         // map.centerAndZoom("南昌", 17);
         //两点之间距离
-        const myPoint = new BMap.Point(myLongitude, myLatitude);
-        const kfcPoint = new BMap.Point(kfcLongitude, kfcLatitude);
-        const distance = parseDistance(map.getDistance(myPoint, kfcPoint));
-        console.log(distance);
-        document.querySelector('.poi-name').innerHTML="肯德基";
-        document.querySelector('.location').innerHTML=distance;
+        // const myPoint = new BMap.Point(myLongitude, myLatitude);
+        // const kfcPoint = new BMap.Point(kfcLongitude, kfcLatitude);
+        // const distance = parseDistance(map.getDistance(myPoint, kfcPoint));
+        // console.log(distance);
+        // document.querySelector('.poi-name').innerHTML="肯德基";
+        // document.querySelector('.location').innerHTML=distance;
       };
     </script>
   </body>
