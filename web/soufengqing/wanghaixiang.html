@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			* {
+				padding: 0;
+				margin: 0;
+			}
+
+			section {
+				height: 120px;
+				width: 964px;
+				margin-left: 20%;
+				margin-top: 10%;
+				overflow: hidden;
+			}
+			section ul{
+				width: 964px;
+				height: 120px;
+			}
+			section ul li {
+				position: relative;
+				display: inline-block;
+				width: 180px;
+				height: 120px;
+				
+				list-style: none;
+				border-right: 1px dashed #666666;
+				transform-origin: left;
+				transition: all 0.3s;
+				background-color: #FFFFFF;
+				overflow: hidden;
+				filter: brightness(65%);
+			}
+			section ul li:hover {
+					transform: scale(1.1);
+					overflow: hidden;
+					width: 220px;	
+					height: 120px;	
+					filter: brightness(100%);
+				
+			}
+
+			.title {
+				position: absolute;
+				top: 5px;
+				left: 6px;
+				font-weight: bold;
+				font-size: 20px;
+				color: #FF5500;
+				z-index: 2;
+			}
+
+			.article {
+				position: absolute;
+				top: 50px;
+				left: 6px;
+				color: #737373;
+				z-index: 2;
+			}
+
+			.footer {
+				position: absolute;
+				top: 80px;
+				left: 6px;
+				font-weight: bold;
+				color: #FF4040;
+				z-index: 2;
+			}
+			section ul li img{
+				position: absolute;
+				transform: scale(0.8);
+				top:20px;
+				right: 2px;
+				z-index: 1;
+				
+			}
+		</style>
+	</head>
+
+	<body>
+		<section>
+			<ul>
+
+				<li>
+					<p class="title">聚美妆</p>
+					<p class="article">聚美妆1/2周年庆</p>
+					<p class="footer">1折起</p>
+					<img src="img/1.jpg" />
+				</li>
+
+				<li> 
+					<p class="title">聚美妆</p>
+					<p class="article">聚美妆1/2周年庆</p>
+					<p class="footer">1折起</p>
+					<img src="img/2.jpg" />
+				</li>
+
+				<li>
+					<p class="title">聚美妆</p>
+					<p class="article">聚美妆1/2周年庆</p>
+					<p class="footer">2.5折起</p>
+					<img src="img/3.jpg" />
+				</li>
+
+				<li >
+					<p class="title">聚美妆</p>
+					<p class="article">聚美妆1/2周年庆</p>
+					<p class="footer">2.6折起</p>
+					<img src="img/4.jpg" />
+				</li>
+
+				<li>
+					<p class="title">聚美妆</p>
+					<p class="article">聚美妆1/2周年庆</p>
+					<p class="footer">5折起</p>
+					<img src="img/5.jpg" />
+				</li>
+			</ul>
+		</section>
+		<script>
+
+
+		</script>
+	</body>
+</html>
