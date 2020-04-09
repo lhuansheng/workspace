@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    /* #canvas1{
+        border: 2px solid #000;
+    } */
+  </style>
+  <body>
+    <canvas id="canvas1" width="420" height="420" style="color: rgba(205, 241, 225, 0.966);"></canvas>
+  </body>
+  <script>
+    var oC = document.querySelector("#canvas1");
+    var otx = oC.getContext("2d");
+    var chess = [];
+    var black = true;
+    for(var i=0;i<15;i++){
+      chess[i]=[];
+      for(var j=0;j<15;j++){
+      chess[i][j]=0
+    }
+    }
+
+    function drawChessBoard() {
+      for (let i = 0; i < 14; i++) {
+        for (let j = 0; j < 14; j++) {
+          otx.beginPath();
+          otx.strokeRect(i * 30, j * 30, 30, 30);
+          otx.strokeStyle = "#aaa";
+          otx.stroke();
+          otx.closePath();
+        }
+      }
+    }
+    drawChessBoard(); //画棋盘
+
+    function drawChess(i, j, k) {
+      otx.beginPath();
+      otx.arc(i * 30, j * 30, 13, 0, 2 * Math.PI); //绘制棋子
+      // var g = oC.createRadialGradient(i * 30, j * 30, 13, i * 30, j * 30, 0); //渐变
+      if (black) {
+        //k=true是黑棋，否则是白棋
+        // g.addColorStop(0, "#0A0A0A"); //黑棋
+        // g.addColorStop(1, "#636766");
+        otx.fillStyle='black'
+      } else {
+        // g.addColorStop(0, "#D1D1D1"); //白棋
+        // g.addColorStop(1, "#F9F9F9");
+        otx.fillStyle='rgba(205, 241, 225, 0.966)'
+      }
+      
+      otx.fill();
+      otx.closePath();
+    }
+    oC.onclick = function(e){
+      var x = e.offsetX;
+      var y= e.offsetY;
+      var i = Math.round(x/30)
+      var j = Math.round(y/30)
+      if(chess[i][j] ==0){
+        drawChess(i,j,black)
+        if(black){
+          chess[i][j]=1;
+        }
+        else{
+          chess[i][j]=2
+        }
+        black =!black;
+      }
+    }
+  </script>
+</html>
