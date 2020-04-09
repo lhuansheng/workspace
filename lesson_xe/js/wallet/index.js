@@ -7,7 +7,7 @@ class Wallet{
         this._id = UUID.v1().replace(/-/g,"")   //命名规则约定   _变量  私有
 
         //创建时间  不能改
-        this._createTime =+ new Date()  //类型转换 
+        this._createTime = new Date()  //类型转换 
         // 余额  怎么设计?
 
         this._balance = 0; //余额设计成私有的属性  读与写要遵守一定的规则  安全
@@ -21,7 +21,10 @@ class Wallet{
 
     }
     getBalance(){
-        return this._balance
+        let time = this.getCreateTime();
+        console.log(time)
+        console.log(this._balance)
+        
     }
     // 能这么写吗？
     // setBalance(){
@@ -50,12 +53,12 @@ class Wallet{
 }
 
 const zzwWallet = new Wallet();//实例化
-console.log(zzwWallet.getId())
-console.log(zzwWallet.getCreateTime())
+// console.log(zzwWallet.getId())
+// console.log(zzwWallet.getCreateTime())
 console.log(zzwWallet.getBalance())
 zzwWallet.increaseBalance(10.0)
 zzwWallet.decreaseBalance(8.1)
-console.log(zzwWallet.getBalance().toFixed(2))
+console.log(zzwWallet.getBalance())
 
 //zzwWallet.setId();
 //zzwWallet.id='12212'//id 属性只读，但不能修改
