@@ -1,0 +1,11 @@
+{
+  "name": "car",
+  "version": "0.0.1",
+  "description": "做汽车的检测项目，给任何一张汽车图片，都能告诉我们什么车，型号多少",
+  "main": "index.js",
+  "scripts": {
+    "test": "git repository"
+  },
+  "author": "",
+  "license": "ISC"
+}
