@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            
+        }
+       body{
+        display: flex;
+        justify-content: center;
+        background-color: rgb(207, 200, 90);
+       }
+        .search-form{
+            /* display: flex;
+            flex-direction: column;
+            max-width: 400px; */
+            text-align: center;
+            
+            
+        }
+        input[type='text']{
+            border: 10px solid #f7f7f7;
+            padding: 10px;
+            /* 去掉text外面的绿边框（当聚焦时） */
+            outline: none;
+            border-radius: 4px;
+            text-align: center;
+            font-size: 18px;
+            box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.1),0 0 5px 1px rgba(0, 0, 0, 0.1) inset;
+            font-size: 18px;
+        }
+        ul {
+            list-style: none;
+        }
+        li{
+            padding: 10px;background-color: #fff;
+            border: 1px solid #D8D8D8;
+            
+        }
+        /* 1 3 5 7 */
+        /* li:nth-child 这个选择的是li本身的东西
+        比如  li:last-child  是选中最后一个li */
+        li:nth-child(odd){
+            transform: perspective(100px) rotateX(-3deg); 
+        }
+
+        li:nth-child(even){
+            transform: perspective(100px) rotateX(3deg); 
+        }
+        .highLight{
+            background-color: yellow;
+        }
+    </style>
+  </head>
+  <body>
+    <div class="search-form">
+      <input type="text" placeholder="city or state" id="suggest"/>
+      <ul>
+        <li>filter by a city</li>
+        <li>or a state</li>
+      </ul>
+    </div>
+    <script>
+        let cities = []
+        //url: 统一资源(图片，字体，html, js, videl, image)定位符
+        //发出请求需要时间  什么时候知道拿到资源了
+
+        fetch('https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json')    //fetch 是一个api
+        .then(function(res){
+            // 拿到数据量，想要数组，转换为数组
+            // 转换也需要时间
+            //return 交给下一步  .then 就类似于流水线
+            
+            return res.json();
+        })
+        .then(function(data){
+            // console.log(data)
+            cities = data;  //将数据保存到cities
+        })
+        const suggest = document.querySelector('#suggest')
+        function findMatch(e){ //e是api给的触发的事件
+            let v = e.target.value;
+            const ul = document.querySelector('ul')
+            //console.log(v)
+            if(!v){
+                return ul.innerHTML=`<li>filter by a city</li>
+                                        <li>or a state</li>`
+            }
+            let suggestCity = cities.filter(function(city){
+                if(city.city.includes(v)||city.state.includes(v)){
+                    return true
+                }
+                return false
+            })
+            
+            ul.innerHTML = suggestCity.map(function(city){
+                let cityName = city.city
+                let stateName = city.state
+                // 高亮: css
+                //搜 Ca  匹配出来的是：Los Angeles-California
+                //给Ca 加类名 replace
+                cityName = cityName.replace(v,`<span class="highLight">${v}</span>`)
+                stateName = stateName.replace(v,`<span class="highLight">${v}</span>`)
+
+                return `<li>${cityName}-${stateName}</li>`
+            }).join('')
+            console.log(suggestCity)
+        }
+        suggest.addEventListener('keyup', findMatch)
+        
+    </script>
+  </body>
+</html>
