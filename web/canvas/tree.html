@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tree</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+           
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas" width="500" height="500"></canvas> 
+    <script>
+        window.onload= function(){
+            var canvas = document.getElementById('canvas')
+            var ctx = canvas.getContext('2d')
+            ctx.save()
+            ctx.translate(200,100)
+            ctx.fillStyle = 'rgb(228, 156, 62)'
+            ctx.font = 'Bold 30px Sans-Serif'
+            ctx.fillText('Happy Trails!',0,0)
+            ctx.restore()
+        }
+    </script>
+</body>
+</html>
