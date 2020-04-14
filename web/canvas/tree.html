@@ -1,30 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>tree</title>
     <style>
-        *{
-            margin: 0;
-            padding: 0;
-           
-        }
+      * {
+        margin: 0;
+        padding: 0;
+      }
     </style>
-</head>
-<body>
-    <canvas id="canvas" width="500" height="500"></canvas> 
+  </head>
+  <body>
+    <canvas id="canvas" width="1000" height="1000"></canvas>
     <script>
-        window.onload= function(){
-            var canvas = document.getElementById('canvas')
-            var ctx = canvas.getContext('2d')
-            ctx.save()
-            ctx.translate(200,100)
-            ctx.fillStyle = 'rgb(228, 156, 62)'
-            ctx.font = 'Bold 30px Sans-Serif'
-            ctx.fillText('Happy Trails!',0,0)
-            ctx.restore()
+      window.onload = function () {
+        var canvas = document.getElementById("canvas");
+        var ctx = canvas.getContext("2d");
+
+        var gravel = new Image();
+        gravel.src = "img/gravel.jpg";
+        gravel.onload = function () {
+          drawCur();
+          drawFont();
+          ctx.translate(100,50)
+          drawTree(ctx);
+
+            ctx.translate(100,60)
+            ctx.scale(1.7,1.7)
+          drawTree(ctx);
+
+        };
+
+        function drawFont() {
+          ctx.save();
+          ctx.translate(220, 80);
+          ctx.fillStyle = "rgb(228, 156, 62)";
+          ctx.font = "Bold 45px Sans-Serif";
+          ctx.fillText("Happy Trails!", 0, 0);
+          ctx.restore();
         }
+        function drawCur() {
+          ctx.save();
+          ctx.translate(130, 450);
+          ctx.moveTo(0, 0);
+          ctx.quadraticCurveTo(170, -50, 260, -190);
+          ctx.quadraticCurveTo(310, -250, 410, -250);
+          ctx.strokeStyle = ctx.createPattern(gravel, "repeat");
+          ctx.lineWidth = 22;
+          ctx.stroke();
+          ctx.restore();
+        }
+        function drawHalfTree(ctx) {
+            //首先将树的样子画出来
+          ctx.save();
+          ctx.translate(130, 250);
+          ctx.beginPath();
+          ctx.moveTo(-25, -50);
+          ctx.lineTo(-10, -80);
+          ctx.lineTo(-20, -80);
+          ctx.lineTo(-5, -110);
+          ctx.lineTo(-15, -110);
+          ctx.lineTo(0, -140);
+          ctx.lineTo(15, -110);
+          ctx.lineTo(5, -110);
+          ctx.lineTo(20, -80);
+          ctx.lineTo(10, -80);
+          ctx.lineTo(25, -50);
+          
+          ctx.closePath();
+          
+          ctx.fillRect(-5, -50, 10, 50);
+
+          
+          ctx.restore();
+        }
+        function drawTree(ctx) {
+          ctx.save();
+          //通过树的样子加透明度，描边等等
+          ctx.transform(1, 0, -0.5, 1, 76, 100);
+          ctx.scale(1, 0.6);  
+          ctx.fillStyle = "rgba(0,0,0,0.1)";  
+          drawHalfTree(ctx);
+          ctx.fill();
+          ctx.restore();
+
+          ctx.save();
+          drawHalfTree(ctx);
+          ctx.lineWidth = 4;
+          ctx.lineJoin = "round";
+          ctx.strokeStyle = "#663300";
+          ctx.stroke();
+          ctx.fillStyle = "#339900";
+          ctx.fill();
+          ctx.restore()     
+          ctx.save()
+          ctx.fillStyle = "#663300";
+          ctx.fillRect(125, 200, 10, 50);
+          ctx.restore();
+        }
+      };
     </script>
-</body>
+  </body>
 </html>
