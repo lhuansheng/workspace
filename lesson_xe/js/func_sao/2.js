@@ -4,3 +4,4 @@ var getArea = function (w, h) {
     return w * h;
 };
 getArea(2, 3);
+
