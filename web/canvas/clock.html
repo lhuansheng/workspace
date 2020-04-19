@@ -11,7 +11,7 @@
       }
       canvas {
         border: 1px solid #ccc;
-        background-color: rgb(241, 221, 107);
+        background-color: black;
       }
     </style>
   </head>
@@ -20,7 +20,6 @@
     <script>
       var canvas = document.querySelector(".canvas");
       var ctx = canvas.getContext("2d");
-      
       var img = new Image();
       img.src = "img/bg.jpg";
       img.onload = function () {
@@ -97,8 +96,6 @@
         ctx.font = "Bold 15px Sans-Serif";
         ctx.fillText(time, -25, 60);
         ctx.restore();
-
-
         //时针
         ctx.save();
         //分钟走60,时针走5
@@ -114,7 +111,6 @@
         ctx.lineTo(0, -70);
         ctx.stroke();
         ctx.restore();
-
         //分针
         ctx.save();
         //秒针走60格, 分钟多走一格
@@ -126,7 +122,6 @@
         ctx.lineTo(0, -100);
         ctx.stroke();
         ctx.restore();
-
         //秒针
         ctx.save();
         ctx.rotate(((2 * Math.PI) / 60) * s);
@@ -137,7 +132,6 @@
         ctx.lineTo(0, -100);
         ctx.stroke();
         ctx.restore();
-
         //秒针上面的小圆
         ctx.save();
         ctx.lineWidth = 3;
@@ -149,7 +143,6 @@
         ctx.strokeStyle = "rgb(19, 156, 26)";
         ctx.stroke();
         ctx.restore();
-
         //中心点上的圆
         ctx.save();
         ctx.lineWidth = 3;
