@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        canvas{
+            border: 1px solid #ccc;
+            
+        }
+    </style>
+</head>
+<body>
+    <canvas class="canvas" width="500" height="400"></canvas>
+    <script>
+        var canvas = document.querySelector('.canvas')
+        var ctx = canvas.getContext('2d')
+
+        ctx.fillStyle = 'green'
+        var x = 55;
+        
+        //1
+        // setInterval(function (){
+        //     //清除画布
+        //     ctx.clearRect(0,0,canvas.width,canvas.height)
+        //     ctx.fillRect(x,50,50,50)
+        //     x++
+            
+        // },1000/60)
+
+        // (function run(){
+        //     ctx.clearRect(0,0,canvas.width,canvas.height)
+        //     ctx.fillRect(x,50,50,50)
+        //     x++
+        //    // 2setTimeout(run,1000/50)
+        //    //3告诉浏览器 要执行一个动画函数
+        //    requestAnimationFrame(run)
+        // })()
+        //比较 定时器 和动画函数
+        // setInterval(() => {
+        //     var t = new Date()
+        //     var s = t.getSeconds()
+        //     console.log(s)
+        // }, 1000/60);
+
+        // (function run(){
+        //     var t = new Date()
+        //     var s = t.getSeconds()
+        //     console.log(s)
+        //     requestAnimationFrame(run)
+        // })()
+
+    </script>
+</body>
+</html>

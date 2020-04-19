@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        canvas{
+            border: 1px solid #ccc;
+            
+        }
+    </style>
+</head>
+<body>
+    <canvas class="canvas" width="500" height="400"></canvas>
+    <script>
+        var canvas = document.querySelector('.canvas')
+        var ctx = canvas.getContext('2d')
+        ctx.translate(canvas.width/2,canvas.height/2)
+        function drawShape(n,pr){
+
+            var r = pr||100
+            //保存当前绘画环境 也就是下面的绘画环境
+            ctx.save()
+        ctx.beginPath()
+      // ctx.moveTo(0,0)
+        
+        //ctx.moveTo(100,200)  //moveTo(代表起点移动了位置)
+        ctx.moveTo(0,-r)  //lineTo(代表从起点到这个点的一条直线)
+        for(var i = 0; i<n-1;i++){
+            ctx.rotate(2*Math.PI/n)
+        ctx.lineTo(0,-r) 
+        }
+       
+       
+        
+       
+        ctx.closePath()
+        ctx.lineWidth = 4
+        ctx.stroke()
+        console.log(ctx)
+
+        //还原绘画环境
+        ctx.restore() //表示前面设置的一些东西都不起作用了
+
+        }
+        drawShape(4,200)
+        // drawShape(5)
+        // drawShape(6)
+    </script>
+</body>
+</html>

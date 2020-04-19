@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>clock</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+      }
+      canvas {
+        border: 1px solid #ccc;
+        background-color: rgb(241, 221, 107);
+      }
+    </style>
+  </head>
+  <body>
+    <canvas class="canvas" width="400" height="400"></canvas>
+    <script>
+      var canvas = document.querySelector(".canvas");
+      var ctx = canvas.getContext("2d");
+      
+      var img = new Image();
+      img.src = "img/bg.jpg";
+      img.onload = function () {
+        setInterval(() => {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          ctx.save();
+          ctx.translate(canvas.width / 2, canvas.height / 2);
+          ctx.beginPath();
+          ctx.arc(0, 0, 150, 0, 2 * Math.PI);
+          ctx.closePath();
+          ctx.fill();
+          ctx.globalCompositeOperation = "source-atop";
+          ctx.drawImage(
+            img,
+            -canvas.width / 2,
+            -canvas.height / 2,
+            canvas.width,
+            canvas.height
+          );
+          ctx.restore();
+          ctx.save();
+          ctx.translate(canvas.width / 2, canvas.height / 2);
+          clockDial();
+          rotates();
+          ctx.restore();
+        }, 1000);
+      };
+
+      function clockDial() {
+        ctx.strokeStyle = "rgb(14, 118, 204)";
+        ctx.lineWidth = 6;
+        //圆盘
+        ctx.beginPath();
+        ctx.arc(0, 0, 150, 0, 2 * Math.PI);
+        ctx.closePath();
+        ctx.stroke();
+
+        //分针刻度 和时针刻度
+        for (var i = 0; i < 60; i++) {
+            //时针刻度每隔5格有一个
+          if (i % 5 === 0) {
+            ctx.strokeStyle = "red";
+            ctx.lineWidth = 6;
+            ctx.beginPath();
+            ctx.moveTo(0, -120);
+            ctx.lineTo(0, -140);
+            ctx.stroke();
+            ctx.rotate((2 * Math.PI) / 60);
+            ctx.closePath();
+          } 
+          else {
+            ctx.lineWidth = 2;
+            ctx.strokeStyle = "yellow";
+            ctx.beginPath();
+            ctx.moveTo(0, -130);
+            ctx.lineTo(0, -140);
+            ctx.stroke();
+            ctx.rotate((2 * Math.PI) / 60);
+            ctx.closePath();
+          }
+        }    
+      }
+
+      function rotates() {
+        var d = new Date();
+        var h = d.getHours();
+        var m = d.getMinutes();
+        var s = d.getSeconds();
+
+        //在时钟下面显示的数字时间
+        ctx.save();
+        var time = h + " : " + m;
+        ctx.fillStyle = "white";
+        ctx.font = "Bold 15px Sans-Serif";
+        ctx.fillText(time, -25, 60);
+        ctx.restore();
+
+
+        //时针
+        ctx.save();
+        //分钟走60,时针走5
+        //分针走12格则时针走1格
+        ctx.rotate(
+          ((2 * Math.PI) / 12) * h +
+            (((2 * Math.PI) / 60) * m + (((2 * Math.PI) / 60) * s) / 60) / 12
+        );
+        ctx.strokeStyle = "rgb(14, 118, 204)";
+        ctx.lineWidth = 8;
+        ctx.beginPath();
+        ctx.moveTo(0, 12);
+        ctx.lineTo(0, -70);
+        ctx.stroke();
+        ctx.restore();
+
+        //分针
+        ctx.save();
+        //秒针走60格, 分钟多走一格
+        ctx.rotate(((2 * Math.PI) / 60) * m + (((2 * Math.PI) / 60) * s) / 60);
+        ctx.strokeStyle = "rgb(241, 221, 107)";
+        ctx.lineWidth = 4;
+        ctx.beginPath();
+        ctx.moveTo(0, 14);
+        ctx.lineTo(0, -100);
+        ctx.stroke();
+        ctx.restore();
+
+        //秒针
+        ctx.save();
+        ctx.rotate(((2 * Math.PI) / 60) * s);
+        ctx.strokeStyle = "rgb(19, 156, 26)";
+        ctx.lineWidth = 3;
+        ctx.beginPath();
+        ctx.moveTo(0, 16);
+        ctx.lineTo(0, -100);
+        ctx.stroke();
+        ctx.restore();
+
+        //秒针上面的小圆
+        ctx.save();
+        ctx.lineWidth = 3;
+        ctx.rotate(((2 * Math.PI) / 60) * s);
+        ctx.fillStyle = "yellow";
+        ctx.beginPath();
+        ctx.arc(0, -80, 5, 0, 2 * Math.PI);
+        ctx.fill();
+        ctx.strokeStyle = "rgb(19, 156, 26)";
+        ctx.stroke();
+        ctx.restore();
+
+        //中心点上的圆
+        ctx.save();
+        ctx.lineWidth = 3;
+        ctx.fillStyle = "yellow";
+        ctx.beginPath();
+        ctx.arc(0, 0, 5, 0, 2 * Math.PI);
+        ctx.fill();
+        ctx.strokeStyle = "rgb(19, 156, 26)";
+        ctx.stroke();
+        ctx.restore();
+      }
+    </script>
+  </body>
+</html>
