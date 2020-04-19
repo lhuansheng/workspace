@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>五子棋</title>
+  </head>
+  <style>
+    body {
+      padding: 0;
+      margin: 0;
+    }
+    #canvas1 {
+      margin-left: 20px;
+      margin-top: 20px;
+    }
+    .alert {
+      margin-left: 40px;
+    }
+  </style>
+  <body>
+    <canvas
+      id="canvas1"
+      width="600"
+      height="600"
+      style="color: rgba(205, 241, 225, 0.966);"
+    ></canvas>
+    <div class="alert">黑棋先走</div>
+  </body>
+  <script>
+    var oC = document.querySelector("#canvas1");
+    var otx = oC.getContext("2d");
+    var chess = [];
+    var isBlack = true; //判断下的是哪个棋
+    var flag = false; //如果有哪方赢了则结束游戏
+
+    for (var i = 0; i < 15; i++) {
+      //初始化输出存放已经下了棋的棋子
+      chess[i] = [];
+      for (var j = 0; j < 15; j++) {
+        chess[i][j] = 0; //为数组中的元素进行初始化,默认为0
+      }
+    }
+
+    function drawChessBoard() {
+      otx.strokeStyle = "#aaa";
+      for (var i = 0; i < 15; i++) {
+        otx.moveTo(i * 40 + 20, 20);
+        otx.lineTo(i * 40 + 20, 580);
+        otx.stroke();
+        otx.moveTo(20, i * 40 + 20);
+        otx.lineTo(580, i * 40 + 20);
+
+        otx.stroke();
+      }
+    }
+    drawChessBoard(); //画棋盘
+    var white = new Image();
+    var bl = new Image();
+    white.src = "img/white.png";
+    bl.src = "img/black.png";
+    var alerts = document.querySelector(".alert"); //提示该下白棋还是黑棋了
+    function drawBlack(i, j) {
+      //画黑棋
+      otx.drawImage(bl, i * 40 + 3, j * 40 + 3, 34, 34);
+      chess[i][j] = 1;
+      setTimeout(() => {
+        alerts.innerHTML = "白棋下";
+      }, 500);
+    }
+    function drawWhite(i, j) {
+      //画白棋
+      otx.drawImage(white, i * 40 + 3, j * 40 + 3, 34, 34);
+      chess[i][j] = 2;
+      setTimeout(() => {
+        alerts.innerHTML = "黑棋下";
+      }, 500);
+    }
+    function drawChess(i, j) {
+      //判断下那个棋
+      if (isBlack) {
+        console.log(flag);
+        drawBlack(i, j);
+      } else {
+        drawWhite(i, j);
+      }
+    }
+    oC.addEventListener("click", (e) => {
+      //每次下棋监听
+      var x = e.clientX;
+      var y = e.clientY;
+      var i = parseInt((x - 20) / 40);
+      var j = parseInt((y - 20) / 40);
+      if (chess[i][j] == 0) {
+        if (isBlack) {
+          drawChess(i, j);
+          isBlack = false;
+          if (isWin(i, j)) {
+            alerts.innerHTML = "黑棋胜!";
+            alert("黑棋胜! 2s后将自动重新开局");
+            setTimeout(() => {
+              window.location.reload();
+            }, 2000);
+            return;
+          }
+        } else {
+          drawChess(i, j);
+          isBlack = true;
+          if (isWin(i, j)) {
+            alerts.innerHTML = "白棋胜!";
+            alert("白棋胜! 2s后将自动重新开局");
+            setTimeout(() => {
+              window.location.reload();
+            }, 2000);
+            return;
+          }
+        }
+      } else {
+        alerts.innerHTML = "这个地方已经有棋子了,不能重复下";
+      }
+    });
+
+    //该函数的作用是来判断输赢
+    function isWin(x, y) {
+      //向上向下
+      if (up_down(x, y) == 5) {
+        return true;
+      }
+      //向左向右
+      if (left_right(x, y) == 5) {
+        return true;
+      }
+      //左上右下
+      if (Lup_Rdown(x, y) == 5) {
+        return true;
+      }
+      //右上左下
+      if (Rup_Lup(x, y) == 5) {
+        return true;
+      }
+      return false;
+    }
+    //向上向下
+    function up_down(x, y) {
+      //判断当前是什么棋子
+      //通过二维数组的元素判断棋子
+      var currentChess = chess[x][y];
+      //解决向上的逻辑  横坐标不变,纵坐标一直变化,减小到直到等于0
+      var count = 1;
+      for (var i = y - 1; i >= 0; i--) {
+        if (chess[x][i] == currentChess) {
+          //就证明我找的向上的棋子就是我刚刚下的棋子
+          count++;
+        } else {
+          break;
+        }
+      }
+      for (var i = y + 1; i < 15; i++) {
+        if (chess[x][i] == currentChess) {
+          //就证明我找的向上的棋子就是我刚刚下的棋子
+          count++;
+        } else {
+          break;
+        }
+      }
+      // console.log(count)
+      return count;
+    }
+    //向左向右
+    function left_right(x, y) {
+      var currentChess = chess[x][y];
+      var count = 1;
+      for (var i = x - 1; i >= 0; i--) {
+        if (chess[i][y] == currentChess) {
+          count++;
+        } else {
+          break;
+        }
+      }
+      for (var i = x + 1; i < 15; i++) {
+        if (chess[i][y] == currentChess) {
+          count++;
+        } else {
+          break;
+        }
+      }
+      return count;
+    }
+    //左上右下
+    function Lup_Rdown(x, y) {
+      var currentChess = chess[x][y];
+      var count = 1;
+      for (var i = y - 1, j = x - 1; i >= 0, j >= 0; i--, j--) {
+        if (chess[j][i] == currentChess) {
+          count++;
+        } else {
+          break;
+        }
+      }
+      for (var i = y + 1, j = x + 1; i < 15, i < 15; i++, j++) {
+        if (chess[j][i] == currentChess) {
+          count++;
+        } else {
+          break;
+        }
+      }
+      return count;
+    }
+    //右上左下
+    function Rup_Lup(x, y) {
+      var currentChess = chess[x][y];
+      var count = 1;
+      for (var i = y - 1, j = x + 1; i >= 0, j < 15; i--, j++) {
+        if (chess[j][i] == currentChess) {
+          count++;
+        } else {
+          break;
+        }
+      }
+      for (var i = y + 1, j = x - 1; i < 15, j >= 0; i++, j--) {
+        if (chess[j][i] == currentChess) {
+          count++;
+        } else {
+          break;
+        }
+      }
+      return count;
+    }
+  </script>
+</html>
