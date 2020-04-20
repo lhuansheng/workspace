@@ -29,10 +29,9 @@
   </body>
   <script>
     var oC = document.querySelector("#canvas1");
-    var otx = oC.getContext("2d");
+    var ctx = oC.getContext("2d");
     var chess = [];
     var isBlack = true; //判断下的是哪个棋
-    var flag = false; //如果有哪方赢了则结束游戏
 
     for (var i = 0; i < 15; i++) {
       //初始化输出存放已经下了棋的棋子
@@ -43,15 +42,15 @@
     }
 
     function drawChessBoard() {
-      otx.strokeStyle = "#aaa";
+      ctx.strokeStyle = "#aaa";
       for (var i = 0; i < 15; i++) {
-        otx.moveTo(i * 40 + 20, 20);
-        otx.lineTo(i * 40 + 20, 580);
-        otx.stroke();
-        otx.moveTo(20, i * 40 + 20);
-        otx.lineTo(580, i * 40 + 20);
+        ctx.moveTo(i * 40 + 20, 20);
+        ctx.lineTo(i * 40 + 20, 580);
+        ctx.stroke();
+        ctx.moveTo(20, i * 40 + 20);
+        ctx.lineTo(580, i * 40 + 20);
 
-        otx.stroke();
+        ctx.stroke();
       }
     }
     drawChessBoard(); //画棋盘
@@ -62,15 +61,15 @@
     var alerts = document.querySelector(".alert"); //提示该下白棋还是黑棋了
     function drawBlack(i, j) {
       //画黑棋
-      otx.drawImage(bl, i * 40 + 3, j * 40 + 3, 34, 34);
+      ctx.drawImage(bl, i * 40 + 3, j * 40 + 3, 34, 34);
       chess[i][j] = 1;
       setTimeout(() => {
         alerts.innerHTML = "白棋下";
-      }, 500);
+      }, 200);
     }
     function drawWhite(i, j) {
       //画白棋
-      otx.drawImage(white, i * 40 + 3, j * 40 + 3, 34, 34);
+      ctx.drawImage(white, i * 40 + 3, j * 40 + 3, 34, 34);
       chess[i][j] = 2;
       setTimeout(() => {
         alerts.innerHTML = "黑棋下";
@@ -79,7 +78,6 @@
     function drawChess(i, j) {
       //判断下那个棋
       if (isBlack) {
-        console.log(flag);
         drawBlack(i, j);
       } else {
         drawWhite(i, j);
@@ -122,28 +120,26 @@
 
     //该函数的作用是来判断输赢
     function isWin(x, y) {
-      //向上向下
+      //上下方向
       if (up_down(x, y) == 5) {
         return true;
       }
-      //向左向右
+      //左右方向
       if (left_right(x, y) == 5) {
         return true;
       }
-      //左上右下
+      //左上和右下方向
       if (Lup_Rdown(x, y) == 5) {
         return true;
       }
-      //右上左下
+      //右上和左下方向
       if (Rup_Lup(x, y) == 5) {
         return true;
       }
       return false;
     }
-    //向上向下
+    //上下方向
     function up_down(x, y) {
-      //判断当前是什么棋子
-      //通过二维数组的元素判断棋子
       var currentChess = chess[x][y];
       //解决向上的逻辑  横坐标不变,纵坐标一直变化,减小到直到等于0
       var count = 1;
@@ -166,7 +162,7 @@
       // console.log(count)
       return count;
     }
-    //向左向右
+    //左右方向
     function left_right(x, y) {
       var currentChess = chess[x][y];
       var count = 1;
@@ -186,7 +182,7 @@
       }
       return count;
     }
-    //左上右下
+    //左上和右下方向
     function Lup_Rdown(x, y) {
       var currentChess = chess[x][y];
       var count = 1;
@@ -206,7 +202,7 @@
       }
       return count;
     }
-    //右上左下
+    //右上和左下方向
     function Rup_Lup(x, y) {
       var currentChess = chess[x][y];
       var count = 1;
