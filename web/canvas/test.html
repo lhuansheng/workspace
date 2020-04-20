@@ -1,152 +1,112 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <title></title>
-  </head>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			body {
+				padding: 0;
+				margin: 0;
+			}
+			#myCanvas {
+				border: 1.5px solid #000000;
+				position: absolute;
+				left: 500px;
+				top: 50px;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="myCanvas" width="600" height="600">
+			您的浏览器不支持canvas标签，请尝试使用Chrome或火狐浏览器
+		</canvas>
+		<script>
+			var myCanvas = document.getElementById("myCanvas");
+			var ctx = myCanvas.getContext("2d");
+			var clock = new Image();
+			var start = 0;
+			clock.src = "img/bg.jpg";
+			ctx.beginPath();
+			clock.onload = function() {
+				function drawClock() {
+					var timer = new Date();
+					var hour = timer.getHours();
+					var min = timer.getMinutes();
+					var sec = timer.getSeconds();
+          ctx.clearRect(0,0,600,600)
+					ctx.beginPath();
+					ctx.font = "30px 微软雅黑";
+					ctx.fillText("海绵宝宝时钟", 200, 50);
+					ctx.beginPath();
+					ctx.font = "30px 微软雅黑";
+					ctx.fillText(hour+":"+min+":"+sec, 200, 550);
+					ctx.save();
+					ctx.translate(300, 300);
+					ctx.arc(0, 0, 200, 0, 2 * Math.PI);
+					ctx.stroke();
+					ctx.clip();
+					ctx.drawImage(clock, -300, -200);
+					ctx.beginPath();
+					ctx.arc(0, 0, 10, 0, 2 * Math.PI);
+					ctx.fillStyle = "black";
+					ctx.fill();
+			
 
-  <body>
-    <canvas id="mycanvas" width="400" height="400"></canvas>
-  </body>
-  <script type="text/javascript">
-    var c = document.getElementById("mycanvas");
-    var ctx = c.getContext("2d");
-    function run() {
-      var now = new Date(); //定义时间
-      var sec = now.getSeconds(); //获取秒
-      var minute = now.getMinutes(); //获取分钟
-      var hour = now.getHours(); //获取小时
-      //小时必须获取浮点类型，产生偏移（小时+分钟比）
-      
-      //将24小时转换为12小时
-      hour = hour > 12 ? hour - 12 : hour;
-      console.log(hour)
+					ctx.save();
+					ctx.rotate(Math.PI * 2 * sec / 60);
+					ctx.beginPath();
+					ctx.moveTo(0, 0);
+					ctx.lineTo(0, -150);
+					ctx.lineWidth = 3;
+					ctx.strokeStyle = "#FF5500";
+					ctx.stroke();
+					ctx.closePath();
+					ctx.restore();
 
-      var width = ctx.canvas.width;
-      var height = ctx.canvas.height;
-      var a = width / 2;
-      var b = height / 2;
-      ctx.translate(a, b);
+					ctx.save();
+					ctx.rotate(Math.PI * 2 * min / 60);
+					ctx.beginPath();
+					ctx.moveTo(0, 0);
+					ctx.lineTo(0, -120);
+					ctx.strokeStyle = 'black';
+					ctx.lineWidth = 3;
+					ctx.closePath();
+					ctx.stroke();
+					ctx.restore();
 
-      // var img = new Image();
-      // img.src = "timg1.jpg";
-      // ctx.save();
+					ctx.save();
+					ctx.rotate((Math.PI * 2)/ 12 * (min / 60+hour-12));//因为是24小时制所以要减去12个小时
+					ctx.beginPath();
+					ctx.moveTo(0, 0);
+					ctx.lineTo(0, -90);
+					ctx.strokeStyle = '#D0021B';
+					ctx.lineWidth = 3;
+					ctx.closePath();
+					ctx.stroke();
+					ctx.restore();
 
-      // ctx.beginPath();
-      // img.onload = function() {
-      // 	ctx.drawImage(img, (-a + 10), -a);
+					for (var i = 1; i < 13; i++) {
+						ctx.save();
+						ctx.rotate(Math.PI * 2 * i / 12);
+						ctx.beginPath();
+						ctx.font = "20px 微软雅黑";
+						ctx.fillText(i, -8, -160);
+						ctx.beginPath();
+						ctx.moveTo(0, 200);
+						ctx.lineTo(0, 180);
+						ctx.strokeStyle = 'black';
+						ctx.lineWidth = i % 3 ? 3 : 4;
+						ctx.strokeStyle = i % 3 ? "black" : "red";
+						ctx.closePath();
+						ctx.stroke();
+						ctx.restore();
+					}
+					ctx.restore();
+				}
+				setInterval(drawClock, 1000);
+				//window.requestAnimationFrame(drawClock);无法无限时间持续调用 放弃这个方法
 
-      // }
-      // ctx.closePath();
-
-      // ctx.globalCompositeOperation = "copy";
-      //ctx.clearRect(0,0,500,500);
-
-      ctx.save();
-
-      //ctx.arc(0, 0, a - 10, 0, 2*Math.PI);
-      //ctx.clip();
-      //ctx.lineWidth = 12;
-      ctx.strokeStyle = "red";
-      ctx.stroke();
-      ctx.closePath();
-      ctx.restore();
-      //时针刻度
-      // for (var i = 0; i < 12; i++) {
-
-      // 	ctx.save();
-      // 	//设置时针的样式
-      // 	ctx.lineWidth = 7;
-      // 	ctx.strokeStyle = "#ff0000";
-      // 	//设置异次元空间原点
-      // 	ctx.translate(0, 0);
-      // 	//设置旋转角度
-      // 	ctx.rotate(i * 30 * Math.PI / 180);
-
-      // 	ctx.beginPath();
-      // 	ctx.moveTo(0, -170); //画线， 从坐标0，-170开始
-      // 	ctx.lineTo(0, -190); //到坐标0，-190结束
-      // 	ctx.stroke();
-      // 	ctx.closePath();
-      // 	ctx.restore();
-      // }
-      // //分针刻度
-      // for (var i = 0; i < 60; i++) {
-      // 	ctx.save();
-      // 	ctx.lineWidth = 5;
-      // 	ctx.strokeStyle = "#00aa00";
-      // 	ctx.translate(0, 0);
-      // 	ctx.rotate(i * 6 * Math.PI / 180);
-
-      // 	ctx.beginPath();
-      // 	ctx.moveTo(0, -180);
-      // 	ctx.lineTo(0, -190);
-      // 	ctx.stroke();
-      // 	ctx.closePath();
-      // 	ctx.restore();
-      // }
-
-      // //时针
-      ctx.save();
-      //时针样式
-      ctx.lineWidth = 7;
-      ctx.strokeStyle = "#550000";
-      //ctx.translate(0, 0);
-      ctx.rotate((hour * 30 * Math.PI) / 180);
-      ctx.beginPath();
-      ctx.moveTo(0, -140);
-      ctx.lineTo(0, 10);
-      ctx.stroke();
-      ctx.closePath();
-
-      ctx.restore();
-
-      //分针
-      ctx.save();
-      //分针样式
-      ctx.lineWidth = 5;
-      ctx.strokeStyle = "#ffff00";
-      //ctx.translate(0, 0);
-      ctx.rotate((minute * 6 * Math.PI) / 180);
-      ctx.beginPath();
-      ctx.moveTo(0, -160);
-      ctx.lineTo(0, 15);
-      ctx.stroke();
-      ctx.closePath();
-
-      ctx.restore();
-
-      //秒针
-      ctx.save();
-      ctx.lineWidth = 3;
-      ctx.strokeStyle = "#f00";
-      //ctx.translate(0, 0);
-      ctx.rotate((sec * 6 * Math.PI) / 180);
-      ctx.beginPath();
-      ctx.moveTo(0, -185);
-      ctx.lineTo(0, 20);
-      ctx.stroke();
-      ctx.closePath();
-      ctx.restore();
-      //画出时针，分针，秒针交叉点
-      // ctx.beginPath();
-      // ctx.strokeStyle = "#f00";
-      // ctx.arc(0, 0, 5, 0, 360, false);
-      // ctx.fillStyle = "#fff"; //填充颜色
-      // ctx.fill(); //填充
-      // ctx.stroke();
-      // ctx.closePath();
-
-      //秒针装饰
-      // ctx.beginPath();
-      // ctx.strokeStyle = "#f00";
-      // ctx.arc(0, -160, 5, 0, 360, false);
-      // ctx.fill();
-      // ctx.stroke();
-      // ctx.closePath();
-      ctx.restore();
-    }
-    //run();
-    setInterval(run, 1000);
-  </script>
+			}
+		</script>
+	</body>
 </html>
