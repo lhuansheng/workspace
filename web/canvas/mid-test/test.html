@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<canvas id="myCanvas" width="600" height="600" style="background-color: antiquewhite;"></canvas>
+		<script type="text/javascript">
+			var images = []; 
+			var img0 = new Image();
+			img0.src = "0.jpg";
+			var img1 = new Image();
+			img1.src = "1.jpg";
+			var img2 = new Image();
+			img2.src = "2.jpg";
+			var img3 = new Image();
+			img3.src = "3.jpg";
+			var img4 = new Image();
+			img4.src = "4.jpg";
+			var img5 = new Image();
+			img5.src = "5.jpg";
+			var progress = 0;
+			
+			for(var i = 0;i<6;i++){
+				var img = new Image(); 
+				img.src = i + '.jpg'; 
+				images.push(img);
+				}
+			img0.onload = function(){
+			    progress += 20; //加入当前图片的权重
+			    if(progress==120){
+				    draw(); 
+					}
+			    }
+			img1.onload = function(){
+			    progress += 20; //加入当前图片的权重
+			    if(progress==120){
+				    draw(); 
+					}
+			    }
+			img2.onload = function(){
+			    progress += 20; //加入当前图片的权重
+			    if(progress==120){
+				    draw(); 
+					}
+			    }
+			img3.onload = function(){
+			    progress += 20; //加入当前图片的权重
+			    if(progress==120){
+				    draw(); 
+					}
+			    }
+			img4.onload = function(){
+			    progress += 20; //加入当前图片的权重
+			    if(progress==120){
+				    draw(); 
+					}
+			    }
+			img5.onload = function(){
+			    progress += 20; //加入当前图片的权重
+			    if(progress==120){
+				    draw(); 
+					}
+			    }
+			function randomRange(min, max) { // min最小值，max最大值
+			    return Math.floor(Math.random() * (max - min)) + min;
+			}
+			
+            function draw(){
+				var canvas = document.getElementById("myCanvas");
+				var ctx = canvas.getContext("2d");
+				//alert(1);
+				var maps = new Array(10);
+				for (var i = 0; i < 10; i++) {
+				    maps[i] = new Array(10);
+				    for (var j = 0; j < 10; j++) {
+				        maps[i][j] = randomRange(0, 6);
+						//alert(i+" "+j+" "+maps[i][j]);
+						ctx.drawImage(images[maps[i][j]],i*60,j*60,60,60);
+				    }
+				} 
+				   
+				
+				}	
+		</script>
+	</body>
+</html>

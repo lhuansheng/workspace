@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <canvas
+      id="canvas1"
+      width="600"
+      height="600"
+      style="color: rgba(205, 241, 225, 0.966);"
+    ></canvas>
+    <script>
+      var mycanvas = document.querySelector("#canvas1");
+      var ctx = mycanvas.getContext("2d");
+      var pic1 = new Image();
+      var pic2 = new Image();
+      var pic3 = new Image();
+      var pic4 = new Image();
+      var pic5 = new Image();
+      pic1.src = "img/fruit1.png";
+      pic2.src = "img/fruit2.png";
+      pic3.src = "img/fruit3.png";
+      pic4.src = "img/fruit4.png";
+      pic5.src = "img/fruit5.png";
+
+      var picArr = [];
+      for (var i = 1; i < 6; i++) {
+        picArr.push("img/fruit" + i + ".png");
+      }
+      pic1.onload = function () {
+        var index = Math.floor(Math.random() * 5);
+       switch(index){
+        case 0:drawPic(); break;
+         case 1:pic1.onload = drawPic(); break;
+         case 2:pic2.onload = drawPic(); break;
+         case 3:pic3.onload = drawPic(); break;
+         case 4:pic4.onload = drawPic(); break;
+       }
+       function drawPic() {
+        for (let i = 0; i < 2; i++) {
+          for (let j = 0; j < 2; j++) {
+           
+            var randomPicY = Math.floor(Math.random() * 5);
+            ctx.drawImage(pic1, index * 40 + 3, randomPicY * 40 + 3);
+          }
+        }
+      }
+
+      };
+
+     
+      //  picArr.forEach(function(event,index,ff){
+      //   var pic = new Image();
+
+      //   pic.src = event
+      //   //console.log(event,dd,ff)
+      //   pic.onload = ()=> {
+      //    var randomPic = Math.floor(Math.random()*5)
+      //         ctx.drawImage(pic, randomPic * 40 + 3, randomPic * 40 + 3);
+      //         console.log(pic.src)
+
+      //   }
+      //  })
+
+      // pic1.onload = function () {
+      //   pic2.onload = function(){
+      //     drawPic();
+      //   }
+      // };
+    </script>
+  </body>
+</html>
