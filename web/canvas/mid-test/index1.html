@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <canvas
+      id="canvas1"
+      width="600"
+      height="600"
+      style="color: rgba(205, 241, 225, 0.966);"
+    ></canvas>
+    <script>
+      var mycanvas = document.querySelector("#canvas1");
+      var ctx = mycanvas.getContext("2d");
+     drawImages()
+      function drawImages(){
+        for(var i = 0;i<10;i++){
+			for(var j = 0;j<10;j++){
+				var fru = new fruit();
+                fru.posX = i*40
+                fru.PosY = j*40
+				fru.drawPic()
+				
+			}
+		}
+      }
+
+      
+
+      function fruit(){
+        PicRan = Math.floor(Math.random()*5)
+        this.pic = getPicObj('img/fruit'+(PicRan+1)+'.png')
+        this.posX = 0
+        this.PosY = 0
+      this.drawPic =function (){
+          ctx.drawImage(this.pic,this.posX,this.PosY)
+      }  
+
+       
+      }
+      function getPicObj(obj){
+        var imgs = new Image();
+	    imgs.src = obj;
+        }
+      
+    </script>
+  </body>
+</html>
