@@ -3,86 +3,171 @@
 	<head>
 		<meta charset="utf-8">
 		<title></title>
+		<style>
+			* {
+				padding: 0;
+				margin: 0;
+			}
+
+			body {
+				width: 1000px;
+				height: 1000px;
+			}
+
+			#myCanvas {
+				border: 1.5px solid #000000;
+				position: absolute;
+				left: 600px;
+				top: 50px;
+			}
+
+			#tip {
+				position: absolute;
+				left: 500px;
+				color: gold;
+			}
+
+			button {
+				position: absolute;
+				left: 852px;
+				width: 250px;
+				height: 50px;
+				background-color: rgb(46, 130, 255);
+				border: none;
+				color: #fff;
+				font-size: 20px;
+				cursor: pointer;
+			}
+
+			button:active {
+				background-color: rgb(46, 130, 160);
+				border: none;
+				color: #fff;
+				font-size: 20px;
+				cursor: pointer;
+			}
+		</style>
 	</head>
 	<body>
-		<canvas id="myCanvas" width="600" height="600" style="background-color: antiquewhite;"></canvas>
-		<script type="text/javascript">
-			var images = []; 
-			var img0 = new Image();
-			img0.src = "0.jpg";
-			var img1 = new Image();
-			img1.src = "1.jpg";
-			var img2 = new Image();
-			img2.src = "2.jpg";
-			var img3 = new Image();
-			img3.src = "3.jpg";
-			var img4 = new Image();
-			img4.src = "4.jpg";
-			var img5 = new Image();
-			img5.src = "5.jpg";
-			var progress = 0;
-			
-			for(var i = 0;i<6;i++){
-				var img = new Image(); 
-				img.src = i + '.jpg'; 
-				images.push(img);
+		<canvas id="myCanvas" width="310" height="310">您的浏览器不支持canvas标签，请尝试使用Chrome或火狐浏览器</canvas>
+		<script>
+			window.onload = function() {
+				var myCanvas = document.getElementById("myCanvas");
+				var ctx = myCanvas.getContext("2d");
+
+
+				function randomRange(min, max) { //生成随机数
+					return Math.floor(Math.random() * (max - min)) + min;
 				}
-			img0.onload = function(){
-			    progress += 20; //加入当前图片的权重
-			    if(progress==120){
-				    draw(); 
-					}
-			    }
-			img1.onload = function(){
-			    progress += 20; //加入当前图片的权重
-			    if(progress==120){
-				    draw(); 
-					}
-			    }
-			img2.onload = function(){
-			    progress += 20; //加入当前图片的权重
-			    if(progress==120){
-				    draw(); 
-					}
-			    }
-			img3.onload = function(){
-			    progress += 20; //加入当前图片的权重
-			    if(progress==120){
-				    draw(); 
-					}
-			    }
-			img4.onload = function(){
-			    progress += 20; //加入当前图片的权重
-			    if(progress==120){
-				    draw(); 
-					}
-			    }
-			img5.onload = function(){
-			    progress += 20; //加入当前图片的权重
-			    if(progress==120){
-				    draw(); 
-					}
-			    }
-			function randomRange(min, max) { // min最小值，max最大值
-			    return Math.floor(Math.random() * (max - min)) + min;
-			}
-			
-            function draw(){
-				var canvas = document.getElementById("myCanvas");
-				var ctx = canvas.getContext("2d");
-				//alert(1);
-				var maps = new Array(10);
-				for (var i = 0; i < 10; i++) {
-				    maps[i] = new Array(10);
-				    for (var j = 0; j < 10; j++) {
-				        maps[i][j] = randomRange(0, 6);
-						//alert(i+" "+j+" "+maps[i][j]);
-						ctx.drawImage(images[maps[i][j]],i*60,j*60,60,60);
-				    }
-				} 
-				   
+
+
+				function getRandomColor() {
+					this.r = Math.floor(Math.random() * 255);
+					this.g = Math.floor(Math.random() * 255);
+					this.b = Math.floor(Math.random() * 255);
+					return this.color = 'rgba(' + this.r + ',' + this.g + ',' + this.b + ',0.8)';
+				}
+
+				var arrayColor = new Array();
+				for (var i = 0; i < 6; i++) {
+					arrayColor[i] = getRandomColor();
+				}
 				
-				}	
+				var array = new Array(); 
+				for (var i = 0; i < 15; i++) {
+					array[i] = new Array();
+					for (var j = 0; j < 15; j++) {
+						array[i][j] = 0;
+					}
+				}
+				
+				function drawBalls() {
+					for (var i = 0; i < 10; i++) {
+						for (var j = 0; j < 10; j++) {
+							var myRandom = randomRange(0, 6);
+							ctx.beginPath();
+							ctx.arc(i * 30 + 20, j * 30 + 20, 10, 0, 2 * Math.PI);
+							ctx.fillStyle = arrayColor[myRandom];
+							ctx.fill();
+							array[i][j] = myRandom;
+							
+						}
+					}
+				}drawBalls();
+
+				myCanvas.onclick = function play(event) {
+					var x = parseInt((event.clientX - 600-10) / 30);
+					var y = parseInt((event.clientY - 50-10) / 30);
+					//alert(x+" "+y);
+					//alert((event.clientX - 600)+" "+(event.clientY - 50));
+					//alert((event.clientX - 600-10)+" "+(event.clientY - 50-10));
+					clearVertical(x, y);
+					clearHorizontal(x, y)
+					//ctx.clearRect(((x * 30)+10), ((y * 30)+10), 22, 22);
+				}
+				
+					
+				function clearVertical(x, y) { //竖直能连成一线的情况
+					var currentChess = array[x][y]; //判断是不是同一种颜色
+					//先向上走
+					for (var i = y - 1; i > 0; i--) {
+						if (array[x][i] == currentChess) {
+							ctx.clearRect((x * 30)+10, (y * 30)+10, 21, 21);
+							ctx.clearRect((x * 30)+10, (i * 30)+10, 21, 21);
+						} else {
+							break;
+						}
+					}
+					//再向下走
+					for (var i = y + 1; i < 10; i++) {
+						if (array[x][i] == currentChess) {
+							ctx.clearRect((x * 30)+10, (y * 30)+10, 21, 21);
+							ctx.clearRect((x * 30)+10, (i * 30)+10, 21, 21);
+						} else {
+							break;
+						}
+					}
+				}
+
+				function clearHorizontal(x, y) { //水平方向能连成一线的情况
+					var count = 1; //记录连成一线的个数
+					var currentChess = array[x][y]; //判断是不是同一种水果
+					//先向左走
+					for (var i = x - 1; i > 0; i--) {
+						if (array[i][y] == currentChess) {
+							ctx.clearRect((x * 30)+10, (y * 30)+10, 21, 21);
+							ctx.clearRect((i * 30)+10, (y * 30)+10, 21, 21);
+						} else {
+							break;
+						}
+					}
+					//再向右走
+					for (var i = x + 1; i < 10; i++) {
+						if (array[i][y] == currentChess) {
+							ctx.clearRect((x * 30)+10, (y * 30)+10, 21, 21);
+							ctx.clearRect((i * 30)+10, (y * 30)+10, 21, 21);
+						} else {
+							break;
+						}
+					}		
+				}
+				
+						var clock = 30;
+						var isClick = true;
+						restart.onclick = function() {
+							location.reload();
+							if(isClick){}
+							var timer = setInterval(function() {
+									if (clock > 0) {
+										clock--;
+										restTime.innerHTML = "剩余时间：" + clock + "s";
+									} else {
+										clearInterval(timer);
+										tip.innerHTML = "游戏结束";
+									}
+								},1000);						
+							}
+			}
 		</script>
 	</body>
 </html>

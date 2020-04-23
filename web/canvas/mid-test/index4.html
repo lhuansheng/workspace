@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <canvas
+      id="canvas1"
+      width="600"
+      height="600"
+      style="color: rgba(205, 241, 225, 0.966);"
+    ></canvas>
+    <script>
+      var mycanvas = document.querySelector("#canvas1");
+      var ctx = mycanvas.getContext("2d");
+
+      var imgPos = [];
+
+      for (var i = 0; i < 10; i++) {
+        //初始化输出存放已经放了的圆
+        imgPos[i] = [];
+        for (var j = 0; j < 10; j++) {
+          imgPos[i][j] = 0; //为数组中的元素进行初始化,默认为0
+        }
+      }
+
+      arcColor={
+          red:'red',
+          blue:'blue',
+          black:'black',
+          pink:'pink',
+          orange:'orange',
+          grey:'grey'
+      }
+     
+      for (var i = 0; i < 10; i++) {
+        for (var j = 0; j < 10; j++) {
+            var index = Math.floor(Math.random()*6+1)
+            switch(index){
+                case 1:ctx.fillStyle = arcColor.red;break;
+                case 2:ctx.fillStyle = arcColor.blue;break;
+                case 3:ctx.fillStyle = arcColor.black;break;
+                case 4:ctx.fillStyle = arcColor.pink;break;
+                case 5:ctx.fillStyle = arcColor.orange;break;
+                case 6:ctx.fillStyle = arcColor.grey;break;
+            }
+
+            ctx.save()
+            ctx.beginPath()
+            ctx.fillStyle = index
+            ctx.arc(i * 30+10, j * 30+10, 10, 0, 2 * Math.PI);
+            ctx.fill()
+            //console.log(arcColor)
+            imgPos[i][j]=index
+            ctx.restore()
+            
+        }
+      }
+      
+
+      
+
+      mycanvas.addEventListener("click", (e) => {
+        var x = e.clientX;
+      var y = e.clientY;
+      var i = parseInt((x - 10) / 30);
+      var j = parseInt((y - 10) / 30);
+      
+        clearArc(i,j)
+      function clearArc(i,j){
+          var currentData = imgPos[i][j]
+          if(currentData==0){
+            return;
+          }
+          else {
+            up_down(i,j)
+            left_right(i,j)
+            imgPos[i][j] = 0
+          }
+      }
+// function deleteArc(i,j){
+//     if (up_down(x, y) == 5) {
+//         return true;
+//       }
+//       //左右方向
+//       if (left_right(x, y) == 5) {
+//         return true;
+//       }
+//       //左上和右下方向
+//       if (Lup_Rdown(x, y) == 5) {
+//         return true;
+//       }
+//       //右上和左下方向
+//       if (Rup_Lup(x, y) == 5) {
+//         return true;
+//       }
+//       return false;
+// }
+
+
+      });
+      function up_down(x, y) {
+       
+      var currentChess = imgPos[x][y];
+      //解决向上的逻辑  横坐标不变,纵坐标一直变化,减小到直到等于0
+      
+      for (var i = y - 1; i >= 0; i--) {
+        if (imgPos[x][i] == currentChess) {
+          //就证明我找的向上的棋子就是我刚刚下的棋子
+          imgPos[x][i]=0
+          ctx.save()
+            ctx.beginPath()
+            ctx.fillStyle = 'white'
+            ctx.arc(x * 30+10, y * 30+10, 12, 0, 2 * Math.PI);
+            ctx.arc(x * 30+10, i * 30+10, 12, 0, 2 * Math.PI);
+            ctx.fill()
+            console.log(i * 30+10, j * 30+10)
+            ctx.restore()
+         
+        } else {
+          break;
+        }
+      }
+      for (var i = y + 1; i < 10; i++) {
+        if (imgPos[x][i] == currentChess) {
+          //就证明我找的向上的棋子就是我刚刚下的棋子
+          imgPos[x][i]=0
+          ctx.save()
+            ctx.beginPath()
+            ctx.fillStyle = 'white'
+            ctx.arc(x * 30+10, y * 30+10, 12, 0, 2 * Math.PI);
+            ctx.arc(x * 30+10, i * 30+10, 12, 0, 2 * Math.PI);
+            console.log(i * 30+10, j * 30+10)
+            ctx.fill()
+            ctx.restore()
+         
+        } else {
+          break;
+        }
+      }
+      
+     
+    }
+    //左右方向
+    function left_right(x, y) {
+      var currentChess = imgPos[x][y];
+   
+      for (var i = x - 1; i >= 0; i--) {
+        if (imgPos[i][y] == currentChess) {
+            ctx.save()
+            ctx.beginPath()
+            ctx.fillStyle = 'white'
+            ctx.arc(x * 30+10, y * 30+10, 12, 0, 2 * Math.PI);
+            ctx.arc(i * 30+10, y * 30+10, 12, 0, 2 * Math.PI);
+            ctx.fill()
+            
+            ctx.restore()
+        } else {
+          break;
+        }
+      }
+      for (var i = x + 1; i < 10; i++) {
+        if (imgPos[i][y] == currentChess) {
+            ctx.save()
+            ctx.beginPath()
+            ctx.fillStyle = 'white'
+            ctx.arc(x * 30+10, y * 30+10, 12, 0, 2 * Math.PI);
+            ctx.arc(i * 30+10, y * 30+10, 12, 0, 2 * Math.PI);
+            ctx.fill()
+            
+            ctx.restore()
+        } else {
+          break;
+        }
+      }
+    
+    }
+   
+   
+    </script>
+  </body>
+</html>
