@@ -1,0 +1,59 @@
+<ul>
+  <li></li>
+  <li></li>
+  <li></li>
+</ul>
+<script>
+  //人类
+  //像我 弟弟(实例: 实际的例子) 这样的人
+  function Person() {}
+  //静态方法: 不需要实例化就可以调用的
+  Person.from = function () {
+    console.log("女娲");
+  };
+
+  Person.prototype.forEach = function () {
+    console.log("循环");
+  };
+
+  let didi = new Person();
+  //类似数组的对象
+  //1. 可以像数组一样，用数组[i] 取值
+  //2. length
+  // 不全是数组
+  //比如: arguments, NodeList(querySeletorAll)
+  const lis = document.querySelectorAll("li");
+  //console.log(lis)
+  //lis.map(function(){})
+  Array.prototype.map.call(lis, function (liNode) {
+    //借用map, 使用call
+    console.log(liNode);
+  });
+  let arr = [0, 1];
+  //   forEach 需要参数
+  arr.forEach(function () {});
+  //forEach 内部的 this 是不是 指向arr
+  function sum() {
+    // 参数的个数 也不确定有几个  可以用arguements
+    //console.log(arguments);
+
+    let sum = 0;
+    //数组才有forEach
+    // 1: 借用一下, 知道它在哪, 考虑 this
+    // arguments.forEach 拿不到  forEach: js 实现在哪里?
+    //Array.prototype.forEach
+    Array.prototype.forEach.call(arguments, function (num) {
+      console.log(num);
+    });
+    //Array.from() 方法从一个类似数组创建一个新的数组实例。
+    const arr = Array.from(arguments);
+    arr.forEach(function () {});
+    //arguments.forEach 本意: forEach 内部 this 指向 arguments
+
+    // arguments.forEach(element => {
+    //     sum+=element
+    // });
+    return sum;
+  }
+  sum(0, 1, 2, 3, 4, 5, 6);
+</script>
