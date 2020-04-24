@@ -1,0 +1,44 @@
+<script>
+    //复杂度的计算:递归了几次 * 乘以每次的复杂度
+
+    let obj1 = {
+        name:'name',
+        sex:'sex',
+        a:{
+            b:{
+                c:10
+            }
+        }
+    }
+    
+    // 1. 只有一层  不用...
+    // 对象的一个 循环 ??
+    // for in 
+    // 递 | 归
+
+    function deepClone(obj1){
+        let res = {}
+        for(let key in obj1){
+        //console.log(key)
+        // 1:大问题 分解为小问题 每个小问题解决 思路都是一样的
+        // 2: 终止条件
+        // obj1 深拷贝 a 深拷贝 b 深拷贝
+        // b: 深拷贝: 没有嵌套1了,到达嵌套最深的地方 res[key] = obj1[key] 没问题
+        // 一旦如果有嵌套的(?? 类型 ?? typeof) 那么 就要一直 靠别嵌套对象
+        if(typeof obj1[key] ==='object'){
+            //递归拷贝
+            res[key] = deepClone(obj1[key])
+        }
+        else{
+            res[key] = obj1[key]
+        }
+
+    }
+        return res
+    }
+    //入口
+    let obj2 = deepClone(obj1)
+    obj2.name = 'obj2 name'
+    obj2.a.b.c = 333
+    console.log(obj1,obj2)
+</script>
