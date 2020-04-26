@@ -6,16 +6,17 @@
     <title>五子棋</title>
   </head>
   <style>
-    body {
-        padding: 0;
-        margin: 0;
-        width: 100vw;
-        margin: auto;
-        
-    }
+    
     
     .alert {
       margin-left: 40px;
+    }
+    .winner{
+      position: absolute;
+      top: 270px;
+      left: 170px;
+      color: red;
+      font-size: 22px;
     }
   </style>
   <body>
@@ -28,12 +29,14 @@
     ></canvas>
     </div>
     <div class="alert">黑棋先走</div>
+    <div class="winner"></div>
   </body>
   <script>
+    var winner = document.querySelector('.winner')
     var mycanvas = document.querySelector("#canvas1");
     var ctx = mycanvas.getContext("2d");
     var chess = [];
-    var isBlack = true; //判断下的是哪个棋
+    var flag = true; //判断下的是哪个棋
 
     for (var i = 0; i < 15; i++) {
       //初始化输出存放已经下了棋的棋子
@@ -78,8 +81,8 @@
       }, 500);
     }
     function drawChess(i, j) {
-      //判断下那个棋
-      if (isBlack) {
+      //判断下哪个棋
+      if (flag) {
         drawBlack(i, j);
       } else {
         drawWhite(i, j);
@@ -92,26 +95,30 @@
       var i = parseInt(x / 40);
       var j = parseInt(y / 40);
       if (chess[i][j] == 0) {
-        if (isBlack) {
+        if (flag) {
           drawChess(i, j);
-          isBlack = false;
+          flag = false;
           if (isWin(i, j)) {
-            alerts.innerHTML = "黑棋胜!";
-            alert("黑棋胜! 2s后将自动重新开局");
+            
+           
+            setTimeout(() => {
+              winner.innerHTML = "黑棋胜! 5s后将自动重新开局!";
+            }, 1000);
             setTimeout(() => {
               window.location.reload();
-            }, 2000);
+            }, 5000);
             return;
           }
         } else {
           drawChess(i, j);
-          isBlack = true;
+          flag = true;
           if (isWin(i, j)) {
-            alerts.innerHTML = "白棋胜!";
-            alert("白棋胜! 2s后将自动重新开局");
+            setTimeout(() => {
+              winner.innerHTML = "白棋胜! 5s后将自动重新开局!";
+            }, 1000);
             setTimeout(() => {
               window.location.reload();
-            }, 2000);
+            }, 5000);
             return;
           }
         }
@@ -122,7 +129,7 @@
 
     //该函数的作用是来判断输赢
     function isWin(x, y) {
-      //上下方向
+      //上下方向如果五子连珠,表示赢了
       if (up_down(x, y) == 5) {
         return true;
       }
@@ -155,16 +162,15 @@
       }
       for (var i = y + 1; i < 15; i++) {
         if (chess[x][i] == currentChess) {
-          //就证明我找的向上的棋子就是我刚刚下的棋子
+          //就证明我找的向下的棋子就是我刚刚下的棋子
           count++;
         } else {
           break;
         }
       }
-      // console.log(count)
       return count;
     }
-    //左右方向
+    //左右方向  一下都是类似,只要第一个看懂了,后面的就没有问题
     function left_right(x, y) {
       var currentChess = chess[x][y];
       var count = 1;
