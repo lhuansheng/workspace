@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>video</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            border: 0;
+        }
+        video{
+            display: block;
+            margin: 10px auto;
+            width: 80%;
+        }
+        ul{
+            margin: 0 auto;
+            display: block;
+            width: 80%;
+        }
+        ul li{
+            list-style: none;
+            width: 100%;
+            height: 30px;
+            background-color: rgb(145, 145, 236);
+            margin-top: 3px;
+            text-align: center;
+            color: white;
+        }
+        .seleted{
+            background-color: rgb(243, 52, 52) ;
+        }
+    </style>
+</head>
+<body>
+    <video src="video/xi.mp4" controls autoplay muted ></video>
+    <ul>
+        <li class="seleted">MV 1</li>
+        <li>MV 2</li>
+        <li>MV 3</li>
+    </ul>
+    <script>
+        var video = document.querySelector('video')
+        const ul = document.querySelector('ul') 
+        const dataList = ['xi.mp4','gme.mp4','jay.mp4']
+       //通过ul获取子元素li
+        ul.addEventListener('click',function(event){
+            let target = event.target
+           for(let i =0;i<ul.children.length;i++){
+            if(target == ul.children[i]){
+                    ul.children[i].classList.add('seleted')
+                    ul.children[i].innerText = '正在播放 MV '+(i+1)
+                    video.src = 'video/'+dataList[i]
+               }
+               else{
+                ul.children[i].classList.remove('seleted')
+                ul.children[i].innerText = 'MV '+(i+1)
+               }
+           }
+        })
+        video.addEventListener('ended',function(event){
+            //console.log(event.srcElement.src.split('video/')[1])
+            for(let i = 0; i<dataList.length;i++){
+                ul.children[i].classList.remove('seleted')
+                ul.children[i].innerText = 'MV '+(i+1)
+                //通过找到哪个视频结束来播放下一个视频
+                if(event.srcElement.src.split('video/')[1]==dataList[i]){
+                if(i<dataList.length-1){
+                    ul.children[(i+1)].classList.add('seleted')
+                    ul.children[(i+1)].innerText = '正在播放 MV '+(i+2)
+                    video.src = 'video/'+dataList[(i+1)]
+                    break;
+                }
+                else{
+                    ul.children[0].classList.add('seleted')
+                    ul.children[0].innerText = '正在播放 MV '+1
+                    video.src = 'video/'+dataList[0]
+                    break;
+                }
+            }
+           }
+            
+        })
+
+    </script>
+</body>
+</html>
