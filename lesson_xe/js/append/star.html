@@ -21,32 +21,47 @@
         //     isLiked ? buttonText.innerHTML = '取消' :buttonText.innerHTML = '点赞'
         // },false)
         // 流程性代码  点赞通用主见,  不方便复用 封装
-
+        //1. html str ``添加页面
+        //2. 话要在上面添加事件
+          const createDOMFromString = (domString)=>{
+            const oDiv = document.createElement('div') //dom 节点
+            oDiv.innerHTML = domString
+            return oDiv;
+          }
         class LikeButton{
           constructor(){
+            this.el = null
             this.state = {isLiked:false}
           }
           render(){
             //事件监听 ???
             //addEventListener? dom node-type
-          
-            button.addEventListener('click',()=>{
-              this.state.isLiked = !this.state.isLiked
-              console.log(11)
-            })
-            return `
+            console.log(this)
+            this.el = createDOMFromString(`
             <button id = 'like-btn'>
-              <span class='link-text'>${this.state.isLiked?'取消':'点赞'}</span>
+              <span class='like-text'>${this.state.isLiked?'取消':'点赞'}</span>
             </button>
-            `
+            `)
+            this.el.addEventListener('click',this.changeLikeText.bind(this),false)
+           
+            return this.el
+          }
+          //一个方法就做一件事情
+          changeLikeText(){
+            // this.state.isLiked 改变一下
+            
+            this.state.isLiked = !this.state.isLiked
+            const likeText = this.el.querySelector('.like-text')
+            likeText.innerHTML = this.state.isLiked?'取消':'点赞'
           }
         }
 
         const wrapper = document.querySelector('.wrapper')
+        //render函数， 指向，调用方式， 作为对象的方法
         const likeButton = new LikeButton()
-        wrapper.innerHTML = likeButton.render()
-        const likeButton2 = new LikeButton()
-        wrapper.innerHTML += likeButton.render() 
+        wrapper.appendChild(likeButton.render())
+        // const likeButton2 = new LikeButton()
+        // wrapper.innerHTML += likeButton.render() 
         // 代码优化
     </script>
   </body>
