@@ -4,15 +4,22 @@
  *     this.val = val;
  *     this.next = null;
  * }
- * @author lhs
- * @date 2020/4/23
  */
 /**
  * @param {ListNode} l1
  * @param {ListNode} l2
  * @return {ListNode}
  */
-var addTwoNumbers = function (l1, l2) {
-
+var addTwoNumbers = function(l1, l2) {
+    let node = new ListNode();
+    let temp = node
+    console.log(l1.temp.next)
    
+    
 };
+
+        
+
+         
+         
+addTwoNumbers()
