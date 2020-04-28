@@ -29,6 +29,11 @@
           render(){
             //事件监听 ???
             //addEventListener? dom node-type
+          
+            button.addEventListener('click',()=>{
+              this.state.isLiked = !this.state.isLiked
+              console.log(11)
+            })
             return `
             <button id = 'like-btn'>
               <span class='link-text'>${this.state.isLiked?'取消':'点赞'}</span>

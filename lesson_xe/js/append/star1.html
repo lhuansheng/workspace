@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="wrapper">
+    </div>
+    <script>
+        
+        class LikeButton{
+          constructor(){
+            this.state = {isLiked:false}
+          }
+          render(){
+            // let button = document.createElement('button')
+            // let span = document.createElement('span')
+            // button.className = 'like-btn'
+            // span.className='link-text'
+          
+            // button.addEventListener('click',()=>{
+            //   this.state.isLiked = !this.state.isLiked
+            //   console.log(11)
+            // })
+            function onClick(){
+              this.state.isLiked = true
+            }
+            document.addEventListener('click',function(){
+                   onClick.call(document)
+            })
+            return `
+            <button id = 'like-btn'> 
+              <span class='link-text'>${this.state.isLiked?'取消':'点赞'}</span>
+            </button>
+            `
+          }
+        }
+
+        const wrapper = document.querySelector('.wrapper')
+        const likeButton = new LikeButton()
+        wrapper.innerHTML = likeButton.render()
+        // const likeButton2 = new LikeButton()
+        // wrapper.innerHTML += likeButton.render() 
+        // 代码优化
+    </script>
+  </body>
+</html>
