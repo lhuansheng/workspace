@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    abcd
+    <script>
+        //1 第一个请求
+        const xhr = new XMLHttpRequest()//一加载这个页面
+        // get的传参的方式
+        xhr.open('POST','/getPosts',true)//请求 /getPosts
+        // 0~4
+        // query=js&type=user
+        // query: 关键词
+        // type: 类型
+        // query=?  type=?
+        xhr.setRequestHeader('X-Real-IP','211.161.244.70')
+        //Content-Type: text/plain;charset=UTF-8 纯文本 
+        xhr.setRequestHeader('Content-Type','application/json')
+        xhr.timeout =2000
+
+        xhr.addEventListener('timeout',function(){
+            console.log('timeout')
+        })
+        xhr.addEventListener('readstatechange',function(){
+            if(xhr.readyState == 4){//获取数据成功
+                console.log(xhr.response)
+            }
+        })
+        // 发送请求
+        // post传参的一个形式
+        let obj = {
+            query: 'js',
+            type: 'all'
+        }
+        // xhr.send(`query=js&type=all`)
+        xhr.send(JSON.stringify(obj))
+        
+        function axios(method,url,params ={},headers={}){
+            const xhr = new XMLHttpRequest()
+            xhr.open(method,url,true)
+            for(let k in headers){
+                xhr.setRequestHeader(k,headers[k])
+            }
+            
+            xhr.addEventListener('readstatechange',function(){
+                
+            })
+            let data = headers['Content-Type']&&
+            headers['Content-Type']=='application/json'?JSON.stringify(params) : params
+            xhr.send(data)
+            
+        }
+        axios('POST','/getPosts',
+        {type:'all',query:'js'},
+        {'X-Real-IP':'211.161.244.70','Content-Type':'application/json'})
+        //
+    </script>
+</body>
+</html>
