@@ -56,5 +56,6 @@
   used:0
   此时 slab 状态为 empty
   当 new Buffer(1024), 这次构造将检查pool对象,若没有,新建slab单元指向它,if (!pool || pool.length - pool.used < this.length) allocPool(); 
+  
 
   
