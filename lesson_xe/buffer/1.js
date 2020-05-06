@@ -9,7 +9,17 @@
 // buf[22] = 300.1415;
 // console.log(buf[10]); // 3 
 
-var str = "学习node.js";
-  var buf = new Buffer(str, 'utf-8');
-  console.log(buf);
+// var str = "学习node.js";
+//   var buf = new Buffer(str, 'utf-8');
+//   console.log(buf);
   // => <Buffer e6 b7 b1 e5 85 a5 e6 b5 85 e5 87 ba 6e 6f 64 65 2e 6a 73>
+  var fs = require('fs');
+  var rs = fs.createReadStream('test.md', {highWaterMark: 11});
+  // rs.setEncoding('utf-8')
+  var data = '';
+  rs.on("data", function (chunk){
+   data += chunk;
+  });
+  rs.on("end", function () {
+   console.log(data);
+  }); 
