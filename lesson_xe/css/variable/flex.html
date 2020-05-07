@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+     *{
+        margin: 0;padding: 0;
+      }
+    .wrap{
+      /* 快速实现上中下布局， flex */
+      /* css 布局有它来管理 块级 */
+     
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+     
+    }
+    header{
+      line-height: 50px;
+      background-color: red;
+      color: #ffffff;
+      text-align: center;
+      /* flex-grow: 1; */
+    }
+    footer{
+      line-height: 50px;
+      background-color: #eeeeee;
+      color: #333333;
+      text-align: center;
+    }
+    main{
+      /* 剩余空间全部给main */
+      /* flex: flex-grow flex-shrink flex-basis|auto|initial|inherit; */
+      flex-grow: 1; /* grow 相对于其他兄弟的增长 移动端， 100vh 相对单位*/ 
+    }
+  </style>
+</head>
+<body>
+  <!-- 移动端的经典布局  flex  html5 + css3-->
+  <div class="wrap">
+    <header>头部</header>
+  <main>主题内容</main>
+  <footer>底栏</footer>
+  </div>
+</body>
+</html>
