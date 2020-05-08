@@ -99,3 +99,9 @@ ls(pattern = 'a.e') .匹配任意字符
 ## Removing objects from R
 rm(list)
 remove(list)
+清除所有 需要用到list
+rm(list = ls())
+
+## 数据类型 types of data items
+
+
