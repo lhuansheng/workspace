@@ -1,0 +1,15 @@
+{
+  "name": "jest-test-buildUrl",
+  "version": "1.0.0",
+  "description": "开发流程\r ## 单元测试 unit test\r 对每个最小的单元进行测试  buildUrl\r ## 集成测试\r 整体功能\r ## 端对端  end to end : e2e\r 应用： PC IOS android \r 应用放到真实的环境里面测试\r ## 回归测试\r 迭代：\r v12.1.1 完成开发 自己写测试用例(保证 v12.1.1 正常)完成测试 上线\r V12.1.2 完成开发 需要测试 (只需要测试 V12.1.2 功能吗？不仅仅是当前版本，修改之前的代码，对 v12.1.1造成破坏, 影响之前已有的功能)\r 对 V12.1.1 再测试一次 就叫回归测试。\r ## 黑盒测试\r 把 产品当作黑盒子来看待  不关注内部实现的细节\r ## 白盒测试\r 把 jquery vue react 细看你的代码",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^26.0.1"
+  }
+}
