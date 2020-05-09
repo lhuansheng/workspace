@@ -1,0 +1,26 @@
+<div id="root">
+  <span class="demo">
+    This is a span.
+  </span>
+  <p>DOM</p>
+</div>
+
+html document  什么关系？
+
+- URL 输入 打开页面后，发生了什么？
+ download  index.html  html 标签
+ 1. 空白页面 背后发生了什么？
+ 启动了一个tab, 进程2 (主进程)
+ 2. window.url = http://127.0.0.1:5500/lesson_xe/js/ats/index.html
+ html  文档标记语言  
+ - tab 主进程  url,
+ 启动一个网络请求 进程2 url 127.0.0.1/ html 文件
+ - 渲染页面进程
+ web应用 也是多进程架构   
+ 当我们用chrome 打开页面的时候 
+ 启动4个进程  应用进程（pid 计算及资源调用的最小单元） 浏览器运行
+ tab 负责一次页面渲染需要的 主进程
+ 两个子进程 Network Service http 请求 200
+ GPU 计算 高速 css绘制
+
+ Gpu 加速  chrome 为了让页面加快，使用GPU来绘制页面
