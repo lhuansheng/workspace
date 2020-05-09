@@ -1,0 +1,63 @@
+<script>
+  // 1.key value 编码一下？
+  // 2： 传递数组 传递值不合法的时候
+  // 安全性的考虑 有那么一些特殊字符 可能对后端的 sql 语句 威胁后端安全
+  // 传输给 每个设备 编码规则
+  // 浏览器自动帮你编码
+  // http://neteasecloudmusicapi.zhaoboy.com/search?keywords=%E6%B5%B7%E9%98%94%E5%A4%A9%E7%A9%BA
+  function encode(str) {
+    return encodeURIComponent(str)
+    .replace('%5B','[')
+    .replace('%5D',']')  //数组 合法
+  }
+  function buildUrl(url, params) {
+    let parts = [];
+    Object.keys(params).forEach(function (key) {
+      let value = params[key]; //中括号代表key是一个变量
+      if (value === null || typeof value === "underfined") {
+        return;
+      }
+      if (Array.isArray(value)) {
+        // c:[1,2,3] =>  c[]=1&c[]=2&c[]=3 是不是要循环一下value
+
+        key += "[]";
+      } else {
+        value = [value];
+      }
+      console.log(key,value)
+      // 一定是数组
+      // 统一，都可以循环
+      // 把value 里面的每一项 追加到key后面 c[]=1 c[]=2 c[]=3
+      // else c=123
+      value.forEach(function (val) {
+        let part = `${encode(key)}=${encode(val)}`;
+        //
+        parts.push(part);
+        console.log(part);
+      });
+
+     
+    }); //拿到所有的keys
+    const hashIndex = url.indexOf('#')
+    // 如果存在 返回 #所在位置 不在，返回-1
+    if(hashIndex !== -1){
+      url = url.slice(0,hashIndex)
+    }
+    if(url.indexOf('?') === -1){
+      url += "?" + parts.join("&");
+    }
+    else{
+      url += "&" + parts.join("&");
+    }
+    return url;
+  }
+  let url = buildUrl("http://neteasecloudmusicapi.zhaoboy.com/search?a=1", {
+    keywords: "海阔天空",
+    type: "",
+    query: "",
+    a:undefined,
+    b:null,
+    c:[1,2,3]
+  });
+  console.log(url);
+</script>

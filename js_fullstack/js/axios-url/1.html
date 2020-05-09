@@ -1,0 +1,29 @@
+<script src="https://cdn.bootcdn.net/ajax/libs/axios/0.19.2/axios.min.js"></script>
+<script>
+  // 1.原生，自己手动拼接 ？后面的字符串  字符串的处理
+  // 2. axios ? 编程了一个对象{}
+  // 3. {} 灵活 操作对象是比 字符串灵活的
+  let params = {
+    query:'js',
+    type: 'all'
+  }
+  // axios 第三方 基于 XMLhttpprequest 库
+  // fetch 浏览器原生的 另外一个发送请求的api(不是基于XML)
+  delete params.query
+  params.user = 'xxx'
+  axios({
+    method:'get',
+    url:'http://neteasecloudmusicapi.zhaoboy.com/search',
+    params:{
+      keywords: '海阔天空'
+    }
+  })
+  .then(function(res){
+    console.log(res)
+  })
+  // 有了一个 url
+  // 有了一个对象
+  // 对象每一项 key value 按照 url 拼接到 url 后面
+  // 50% 
+</script>
+
