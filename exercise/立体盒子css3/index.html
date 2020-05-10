@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    
+    body{
+      background-image: linear-gradient(rgb(52, 119, 182),rgb(52, 182, 128));
+      height: 100vh;
+      margin: 0;
+      padding: 0;
+    }
+    .cube{
+      width: 300px;
+      height: 300px;
+      margin: 100px auto 0;
+     
+      transform-style: preserve-3d;
+      position: relative;
+      animation: roll 10s infinite;
+      /* border: 1px solid rgb(52, 182, 128); */
+    }
+    @keyframes roll{
+      from{
+        transform: rotateX(0deg) rotateY(0deg);
+      }
+      to{
+        transform: rotateX(360deg) rotateY(360deg);
+        
+      }
+    }
+    .small{
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      box-shadow: 0 0 20px blue inset;
+      text-align: center;
+      line-height: 300px;
+      font-size: 50px;
+      perspective: 1000px;
+
+    }
+    .cube .small:nth-child(1){
+      transform: rotateX(90deg) translateZ(150px);
+    }
+    .cube .small:nth-child(2){
+      transform: rotateX(-90deg) translateZ(150px);
+    }
+    .cube .small:nth-child(3){
+      transform: rotateY(-90deg) translateZ(150px);
+    }
+    .cube .small:nth-child(4){
+      transform: rotateY(90deg) translateZ(150px);
+    }
+    .cube .small:nth-child(5){
+      transform:  translateZ(150px);
+    }
+    .cube .small:nth-child(6){
+      transform: rotateX(180deg) translateZ(150px);
+    }
+  </style>
+</head>
+<body>
+  <div class="cube">
+    <div class="small">上</div>
+    <div class="small">下</div>
+    <div class="small">左</div> 
+    <div class="small">右</div>
+    <div class="small">前</div>
+    <div class="small">后</div>
+  </div>
+</body>
+</html>
