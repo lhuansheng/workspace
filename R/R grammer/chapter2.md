@@ -103,5 +103,14 @@ remove(list)
 rm(list = ls())
 
 ## 数据类型 types of data items
-
-
+1. number data
+ integer是integer,如果integer 包含numeric,则整个都视为numeric
+ 2. Text Items
+ 如果没有数字，则必须有文本。R识别两种文本数据项。你可以把第一类看作纯文本标签;R调用这些字符值
+ ink of the first kind as plain text labels; R calls these character values.
+> data8
+ [1] "Jan" "Feb" "Mar" "Apr" "May" "Jun" "Jul" "Aug" "Sep" "Oct" "Nov" "Dec"
+这些项目显示为纯文本，并带有引号来提醒您。但是，另一种类型的非数值数据称为因子:
+> cut
+[1] mow mow mow mow mow unmow unmow unmow unmow
+Levels: mow unmow
