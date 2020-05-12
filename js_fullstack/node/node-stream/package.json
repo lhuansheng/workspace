@@ -1,0 +1,17 @@
+{
+  "name": "node-stream",
+  "version": "1.0.0",
+  "description": "Linux \r 我们以后代码上线了，都是一个 一台 linux 的服务器上面运行的\r cat：读文件\r grep: 文本查找\r 管道 \r ## node\r 文件流",
+  "main": "copy.js",
+  "dependencies": {
+    "request": "^2.88.2",
+    "requset": "^0.0.1-security"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
