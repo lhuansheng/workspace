@@ -12,6 +12,14 @@
   CommentList
     Comment
 
+- react 是新的前端开发框架， 还是新的思想
+- DOM API 过时了， 性能低下
+  CommentList.js  动态添加的评论， appendChild
+  1. component 组件树  父组件  子组件 props state
+  2. props 传参
+  3. state 自由状态 setState , 用到相应状态的组件
+  会**自动刷新**，响应式开发
+
 
 
 

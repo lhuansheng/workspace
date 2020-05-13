@@ -51,10 +51,11 @@ class CommentInput extends Component {
       content: event.target.value
     })
   }
-  handleSubmit(event){
-     console.log(this.state)
+  handleSubmit(){
+    //  console.log(this.state)
     const  {username,content}=this.state
-    this.props.onSubmit(username,content)
+    // console.log(this.props)
+    this.props.onSubmit({username,content})
    this.setState({
      content:''
    })
