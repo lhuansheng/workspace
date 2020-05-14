@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <p>
+    <button type="button" onclick="clickCounter()">点我！</button>
+    <div id="result"></div>
+  </p>
+  <script>
+    // let count = 0
+    // let result = document.getElementById('result') //查询事件，开销
+
+    // function clickCounter(){
+    //   count++;
+    //   result.innerText = count;
+    // }
+    // Storage 将点击的事件保存到本地  Storage 刻意练习
+    // cookie 浏览器存储的文本  http 每次都带上
+    // localStorage 把一些关键的css js 本地化， 下次打开时就会很快
+    // 不一定是存储， js css png 浏览器 作为文件存了
+   function clickCounter(){
+     const result = document.getElementById('result')
+     if(typeof Storage !=='underfined'){ //作用  浏览器支持本地Storage 浏览器嗅探 红宝书
+      // 设置了不
+      if(localStorage.clickCounter){
+        localStorage.clickCounter = Number(localStorage.clickCounter)+1
+      }
+      else{
+        localStorage.clickCounter = 1
+      }
+      result.innerHTML = `  ${localStorage.clickCounter}次。`
+     }
+     else{
+      result.innerHTML = 'Sorry, 浏览器不支持'
+     }
+   }
+
+  </script>
+</body>
+</html>
