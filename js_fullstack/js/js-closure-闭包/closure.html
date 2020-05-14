@@ -1,0 +1,16 @@
+<script>
+  var name1 = 'lilei'
+  function test(){
+    var name = 'lihua';
+    function test1(){
+      var name2 = 'ligang'
+      debugger;
+      
+      // 访问了 另外一个函数作用域里面的变量 才会形成闭包
+      // console.log(name);
+    }
+    // 返回函数
+    return test1;
+  }
+  test()()
+</script>

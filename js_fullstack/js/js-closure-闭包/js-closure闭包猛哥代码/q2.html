@@ -1,0 +1,15 @@
+<script>
+  var a = 1;
+  function test() {
+    a = 2
+    return function() {
+      console.log(a);    // ?
+    }
+    // 没有意义 var 定义变量 提升效果
+    var a = 3;
+  }
+  // test 
+  var fn = test()
+  fn();
+  // 
+</script>
