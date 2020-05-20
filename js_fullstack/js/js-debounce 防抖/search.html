@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" id="search" />
+    <input type="text" id="search1" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/lodash.js/4.17.15/lodash.min.js"></script>
+    <script>
+      const search = document.getElementById("search");
+      let timeout;
+      function handlesearch(event) {
+        if (timeout) {
+          clearTimeout(timeout);
+        }
+        timeout = setTimeout(() => {
+          console.log(event.target.value);
+        }, 100);
+
+        // jay 只想搜索jay
+        // j ja jay 三次请求
+        // 等用户输入 jay 完毕了 再去请求
+        // 防抖
+        // 输入 j   输入a 输入 y 不做任何事，等 100ms 再请求
+        // 用户连续输入就会连续触发 input， 处于输入中，没必要请求，
+        // 输入完 input 没触发了， 等100ms之后用户不处罚 input输入完了 之后请求
+        // fetch axios xhr
+      }
+      // setTimeout
+      // onChange
+      search.addEventListener("input", handlesearch);
+
+      // 防抖
+      // let timeout1
+
+      let handlemousemove = function () {
+        // if(timeout1){
+        //   clearTimeout(timeout1)
+        // }
+        // timeout1 = setTimeout(() => {
+        // console.log("handlemousemove");
+        // }, 100);
+      };
+
+      let hasDebounceedMove = _.debounce(handlemousemove, 600);
+      window.addEventListener("mousemove", hasDebounceedMove);
+      // 封装一下
+      // 1: let timeout
+      // 2. if(timeout) cleartimeout
+      // 3. timeout = setTimeout
+      // func 没有防抖功能
+      function debounce(func, wait) {
+        let timeout;
+        // 有 防抖功能的函数长什么样？
+        // 将参数传给下一层
+        return function (event) {
+          if (timeout) {
+            clearTimeout(timeout);
+          }
+          timeout = setTimeout(() => {
+            func.call(this,event)
+          }, wait);
+        };
+      }
+      const search1 = document.querySelector('#search1')
+      search1.addEventListener('input',debounce((event)=>{
+        console.log(event.target.value)
+      },600))
+    </script>
+  </body>
+</html>
