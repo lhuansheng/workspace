@@ -3,11 +3,19 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+// 添加路由对象  react 组件  下载  yarn add react-router-dom
+import Main from './components/Main'
+import About from './components/About'
+import {BrowserRouter, Route}from 'react-router-dom';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <BrowserRouter>
+  <div>
+    <Route exact path="/" component={Main} />
+    <Route path="/about" component={About} />
+    <Route path="/search/:searchTerm" component={Main} />
+  </div>
+  </BrowserRouter>,
   document.getElementById('root')
 );
 
