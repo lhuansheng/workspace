@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.19.2/axios.min.js"></script>
+<link rel="stylesheet" href="">
+<script>
+  // 接口 api
+  // js 写入cookie
+  document.cookie = 'abc=123'
+  axios({
+    withCredentials:true,
+    url:'http://localhost:9090/api',
+    method:'POST', //像后端传递数据
+    headers: {'X-Requested-With': 'XMLHttpRequest'},
+    // data:{
+    //   username:'123',
+    //   pwd:789
+    // }
+  })
+  .then(res =>{
+    console.log(res)
+  })
+</script>
+</body>
+</html>
