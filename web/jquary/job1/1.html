@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="js/jquery.mobile-1.4.5.min.css" />
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.mobile-1.4.5.min.js"></script>
+    <script type="text/javascript" charset="utf-8"></script>
+    <title>你今天想吃点什么</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      #pageone {
+        background: url("orderimg/2303.jpg") no-repeat;
+        background-size: cover;
+        background-position: center top;
+      }
+
+      .logo-wrapper {
+        width: 100%;
+        position: relative;
+        padding-bottom: 20px;
+        border-bottom: 2px solid rgb(128, 5, 5);
+      }
+      .logo {
+        display: block;
+        height: 125px;
+        margin: 0 auto;
+
+        /* margin: 0 auto;
+        margin-top: -47px; */
+        /* transform: translateY(50%); */
+        /* padding-bottom: 20px; */
+      }
+      .logo-wrapper strong {
+        background-color: rgb(116, 113, 113);
+        
+        border-radius: 5px;
+        display: block;
+        width: 30px;
+        height: 30px;
+        text-align: center;
+        color: white;
+        line-height: 30px;
+      }
+      .logo-wrapper p {
+        position: absolute;
+        top: 131px;
+        left: 46px;
+        font-size: 21px;
+        font-style: italic;
+        color: rgb(230, 217, 217);
+      }
+      /* .mainlist{
+        margin-top: 120px;
+      } */
+      #mainlist ul li a {
+        background-color: rgba(0, 0, 0, 0.7) ;
+        color: rgb(230, 217, 217);
+        line-height: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div data-role="page" id="pageone">
+      <div data-role="main" class="ui-content">
+        <div class="logo-wrapper">
+          <img src="orderimg/2302.png" alt="" class="logo" />
+          <strong>1</strong>
+          <p>你今天想吃点什么？</p>
+        </div>
+
+        <div id="mainlist">
+          <ul data-role="listview" data-inset="true">
+            <li>
+              <a href="#"> <img src="orderimg/2305.jpg" alt="" /> 传统中餐</a>
+            </li>
+            <li>
+              <a href="#">
+                <img src="orderimg/2306.jpg" alt="" /> 意大利Pizza</a
+              >
+            </li>
+            <li>
+              <a href="#"> <img src="orderimg/2307.jpg" alt="" /> 日式料理</a>
+            </li>
+            <li>
+              <a href="#"> <img src="orderimg/2308.jpg" alt="" /> 汉堡</a>
+            </li>
+            <li>
+              <a href="#"> <img src="orderimg/2309.jpg" alt="" /> 蛋糕西点</a>
+            </li>
+            <li>
+              <a href="#"> <img src="orderimg/2310.jpg" alt="" /> 自助烧烤</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <script></script>
+  </body>
+</html>

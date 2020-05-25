@@ -2,12 +2,11 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <script src="js/mui.min.js"></script>
-    <link href="css/mui.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="js/jquery.mobile-1.4.5.min.css" />
     <script src="js/jquery.min.js"></script>
     <script src="js/jquery.mobile-1.4.5.min.js"></script>
     <script type="text/javascript" charset="utf-8"></script>
+    <title>请选择餐厅</title>
     <style>
       * {
         margin: 0;
@@ -16,6 +15,7 @@
       #pageone {
         background: url("orderimg/2303.jpg") no-repeat;
         background-size: cover;
+        background-position: center top;
       }
 
       .logo-wrapper {
@@ -26,7 +26,7 @@
       }
       .logo {
         display: block;
-        height: 130px;
+        height: 125px;
         margin: 0 auto;
 
         /* margin: 0 auto;
@@ -36,6 +36,8 @@
       }
       .logo-wrapper strong {
         background-color: rgb(116, 113, 113);
+
+        border-radius: 5px;
         display: block;
         width: 30px;
         height: 30px;
@@ -48,16 +50,19 @@
         top: 131px;
         left: 46px;
         font-size: 21px;
+        font-family: "Times New Roman", Times, serif;
         font-style: italic;
         color: rgb(230, 217, 217);
       }
-      /* .mainlist{
-        margin-top: 120px;
-      } */
-      .mainlist ul li a {
-        background-color: rgba(0, 0, 0, 0.7) !important;
-        color: rgb(230, 217, 217) !important;
-        height: 67px !important;
+      #mainlist .star {
+        display: block;
+        color: yellow;
+        font-size: 26px;
+      }
+      #mainlist ul li a {
+        background-color: rgba(0, 0, 0, 0.7);
+        color: rgb(230, 217, 217);
+        font-family: "Times New Roman", Times, serif;
       }
     </style>
   </head>
@@ -66,31 +71,53 @@
       <div data-role="main" class="ui-content">
         <div class="logo-wrapper">
           <img src="orderimg/2302.png" alt="" class="logo" />
-          <strong>1</strong>
-          <p>你今天想吃点什么？</p>
+          <strong>3</strong>
+          <p>请选择餐厅</p>
         </div>
 
-        <div class="mainlist">
+        <div id="mainlist">
           <ul data-role="listview" data-inset="true">
             <li>
-              <a href="#"> <img src="orderimg/2305.jpg" alt="" /> 传统中餐</a>
+              <a href="#">
+                <img src="orderimg/2305.jpg" alt="" />
+                乐穆夫达西餐厅
+                <span class="star">&#9733;&#9733;&#9733;&#9733;</span>
+              </a>
             </li>
             <li>
               <a href="#">
-                <img src="orderimg/2306.jpg" alt="" /> 意大利Pizza</a
-              >
+                <img src="orderimg/2306.jpg" alt="" />
+                成都印象
+                <span class="star">&#9733;&#9733;&#9733;&#9733;</span>
+              </a>
             </li>
             <li>
-              <a href="#"> <img src="orderimg/2307.jpg" alt="" /> 日式料理</a>
+              <a href="#">
+                <img src="orderimg/2307.jpg" alt="" />
+                欢乐农场农家菜馆
+                <span class="star">&#9733;</span>
+              </a>
             </li>
             <li>
-              <a href="#"> <img src="orderimg/2308.jpg" alt="" /> 汉堡</a>
+              <a href="#">
+                <img src="orderimg/2308.jpg" alt="" />
+                恋爱转角情人餐厅
+                <span class="star">&#9733;&#9733;&#9733;</span>
+              </a>
             </li>
             <li>
-              <a href="#"> <img src="orderimg/2309.jpg" alt="" /> 蛋糕西点</a>
+              <a href="#">
+                <img src="orderimg/2309.jpg" alt="" />
+                星期五音乐餐吧
+                <span class="star">&#9733;&#9733;&#9733;&#9733;</span>
+              </a>
             </li>
             <li>
-              <a href="#"> <img src="orderimg/2310.jpg" alt="" /> 自助烧烤</a>
+              <a href="#">
+                <img src="orderimg/2310.jpg" alt="" />
+                自助烧烤
+                <span class="star">&#9733;&#9733;</span>
+              </a>
             </li>
           </ul>
         </div>

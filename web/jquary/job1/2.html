@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- <script src="js/mui.min.js"></script>
+  <link href="css/mui.min.css" rel="stylesheet" /> -->
+  <link rel="stylesheet" href="js/jquery.mobile-1.4.5.min.css" />
+  <script src="js/jquery.min.js"></script>
+  <script src="js/jquery.mobile-1.4.5.min.js"></script>
+  <script type="text/javascript" charset="utf-8"></script>
+  <title>你想在哪个城市订餐</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    #pageone {
+      background: url("orderimg/2303.jpg") no-repeat;
+      background-size: cover;
+      background-position: center top;
+    }
+
+    .logo-wrapper {
+      width: 100%;
+      position: relative;
+      padding-bottom: 20px;
+      border-bottom: 2px solid rgb(128, 5, 5);
+    }
+    .logo {
+      display: block;
+      height: 125px;
+      margin: 0 auto;
+
+      /* margin: 0 auto;
+      margin-top: -47px; */
+      /* transform: translateY(50%); */
+      /* padding-bottom: 20px; */
+    }
+    .logo-wrapper strong {
+      background-color: rgb(116, 113, 113);
+      
+      border-radius: 5px;
+      display: block;
+      width: 30px;
+      height: 30px;
+      text-align: center;
+      color: white;
+      line-height: 30px;
+    }
+    .logo-wrapper p {
+      position: absolute;
+      top: 131px;
+      left: 46px;
+      font-size: 21px;
+      font-style: italic;
+      color: rgb(230, 217, 217);
+    }
+    #mainlist ul li a {
+        background-color: rgba(0, 0, 0, 0.7) ;
+        color: rgb(230, 217, 217) ;
+        padding-top: 12px;
+      }
+  </style>
+</head>
+<body>
+  <div data-role="page" id="pageone">
+    <div data-role="main" class="ui-content">
+      <div class="logo-wrapper">
+        <img src="orderimg/2302.png" alt="" class="logo" />
+        <strong>2</strong>
+        <p>你想在那个城市订餐？</p>
+      </div>
+      <form class="ui-filterable">
+        <input id="myFilter" data-type="search" placeholder="根据名称搜索..">
+      </form>
+     <div id="mainlist">
+      <ul data-role="listview" data-filter="true" data-input="#myFilter"  data-inset="true">
+        <li><a href="#">北京<span class="ui-li-count">1</span></a></li>
+        <li><a href="#">上海<span class="ui-li-count">2</span></a></li>
+        <li><a href="#">广州<span class="ui-li-count">3</span></a></li>
+        <li><a href="#">深圳<span class="ui-li-count">5</span></a></li>
+        <li><a href="#">哈尔滨<span class="ui-li-count">25</span></a></li>
+        <li><a href="#">长春<span class="ui-li-count">15</span></a></li>
+        <li><a href="#">沈阳<span class="ui-li-count">22</span></a></li>
+        <li><a href="#">呼和浩特<span class="ui-li-count">15</span></a></li>
+        <li><a href="#">太原<span class="ui-li-count">25</span></a></li>
+        <li><a href="#">石家庄<span class="ui-li-count">25</span></a></li>
+        <li><a href="#">西安<span class="ui-li-count">25</span></a></li>
+        <li><a href="#">银川<span class="ui-li-count">25</span></a></li>
+        <li><a href="#">兰州<span class="ui-li-count">25</span></a></li>
+        <li><a href="#">乌鲁木齐<span class="ui-li-count">25</span></a></li>
+        <li><a href="#">西宁<span class="ui-li-count">25</span></a></li>
+        <li><a href="#">拉萨<span class="ui-li-count">25</span></a></li>
+        </ul>
+     </div>
+    </div>
+  </div> 
+</body>
+</html>
