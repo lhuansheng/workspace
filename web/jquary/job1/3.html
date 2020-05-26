@@ -13,7 +13,7 @@
         padding: 0;
       }
       #pageone {
-        background: url("orderimg/2303.jpg") no-repeat;
+        background: url("img/2303.jpg") no-repeat;
         background-size: cover;
         background-position: center top;
       }
@@ -58,11 +58,15 @@
         display: block;
         color: yellow;
         font-size: 26px;
+        padding-top: 13px;
+       
       }
       #mainlist ul li a {
         background-color: rgba(0, 0, 0, 0.7);
         color: rgb(230, 217, 217);
         font-family: "Times New Roman", Times, serif;
+        line-height: 19px;
+        
       }
     </style>
   </head>
@@ -70,7 +74,7 @@
     <div data-role="page" id="pageone">
       <div data-role="main" class="ui-content">
         <div class="logo-wrapper">
-          <img src="orderimg/2302.png" alt="" class="logo" />
+          <img src="img/2302.png" alt="" class="logo" />
           <strong>3</strong>
           <p>请选择餐厅</p>
         </div>
@@ -78,43 +82,43 @@
         <div id="mainlist">
           <ul data-role="listview" data-inset="true">
             <li>
-              <a href="#">
-                <img src="orderimg/2305.jpg" alt="" />
+              <a href="#" class="jump">
+                <img src="img/2305.jpg" alt="" />
                 乐穆夫达西餐厅
                 <span class="star">&#9733;&#9733;&#9733;&#9733;</span>
               </a>
             </li>
             <li>
               <a href="#">
-                <img src="orderimg/2306.jpg" alt="" />
+                <img src="img/2306.jpg" alt="" />
                 成都印象
                 <span class="star">&#9733;&#9733;&#9733;&#9733;</span>
               </a>
             </li>
             <li>
               <a href="#">
-                <img src="orderimg/2307.jpg" alt="" />
+                <img src="img/2307.jpg" alt="" />
                 欢乐农场农家菜馆
                 <span class="star">&#9733;</span>
               </a>
             </li>
             <li>
               <a href="#">
-                <img src="orderimg/2308.jpg" alt="" />
+                <img src="img/2308.jpg" alt="" />
                 恋爱转角情人餐厅
                 <span class="star">&#9733;&#9733;&#9733;</span>
               </a>
             </li>
             <li>
               <a href="#">
-                <img src="orderimg/2309.jpg" alt="" />
+                <img src="img/2309.jpg" alt="" />
                 星期五音乐餐吧
                 <span class="star">&#9733;&#9733;&#9733;&#9733;</span>
               </a>
             </li>
             <li>
               <a href="#">
-                <img src="orderimg/2310.jpg" alt="" />
+                <img src="img/2310.jpg" alt="" />
                 自助烧烤
                 <span class="star">&#9733;&#9733;</span>
               </a>
@@ -124,6 +128,11 @@
       </div>
     </div>
 
-    <script></script>
+    <script>
+      let jump = document.querySelector('.jump')
+      jump.addEventListener('click',()=>{
+        window.location.href = './4.html'
+      })
+    </script>
   </body>
 </html>

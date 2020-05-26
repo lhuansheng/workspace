@@ -13,7 +13,7 @@
         padding: 0;
       }
       #pageone {
-        background: url("orderimg/2303.jpg") no-repeat;
+        background: url("img/2303.jpg") no-repeat;
         background-size: cover;
         background-position: center top;
       }
@@ -67,7 +67,7 @@
     <div data-role="page" id="pageone">
       <div data-role="main" class="ui-content">
         <div class="logo-wrapper">
-          <img src="orderimg/2302.png" alt="" class="logo" />
+          <img src="img/2302.png" alt="" class="logo" />
           <strong>1</strong>
           <p>你今天想吃点什么？</p>
         </div>
@@ -75,30 +75,34 @@
         <div id="mainlist">
           <ul data-role="listview" data-inset="true">
             <li>
-              <a href="#"> <img src="orderimg/2305.jpg" alt="" /> 传统中餐</a>
+              <a href="#" class="jump" data-transition="pop"> <img src="img/2305.jpg" alt="" /> 传统中餐</a>
             </li>
             <li>
               <a href="#">
-                <img src="orderimg/2306.jpg" alt="" /> 意大利Pizza</a
+                <img src="img/2306.jpg" alt="" /> 意大利Pizza</a
               >
             </li>
             <li>
-              <a href="#"> <img src="orderimg/2307.jpg" alt="" /> 日式料理</a>
+              <a href="#"> <img src="img/2307.jpg" alt="" /> 日式料理</a>
             </li>
             <li>
-              <a href="#"> <img src="orderimg/2308.jpg" alt="" /> 汉堡</a>
+              <a href="#"> <img src="img/2308.jpg" alt="" /> 汉堡</a>
             </li>
             <li>
-              <a href="#"> <img src="orderimg/2309.jpg" alt="" /> 蛋糕西点</a>
+              <a href="#"> <img src="img/2309.jpg" alt="" /> 蛋糕西点</a>
             </li>
             <li>
-              <a href="#"> <img src="orderimg/2310.jpg" alt="" /> 自助烧烤</a>
+              <a href="#"> <img src="img/2310.jpg" alt="" /> 自助烧烤</a>
             </li>
           </ul>
         </div>
       </div>
     </div>
-
-    <script></script>
+    <script>
+      let jump = document.querySelector('.jump')
+      jump.addEventListener('click',()=>{
+        window.location.href = './2.html'
+      })
+    </script>
   </body>
 </html>
