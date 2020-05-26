@@ -28,15 +28,9 @@
         display: block;
         height: 125px;
         margin: 0 auto;
-
-        /* margin: 0 auto;
-        margin-top: -47px; */
-        /* transform: translateY(50%); */
-        /* padding-bottom: 20px; */
       }
       .logo-wrapper strong {
         background-color: rgb(116, 113, 113);
-
         border-radius: 5px;
         display: block;
         width: 30px;
@@ -82,7 +76,7 @@
         <div id="mainlist">
           <ul data-role="listview" data-inset="true">
             <li>
-              <a href="#" class="jump">
+              <a href="4.html" data-transition="slidefade" data-ajax="false">
                 <img src="img/2305.jpg" alt="" />
                 乐穆夫达西餐厅
                 <span class="star">&#9733;&#9733;&#9733;&#9733;</span>
@@ -128,11 +122,6 @@
       </div>
     </div>
 
-    <script>
-      let jump = document.querySelector('.jump')
-      jump.addEventListener('click',()=>{
-        window.location.href = './4.html'
-      })
-    </script>
+   
   </body>
 </html>
