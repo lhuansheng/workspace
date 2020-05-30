@@ -61,6 +61,9 @@
     #reg:active{
       background: #f78707;
     }
+    .login-wrapper{
+      text-align: center;
+    }
   </style>
 </head>
 <body>
@@ -74,14 +77,53 @@
     </div>
   
     <div data-role="main" class="ui-content">
-      <form method="post">
+      <form method="post" name="myform" >
         
         <input type="text" name="fname" id="fname" data-role="none" placeholder="手机号/邮箱/用户名"><br>
         <input type="password" name="pwd" id="pwd" data-role="none" placeholder="密码"><br>
-        <input type="password" name="pwd" id="confirm-pwd" data-role="none" placeholder="确认密码"><br>
-        <input type="submit" value="注册" id="reg" data-role="none">
+        <input type="password" name="repwd" id="confirm-pwd" data-role="none" placeholder="确认密码"><br>
+        <input type="submit" value="注册" id="reg" data-role="none" >
       </form>
+      <div class="login-wrapper">
+        已有账号？请<a href="./login.html" rel="external">登陆</a>
+      </div>
     </div>
   </div> 
+  <script>
+    const submit = document.querySelector('#reg')
+    
+    submit.addEventListener('click',(event)=>{
+      event.preventDefault();
+      let localData = JSON.parse(localStorage.getItem('obj')) || [] 
+      let oldObj=localData
+      const form = document.forms.myform
+      const name = form.fname.value
+      const pwd = form.pwd.value
+      const repwd = form.repwd.value
+      if(!name){
+        alert('请输入用户名')
+        return;
+      }
+      if(pwd!=repwd){
+        alert('第二次密码与第一次输入不一致，请重新输入')
+        pwd=''
+        repwd=''
+        return
+      }
+      let obj = {
+        name:name,
+        pwd:pwd
+      }
+      for(key in oldObj){
+        if(oldObj[key].name==obj.name){
+          alert('该名字已经有人注册，请重新选取一个姓名')
+          return
+        }
+      }
+      oldObj.push(obj)
+      localStorage.setItem('obj',JSON.stringify(oldObj))
+      window.location.href='./login.html'
+    })
+  </script>
 </body>
 </html>

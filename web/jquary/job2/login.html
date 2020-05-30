@@ -87,7 +87,7 @@
     </div>
   
     <div data-role="main" class="ui-content">
-      <form method="post">
+      <form method="post" name="myform">
         <label for="fname" class="ui-hidden-accessible">手机号/邮箱/用户名</label>
         <input type="text" name="fname" id="fname" data-clear-btn="true" placeholder="手机号/邮箱/用户名">
 
@@ -96,7 +96,7 @@
         <input type="submit" value="登陆" id="sub" data-role="none">
       </form>
       <div class="register-wrapper">
-        未注册？请<a href="#">注册</a>
+        未注册？请<a href="./register.html" rel="external">注册</a>
       </div>
 
       
@@ -116,5 +116,29 @@
     </div>
     </div>
   </div> 
+  <script>
+    
+    const submit = document.querySelector('#sub')
+    submit.addEventListener('click',(event)=>{
+      event.preventDefault();
+      const form = document.forms.myform
+    const name = form.fname.value
+    const pwd = form.pwd.value
+      let localData = JSON.parse(localStorage.getItem('obj')) || [] 
+      let reg={
+        name:null
+      }
+
+      for(key in localData){
+       if(name==localData[key].name&&pwd==localData[key].pwd){
+        reg.name=name
+        sessionStorage.setItem('reg',JSON.stringify(reg))
+         window.location.href='./homePage.html'
+         return;
+       }
+      }
+      alert('用户名或密码错误')
+    })
+  </script>
 </body>
 </html>

@@ -68,7 +68,7 @@
     <div data-role="header">
       <div class="headPortrait-wrapper">
         <img src="./img/pikachu.jpg" alt="" class="headProtrait">
-        <p class="name">Charlie</p>
+        <p class="userName">Charlie</p>
       </div>
     </div>
   
@@ -119,14 +119,32 @@
     <div data-role="footer"  data-position="fixed">
       <div data-role="navbar">
         <ul>
-          <li><a href="./homePage.html"  data-icon="home">主页</a></li>
+          <li><a href="./homePage.html" rel="external"  data-icon="home">主页</a></li>
           <li><a href="#" data-icon="comment">发布</a></li>
           <li><a href="#" data-icon="grid">分类</a></li>
           <li><a href="#" data-icon="shop">购物车</a></li>
-          <li><a href="#" data-icon="user">我的</a></li>
+          <li><a href="#" data-icon="user" id="mine">我的</a></li>
         </ul>
       </div>
     </div>
   </div> 
+  <script>
+    const userName=document.querySelector('.userName')
+    const mine=document.querySelector('#mine')
+    let data = JSON.parse(sessionStorage.getItem('reg'))||[]
+    // mine.addEventListener('click',(event)=>{
+     
+    // })
+    window.addEventListener('load', (event) => {
+      event.preventDefault()
+      if(data.name==null){
+        userName.innerHTML='未登录'
+        window.location.href='./login.html'
+      }
+      else{
+        userName.innerHTML=data.name
+      }
+});
+  </script>
 </body>
 </html>
