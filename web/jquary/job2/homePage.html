@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./outSouces/jquery.mobile-1.4.5.min.css" />
+  <script src="./outSouces/jquery.min.js"></script>
+  <script src="./outSouces/jquery.mobile-1.4.5.min.js"></script>
+  <link rel="stylesheet" href="./outSouces/swiper.min.css"> 
+  <script src="./outSouces/swiper.min.js"> </script>
+  <title>HomePage</title>
+  <style>
+    *{
+       margin: 0;
+       padding: 0;
+      }
+    .swiper-slide{
+      height: 230px;
+      }
+      
+    .coll-img{
+      width: 100%;
+    }
+    .ui-block-a ,.ui-block-b{
+      text-align: center;
+      overflow: hidden;
+    }
+    .ui-block-a{
+      padding-right: 5px;
+    }
+    .ui-block-b{
+      padding-left: 5px;
+    }
+    .cloth-wrapper{
+      height: 285px;
+    }
+    .cloth-wrapper span{
+      color: rgb(252, 173, 5);
+    }
+    .img-wrapper{
+     height: 200px;
+     overflow: hidden;
+    }
+    .cloth-img{
+      width: 200px;
+      
+    }
+  </style>
+</head>
+<body>
+ 
+  <div data-role="page" id="pageone">
+    <div data-role="header">
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide" id="slider1"><img src="./img/other/coll1.jpg" alt="" class="coll-img"></div>
+          <div class="swiper-slide" id="slider2"><img src="./img/other/coll2.jpg" alt="" class="coll-img"></div>
+          <div class="swiper-slide" id="slider3"><img src="./img/other/coll3.jpg" alt="" class="coll-img"></div>
+          <div class="swiper-slide" id="slider4"><img src="./img/other/coll4.jpg" alt="" class="coll-img"></div>
+        </div>
+      </div>
+     
+    </div>
+    
+    <div data-role="main" class="ui-content" >
+      <div class="ui-grid-a">
+        <div class="ui-block-a" >
+          <div class="cloth-wrapper">
+            <div class="img-wrapper"><a href="#" ><img src="img/cloth/re1.jpg" alt="" class="cloth-img"></a><br></div>
+            <p>9成新 春 宽松毛边长袖牛仔短外套</p>
+            <span>￥269.00</span>
+          </div>
+          <div class="cloth-wrapper">
+            <div class="img-wrapper"><a href="#" ><img src="img/cloth/re2.jpg" alt="" class="cloth-img"></a><br></div>
+            
+            <p>95成新 秋 韩版学生宽松运动上衣</p>
+            <span>￥432.00</span>
+          </div>
+          <div class="cloth-wrapper">
+            <div class="img-wrapper"><a href="#" ><img src="img/cloth/clo1.jpg" alt="" class="cloth-img"></a><br></div>
+            
+            <p>8成新 秋 韩版连帽纯色蝙蝠袖卫衣</p>
+            <span>￥199.00</span>
+          </div>
+        </div>
+        
+  
+
+
+        <div class="ui-block-b">
+          <div class="cloth-wrapper">
+            <div class="img-wrapper"><a href="#" class="imgCloth"><img src="img/cloth/clo2.jpg" alt="" class="cloth-img"></a><br></div>
+            
+          <p>75成新 春 简约刺绣字母牛仔</p>
+          <span>￥266.00</span>
+          </div>
+          <div class="cloth-wrapper">
+            <div class="img-wrapper"><a href="#" class="imgCloth"><img src="img/cloth/clo3.jpg" alt="" class="cloth-img"></a><br></div>
+            
+          <p>9成新 春 宽松毛边长袖牛仔短外套</p>
+          <span>￥366.00</span>
+          </div>
+          <div class="cloth-wrapper">
+            <div class="img-wrapper"><a href="#" class="imgCloth"><img src="img/cloth/clo4.jpg" alt="" class="cloth-img"></a><br></div>
+            
+          <p>95成新 春 暗黑时髦连帽印花卫衣</p>
+          <span>￥256.00</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  
+    <div data-role="footer"  data-position="fixed">
+      <div data-role="navbar">
+        <ul>
+          <li><a href="#" data-icon="home">主页</a></li>
+          <li><a href="#" data-icon="comment">发布</a></li>
+          <li><a href="#" data-icon="grid">分类</a></li>
+          <li><a href="#" data-icon="shop">购物车</a></li>
+          <li><a href="./userPage.html" data-icon="user">我的</a></li>
+        </ul>
+      </div>
+    </div>
+  </div> 
+  <script>
+  var mySwiper = new Swiper('.swiper-container', {
+    autoplay:{
+      delay:1000,
+    }
+  })
+  </script>
+  <script>
+
+  </script>
+</body>
+</html>

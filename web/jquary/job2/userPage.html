@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./outSouces/jquery.mobile-1.4.5.min.css" />
+  <script src="./outSouces/jquery.min.js"></script>
+  <script src="./outSouces/jquery.mobile-1.4.5.min.js"></script>
+  <title>userPage</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    #pageone{
+      background: white;
+    }
+    /* 头部 头像 */
+    .headPortrait-wrapper{
+      width: 100%;
+      height: 230px;
+      background-image: linear-gradient(#fea643, #ff5603);
+      text-align: center;
+     font-size: 22px;
+     color: white;
+     font-family: "Times New Roman", Times, serif;
+    }
+    .headProtrait{
+      margin-top: 35px;
+      width: 130px;
+      border-radius: 50% 50%;
+      
+    }
+    /* 中间待付款 */
+    .ui-grid-b{
+      text-align: center;
+      height: 140px;
+    }
+    .icon-pay{
+      width: 86px;
+    }
+    /* 中间 列表 */
+    #listview ul li{
+      padding-bottom: 10px;
+    }
+    #listview ul li a{
+      background: white;
+      border: none;
+    }
+    .icon-collection-wrapper{
+      width: 17px;
+     line-height: 10px;
+    }
+    .icon-collection-wrapper span{
+      margin-left: 15px;
+    }
+    .icon-collection{
+      width: 17px;
+    }
+    /* footer */
+    .ui-icon-user{
+      background: #fe7e23 !important;
+    }
+  </style>
+</head>
+<body>
+  <div data-role="page" id="pageone">
+    <div data-role="header">
+      <div class="headPortrait-wrapper">
+        <img src="./img/pikachu.jpg" alt="" class="headProtrait">
+        <p class="name">Charlie</p>
+      </div>
+    </div>
+  
+    <div data-role="main" class="ui-content">
+      <div class="ui-grid-b">
+        <div class="ui-block-a">
+          <div class="nav"><a href="#" ><img src="./img/mypage/me-01.png" alt="" class="icon-pay"></a></div>
+          <span>待付款</span>
+        </div>
+        <div class="ui-block-b">
+          <div class="nav"><a href="#" ><img src="./img/mypage/me-02.png" alt="" class="icon-pay"></a></div>
+          <span>待收货</span>
+        </div>
+        <div class="ui-block-c">
+          <div class="nav"><a href="#" ><img src="./img/mypage/me-03.png" alt="" class="icon-pay"></a></div>
+          <span>我的订单</span>
+        </div>
+      </div>
+   
+      <div id="listview">
+        <ul data-role="listview" >    
+          
+          <li>
+              <a href="#">
+                <div class="icon-collection-wrapper"><img src="./img/mypage/me-05.png" alt="" class="icon-collection"><span>我的收藏</span></div>
+              </a>
+          </li>
+          <li>
+            <a href="#">
+              <div class="icon-collection-wrapper"><img src="./img/mypage/me-06.png" alt="" class="icon-collection"><span>我的评价</span></div>
+            </a>
+        </li>
+        <li>
+          <a href="#">
+            <div class="icon-collection-wrapper"><img src="./img/mypage/me-07.png" alt="" class="icon-collection"><span>地址管理</span></div>
+          </a>
+      </li>
+      <li>
+        <a href="#">
+          <div class="icon-collection-wrapper"><img src="./img/mypage/me-08.png" alt="" class="icon-collection"><span>退出账号</span></div>
+        </a>
+    </li>
+          
+        </ul>
+      </div>
+    </div>
+   
+    <div data-role="footer"  data-position="fixed">
+      <div data-role="navbar">
+        <ul>
+          <li><a href="./homePage.html"  data-icon="home">主页</a></li>
+          <li><a href="#" data-icon="comment">发布</a></li>
+          <li><a href="#" data-icon="grid">分类</a></li>
+          <li><a href="#" data-icon="shop">购物车</a></li>
+          <li><a href="#" data-icon="user">我的</a></li>
+        </ul>
+      </div>
+    </div>
+  </div> 
+</body>
+</html>
