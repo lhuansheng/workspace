@@ -80,7 +80,7 @@
     <div data-role="header">
      
       <div class="head-aui-wrapper">
-        <a href=""><img src="./img/back.png" alt="" class="back"></a>
+        <a href="./homePage.html" rel="external"><img src="./img/back.png" alt="" class="back" ></a>
         <img src="./img/aui-logo.png" alt="" class="head-aui">
         
       </div>
@@ -117,8 +117,10 @@
     </div>
   </div> 
   <script>
-    
+   
     const submit = document.querySelector('#sub')
+   
+
     submit.addEventListener('click',(event)=>{
       event.preventDefault();
       const form = document.forms.myform
@@ -133,7 +135,7 @@
        if(name==localData[key].name&&pwd==localData[key].pwd){
         reg.name=name
         sessionStorage.setItem('reg',JSON.stringify(reg))
-         window.location.href='./homePage.html'
+         window.location.href='./userPage.html'
          return;
        }
       }

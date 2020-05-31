@@ -71,7 +71,7 @@
     <div data-role="header">
      
       <div class="head-aui-wrapper">
-        <a href="https://www.baidu.com/" rel="external"><img src="./img/back.png" alt="" class="back"></a>
+        <a href="./homePage.html" rel="external"><img src="./img/back.png" alt="" class="back"></a>
         <img src="./img/aui-logo.png" alt="" class="head-aui">
       </div>
     </div>
@@ -91,7 +91,8 @@
   </div> 
   <script>
     const submit = document.querySelector('#reg')
-    
+
+   
     submit.addEventListener('click',(event)=>{
       event.preventDefault();
       let localData = JSON.parse(localStorage.getItem('obj')) || [] 
