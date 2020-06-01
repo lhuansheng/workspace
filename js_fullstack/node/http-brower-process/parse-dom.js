@@ -53,7 +53,7 @@ function tagOpen(c){
   // <html>: html tag 由 a-zA-Z div span p 
   // </html>
   // h t m l
-  console.log(c)
+  // console.log(c)
   if(c==='/'){
     return endTagOpen
   }
