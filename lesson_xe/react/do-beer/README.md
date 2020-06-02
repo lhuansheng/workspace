@@ -7,6 +7,15 @@ beer 搜索，  -》 列表  -》 点进去  创建路由
 详情页 /beer/:beerId
 语义化设计URL   /post/:postId
 
+1. 把应用架构搭好，路由
+2. 组件化思维
+3. List 列表的编写流程
+4. router  this.props.match.params
+5. / -> Main.js -> loadBeers -> loading -> list
+
+
+
+
 ## 代码执行流程
 1. 在 index.js 中 首先导入路由
 2. 在路由中创建 根目录指向 Main.js  search目录也指向 Main.js   beer目录指向 single(暂时还没有写这一部分)

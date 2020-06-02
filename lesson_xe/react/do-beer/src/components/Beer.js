@@ -1,8 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import PropTypes from 'prop-types'
+import PropTypes from "prop-types";
+import slug from 'slugify';
 
 class Beer extends React.Component {
+  
   static propTypes = {
     details: PropTypes.object.isRequired
   }
@@ -12,7 +14,7 @@ class Beer extends React.Component {
     const image = labels? labels.medium: 'null.jpg';
     return (
       <div className="beer">
-        <Link to={`/beer/${id}/${name}`}>
+        <Link to={`/beer/${id}/${slug(name)}`}>
           <h2>{name}</h2>
           <img src={image} alt=""/>
         </Link>
@@ -20,6 +22,5 @@ class Beer extends React.Component {
     )
   }
 }
-
 
 export default Beer;
