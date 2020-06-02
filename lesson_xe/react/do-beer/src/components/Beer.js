@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import PropTypes from 'prop-types'
 
 class Beer extends React.Component {
-  static PropTypes = {
+  static propTypes = {
     details: PropTypes.object.isRequired
   }
 
