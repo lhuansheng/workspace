@@ -19,21 +19,22 @@
 
     .back{
       position: absolute;
-      top: 20px;
+      top: 10px;
       left: 15px;
     }
     .head-aui-wrapper{
       position: relative;
       width: 100%;
-      height: 230px;
-      background-image: linear-gradient(#fea643, #ff5603);
+      height: 40px;
+      background:#00aaff;
       text-align: center;
      font-size: 22px;
      color: white;
      font-family: "Times New Roman", Times, serif;
     }
     .head-aui{
-      margin-top: 35px;
+      margin-top: 40px;
+	  margin-left: 20px;
       width: 283px;
       border-radius: 50% 50%;
       
@@ -45,12 +46,12 @@
     #sub {
       width: 100%;
       color: white;
-      background-color: #fea643;
+      background-color: #61e722;
       text-decoration: none;
       border: none;
       height: 50px;
       border-radius: 5px;
-      margin-top: 5px;
+      margin-top: 0px;
     }
     #sub:hover{
       background: #fa9828;
@@ -67,7 +68,7 @@
       background-color: white;
       border: none;
       text-align: center;
-      margin-top: 30px;
+      margin-top: 300px;
     }
     .reg-img{
       width: 100px;
@@ -80,19 +81,22 @@
     <div data-role="header">
      
       <div class="head-aui-wrapper">
-        <a href="./homePage.html" rel="external"><img src="./img/back.png" alt="" class="back" ></a>
-        <img src="./img/aui-logo.png" alt="" class="head-aui">
-        
+        <a href="./homePage.html" rel="external"><img src="./img/back.png" alt="" class="back" style="width: 20px;height: 20px;"></a>
+        <!-- <img src="./img/aui-logo.png" style="width: 90px;height: 50px;" class="head-aui"> -->
+		
+        <a style="color: #FFFFFF;">登录</a>
+		
       </div>
     </div>
   
-    <div data-role="main" class="ui-content">
+    <div data-role="main" class="ui-content" style="padding-top:0px ;">
       <form method="post" name="myform">
-        <label for="fname" class="ui-hidden-accessible">手机号/邮箱/用户名</label>
+        <label for="fname" class="ui-hidden-accessible" style="padding-top: 100px;">手机号/邮箱/用户名</label>
         <input type="text" name="fname" id="fname" data-clear-btn="true" placeholder="手机号/邮箱/用户名">
 
         <label for="pwd" class="ui-hidden-accessible">密码</label>
         <input type="password" name="pwd" id="pwd" data-clear-btn="true" placeholder="密码">
+		<p style="font-size:10px ;">温馨提示:未注册账号地会员,请先注册才能登陆,且代表您已同意</p ><a href="./协议.html" rel="external" style="font-size:10px ;">《用户服务协议》</a><a href="./隐私政策.html" rel="external" style="font-size:10px ;">《隐私政策》</a>
         <input type="submit" value="登陆" id="sub" data-role="none">
       </form>
       <div class="register-wrapper">
@@ -102,18 +106,20 @@
       
     </div>
    
-    <div data-role="footer" id="nav"> 
-       <div class="ui-grid-b" >
+    <!-- <div data-role="footer" id="nav"> 
+       <p>第三方登录</p>
+	   <div class="ui-grid-b" >
+		   
       <div class="ui-block-a">
-        <img src="./img/wechat.gif" alt="" class="reg-img">
+        <img src="./img/wechat.gif" alt="" class="reg-img" style="width: 50px;height: 50px;">
       </div>
       <div class="ui-block-b">
-        <img src="./img/qq.gif" alt="" class="reg-img">
+        <img src="./img/qq.gif" alt="" class="reg-img" style="width: 50px;height: 50px;">
       </div>
       <div class="ui-block-c">
-        <img src="./img/weibo.gif" alt="" class="reg-img">
+        <img src="./img/weibo.gif" alt="" class="reg-img" style="width: 50px;height: 50px;">
       </div>
-    </div>
+    </div> -->
     </div>
   </div> 
   <script>

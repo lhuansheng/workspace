@@ -32,6 +32,9 @@
       
     }
     /* 中间待付款 */
+    .ui-grid-a{
+      
+    }
     .ui-grid-b{
       text-align: center;
       height: 140px;
@@ -65,14 +68,29 @@
 </head>
 <body>
   <div data-role="page" id="pageone">
-    <div data-role="header">
+    <!-- <div data-role="header">
       <div class="headPortrait-wrapper">
         <img src="./img/pikachu.jpg" alt="" class="headProtrait">
         <p class="userName">Charlie</p>
+      </div> -->
+      <div class="ui-grid-a">
+        <div class="ui-block-a">
+          <div class="headPortrait-wrapper">
+            <img src="./img/pikachu.jpg" alt="" class="headProtrait">
+            <p class="userName">Charlie</p>
+          </div>
+        </div>
+  
+        <div class="ui-block-b">
+          <p class="userName">Charlie</p>
+        </div>
       </div>
     </div>
   
     <div data-role="main" class="ui-content">
+      
+      
+      
       <div class="ui-grid-b">
         <div class="ui-block-a">
           <div class="nav"><a href="#" ><img src="./img/mypage/me-01.png" alt="" class="icon-pay"></a></div>
@@ -120,31 +138,29 @@
       <div data-role="navbar">
         <ul>
           <li><a href="./homePage.html" rel="external"  data-icon="home">主页</a></li>
-          <li><a href="#" data-icon="comment">发布</a></li>
-          <li><a href="#" data-icon="grid">分类</a></li>
-          <li><a href="#" data-icon="shop">购物车</a></li>
+          <li><a href="#" data-icon="shop">订单</a></li>
           <li><a href="#" data-icon="user" id="mine">我的</a></li>
         </ul>
       </div>
     </div>
   </div> 
   <script>
-    const userName=document.querySelector('.userName')
-    const mine=document.querySelector('#mine')
-    let data = JSON.parse(sessionStorage.getItem('reg'))||[]
-    // mine.addEventListener('click',(event)=>{
+//     const userName=document.querySelector('.userName')
+//     const mine=document.querySelector('#mine')
+//     let data = JSON.parse(sessionStorage.getItem('reg'))||[]
+//     // mine.addEventListener('click',(event)=>{
      
-    // })
-    window.addEventListener('load', (event) => {
-      event.preventDefault()
-      if(data.name==null){
-        userName.innerHTML='未登录'
-        window.location.href='./login.html'
-      }
-      else{
-        userName.innerHTML=data.name
-      }
-});
+//     // })
+//     window.addEventListener('load', (event) => {
+//       event.preventDefault()
+//       if(data.name==null){
+//         userName.innerHTML='未登录'
+//         window.location.href='./login.html'
+//       }
+//       else{
+//         userName.innerHTML=data.name
+//       }
+// });
   </script>
 </body>
 </html>
