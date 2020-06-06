@@ -27,3 +27,10 @@ float:
 行内元素 inline-level-box: 水平从左往右一个接着一个布局
 块级元素 inline-level-box: 垂直方向从上往下一个接着一个布局 
 relative 定位：
+
+
+## flex 
+容器
+flex-direction: row /colum
+justify-content: center/start/end
+align-item: center/start/end
