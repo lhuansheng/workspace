@@ -17,31 +17,35 @@
     }
     /* 头部 头像 */
     .headPortrait-wrapper{
-      width: 100%;
-      height: 230px;
-      background-image: linear-gradient(#fea643, #ff5603);
+     
+      /* background-image: linear-gradient(#fea643, #ff5603); */
       text-align: center;
      font-size: 22px;
      color: white;
      font-family: "Times New Roman", Times, serif;
     }
     .headProtrait{
-      margin-top: 35px;
-      width: 130px;
+        vertical-align: middle;
+      height: 130px;
       border-radius: 50% 50%;
       
     }
+   
     /* 中间待付款 */
-    .ui-grid-a{
+    .ui-grid-a .ui-block-b{
+      height: 130px;
       
+    }
+    .userName{
+     margin-top: 20%;
     }
     .ui-grid-b{
       text-align: center;
       height: 140px;
     }
-    .icon-pay{
+   .icon-pay{
       width: 86px;
-    }
+    } */
     /* 中间 列表 */
     #listview ul li{
       padding-bottom: 10px;
@@ -58,92 +62,89 @@
       margin-left: 15px;
     }
     .icon-collection{
-      width: 17px;
+      /* width: 17px; */
     }
     /* footer */
     .ui-icon-user{
-      background: #fe7e23 !important;
+      background: #70b2f0 !important;
+    }  
+    #listview{
+     height:500px;
+    }
+   
+    .footer{
+      position: fixed;
+      bottom: 0;left: 0;right: 0;
+      height: 58px;
+      
     }
   </style>
 </head>
 <body>
   <div data-role="page" id="pageone">
-    <!-- <div data-role="header">
-      <div class="headPortrait-wrapper">
-        <img src="./img/pikachu.jpg" alt="" class="headProtrait">
-        <p class="userName">Charlie</p>
-      </div> -->
+  
       <div class="ui-grid-a">
         <div class="ui-block-a">
           <div class="headPortrait-wrapper">
             <img src="./img/pikachu.jpg" alt="" class="headProtrait">
-            <p class="userName">Charlie</p>
+          
           </div>
         </div>
   
         <div class="ui-block-b">
-          <p class="userName">Charlie</p>
+          <h2 class="userName">未登录</h2>
+          <p>再忙，也要记得吃饭哦~</p>
         </div>
       </div>
-    </div>
+    
   
     <div data-role="main" class="ui-content">
-      
-      
-      
-      <div class="ui-grid-b">
-        <div class="ui-block-a">
-          <div class="nav"><a href="#" ><img src="./img/mypage/me-01.png" alt="" class="icon-pay"></a></div>
-          <span>待付款</span>
-        </div>
-        <div class="ui-block-b">
-          <div class="nav"><a href="#" ><img src="./img/mypage/me-02.png" alt="" class="icon-pay"></a></div>
-          <span>待收货</span>
-        </div>
-        <div class="ui-block-c">
-          <div class="nav"><a href="#" ><img src="./img/mypage/me-03.png" alt="" class="icon-pay"></a></div>
-          <span>我的订单</span>
-        </div>
-      </div>
-   
+     
       <div id="listview">
         <ul data-role="listview" >    
           
           <li>
               <a href="#">
-                <div class="icon-collection-wrapper"><img src="./img/mypage/me-05.png" alt="" class="icon-collection"><span>我的收藏</span></div>
+                <div class="icon-collection-wrapper"><img src="./img/mypage/地址.png" alt="" class="icon-collection"><span>我的地址</span></div>
               </a>
           </li>
           <li>
             <a href="#">
-              <div class="icon-collection-wrapper"><img src="./img/mypage/me-06.png" alt="" class="icon-collection"><span>我的评价</span></div>
+              <div class="icon-collection-wrapper"><img src="./img/mypage/我的评价.png" alt="" class="icon-collection"><span>我的评价</span></div>
             </a>
         </li>
         <li>
           <a href="#">
-            <div class="icon-collection-wrapper"><img src="./img/mypage/me-07.png" alt="" class="icon-collection"><span>地址管理</span></div>
+            <div class="icon-collection-wrapper"><img src="./img/mypage/收藏.png" alt="" class="icon-collection"><span>我的收藏</span></div>
           </a>
       </li>
       <li>
         <a href="#">
-          <div class="icon-collection-wrapper"><img src="./img/mypage/me-08.png" alt="" class="icon-collection"><span>退出账号</span></div>
+          <div class="icon-collection-wrapper"><img src="./img/mypage/个人资料.png" alt="" class="icon-collection"><span>个人资料</span></div>
         </a>
     </li>
-          
+    <li>
+      <a href="#">
+        <div class="icon-collection-wrapper"><img src="./img/mypage/退出账号.png" alt="" class="icon-collection"><span>退出账号</span></div>
+      </a>
+  </li> 
         </ul>
       </div>
     </div>
-   
-    <div data-role="footer"  data-position="fixed">
-      <div data-role="navbar">
+  
+    <div data-role="none" class="footer" >
+      <div data-role="navbar" >
         <ul>
-          <li><a href="./homePage.html" rel="external"  data-icon="home">主页</a></li>
-          <li><a href="#" data-icon="shop">订单</a></li>
-          <li><a href="#" data-icon="user" id="mine">我的</a></li>
+          <li><a href="#" data-icon="home">主页</a></li>
+         
+          
+          <li><a href="#" data-icon="shop">购物车</a></li>
+          <li><a href="#" rel="external" data-icon="user" id="mine">我的</a></li>
         </ul>
       </div>
     </div>
   </div> 
+
   <script>
 //     const userName=document.querySelector('.userName')
 //     const mine=document.querySelector('#mine')

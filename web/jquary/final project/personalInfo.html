@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./outSouces/jquery.mobile-1.4.5.min.css" />
+  <script src="./outSouces/jquery.min.js"></script>
+  <script src="./outSouces/jquery.mobile-1.4.5.min.js"></script>
+  <title>我的资料</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    #pageone{
+      background: white;
+    }
+    /* 头部  */
+  .back-to-userPage{
+    padding: 10px;
+    background-color: rgb(135, 209, 238);
+   
+  }
+  .back-to-userPage a{
+    text-decoration: none;
+    color: rgb(77, 75, 75);
+  }
+  .back-to-userPage .arrow-left{
+    width: 20px;
+    vertical-align: middle;
+  }
+  .back-to-userPage span{
+    display: inline-block;
+    margin-left: calc(50% - 20px);
+    transform: translateX(-50%);
+  }
+    /* 表单 */
+    #label {
+      display: inline-block ;
+    }
+    #fname, #adress,#sex,#autograph{
+      display: inline-block ;
+      width: 73%;
+      margin-left: 20px;
+      height: 50px;
+      text-decoration: none;
+      border: none;
+      outline: none;
+      /* border-bottom: 2px solid rgb(212, 205, 205); */
+    }
+    #reg {
+      /* width: 100%;
+      color: white;
+      background-color: #fea643;
+      text-decoration: none;
+      border: none;
+      height: 50px;
+      border-radius: 5px;
+      margin-top: 5px; */
+    }
+    #reg:hover{
+      background: #fa9828;
+    }
+    #reg:active{
+      background: #f78707;
+    }
+    .login-wrapper{
+      text-align: center;
+    }
+    .arrow{
+      display: inline-block;
+      
+    }
+  </style>
+</head>
+<body>
+  <div data-role="page" id="pageone">
+
+    <div data-role="header">
+      <div class="back-to-userPage">
+       <a href="#">
+        <img src="./img/mypage/箭头左.png" alt="" class="arrow arrow-left">
+        <span>个人资料</span>
+       </a>
+      </div>
+    </div>
+    
+  
+    <div data-role="main" class="ui-content">
+      
+      <form method="post" name="myform" >
+
+       <div class="input-wrap">
+        <label for="fname" id="label"  >昵称</label>
+        <input type="text" name="fname" id="fname" data-role="none" value="小鱼儿">
+        <img src="./img/mypage/箭头.png" alt="" class="arrow">
+       </div>
+
+        <div class="input-wrap">
+          <label for="fname" id="label">地址</label>
+        <input type="text" name="adress" id="adress" data-role="none" value="江西财经大学">
+        <img src="./img/mypage/箭头.png" alt="" class="arrow">
+        </div>
+
+        <div class="input-wrap">
+          <a href="#myPopup" data-rel="popup"style="text-decoration:none;color:black;" >
+          <label for="sex" id="label"> 
+           性别
+          </label>
+          <div data-role="popup" id="myPopup" class="ui-content" style="min-width:230px;">
+            <fieldset class="ui-field-contain">
+              <select name="day" id="day">
+                <option value="sat">Saturday</option>
+                <option value="sun">Sunday</option>
+              </select>
+            </fieldset>
+            <input type="submit" data-inline="true" value="提交">
+            <img src="./img/mypage/箭头.png" alt="" class="arrow">
+        </div>
+        <input type="text" name="sex" id="sex" data-role="none" value="男" >
+        <img src="./img/mypage/箭头.png" alt="" class="arrow">
+      </a>
+       </div>
+       
+       <div class="input-wrap">
+        <label for="autograph" id="label"  >签名</label>
+        <input type="text" name="autograph" id="autograph" data-role="none" value="吃吃吃！"">
+        <img src="./img/mypage/箭头.png" alt="" class="arrow">
+       </div>
+
+      </form>
+   
+    </div>
+  </div> 
+
+  <script>
+    const submit = document.querySelector('#reg')
+
+   
+    submit.addEventListener('click',(event)=>{
+      event.preventDefault();
+      let localData = JSON.parse(localStorage.getItem('obj')) || [] 
+      let oldObj=localData
+      const form = document.forms.myform
+      const name = form.fname.value
+      const pwd = form.pwd.value
+      const repwd = form.repwd.value
+      if(!name){
+        alert('请输入用户名')
+        return;
+      }
+      if(pwd!=repwd){
+        alert('第二次密码与第一次输入不一致，请重新输入')
+        pwd=''
+        repwd=''
+        return
+      }
+      let obj = {
+        name:name,
+        pwd:pwd
+      }
+      for(key in oldObj){
+        if(oldObj[key].name==obj.name){
+          alert('该名字已经有人注册，请重新选取一个姓名')
+          return
+        }
+      }
+      oldObj.push(obj)
+      localStorage.setItem('obj',JSON.stringify(oldObj))
+      window.location.href='./login.html'
+    })
+  </script>
+</body>
+</html>
