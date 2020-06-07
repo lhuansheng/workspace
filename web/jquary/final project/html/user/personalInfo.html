@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./outSouces/jquery.mobile-1.4.5.min.css" />
-  <script src="./outSouces/jquery.min.js"></script>
-  <script src="./outSouces/jquery.mobile-1.4.5.min.js"></script>
-  <title>新增地址</title>
+  <link rel="stylesheet" href="../../outSouces/jquery.mobile-1.4.5.min.css" />
+  <script src="../../outSouces/jquery.min.js"></script>
+  <script src="../../outSouces/jquery.mobile-1.4.5.min.js"></script>
+  <title>我的资料</title>
   <style>
     *{
       margin: 0;
@@ -38,7 +38,7 @@
     #label {
       display: inline-block ;
     }
-    #fname, #adress,#sex,#autograph,#tel{
+    #fname, #adress,#sex,#autograph{
       display: inline-block ;
       width: 73%;
       margin-left: 20px;
@@ -46,7 +46,6 @@
       text-decoration: none;
       border: none;
       outline: none;
-      
       /* border-bottom: 2px solid rgb(212, 205, 205); */
     }
     #reg {
@@ -72,19 +71,6 @@
       display: inline-block;
       
     }
-    #submit{
-      width: 93%;
-      margin: 0 auto;
-      display: block;
-      padding: 8px;
-      border: none;
-      border-radius: 5px;
-      outline: none;
-      background-color: rgb(185, 236, 238);
-    }
-    #submit:active{
-      background-color: rgb(120, 203, 224);
-    }
   </style>
 </head>
 <body>
@@ -93,8 +79,8 @@
     <div data-role="header">
       <div class="back-to-userPage">
        <a href="#">
-        <img src="./img/mypage/箭头左.png" alt="" class="arrow arrow-left">
-        <span>新增地址</span>
+        <img src="../../img/icon/箭头左.png" alt="" class="arrow arrow-left">
+        <span>个人资料</span>
        </a>
       </div>
     </div>
@@ -105,22 +91,45 @@
       <form method="post" name="myform" >
 
        <div class="input-wrap">
-        <label for="fname" id="label"  >联系人</label>
-        <input type="text" name="fname" id="fname" data-role="none" placeholder="姓名">
-        
+        <label for="fname" id="label"  >昵称</label>
+        <input type="text" name="fname" id="fname" data-role="none" value="小鱼儿">
+        <img src="../../img/icon/箭头.png" alt="" class="arrow">
        </div>
 
         <div class="input-wrap">
-          <label for="tel" id="label">电话</label>
-        <input type="number" name="tel" id="tel" data-role="none" placeholder="手机号码">
-        </div>
-        <div class="input-wrap">
-          <label for="adress" id="label">地址</label>
+          <label for="fname" id="label">地址</label>
         <input type="text" name="adress" id="adress" data-role="none" value="江西财经大学">
-        <img src="./img/mypage/箭头.png" alt="" class="arrow">
+        <img src="../../img/icon/箭头.png" alt="" class="arrow">
         </div>
-        <input type="submit" id="submit" value="保存" data-role="none">
+
+        <div class="input-wrap">
+          <a href="#myPopup" data-rel="popup"style="text-decoration:none;color:black;" >
+          <label for="sex" id="label"> 
+           性别
+          </label>
+          <div data-role="popup" id="myPopup" class="ui-content" style="min-width:230px;">
+            <fieldset class="ui-field-contain">
+              <select name="day" id="day">
+                <option value="sat">Saturday</option>
+                <option value="sun">Sunday</option>
+              </select>
+            </fieldset>
+            <input type="submit" data-inline="true" value="提交">
+            <img src="../../img/icon/箭头.png" alt="" class="arrow">
+        </div>
+        <input type="text" name="sex" id="sex" data-role="none" value="男" >
+        <img src="../../img/icon/箭头.png" alt="" class="arrow">
+      </a>
+       </div>
+       
+       <div class="input-wrap">
+        <label for="autograph" id="label"  >签名</label>
+        <input type="text" name="autograph" id="autograph" data-role="none" value="吃吃吃！"">
+        <img src="../../img/icon/箭头.png" alt="" class="arrow">
+       </div>
+
       </form>
+   
     </div>
   </div> 
 
