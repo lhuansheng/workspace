@@ -78,3 +78,20 @@ export function getNewAlbum() { // 模块化到api 目录
     }, 3000);
   })
 }
+export function getSlideList(){
+  return new Promise((resolve,reject)=>{
+    resolve([{
+      id: 1,
+      picUrl: 'https://mat1.gtimg.com/rain/bailing20/4333e6a9ac25.uzi.png',
+      linkUrl: 'https://www.baidu.com/'
+    }, {
+      id: 2,
+      picUrl: 'https://inews.gtimg.com/newsapp_ls/0/11885314858_640330/0',
+      linkUrl: 'https://www.baidu.com/'
+    }, {
+      id: 3,
+      picUrl: 'https://inews.gtimg.com/newsapp_ls/0/11884276052_640330/0',
+      linkUrl: 'https://www.baidu.com/'
+    }])
+  })
+}

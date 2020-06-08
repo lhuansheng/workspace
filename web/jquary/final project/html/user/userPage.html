@@ -86,7 +86,7 @@
       <div class="ui-grid-a">
         <div class="ui-block-a">
           <div class="headPortrait-wrapper">
-            <img src="../../img/logoImg/pikachu.jpg" alt="" class="headProtrait">
+            <img src="../../img/logoImg/panda.png" alt="" class="headProtrait">
           
           </div>
         </div>
@@ -105,7 +105,7 @@
           
           <li>
               <a href="#">
-                <div class="icon-collection-wrapper"><img src="../../img/icon/地址.png" alt="" class="icon-collection"><span>我的地址</span></div>
+                <div class="icon-collection-wrapper address"><img src="../../img/icon/地址.png" alt="" class="icon-collection"><span>我的地址</span></div>
               </a>
           </li>
           <li>
@@ -146,22 +146,28 @@
   </div> 
 
   <script>
-//     const userName=document.querySelector('.userName')
-//     const mine=document.querySelector('#mine')
-//     let data = JSON.parse(sessionStorage.getItem('reg'))||[]
-//     // mine.addEventListener('click',(event)=>{
+    const userName=document.querySelector('.userName')
+    const mine=document.querySelector('#mine')
+    const address = document.querySelector('.address')
+    let data = JSON.parse(localStorage.getItem('reg'))||[]
+    // mine.addEventListener('click',(event)=>{
      
-//     // })
-//     window.addEventListener('load', (event) => {
-//       event.preventDefault()
-//       if(data.name==null){
-//         userName.innerHTML='未登录'
-//         window.location.href='./login.html'
-//       }
-//       else{
-//         userName.innerHTML=data.name
-//       }
-// });
+    // })
+    window.addEventListener('load', (event) => {
+      event.preventDefault()
+      if(data.name==null){
+        userName.innerHTML='未登录'
+        window.location.href='../login/login.html'
+      }
+      else{
+        userName.innerHTML=data.name
+      }
+});
+
+  // 点击我的地址 跳转地址页面
+  address.addEventListener('click',()=>{
+    window.location.href='./adress.html'
+  })
   </script>
 </body>
 </html>

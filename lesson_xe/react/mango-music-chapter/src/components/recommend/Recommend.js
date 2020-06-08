@@ -3,7 +3,7 @@ import './recommend.styl'; // webpack
 import Swiper from 'swiper'
 import "swiper/css/swiper.min.css"
 import Loading from '../../common/loading/Loading'
-import {getNewAlbum} from '../../api/recommend'; // api文件夹 数据请求的   assets 静态文件
+import {getNewAlbum,getSlideList} from '../../api/recommend'; // api文件夹 数据请求的   assets 静态文件
 // 应用中很多图片
 import Lazyload from 'react-lazyload' //图片延迟加载
 // 1. 路由
@@ -23,6 +23,7 @@ class Recommend extends React.Component {
     this.state = {
       newAlbums:[], /*数据驱动的界面 */
       loading:true,
+      slider:[],
       sliderList: [{
         id: 1,
         picUrl: 'https://mat1.gtimg.com/rain/bailing20/4333e6a9ac25.uzi.png',
@@ -62,6 +63,12 @@ class Recommend extends React.Component {
       })
       console.log('获取最新专辑')
     })
+    getSlideList()
+    .then(res =>{
+      this.setState({
+        slider:res
+      })
+    })
   }
 
     // 获取最新专辑 功能的封装
@@ -95,7 +102,7 @@ class Recommend extends React.Component {
         <div className="slider-container">
           <div className="swiper-wrapper">
             {
-              this.state.sliderList.map(slider => {
+              this.state.slider.map(slider => {
                 return (
                   <div className="swiper-slide" key={slider.id}>
                     <a href={slider.linkUrl} className="slider-nav">

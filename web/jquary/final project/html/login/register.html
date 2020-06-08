@@ -46,6 +46,13 @@
       outline: none;
       border-bottom: 2px solid rgb(212, 205, 205);
     }
+	#text{
+		padding-top: 2px;
+		height: 15px;
+		font-size: 11px;
+		color: red;
+		font-weight: 400;
+	}
     #reg {
       width: 100%;
       color: white;
@@ -87,6 +94,7 @@
         <input type="text" name="fname" id="fname" data-role="none" placeholder="手机号/邮箱/用户名"><br>
         <input type="password" name="pwd" id="pwd" data-role="none" placeholder="密码"><br>
         <input type="password" name="repwd" id="confirm-pwd" data-role="none" placeholder="确认密码"><br>
+		<p id="text"></p>
         <input type="submit" value="注册" id="reg" data-role="none" >
       </form>
       <div class="login-wrapper">
@@ -96,7 +104,7 @@
   </div> 
   <script>
     const submit = document.querySelector('#reg')
-
+	const alert = document.querySelector('#text')
    
     submit.addEventListener('click',(event)=>{
       event.preventDefault();
@@ -107,11 +115,11 @@
       const pwd = form.pwd.value
       const repwd = form.repwd.value
       if(!name){
-        alert('请输入用户名')
+        alert.innerHTML='请输入用户名'
         return;
       }
       if(pwd!=repwd){
-        alert('第二次密码与第一次输入不一致，请重新输入')
+		alert.innerHTML='第二次密码与第一次输入不一致，请重新输入'
         pwd=''
         repwd=''
         return
@@ -122,7 +130,7 @@
       }
       for(key in oldObj){
         if(oldObj[key].name==obj.name){
-          alert('该名字已经有人注册，请重新选取一个姓名')
+			alert.innerHTML='该名字已经有人注册，请重新选取一个姓名'
           return
         }
       }
