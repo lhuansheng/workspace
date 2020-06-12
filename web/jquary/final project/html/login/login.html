@@ -127,7 +127,7 @@
       for(key in localData){
        if(name==localData[key].name&&pwd==localData[key].pwd){
         reg.name=name
-        localStorage.setItem('reg',JSON.stringify(reg))
+        sessionStorage.setItem('reg',JSON.stringify(reg))
          window.location.href='../user/userPage.html'
          return;
        }

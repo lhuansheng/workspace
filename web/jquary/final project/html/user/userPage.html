@@ -60,6 +60,7 @@
     }
     .icon-collection-wrapper span{
       margin-left: 15px;
+      color: rgb(31, 28, 28);
     }
     .icon-collection{
       /* width: 17px; */
@@ -92,7 +93,7 @@
         </div>
   
         <div class="ui-block-b">
-          <h2 class="userName">未登录</h2>
+          <h2 class="userName">11</h2>
           <p>再忙，也要记得吃饭哦~</p>
         </div>
       </div>
@@ -104,7 +105,7 @@
         <ul data-role="listview" >    
           
           <li>
-              <a href="#">
+              <a href="./adress.html" rel="external" id="adress">
                 <div class="icon-collection-wrapper address"><img src="../../img/icon/地址.png" alt="" class="icon-collection"><span>我的地址</span></div>
               </a>
           </li>
@@ -114,17 +115,17 @@
             </a>
         </li>
         <li>
-          <a href="#">
-            <div class="icon-collection-wrapper"><img src="../../img/icon/收藏.png" alt="" class="icon-collection"><span>我的收藏</span></div>
+          <a href="../login/隐私政策.html" rel="external">
+            <div class="icon-collection-wrapper"><img src="../../img/icon/收藏.png" alt="" class="icon-collection"><span>关于我们</span></div>
           </a>
       </li>
       <li>
-        <a href="#">
+        <a href="./personalInfo.html" rel="external">
           <div class="icon-collection-wrapper"><img src="../../img/icon/个人资料.png" alt="" class="icon-collection"><span>个人资料</span></div>
         </a>
     </li>
     <li>
-      <a href="#">
+      <a href="#" id="exitAccount">
         <div class="icon-collection-wrapper"><img src="../../img/icon/退出账号.png" alt="" class="icon-collection"><span>退出账号</span></div>
       </a>
   </li> 
@@ -148,10 +149,9 @@
   <script>
     const userName=document.querySelector('.userName')
     const mine=document.querySelector('#mine')
-    const address = document.querySelector('.address')
-    let data = JSON.parse(localStorage.getItem('reg'))||[]
+    const exitAccount = document.querySelector('#exitAccount')
+    let data = JSON.parse(sessionStorage.getItem('reg'))||[]
     // mine.addEventListener('click',(event)=>{
-     
     // })
     window.addEventListener('load', (event) => {
       event.preventDefault()
@@ -162,12 +162,17 @@
       else{
         userName.innerHTML=data.name
       }
-});
-
-  // 点击我的地址 跳转地址页面
-  address.addEventListener('click',()=>{
-    window.location.href='./adress.html'
-  })
+    });
+    /* 点击退出按钮时，退出登陆，跳转到主页 */
+    exitAccount.addEventListener('click',(e)=>{
+      e.preventDefault()
+      sessionStorage.removeItem('reg')
+      userName.innerHTML='未登录'
+      // 到时候修改为 homePage
+      window.location.href='../login/协议.html'
+    })
+ 
+  
   </script>
 </body>
 </html>
