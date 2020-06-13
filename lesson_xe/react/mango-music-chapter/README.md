@@ -26,8 +26,33 @@
 
 - 长的列表页面， 在移动 支持 Scroll
 
+
+- 首页有问题：
+给数据建模  这种情况下可以考虑 加model 层  数据业务封装在model里
+MVVM React 奥利奥  界面由数据驱动， 前端开发设计模式
+MVC Model View Controller  后端 web 开发模式 
+  1. 专辑图片
+
+
+
+
+
+
+
+
+
+
 字节跳动
 一直学， 没有输出，是不行的
+
+
+
+
+
+
+
+
+
 
 
 1. App.js下创建路由  recommend  ranking  search

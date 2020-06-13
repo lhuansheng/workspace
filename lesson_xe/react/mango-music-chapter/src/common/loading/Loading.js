@@ -2,7 +2,6 @@ import React from "react";
 import loadingImg from './loading.gif'; // 一切静态资源皆可引入 webpack 打包
 import "./loading.styl"
 
-
 class Loading extends React.Component {
   render() {
     // console.log(this.props.show);
@@ -11,6 +10,7 @@ class Loading extends React.Component {
       <div className="loading-container" style={displayStyle}>
         <div className="loading-wrapper">
           <img src={loadingImg} width="18px" height="18px"  alt="loading"/>
+          {/* 国际化，  */}
           <div className="loading-title">{this.props.title}</div>
         </div>
       </div>
@@ -18,6 +18,4 @@ class Loading extends React.Component {
   }
 }
 
-
 export default Loading
-

@@ -14,7 +14,6 @@ import logo from '../assets/imgs/logo.png';
 // https://music.163.com/#/my/  hashROuter   兼容性更好 
 // https://y.music.163.com/m/playlist?id=5010470270   historyRouter  url 更语义化
 
-
 class App extends React.Component {
   render() {
     return (
@@ -47,6 +46,5 @@ class App extends React.Component {
     )
   }
 }
-
 
 export default App;
