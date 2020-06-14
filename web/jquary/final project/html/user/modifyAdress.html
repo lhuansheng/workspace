@@ -43,7 +43,7 @@
     #label {
       display: inline-block ;
     }
-    #fname, #adress,#sex,#autograph,#tel{
+    #name, #adress,#sex,#autograph,#tel{
       display: inline-block ;
       width: 73%;
       margin-left: 20px;
@@ -85,6 +85,7 @@
       border-radius: 5px;
       outline: none;
       background-color: rgb(185, 236, 238);
+      text-align: center;
     }
     #submit:active{
       background-color: rgb(120, 203, 224);
@@ -101,14 +102,22 @@
     .back-btn{
       margin-left: 132px;
     }
+    .saveSucess{
+      font-size: 20px;
+      text-align: center;
+      margin-top: 20px;
+      font-weight: 540;
+      opacity: 0;
+    }
+   
   </style>
 </head>
 <body>
   <div data-role="page" id="pageone">
     <div data-role="header">
       <div class="back-to-userPage">
-       <a href="#">
-        <img src="../../img/icon/箭头左.png" alt="" class="arrow arrow-left">
+       <a href="./adress.html" rel="external">
+        <img src="../../img/icon/箭头左.png" alt="" class="arrow arrow-left" id="back">
         <span>修改地址</span>
        </a>
        <a href="#myPopupDialog" data-rel="popup" data-position-to="window" data-transition="fade"><img src="../../img/icon/删除.png" alt="" class="deleteImg"></a>
@@ -123,8 +132,8 @@
     <div data-role="main" class="ui-content">
       <form method="post" name="myform" >
        <div class="input-wrap">
-        <label for="fname" id="label"  >联系人</label>
-        <input type="text" name="fname" id="fname" data-role="none" placeholder="姓名">
+        <label for="name" id="label"  >联系人</label>
+        <input type="text" name="name" id="name" data-role="none" placeholder="姓名">
        </div>
         <div class="input-wrap">
           <label for="tel" id="label">电话</label>
@@ -135,44 +144,83 @@
         <input type="text" name="adress" id="adress" data-role="none" value="江西财经大学">
         <img src="../../img/icon/箭头.png" alt="" class="arrow">
         </div>
-        <input type="submit" id="submit" value="保存" data-role="none">
+        <input type="button" id="submit" value="保存" data-role="none">
       </form>
     </div>
+
+    <div class="saveSucess">保存成功</div>
   </div> 
   <script>
-    const submit = document.querySelector('#reg')
-    submit.addEventListener('click',(event)=>{
-      event.preventDefault();
-      let localData = JSON.parse(localStorage.getItem('obj')) || [] 
-      let oldObj=localData
-      const form = document.forms.myform
-      const name = form.fname.value
-      const pwd = form.pwd.value
-      const repwd = form.repwd.value
-      if(!name){
-        alert('请输入用户名')
-        return;
+  const adress = document.getElementById('adress')
+  const name = document.getElementById('name')
+  const tel = document.getElementById('tel')
+  const submit = document.getElementById('submit')
+  const back = document.getElementById('back')
+  const saveSuccess = document.getElementsByClassName('saveSucess')[0]
+  const deleteAdress = document.getElementsByClassName('delete-btn')[0]
+  let info = JSON.parse(localStorage.getItem('newAdress'))||[]
+  window.addEventListener('load',()=>{
+    info.forEach((element,i) => {
+      // console.log(element[0]['choose'])
+      if(element[0]['choose']==true){
+        adress.value = element[0]['adress']
+        name.value = element[0]['name']
+        tel.value = element[0]['tel']
       }
-      if(pwd!=repwd){
-        alert('第二次密码与第一次输入不一致，请重新输入')
-        pwd=''
-        repwd=''
-        return
+    });
+  })
+    submit.addEventListener('click',()=>{
+      info.forEach((element,i) => {
+      // console.log(element[0]['choose'])
+      if(element[0]['choose']==true){
+          element[0]['adress']=adress.value
+          element[0]['name']=name.value
+        element[0]['tel']=tel.value
       }
-      let obj = {
-        name:name,
-        pwd:pwd
-      }
-      for(key in oldObj){
-        if(oldObj[key].name==obj.name){
-          alert('该名字已经有人注册，请重新选取一个姓名')
-          return
-        }
-      }
-      oldObj.push(obj)
-      localStorage.setItem('obj',JSON.stringify(oldObj))
-      window.location.href='./login.html'
+    });
+    $(".saveSucess").animate({
+      opacity:'1',
+    });
+	  setInterval(() => {
+      $(".saveSucess").animate({
+      opacity:'0',
+    });
+    }, 1000);
     })
+    // back.addEventListener('click',(e)=>{
+      
+    //   info.forEach((element,i) => {
+    //   if(element[0]['choose']==true){
+    //     element[0]['choose']=false
+    //     localStorage.setItem('newAdress',JSON.stringify(info))
+    //   }
+    // });
+    // })
+    // window.addEventListener('unload',()=>{
+    //   alert('ddd')
+    // })
+    deleteAdress.addEventListener('click',()=>{
+      info.forEach((element,i) => {
+        console.log(info[i],element[0]['choose'])
+        if(element[0]['choose']==true){
+          info.pop(info[i])
+         localStorage.setItem('newAdress',JSON.stringify(info))
+         window.location.href ='./adress.html'
+         window.event.returnValue=false;  
+         return;
+      }
+        
+      
+    });
+    })
+   window.addEventListener('beforeunload',()=>{
+    info.forEach((element,i) => {
+      if(element[0]['choose']==true){
+        element[0]['choose']=false
+        localStorage.setItem('newAdress',JSON.stringify(info))
+      }
+    });
+   })
   </script>
 </body>
 </html>

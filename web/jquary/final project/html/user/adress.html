@@ -6,7 +6,7 @@
   <link rel="stylesheet" href="../../outSouces/jquery.mobile-1.4.5.min.css" />
   <script src="../../outSouces/jquery.min.js"></script>
   <script src="../../outSouces/jquery.mobile-1.4.5.min.js"></script>
-  <title>修改地址</title>
+  <title>我的地址</title>
   <style>
     *{
       margin: 0;
@@ -74,14 +74,14 @@
         <img src="../../img/icon/箭头左.png" alt="" class="arrow arrow-left">
         <span>收货地址</span>
        </a>
-       <a href="#">
+       <a href="./newAdress.html" rel="external">
          <img src="../../img/icon/增加.png" class="AddImg" alt="">
        </a>
       </div>
     
     </div>
-    <div data-role="main" class="ui-content">
-      <div class="address-wrap">
+    <div data-role="main" class="ui-content" id="main">
+      <!-- <div class="address-wrap">
         <div class="left">
           <h3 class="adress">江西财经大学</h3>
           <span>Charlie</span>
@@ -92,37 +92,46 @@
             <img src="../../img/icon/编辑.png" alt="" class="modify-img">
           </div>
         </div>
-      </div>
+      </div> -->
 
-      <div class="address-wrap">
-        <div class="left">
-          <h3 class="adress">江西财经大学</h3>
-          <span>Charlie</span>
-          <span>18407826876</span>
-        </div>
-        <div class="right">
-          <div class="modify">
-            <img src="../../img/icon/编辑.png" alt="" class="modify-img">
-          </div>
-        </div>
-      </div>
-
-      <div class="address-wrap">
-        <div class="left">
-          <h3 class="adress">江西财经大学</h3>
-          <span>Charlie</span>
-          <span>18407826876</span>
-        </div>
-        <div class="right">
-          <div class="modify">
-            <img src="../../img/icon/编辑.png" alt="" class="modify-img">
-          </div>
-        </div>
-      </div>
+      
     </div>
   </div> 
 <script>
+  const main = document.getElementById('main')
+  let info = JSON.parse(localStorage.getItem('newAdress'))||[]
+  window.addEventListener('load',()=>{
+  $('#main').append(info.map(element => {
+     return  `<div class="address-wrap">
+        <div class="left">
+          <h3 class="adress">${element[0].adress}</h3>
+          <span class="name">${element[0].name}</span>
+          <span class="tel">${element[0].tel}</span>
+        </div>
+        <div class="right">
+          <div class="modify">
+            <img src="../../img/icon/编辑.png" alt="" id="${element[0].id}" onclick=imgclick(${element[0].id}) class="modify-img">
+          </div>
+        </div>
+      </div>
+      `
+  }).join(''))  
+  })
 
+  function imgclick(img){
+    let imgId = img.id
+    info.forEach((element,i) => {
+       console.log(element[0]['id'])
+    if(element[0]['id'] ==imgId){
+      element[0]['choose'] = true
+      // console.log(info[0][i]['choose'])
+      localStorage.setItem('newAdress',JSON.stringify(info))
+      window.location.href='./modifyAdress.html'
+    }
+  });
+    
+  }
+  
 </script>
 </body>
 </html>
