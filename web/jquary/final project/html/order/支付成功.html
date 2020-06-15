@@ -35,10 +35,13 @@
       flex-direction: column;
       justify-content: center;
     }
-    .price{
+    .pic_wrap{
       text-align: center;
       padding: 30px;
-      font-size: 28px;
+      font-size: 22px;
+    }
+    #pic{
+      width: 80px;
     }
     .shopName_wrap{
       background-color: #fff;
@@ -50,10 +53,9 @@
       border-radius: 5px;
       font-weight: 550;
     }
-    #pay{
+    .pay{
       border: none;
       outline: none;
-      background: rgb(62, 202, 43);
       color: #fff;
       padding: 10px;
       width: 95%;
@@ -62,22 +64,35 @@
       font-size: 20px;
       margin-top: 25px;
     }
-    #pay:active{
-      background:  rgb(49, 163, 34);
+    .back{
+      background: rgb(62, 202, 43);
+    }
+    .order{
+      background: rgb(150, 158, 149);
+    }
+    .back:active{
+      background:   rgb(46, 161, 31);
+    }
+    .order:active{
+      background:   rgb(138, 141, 137);
     }
   </style>
 </head>
 <body>
   <div class="header">
-    <div class="left"><a onclick="javascript:history.back(-1);" style="color: white; text-decoration: none;" rel="external">取消</a></div>
-    <div class="center">确认支付</div>
+    <div class="left"><a onclick="javascript:history.back(-1);" style="color: white; text-decoration: none;" rel="external">返回</a></div>
+    <div class="center">华莱士炸鸡</div>
   </div>
   <div class="main">
-    <div class="price">￥<span id="price">17.00</span></div>
+    <div class="pic_wrap">
+      <img src="../../img/icon/支付成功.png" id="pic" alt="">
+      <div class="success">支付成功</div>
+    </div>
     <div class="shopName_wrap">
       <span class="payee">收款方</span><span class="shopName">华莱士炸鸡</span>
     </div>
-    <a href="./支付成功.html" ><input type="button" id="pay" value="立即支付"></a>
+    <input type="button" class="pay back" value="返回主页">
+    <input type="button" class="pay order" value="我的订单">
   </div>
   <script>
     let sum = JSON.parse(localStorage.getItem('sumPrice')) ||{}

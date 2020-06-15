@@ -129,7 +129,7 @@
 
     <div data-role="header">
       <div class="back-to-userPage">
-       <a href="#">
+       <a href="">
         <img src="../../img/icon/箭头左.png" alt="" class="arrow arrow-left">
         <span>外卖配送</span>
        </a>
@@ -149,7 +149,8 @@
         </div>
        </div>
   
-       <div class="shop-wrap">
+       <div class="food"></div>
+       <!-- <div class="shop-wrap">
          <h3>三叔公炸酱面</h3>
        <div class="shop">
         <div class="shop-left">
@@ -160,17 +161,39 @@
           <span class="price">  ￥8</span>
          </div>
        </div>
-       </div>
+       </div> -->
     </div>
   </div> 
   <div  class="footer" >
-     <div class="sumPrice">小计 ￥8</div>
+     <div class="sumPrice">小计 ￥<span id="sumPrice">8</span></div>
      <div class="confirm-btn">
        
 
-       <a href="确认交易.html"><button data-role="none">确认支付</button></a>
+       <a href="确认交易.html" rel="external"><button data-role="none">确认支付</button></a>
      </div>
   </div>
-
+  <script>
+    let info = JSON.parse(localStorage.getItem('orders')) || []
+    let shop = document.getElementsByClassName('food')[0]
+    let sumPrice = document.getElementById('sumPrice')
+    let sum = JSON.parse(localStorage.getItem('sumPrice')) ||{}
+    console.log(info,info[0].id)
+    shop.innerHTML = info.map((ele,i)=>{
+      
+      return `      <div class="shop-wrap">
+         <h3>${ele.foodName}</h3>
+       <div class="shop">
+        <div class="shop-left">
+          <img src="${ele.pic}" alt="" class="food-img">
+        </div>
+         <div class="shop-right">
+           <span class="number">x ${ele.count_input} </span>
+          <span class="price">  ￥${ele.subpricetotal}</span>
+         </div>
+       </div>
+       </div>`
+    }).join('')
+    sumPrice.innerHTML=`${sum.allPrice}`
+  </script>
 </body>
 </html>
