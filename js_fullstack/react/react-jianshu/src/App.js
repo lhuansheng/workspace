@@ -9,7 +9,6 @@ import Header from './componets/Header';
 import Home from './pages/home/index';
 import Detail from './pages/detail/index';
 
-
 class App extends ImmutableComponent {
   render() {
     return (
@@ -24,6 +23,4 @@ class App extends ImmutableComponent {
   }
 }
 
-
 export default App;
-

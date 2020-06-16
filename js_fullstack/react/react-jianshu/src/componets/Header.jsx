@@ -27,7 +27,6 @@ class Header extends ImmutableComponent {
   // }
 
 
-
   render() { 
     console.log('header render');
     const { title } = this.props;
