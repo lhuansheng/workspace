@@ -6,7 +6,12 @@ import thunk from 'redux-thunk';
 import HomeReducer from './reducers/home/index';
 
 // 多个 reducer 合并成一个
-
+// 不是 redux 给我们 生成的
+// redux 原生的 combineReducers 返回 一个 reducer
+// 全链路是上的: {} [] immutable 包括最外层
+let defaultState = {
+  home: 
+}
 const rootReducer = combineReducers({
   home: HomeReducer
 })
