@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+  <link rel="stylesheet" href="../../outSouces/jquery.mobile-1.4.5.min.css" />
+  <script src="../../outSouces/jquery.min.js"></script>
+  <script src="../../outSouces/jquery.mobile-1.4.5.min.js"></script>
+</head>
+<style>
+       * {
+         margin: 0;
+         padding: 0;
+       }
+       #pageone {
+         background-color: #ffffff;
+         background-size: cover;
+         background-position: center top;
+       }
+   
+       .logo-wrapper {
+         width: 100%;
+         position: relative;
+         padding-bottom: 20px;
+         border-bottom: 2px solid rgb(128, 5, 5);
+       }
+       .logo {
+         display: block;
+         height: 120px;
+         margin: 0 auto;
+       }
+       .logo-wrapper strong {
+         background-color: rgb(116, 113, 113);
+         border-radius: 5px;
+         display: block;
+         width: 30px;
+         height: 30px;
+         text-align: center;
+         color: white;
+         line-height: 30px;
+       }
+       .logo-wrapper p {
+         position: absolute;
+         top: 131px;
+         left: 46px;
+         font-size: 21px;
+         font-family: "Times New Roman", Times, serif;
+         font-style: italic;
+         color: rgb(230, 217, 217);
+       }
+       #mainlist .star {
+         display: block;
+         color: rgb(200, 200, 0);
+         font-size: 12px;
+         padding-top: 15px;
+        
+       }
+	   #topic{
+		   font-size: 12px;
+		   
+		   color: #000000;
+	   }
+	   #intr{
+		   font-size: 3px;
+		   color: #616161;
+		   line-height: 35px;
+	   }
+	   #discount{
+		   font-size: 3px;
+		   color: #ff5500;
+		   border:1px solid #ff5500;
+		   font-family: "楷体";
+	   }
+       #mainlist ul li a {
+         /* background-color: rgba(0, 0, 0, 0.7); */
+         color: rgb(230, 217, 217);
+         font-family: "Times New Roman", Times, serif;
+         line-height: 0px;
+         
+       }
+	  
+	   
+     </style>
+<body>
+
+<div data-role="page" id="pageone">
+  <div data-role="header" style="position: fixed;width: 100%;background-color: yellow;">
+	  <a onclick="javascript:history.back(-1);" rel="external"><img src="../../img/icon/箭头左.png" alt="" class="back" style="width: 10px;height: 10px;padding-left: 7px;padding-top: 7px;"></a>
+    <h1>商家-综合排序</h1>
+	<form class="ui-filterable">
+	  <input id="myFilter" data-type="search" placeholder="开心吃喝"> 
+	</form>
+    <div data-role="navbar">
+      <ul>
+        <li><a href="综合排序.html">综合排序</a></li>
+        <li><a href="销量.html">销量</a></li>
+        <li><a href="距离.html">距离</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div data-role="main" class="ui-content">
+    <div id="mainlist" style="padding-top: 120px;">
+      <ul data-role="listview" data-inset="true">
+        <li>
+          <a href="华莱士炸鸡.html" rel="external" data-transition="flow" data-ajax="false">
+            <img src="../../img/美食列表/华莱士.JPG" alt="" />
+            <span id="topic">
+            	华莱士.全鸡汉堡(新紫荆店)
+            </span>
+            <span class="star">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+    				 <span id="intr">配送费2元</span>
+    				 <span id="intr">10元起送</span>
+    				 <br />
+    				 <span id="discount">30减20</span>
+    				 <span id="discount">45减23</span>
+    				 <span id="discount">首单减8</span>
+          </a>
+        </li>
+        <li>
+          <a href="华莱士炸鸡.html" rel="external">
+            <img src="../../img/美食列表/韩国炸鸡.JPG" alt="" />
+            <span id="topic">
+            	MissSophie韩国炸鸡(麦园店)
+            </span>
+            <span class="star">&#9733;&#9733;&#9733;&#9733;</span>
+    				 <span id="intr">配送费2元</span>
+    				 <span id="intr">10元起送</span>
+    				 <br />
+    				 <span id="discount">22减5</span>
+    				 <span id="discount">33减10</span>
+    				 <span id="discount">66减20</span>
+          </a>
+        </li>
+        <li>
+          <a href="华莱士炸鸡.html" rel="external">
+            <img src="../../img/美食列表/叫个鸭子.JPG" alt="" />
+            <span id="topic">
+            	叫个鸭子.真全鸭
+            </span>
+            <span class="star">&#9733;&#9733;&#9733;&#9733;</span>
+    				 <span id="intr">配送费2元</span>
+    				 <span id="intr">10元起送</span>
+    				 <br />
+    				 <span id="discount">100减10</span>
+    				 <span id="discount">200减25</span>
+          </a>
+        </li>
+        <li>
+          <a href="华莱士炸鸡.html" rel="external">
+            <img src="../../img/美食列表/烧烤.JPG" alt="" />
+            <span id="topic">
+            	潮汕砂锅粥(麦庐商业街店)
+            </span>
+            <span class="star">&#9733;&#9733;&#9733;</span>
+    				 <span id="intr">配送费2元</span>
+    				 <span id="intr">10元起送</span>
+    				 <br />
+    				 <span id="discount">100减10</span>
+    				 <span id="discount">200减25</span>
+          </a>
+        </li>
+        <li>
+          <a href="华莱士炸鸡.html" rel="external">
+            <img src="../../img/美食列表/正新.JPG" alt="" />
+            <span id="topic">
+            	正新鸡排(财大麦庐店)
+            </span>
+            <span class="star">&#9733;&#9733;&#9733;&#9733;</span>
+    				 <span id="intr">配送费2元</span>
+    				 <span id="intr">10元起送</span>
+    				 <br />
+    				 <span id="discount">30减1</span>
+    				 <span id="discount">50减2</span>
+    				 <span id="discount">首单减8</span>
+          </a>
+        </li>
+        <li>
+          <a href="华莱士炸鸡.html" rel="external">
+            <img src="../../img/美食列表/黄焖鸡.JPG" alt="" />
+            <span id="topic">
+            	杨铭宇黄焖鸡米饭(财大麦庐店)
+            </span>
+            <span class="star">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+    				 <span id="intr">配送费2元</span>
+    				 <span id="intr">10元起送</span>
+    				 <br />
+    				 <span id="discount">14减4</span>
+    				 <span id="discount">30减5</span>
+    				 <span id="discount">首单减9</span>
+    				 <span id="discount">5.12折起</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  
+</div> 
+
+
+</body>
+</html>

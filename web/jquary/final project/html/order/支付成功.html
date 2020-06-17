@@ -97,9 +97,27 @@
   <script>
     let sum = JSON.parse(localStorage.getItem('sumPrice')) ||{}
     let info = JSON.parse(localStorage.getItem('orders')) || []
-    const pay = document.getElementById('price')
-    console.log(sum.allPrice)
-    pay.innerHTML = `${sum.allPrice}`
+    let history = JSON.parse(localStorage.getItem('bought')) || []
+    let order = document.getElementsByClassName('order')[0]
+    let back = document.getElementsByClassName('back')[0]
+    let newhistory=history
+    
+    info.forEach(element => {
+      newhistory.push(element)
+    });
+   
+    
+    // 成功购买的订单放入另外的localstorege
+    localStorage.setItem('bought',JSON.stringify(newhistory))
+    // 将原来的数据清零
+    localStorage.setItem('sumPrice',JSON.stringify([]))
+    // localStorage.setItem('sumPrice',JSON.stringify({}))
+    order.addEventListener('click',()=>{
+      window.location.href='./orderHistory.html'
+    })
+    back.addEventListener('click',()=>{
+      window.location.href='../home/homePage.html'
+    })
   </script>
 </body>
 </html>

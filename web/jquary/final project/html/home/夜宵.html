@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" href="../../outSouces/jquery.mobile-1.4.5.min.css" />
+  	<script src="../../outSouces/jquery.min.js"></script>
+  	<script src="../../outSouces/jquery.mobile-1.4.5.min.js"></script>
+    <title>请选择餐厅</title>
+   <style>
+       * {
+         margin: 0;
+         padding: 0;
+       }
+       #pageone {
+         background-color: #ffffff;
+         background-size: cover;
+         background-position: center top;
+       }
+   
+       .logo-wrapper {
+         width: 100%;
+         position: relative;
+         padding-bottom: 20px;
+		 background: url(../../img/夜宵列表/夜空.bmp);
+         border-bottom: 2px solid rgb(128, 5, 5);
+       }
+       .logo {
+         display: block;
+         height: 120px;
+         margin: 0 auto;
+       }
+       .logo-wrapper strong {
+         background-color: rgb(116, 113, 113);
+         border-radius: 5px;
+         display: block;
+         width: 30px;
+         height: 30px;
+         text-align: center;
+         color: white;
+         line-height: 30px;
+       }
+       .logo-wrapper p {
+         position: absolute;
+         top: 131px;
+         left: 46px;
+         font-size: 21px;
+         font-family: "Times New Roman", Times, serif;
+         font-style: italic;
+         color: rgb(230, 217, 217);
+       }
+       #mainlist .star {
+         display: block;
+         color: rgb(200, 200, 0);
+         font-size: 12px;
+         padding-top: 15px;
+        
+       }
+	   #topic{
+		   font-size: 12px;
+		   
+		   color: #000000;
+	   }
+	   #intr{
+		   font-size: 3px;
+		   color: #616161;
+		   line-height: 35px;
+	   }
+	   #discount{
+		   font-size: 3px;
+		   color: #ff5500;
+		   border:1px solid #ff5500;
+		   font-family: "楷体";
+	   }
+       #mainlist ul li a {
+         /* background-color: rgba(0, 0, 0, 0.7); */
+         color: rgb(230, 217, 217);
+         font-family: "Times New Roman", Times, serif;
+         line-height: 0px;
+         
+       }
+	  
+	   
+     </style>
+   </head>
+   <body>
+     <div data-role="page" id="pageone">
+       <div data-role="main" class="ui-content">
+		   
+         <div class="logo-wrapper">
+		   <a onclick="javascript:history.back(-1);" rel="external"><img src="../../img/icon/箭头左.png" alt="" class="back" style="width: 20px;;padding-left: 20px;padding-top: 20px;"></a>
+           <img src="../../img/mypage/白色.png" style="width: 250px;" alt="" class="logo" />
+           
+         </div>
+   
+         <div id="mainlist">
+           <ul data-role="listview" data-inset="true">
+             <li>
+               <a href="4.html" data-transition="flow" data-ajax="false">
+                 <img src="../../img/夜宵列表/窑鸡王.JPG" alt="" />
+                 <span id="topic">
+                 	窑鸡王(红谷滩店)
+                 </span>
+                 <span class="star">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+				 <span id="intr">配送费2元</span>
+				 <span id="intr">0元起送</span>
+				 <br />
+				 <span id="discount">60减25</span>
+				 <span id="discount">120减33</span>
+				 <span id="discount">2.19折起</span>
+               </a>
+             </li>
+             <li>
+               <a href="#">
+                 <img src="../../img/夜宵列表/肯德基.JPG" alt="" />
+                 <span id="topic">
+                 	肯德基宅急送(经开)
+                 </span>
+                 <span class="star">&#9733;&#9733;&#9733;&#9733;</span>
+				 <span id="intr">配送费2元</span>
+				 <span id="intr">10元起送</span>
+				 <br />
+				 <span id="discount">5折起</span>
+				 <span id="discount">首单减8</span>
+				 
+               </a>
+             </li>
+             <li>
+               <a href="#">
+                 <img src="../../img/夜宵列表/辣尚.JPG" alt="" />
+                 <span id="topic">
+                 	辣尚烧烤-龙虾-秘制虾尾
+                 </span>
+                 <span class="star">&#9733;&#9733;&#9733;&#9733;</span>
+				 <span id="intr">配送费2元</span>
+				 <span id="intr">10元起送</span>
+				 <br />
+				 <span id="discount">5减5</span>
+				 <span id="discount">25减19</span>
+				 <span id="discount">49减32</span>
+				 <span id="discount">99减57</span>
+				 <span id="discount">199减108</span>
+               </a>
+             </li>
+             <li>
+               <a href="#">
+                 <img src="../../img/夜宵列表/麦当劳.JPG" alt="" />
+                 <span id="topic">
+                 	麦当劳麦乐送(南昌桂苑大道店)
+                 </span>
+                 <span class="star">&#9733;&#9733;&#9733;</span>
+				 <span id="intr">配送费2元</span>
+				 <span id="intr">10元起送</span>
+				 <br />
+				 <span id="discount">49减9</span>
+				 <span id="discount">68减18</span>
+				 <span id="discount">4.97折起</span>
+               </a>
+             </li>
+             
+           </ul>
+         </div>
+       </div>
+     </div>
+   
+    
+   </body>
+   </html>

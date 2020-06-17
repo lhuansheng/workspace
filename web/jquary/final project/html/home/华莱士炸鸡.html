@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" href="../../outSouces/jquery.mobile-1.4.5.min.css" />
+  	<script src="../../outSouces/jquery.min.js"></script>
+  	<script src="../../outSouces/jquery.mobile-1.4.5.min.js"></script>
+		<title>请选择餐厅</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+
+			#pageone {
+				background-color: #ffffff;
+				background-size: cover;
+				background-position: center top;
+			}
+
+			.logo-wrapper {
+				width: 100%;
+				position: fixed;
+				padding-bottom: 20px;
+				background-color: #FFFFFF;
+				border-bottom: 2px solid rgb(128, 5, 5);
+				z-index: 2;
+			}
+
+			.logo {
+				display: block;
+				height: 120px;
+				margin: 0 auto;
+			}
+
+			.logo-wrapper strong {
+				background-color: rgb(116, 113, 113);
+				border-radius: 5px;
+				display: block;
+				width: 30px;
+				height: 30px;
+				text-align: center;
+				color: white;
+				line-height: 30px;
+			}
+
+			.logo-wrapper p {
+				position: absolute;
+				top: 131px;
+				left: 46px;
+				font-size: 21px;
+				font-family: "Times New Roman", Times, serif;
+				font-style: italic;
+				color: rgb(230, 217, 217);
+			}
+
+			#mainlist .star {
+				display: block;
+				color: rgb(200, 200, 0);
+				font-size: 12px;
+				padding-top: 15px;
+
+			}
+
+			#topic {
+				font-size: 13px;
+				font-family: "微软雅黑";
+				color: #000000;
+			}
+
+			#intr {
+				font-size: 5px;
+				color: #616161;
+				line-height: 35px;
+				padding-top: 15px;
+			}
+
+			#discount {
+				font-size: 3px;
+				color: #ff5500;
+				border: 1px solid #ff5500;
+				font-family: "楷体";
+			}
+
+			.price {
+				font-size: 13px;
+				color: #ff0000;
+			}
+
+			#shoppingcar {
+				
+				background-color: #ff9500;
+				width: 100%;
+				height: 10%;
+				position: fixed;
+				bottom: 0px;
+				
+			}
+
+			#shoppingcar span {
+				padding-left: 40px;
+				padding-top: 24px;
+				color: #FFFFFF;
+			}
+
+			#totalprice {
+				padding-left: 100px;
+				padding-top: 24px;
+				color: #FFFFFF;
+			}
+
+			#mainlist ul li a {
+				/* background-color: rgba(0, 0, 0, 0.7); */
+				color: rgb(230, 217, 217);
+				font-family: "Times New Roman", Times, serif;
+				line-height: 0px;
+
+			}
+
+			#main {
+				display: flex;
+				justify-content: space-between;
+				
+			}
+
+			#pageone li a {
+				font-size: 12px;
+			}
+			.reduce,.add{
+				height: 90%;
+				width: 90%;
+				border: 1px solid #000000;
+				background: #cecece;
+				text-align: center;
+				color: #000000;
+				padding-left: 5px;
+				padding-right: 5px;
+				border-radius:5px;
+				position: relative;
+				left: 130px;
+			}
+			.count-input {
+			    width: 20px;
+			    height: 10px;
+			    line-height: 15px;
+			    border: 1px solid #aaa;
+			    color: #343434;
+			    text-align: center;
+			    padding: 4px 0;
+			    background-color: #fff;
+			    
+				position: relative;
+				left: 130px;
+			}
+		</style>
+	</head>
+	<body>
+		<div data-role="page" id="pageone">
+			<!-- 放logo的盒子 -->
+			<div class="logo-wrapper">
+				<a onclick="javascript:history.back(-1);" rel="external"><img src="../../img/icon/箭头左.png" alt="" class="back" style="width: 20px;height: 20px;padding-left: 20px;padding-top: 20px;"></a>
+				<img src="../../img/mypage/黑色.jpg" style="width: 250px;" alt="" class="logo" />
+
+			</div>
+			
+			<div data-role="main" class="ui-content">
+
+				<div id="main">
+					<!-- 左边列表 -->
+					<div style="width: 30%; position: fixed; top: 150px;">
+						<h2>列表图标:</h2>
+						<ul data-role="listview" data-inset="true">
+							<li><a onclick="scrollToView1()">主食汉堡</a></li>
+							<li><a onclick="scrollToView2()">休闲小食品</a></li>
+							<li><a onclick="scrollToView3()">整鸡</a></li>
+
+
+						</ul>
+					</div>
+
+
+                    <!-- 右边菜单 -->
+					<div id="mainlist" style="width: 65%; position: relative; top: 180px; left: 35%;">
+						<ul data-role="listview" data-inset="true">
+							<li >
+								<div id="hambager"></div>
+								<a href="商品详情.html" data-transition="flow" data-ajax="false">
+									<img src="../../img/华莱士/WM鸡腿堡.JPG" alt="" class="pic" id="pic1" />
+									<span class="topic">
+										WM鸡腿堡
+									</span>
+									<span id="discount">力荐</span>
+									<br />
+									<span id="intr">月售397</span>
+									<span id="intr">好评度80%</span>
+									<br />
+									<span class="price">0.01</span>
+									
+									
+								</a>
+								<div style="width: 99%;background-color: #f6f6f6;border-left: 1px solid #dddddd;border-right: 1px solid #dddddd;">
+									
+									<span class="reduce" >-</span>
+									<input class="count-input"data-role="none" type="text" value="0"/>
+									<span class="add">+</span>
+								</div>
+							</li>
+
+							<li>
+								<a href="牛肉堡详情.html" data-transition="flow" data-ajax="false">
+									<img src="../../img/华莱士/WM牛肉堡.JPG" alt="" class="pic" id="pic2" />
+									<span class="topic">
+										WM牛肉堡
+									</span>
+									<span id="discount">力荐</span>
+									<br />
+									<span id="intr">月售40</span>
+									<span id="intr">好评度88%</span>
+									<br />
+									<span class="price">7</span>
+									
+
+								</a>
+								<div style="width: 99%;background-color: #f6f6f6;border-left: 1px solid #dddddd;border-right: 1px solid #dddddd;">
+									
+									<span class="reduce" >-</span>
+									<input class="count-input"data-role="none" type="text" value="0"/>
+									<span class="add">+</span>
+								</div>
+
+							</li>
+
+							<li>
+								<a href="商品详情.html" data-transition="flow" data-ajax="false">
+									<img src="../../img/华莱士/WM七虾堡.JPG" alt="" class="pic" id="pic3" />
+									<span class="topic">
+										WM七虾堡
+									</span>
+									<span id="discount" style="color: #00aa00;border:1px solid #00aa00;">新品</span>
+									<br />
+									<span id="intr">月售66</span>
+									<span id="intr">好评度90%</span>
+									<br />
+									<span class="price">8.8</span>
+									
+								</a>
+								<div style="width: 99%;background-color: #f6f6f6;border-left: 1px solid #dddddd;border-right: 1px solid #dddddd;">
+									
+									<span class="reduce" >-</span>
+									<input class="count-input"data-role="none" type="text" value="0"/>
+									<span class="add">+</span>
+								</div>
+							</li>
+
+							<li>
+								<a href="商品详情.html" data-transition="flow" data-ajax="false">
+									<img src="../../img/华莱士/WM田园脆鸡堡.JPG" alt="" class="pic" id="pic4" />
+									<span class="topic">
+										WM田园脆鸡堡
+									</span>
+
+									<br />
+									<span id="intr">月售122</span>
+									<span id="intr">好评度90%</span>
+									<br />
+									<span class="price">9</span>
+									
+								</a>
+								<div style="width: 99%;background-color: #f6f6f6;border-left: 1px solid #dddddd;border-right: 1px solid #dddddd;">
+									
+									<span class="reduce" >-</span>
+									<input class="count-input"data-role="none" type="text" value="0"/>
+									<span class="add">+</span>
+								</div>
+							</li>
+
+							<li>
+								<a href="商品详情.html" data-transition="flow" data-ajax="false">
+									<img src="../../img/华莱士/秘制板烧堡.JPG" alt="" class="pic" id="pic5" />
+									<span class="topic">
+										秘制板烧堡
+									</span>
+									<span id="discount">力荐</span>
+									<br />
+									<span id="intr">月售397</span>
+									<span id="intr">好评度80%</span>
+									<br />
+									<span class="price">12</span>
+									
+								</a>
+								<div style="width: 99%;background-color: #f6f6f6;border-left: 1px solid #dddddd;border-right: 1px solid #dddddd;">
+									
+									<span class="reduce" >-</span>
+									<input class="count-input"data-role="none" type="text" value="0"/>
+									<span class="add">+</span>
+								</div>
+							</li>
+
+							<li>
+								
+								<a href="商品详情.html" data-transition="flow" data-ajax="false">
+									
+									<img src="../../img/华莱士/WM大鸡排.JPG" alt="" class="pic" id="pic6" />
+									<span class="topic">
+										WM大鸡排
+									</span>
+									<span id="discount">力荐</span>
+									<br />
+									<span id="intr">月售397</span>
+									<span id="intr">好评度80%</span>
+									<br />
+									<span class="price">8</span>
+									
+								</a>
+								<div style="width: 99%;background-color: #f6f6f6;border-left: 1px solid #dddddd;border-right: 1px solid #dddddd;">
+									
+									<span class="reduce" >-</span>
+									<input class="count-input"data-role="none" type="text" value="0"/>
+									<span class="add">+</span>
+								</div>
+							</li>
+
+							<li>
+								
+								<a href="商品详情.html" data-transition="flow" data-ajax="false">
+									<img src="../../img/华莱士/蛋黄流心球.JPG" alt="" class="pic" id="pic7" />
+									<span class="topic">
+										蛋黄流心球
+									</span>
+									<span id="discount">力荐</span>
+									<br />
+									<span id="intr">月售397</span>
+									<span id="intr">好评度80%</span>
+									<br />
+									<span class="price">6</span>
+									
+								</a>
+								<div style="width: 99%;background-color: #f6f6f6;border-left: 1px solid #dddddd;border-right: 1px solid #dddddd;">
+									
+									<span class="reduce" >-</span>
+									<input class="count-input"data-role="none" type="text" value="0"/>
+									<span class="add">+</span>
+								</div>
+							</li>
+
+							<li>
+								<div id="snack"></div>
+								<a href="商品详情.html" data-transition="flow" data-ajax="false">
+									<img src="../../img/华莱士/蛋挞.JPG" alt="" class="pic" id="pic8" />
+									<span class="topic">
+										迷你蛋挞
+									</span>
+									<span id="discount">力荐</span>
+									<br />
+									<span id="intr">月售397</span>
+									<span id="intr">好评度80%</span>
+									<br />
+									<span class="price">7</span>
+									
+								</a>
+								<div style="width: 99%;background-color: #f6f6f6;border-left: 1px solid #dddddd;border-right: 1px solid #dddddd;">
+									
+									<span class="reduce" >-</span>
+									<input class="count-input"data-role="none" type="text" value="0"/>
+									<span class="add">+</span>
+								</div>
+							</li>
+
+							<li>
+								<a href="商品详情.html" data-transition="flow" data-ajax="false">
+									<img src="../../img/华莱士/黑椒鸡块.JPG" alt="" class="pic" id="pic9" />
+									<span class="topic">
+										黑椒鸡块
+									</span>
+									<span id="discount">力荐</span>
+									<br />
+									<span id="intr">月售397</span>
+									<span id="intr">好评度80%</span>
+									<br />
+									<span class="price">6</span>
+									
+								</a>
+								<div style="width: 99%;background-color: #f6f6f6;border-left: 1px solid #dddddd;border-right: 1px solid #dddddd;">
+									
+									<span class="reduce" >-</span>
+									<input class="count-input"data-role="none" type="text" value="0"/>
+									<span class="add">+</span>
+								</div>
+							</li>
+
+							<li>
+								<a href="商品详情.html" data-transition="flow" data-ajax="false">
+									<img src="../../img/华莱士/红豆派.JPG" alt="" class="pic" id="pic10" />
+									<span class="topic">
+										红豆派
+									</span>
+									<span id="discount">力荐</span>
+									<br />
+									<span id="intr">月售397</span>
+									<span id="intr">好评度80%</span>
+									<br />
+									<span class="price">4</span>
+									
+								</a>
+								<div style="width: 99%;background-color: #f6f6f6;border-left: 1px solid #dddddd;border-right: 1px solid #dddddd;">
+									
+									<span class="reduce" >-</span>
+									<input class="count-input"data-role="none" type="text" value="0"/>
+									<span class="add">+</span>
+								</div>
+							</li>
+
+							<li>
+								<a href="商品详情.html" data-transition="flow" data-ajax="false">
+									<img src="../../img/华莱士/可爱小鸡排.JPG" alt="" class="pic" id="pic11" />
+									<span class="topic">
+										可爱小鸡排
+									</span>
+									<span id="discount">力荐</span>
+									<br />
+									<span id="intr">月售397</span>
+									<span id="intr">好评度80%</span>
+									<br />
+									<span class="price">8</span>
+									
+								</a>
+								<div style="width: 99%;background-color: #f6f6f6;border-left: 1px solid #dddddd;border-right: 1px solid #dddddd;">
+									
+									<span class="reduce" >-</span>
+									<input class="count-input"data-role="none" type="text" value="0"/>
+									<span class="add">+</span>
+								</div>
+							</li>
+
+							<li>
+								<a href="商品详情.html" data-transition="flow" data-ajax="false">
+									<img src="../../img/华莱士/网红小鸡腿.JPG" alt="" class="pic" id="pic12" />
+									<span class="topic">
+										网红小鸡腿
+									</span>
+									<span id="discount">力荐</span>
+									<br />
+									<span id="intr">月售397</span>
+									<span id="intr">好评度80%</span>
+									<br />
+									<span class="price">2</span>
+									
+								</a>
+								<div style="width: 99%;background-color: #f6f6f6;border-left: 1px solid #dddddd;border-right: 1px solid #dddddd;">
+									
+									<span class="reduce" >-</span>
+									<input class="count-input"data-role="none" type="text" value="0"/>
+									<span class="add">+</span>
+								</div>
+							</li>
+
+							<li>
+								<div id="chick"></div>
+								<a href="商品详情.html" data-transition="flow" data-ajax="false">
+									<img src="../../img/华莱士/秘制鸡.JPG" alt="" class="pic" id="pic13" />
+									<span class="topic">
+										秘制鸡
+									</span>
+									<span id="discount">力荐</span>
+									<br />
+									<span id="intr">月售397</span>
+									<span id="intr">好评度80%</span>
+									<br />
+									<span class="price">20</span>
+									
+								</a>
+								<div style="width: 99%;background-color: #f6f6f6;border-left: 1px solid #dddddd;border-right: 1px solid #dddddd;">
+									
+									<span class="reduce" >-</span>
+									<input class="count-input"data-role="none" type="text" value="0"/>
+									<span class="add">+</span>
+								</div>
+							</li>
+
+							<li>
+								<a href="商品详情.html" data-transition="flow" data-ajax="false">
+									<img src="../../img/华莱士/炸鸡.PNG" alt="" class="pic" id="pic14" />
+									<span class="topic">
+										炸全鸡
+									</span>
+									<span id="discount">力荐</span>
+									<br />
+									<span id="intr">月售397</span>
+									<span id="intr">好评度80%</span>
+									<br />
+									<span class="price">20</span>
+									
+								</a>
+								<div style="width: 99%;background-color: #f6f6f6;border-left: 1px solid #dddddd;border-right: 1px solid #dddddd;">
+									
+									<span class="reduce" >-</span>
+									<input class="count-input"data-role="none" type="text" value="0"/>
+									<span class="add">+</span>
+								</div>
+							</li>
+
+							<li>
+								<a href="商品详情.html" data-transition="flow" data-ajax="false">
+									<img src="../../img/华莱士/秘制鸡套餐.JPG" alt="" class="pic" id="pic153" />
+									<span class="topic">
+										秘制鸡套餐
+									</span>
+									<span id="discount">力荐</span>
+									<br />
+									<span id="intr">月售397</span>
+									<span id="intr">好评度80%</span>
+									<br />
+									<span class="price">20</span>
+									
+								</a>
+								<div style="width: 99%;background-color: #f6f6f6;border-left: 1px solid #dddddd;border-right: 1px solid #dddddd;">
+									
+									<span class="reduce" >-</span>
+									<input class="count-input"data-role="none" type="text" value="0"/>
+									<span class="add">+</span>
+								</div>
+							</li>
+							<li>
+								
+								<div style="height: 28px;">
+									
+									
+								</div>
+							</li>
+
+
+
+
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div id="shoppingcar">
+				
+				<span style="display: inline-block;">您的总价为</span>
+				<span id="priceTotal" style="display: inline-block;">0</span>
+				<span style="display: inline-block;">元</span>
+				
+				<a href="../order/结算.html" rel="external" style="display: inline-block;padding-left: 50px;float: right;padding-top: 25px;padding-right: 20px;color: #000000;text-decoration:none">结算</a>
+			</div>
+			
+
+		</div>
+    <script type="text/javascript">
+		
+			const pic=document.getElementsByClassName('pic')
+			const foodName = document.getElementsByClassName('topic')
+			const priceTotal = document.getElementById("priceTotal");
+			const aReduce = document.getElementsByClassName("reduce");
+			const aCount_input = document.getElementsByClassName("count-input");
+			const aAdd = document.getElementsByClassName("add");
+			
+			const aPrice = document.getElementsByClassName("price");
+			let info = JSON.parse(localStorage.getItem('orders')) || []
+			
+			// let flag = false;  // 初始化将数据放入localstorage
+			
+			function scrollToView1 () {
+							document.getElementById('hambager').scrollIntoView({
+									block: 'start',
+									inline: 'nearest',
+									behavior: 'smooth'
+							})
+					}
+			function scrollToView2 () {
+							document.getElementById('snack').scrollIntoView({
+									block: 'start',
+									inline: 'nearest',
+									behavior: 'smooth'
+							})
+					}
+			function scrollToView3 () {
+							document.getElementById('chick').scrollIntoView({
+									block: 'start',
+									inline: 'nearest',
+									behavior: 'smooth'
+							})
+					}
+					let orders = []
+					let order = {}
+					function updateTotal() { //更新
+				
+				priceTotal.innerHTML = 0;
+				for (var i = 0; i < aReduce.length; i++) {
+					priceTotal.innerHTML = (parseFloat(priceTotal.innerHTML) + parseFloat(aPrice[i].innerHTML) * parseFloat(aCount_input[i].value)).toFixed(2);
+					let sumPrice = {
+					allPrice:priceTotal.innerHTML
+				}
+				localStorage.setItem('sumPrice',JSON.stringify(sumPrice))
+				}
+				
+			}
+			for(var i = 0; i < aReduce.length; i++){
+				(function(i) {
+						aReduce[i].onclick = function() { //某个商品数量减少按钮
+							if (aCount_input[i].value > 0) {
+								aCount_input[i].value = aCount_input[i].value - 1;
+								insert(i)
+								updateTotal();
+							}
+						}
+						aAdd[i].onclick = function() { //某个商品数量增加按钮
+							aCount_input[i].value = parseInt(aCount_input[i].value) + 1;
+							insert(i)
+							updateTotal();
+							
+						}
+						
+					})(i);
+				}
+			function insert(i){
+			
+				// 如果商品数量 大于0 则可以放入数组
+				if(aCount_input[i].value > 0){
+					let subpricetotal = (parseFloat(aPrice[i].innerHTML)*parseFloat(aCount_input[i].value)).toFixed(2)
+					
+					order = {
+						id:i+1,
+						foodName:foodName[i].innerHTML,
+						pic:pic[i].src,
+						price:parseFloat(aPrice[i].innerHTML),
+						count_input:aCount_input[i].value,
+						subpricetotal: subpricetotal
+					}
+					// if(flag == false){
+					// 	orders.push(order)
+					// 	localStorage.setItem('orders',JSON.stringify(orders))
+					// 	flag = true
+					// }
+					// console.log(info)
+					console.log( orders[i]&&orders[i].id,'------------',order['id'])
+					if((orders[i]&&orders[i].id ) !== order['id']){
+						 orders.push(order)
+						 info=orders
+						 
+						localStorage.setItem('orders',JSON.stringify(orders))
+						
+						// console.log(info[i]&&info[i].price,'1111111111111111')
+					}
+					else if((info[i]&&info[i].price ) !== order['id']){
+						console.log(order['price'])
+						orders[i].price=order['price']
+						orders[i].subpricetotal=order.subpricetotal
+						orders[i].count_input = order.count_input
+						info = orders
+						localStorage.setItem('orders',JSON.stringify(orders))
+						// console.log(info,'info')
+					}
+					// info.forEach((ele)=>{
+					// 	// 如果是相同的id，则不需要重新push
+					// 	console.log(ele)
+					// 	if(ele.id !== order.id){
+					// 		orders.push(order)
+					// 		localStorage.setItem('orders',JSON.stringify(orders))
+					// 	}
+					// 	// 需要更新 orders 里面的数据
+					// 	if(ele.id == order.id){
+					// 		ele.count_input = aCount_input[i].innerHTML
+					// 		ele.subpricetotal = subpricetotal
+					// 		console.log(ele.count_input)
+					// 		localStorage.setItem('orders',JSON.stringify(orders))
+					// 	}
+					// })
+					
+				
+				}
+			}
+			
+					
+			</script>
+
+
+	</body>
+</html>
