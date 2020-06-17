@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../outSouces/jquery.mobile-1.4.5.min.css" />
+  <script src="../../outSouces/jquery.min.js"></script>
+  <script src="../../outSouces/jquery.mobile-1.4.5.min.js"></script>
+  <title>确认订单</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    #pageone{
+      background: white;
+    }
+    /* 头部  */
+  .back-to-userPage{
+    padding: 10px;
+    background-color: rgb(135, 209, 238);
+   
+  }
+  .back-to-userPage a{
+    text-decoration: none;
+    color: rgb(77, 75, 75);
+  }
+  .back-to-userPage .arrow-left{
+    width: 20px;
+    vertical-align: middle;
+  }
+  .back-to-userPage span{
+    display: inline-block;
+    margin-left: calc(50% - 20px);
+    transform: translateX(-50%);
+  }
+    /* main */
+    .arrow{
+      display: inline-block; 
+      width: 20px;
+      margin-bottom: 3px; 
+    }
+    .adress-title{
+      margin-bottom: 10px;
+    }
+    .input-wrap{
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgb(235, 219, 219);
+    }
+    .input-wrap .left{
+      display: inline-block;
+      width: 90%;
+     
+    }
+    .left .content{
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+      font-size: 22px;
+      font-weight: bold;
+      padding-bottom: 5px;
+    }
+    .left .name,.left .tel{
+      font-size: 15px;
+      color: rgb(102, 95, 95);
+    }
+    .left, .right{
+      display: inline-block;
+    }
+    .shop{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .shop-wrap h3{
+      padding-top: 10px;
+      padding-bottom: 10px;
+      border-bottom: 0.1px solid rgb(231, 226, 226);
+
+    }
+    .shop-wrap .shop-left{
+      /* display: inline-block; */
+      padding-top: 10px;
+      width: 70%;
+      
+    }
+    .shop-wrap .shop-left img{
+      width: 200px;
+    }
+    
+    .shop-wrap .shop-right{
+      display: inline-block;
+      width: 20%;
+    }
+    /* footer */
+    .footer{
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 10px;
+      background-color: rgb(102, 93, 93);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer .sumPrice{
+      font-size: 20px;
+      color: white;
+      font-weight: lighter;
+    }
+    .footer button{
+      padding: 8px;
+      background-color: rgb(33, 173, 64);
+      border: none;
+      color: white;
+      font-weight: 500;
+      outline: none;
+      border-radius: 5px;
+    }
+    .footer button:active{
+      background-color: rgb(19, 150, 47);
+    }
+    /* 支付页面 */
+  </style>
+</head>
+<body>
+  <div  id="pageone">
+
+    <div data-role="header">
+      <div class="back-to-userPage">
+       <a onclick="javascript:history.back(-1);" rel="external">
+        <img src="../../img/icon/箭头左.png" alt="" class="arrow arrow-left">
+        <span>外卖配送</span>
+       </a>
+      </div>
+    </div>
+    <div data-role="main" class="ui-content">
+      <h3 class="adress-title">配送地址：</h3>
+       <div class="input-wrap">
+         
+        <div class="left">
+          <div class="content">江西财经大学江西江西财经大学江西财经大学江西财经大学江西财经大学江西财经大学江西财经大学江西财经大学江西财经大学财经大学江西财经大学江西财经大学</div>
+          <span class="name">Charlie</span>
+          <span class="tel">15564645564</span>
+        </div>
+        <div class="right">
+        <img src="../../img/icon/箭头.png" alt="" class="arrow">
+        </div>
+       </div>
+  
+       <div class="food"></div>
+       <!-- <div class="shop-wrap">
+         <h3>三叔公炸酱面</h3>
+       <div class="shop">
+        <div class="shop-left">
+          <img src="../../img/food/2301.jpg" alt="" class="food-img">
+        </div>
+         <div class="shop-right">
+           <span class="number">x 1 </span>
+          <span class="price">  ￥0</span>
+         </div>
+       </div>
+       </div> -->
+    </div>
+  </div> 
+  <div  class="footer" >
+     <div class="sumPrice">小计 ￥<span id="sumPrice">8</span></div>
+     <div class="confirm-btn">
+       
+
+       <a href="确认交易.html" rel="external"><button data-role="none">确认支付</button></a>
+     </div>
+  </div>
+  <script>
+    let info = JSON.parse(localStorage.getItem('orders')) || []
+    let shop = document.getElementsByClassName('food')[0]
+    let sumPrice = document.getElementById('sumPrice')
+    let sum = JSON.parse(localStorage.getItem('sumPrice')) ||{}
+    // console.log(info,info[0].id)
+    shop.innerHTML = info.map((ele,i)=>{
+      
+      return `      <div class="shop-wrap">
+         <h3>${ele.foodName}</h3>
+       <div class="shop">
+        <div class="shop-left">
+          <img src="${ele.pic}" alt="" class="food-img">
+        </div>
+         <div class="shop-right">
+           <span class="number">x ${ele.count_input} </span>
+          <span class="price">  ￥${ele.subpricetotal}</span>
+         </div>
+       </div>
+       </div>`
+    }).join('')
+    sumPrice.innerHTML=`${sum.allPrice||0}`
+  </script>
+</body>
+</html>

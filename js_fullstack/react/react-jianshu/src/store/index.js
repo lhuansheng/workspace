@@ -10,7 +10,7 @@ import HomeReducer from './reducers/home/index';
 // redux 原生的 combineReducers 返回 一个 reducer
 // 全链路是上的: {} [] immutable 包括最外层
 let defaultState = {
-  home: 
+  // home: 
 }
 const rootReducer = combineReducers({
   home: HomeReducer

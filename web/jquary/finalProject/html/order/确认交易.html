@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- <link rel="stylesheet" href="../../outSouces/jquery.mobile-1.4.5.min.css" />
+  <script src="../../outSouces/jquery.min.js"></script>
+  <script src="../../outSouces/jquery.mobile-1.4.5.min.js"></script> -->
+  <title>确认交易</title>
+  <style>
+    *{
+      margin: 0;padding: 0;
+    }
+    body{
+      background-color: rgb(248, 240, 240);
+    }
+    .header{
+      width: 100vw;
+      display: flex;
+      justify-content: start;
+      padding: 10px;
+      background-color: black;
+      color: white;
+      
+    }
+    .header .left{
+      width: 35px;
+    }
+    .header .center{
+      margin-left: calc(50% - 45px);
+      transform: translateX(-50% );
+    }
+    .main{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .price{
+      text-align: center;
+      padding: 30px;
+      font-size: 28px;
+    }
+    .shopName_wrap{
+      background-color: #fff;
+      display: flex;
+      justify-content: space-between;
+      padding: 8px;
+      width: 95%;
+      margin: 0 auto;
+      border-radius: 5px;
+      font-weight: 550;
+    }
+    #pay{
+      border: none;
+      outline: none;
+      background: rgb(62, 202, 43);
+      color: #fff;
+      padding: 10px;
+      width: 95%;
+      margin: 0 auto;
+      border-radius: 5px;
+      font-size: 20px;
+      margin-top: 25px;
+    }
+    #pay:active{
+      background:  rgb(49, 163, 34);
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="left"><a onclick="javascript:history.back(-1);" style="color: white; text-decoration: none;" rel="external">取消</a></div>
+    <div class="center">确认支付</div>
+  </div>
+  <div class="main">
+    <div class="price">￥<span id="price">17.00</span></div>
+    <div class="shopName_wrap">
+      <span class="payee">收款方</span><span class="shopName">华莱士炸鸡</span>
+    </div>
+    <a href="./支付成功.html" ><input type="button" id="pay" value="立即支付"></a>
+  </div>
+  <script>
+    let sum = JSON.parse(localStorage.getItem('sumPrice')) ||{}
+    let info = JSON.parse(localStorage.getItem('orders')) || []
+    const pay = document.getElementById('price')
+    console.log(sum.allPrice)
+    pay.innerHTML = `${sum.allPrice  || '0'}`
+  </script>
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+  <link rel="stylesheet" href="../../outSouces/jquery.mobile-1.4.5.min.css" />
+  <script src="../../outSouces/jquery.min.js"></script>
+  <script src="../../outSouces/jquery.mobile-1.4.5.min.js"></script>
+  <link rel="stylesheet" href="../../outSouces/swiper.min.css"> 
+  <script src="../../outSouces/swiper.min.js"> </script>
+  <title>HomePage</title>
+  <style>
+    *{
+       margin: 0;
+       padding: 0;
+      }
+      /* 首部 */
+      .position{
+        margin: 20px;
+		
+      }
+      .swiper-container{
+        width: 95%;
+        border-radius: 8px;
+        height: 250px;
+		
+      } 
+    .coll-img{
+      width: 100%;
+    }
+    /* 中间网格 */
+    .ui-grid-c{
+      text-align: center;
+      height: 87px;
+    }
+    .icon-pay{
+      width: 60px;
+    }
+    /* 中间列表 */
+    #mainlist .star {
+        display: block;
+        color: yellow;
+        font-size: 26px;
+        padding-top: 13px;
+       
+      }
+      #mainlist ul li a {
+        background-color: rgba(0, 0, 0, 0.7);
+        color: rgb(230, 217, 217);
+        font-family: "Times New Roman", Times, serif;
+        line-height: 19px;
+        
+      }
+    /* footer */
+    .footer{
+      position: fixed;
+      bottom: 0;left: 0;right: 0;
+      height: 58px;
+    }
+  </style>
+</head>
+<body>
+ 
+  <div data-role="page" id="pageone">
+    <div data-role="header">
+      <div class="position">
+        <a href="地点.html" rel="external" style="color: #000000; display: inline-block;">当前位置</a>
+		<a href="综合排序.html" rel="external" style="float:right; color: #000000;display: inline-block;">附近商家</a>
+      </div>
+      <div class="swiper-container">
+		  <form class="ui-filterable">
+		    <input id="myFilter" data-type="search" placeholder="开心吃喝"> 
+		  </form>
+		  
+        <div class="swiper-wrapper">
+          <div class="swiper-slide" id="slider1"><img src="../../img/主页图片/1.jpg"  alt="" class="coll-img"></div>
+          <div class="swiper-slide" id="slider2"><img src="../../img/主页图片/2.jpg"  alt="" class="coll-img"></div>
+          <div class="swiper-slide" id="slider3"><img src="../../img/主页图片/5.jpg"  alt="" class="coll-img"></div>
+          <div class="swiper-slide" id="slider4"><img src="../../img/主页图片/4.jpg"  alt="" class="coll-img"></div>
+        </div>
+      </div>
+     
+    </div>
+    
+    <div data-role="main" class="ui-content" >
+      <!-- 搜索框 -->
+      
+      <div class="ui-grid-c">
+        <div class="ui-block-a">
+          <div class="nav"><a href="美食列表.html" rel="external"><img src="../../img/主页图片/美食.JPG" alt="" class="icon-pay"></a></div>
+          <span>美食</span>
+        </div>
+        <div class="ui-block-b">
+          <div class="nav"><a href="饮品列表.html" rel="external"><img src="../../img/主页图片/甜品.JPG" alt="" class="icon-pay"></a></div>
+          <span>饮品</span>
+        </div>
+        <div class="ui-block-c">
+          <div class="nav"><a href="夜宵.html" rel="external"><img src="../../img/主页图片/夜宵.JPG" alt="" class="icon-pay"></a></div>
+          <span>夜宵</span>
+        </div>
+        <div class="ui-block-d">
+          <div class="nav"><a href="生鲜列表.html" rel="external"><img src="../../img/主页图片/生鲜.JPG" alt="" class="icon-pay"></a></div>
+          <span>生鲜</span>
+        </div>
+      </div>
+      
+	  <div data-role="main" class="ui-content">
+	      <strong style="display: inline-block;">优惠专区：</strong>
+		  <a href="综合排序.html" rel="external" style="display: inline-block;float: right;font-size: 10px;color: #545454;padding-top: 8px;">更多</a>
+	      <div class="ui-grid-a" style="padding-top: 10px;">
+	        <div class="ui-block-a" style="padding-right: 10px;"><a href="商品详情.html" rel="external"><img src="../../img/discount/1.JPG" style="width: 100%;"></a></div>
+	        <div class="ui-block-b"><a href="牛肉堡详情.html" rel="external"><img src="../../img/discount/2.JPG" style="width: 100%;"></a></div>
+	      </div>
+		  <strong style="display: inline-block;">臻选专区：</strong>
+		  <a href="综合排序.html" rel="external" style="display: inline-block;float: right;font-size: 10px;color: #545454;padding-top: 8px;">更多</a>
+		  <div class="ui-grid-a" style="padding-top: 10px;">
+		    <div class="ui-block-a" style="padding-right: 10px;"><a  href="商品详情.html" rel="external"><img src="../../img/discount/3.JPG" style="width: 100%;"></a></div>
+		    <div class="ui-block-b"><a  href="牛肉堡详情.html" rel="external"><img src="../../img/discount/4.JPG" style="width: 100%;"></a></div>
+		  </div>
+	    </div>
+		
+    
+  
+      <div data-role="none" class="footer" >
+        <div data-role="navbar" >
+          <ul>
+            <li><a href="#" data-icon="home" class="ui-btn-active">主页</a></li>
+            <li><a href="../order/orderHistory.html"rel="external" data-icon="shop">订单</a></li>
+            <li><a href="../user/userPage.html" rel="external" data-icon="user" id="mine">我的</a></li>
+          </ul>
+        </div>
+      </div>
+	
+  </div> 
+  <script>
+  var mySwiper = new Swiper('.swiper-container', {
+    autoplay:{
+      delay:1000,
+    }
+  })
+  </script>
+  <script>
+    const mine = document.querySelector('#mine')
+    mine.addEventListener('click',(event)=>{
+
+    })
+  </script>
+  <script>
+	  var myFilter = document.getElementById("myFilter");
+    myFilter.addEventListener('focus',()=>{
+    	var myurl = "research.html";
+	  	window.location.href= myurl;
+    })
+	  
+  </script>
+</body>
+</html>
