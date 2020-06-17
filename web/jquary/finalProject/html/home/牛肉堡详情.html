@@ -31,16 +31,16 @@
 	<body>
 		<div>
 			<a onclick="javascript:history.back(-1);" rel="external"><img src="../../img/icon/箭头左.png" alt="" class="back" style="width: 40px;;padding-left: 40px;padding-top: 40px;"></a>
-			<img src="../../img/华莱士/WM牛肉堡.JPG" style="width: 100%;padding-top: 40px;" />
+			<img src="../../img/华莱士/WM牛肉堡.JPG" id="foodPic" style="width: 100%;padding-top: 40px;" />
 
 		</div>
 		<div id="intro">
-			<strong style="display: inline-block;font-size: 60px;padding-left: 20px;padding-top: 20px;">田园牛肉堡</strong>
+			<strong style="display: inline-block;font-size: 60px;padding-left: 20px;padding-top: 20px;"><span id="title">田园牛肉堡</span></strong>
 			<span style="display: inline-block;float: right;padding-top: 40px;padding-right: 20px;font-size: 32px;">联系商家</span>
 
 			<p style="color: grey;padding-left: 10px;font-size: 30px;">月售392</p>
 
-			<span style="color: red;font-size: 70px;padding-left: 20px;">¥10¥</span>
+			<span style="color: red;font-size: 70px;padding-left: 20px;">¥<span id="price">10</span></span>
 			<button onclick="jump()" style="width:140px;height:60px;background-color:#f4c300;border-radius:35px;font-size: 25px;float: right;margin: 20px;">相似推荐</button>
 
 			<HR style="FILTER: alpha(opacity=100,finishopacity=0,style=1)" width="100%" color=#cccccc SIZE=3>
@@ -54,6 +54,28 @@
 					var myurl = "商品详情.html";
 			        window.location.href= myurl;
 			    }
+					const price = document.getElementById('price');
+					const title = document.getElementById('title');
+					const foodPic = document.getElementById('foodPic');
+					const button = document.getElementsByClassName('button1')[0];
+					let orders=[]
+					button.addEventListener('click',()=>{
+						order = {
+						id:1,
+						foodName:title.innerHTML,
+						pic:foodPic.src,
+						price:parseFloat(price.innerHTML),
+						count_input:1,
+						subpricetotal: price.innerHTML
+					}
+					orders.push(order)
+					let sumPrice = {
+					allPrice:parseFloat(price.innerHTML)
+				}
+					localStorage.setItem('orders',JSON.stringify(orders))
+					localStorage.setItem('sumPrice',JSON.stringify(sumPrice))
+					window.location.href = '../order/确认交易.html'
+					})
 		</script>
 	</body>
 </html>

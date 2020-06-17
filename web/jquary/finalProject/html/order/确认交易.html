@@ -80,11 +80,12 @@
     <a href="./支付成功.html" ><input type="button" id="pay" value="立即支付"></a>
   </div>
   <script>
+    window.addEventListener('load',()=>{
     let sum = JSON.parse(localStorage.getItem('sumPrice')) ||{}
-    let info = JSON.parse(localStorage.getItem('orders')) || []
     const pay = document.getElementById('price')
-    console.log(sum.allPrice)
+    console.log(sum)
     pay.innerHTML = `${sum.allPrice  || '0'}`
+    })
   </script>
 </body>
 </html>

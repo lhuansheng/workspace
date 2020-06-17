@@ -1,5 +1,117 @@
 <html>
 	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+		<style type="text/css">
+			body,
+			html,
+			#allmap {
+				width: 100%;
+				height: 100%;
+				overflow: hidden;
+				margin: 0;
+				font-family: "微软雅黑";
+			}
+			 /* 头部  */
+  .back-to-userPage{
+    padding: 10px;
+    background-color: rgb(135, 209, 238);
+   
+  }
+  .back-to-userPage a{
+    text-decoration: none;
+    color: rgb(77, 75, 75);
+  }
+  .back-to-userPage .arrow-left{
+    width: 20px;
+    vertical-align: middle;
+  }
+  .back-to-userPage span{
+    display: inline-block;
+    margin-left: calc(50% - 20px);
+    transform: translateX(-50%);
+  }
+  .back-to-userPage .saveImg{
+    width: 20px;
+    vertical-align: middle;
+    margin-left: 50px;
+  }
+	.tosave{
+		display: inline-block;
+	}
+	.myposi{
+		position: absolute;
+		top: 50px;
+		left: 10px;
+	}
+	.posi{
+		outline: none;
+		border: 1px solid #000;
+		width: 95vw;
+		padding: 10px;
+		border-radius: 5px;
+	}
+		</style>
+		<script type="text/javascript" src="//api.map.baidu.com/api?v=2.0&ak=vSPqE8AZ2GOsVLZoXIp6P4S8zL8fPGV5"></script>
+		<title>浏览器定位</title>
+	</head>
+
+	<body>
+	
+      <div class="back-to-userPage">
+       <a href="../home/homePage.html" rel="external">
+        <img src="../../img/icon/箭头左.png" alt="" class="arrow arrow-left" id="back">
+        <span>我的位置</span>
+       </a>
+       <div class="tosave"><img src="../../img/icon/save.png" alt="" class="saveImg"></div>
+    
+      </div>
+    
+		<div id="allmap"></div>
+		<!--会有偏差-->
+		<div class="myposi"><input type="text" class="posi"></div>
+	</body>
+<script type="text/javascript">
+	var map = new BMap.Map("allmap"); //创建Map实例，注意页面中一定要有个id为allmp的div
+	var point = new BMap.Point(116.331398, 39.897445); //创建定坐标
+	const posi = document.getElementsByClassName('posi')[0]
+	const tosave = document.getElementsByClassName('tosave')[0]
+	map.centerAndZoom(point, 12); //// 初始化地图,设置中心点坐标和地图级别
+
+	var geolocation = new BMap.Geolocation();
+	var gc = new BMap.Geocoder(); //创建地理编码器
+	// 开启SDK辅助定位
+	geolocation.enableSDKLocation();
+	geolocation.getCurrentPosition(function(r) {
+		if(this.getStatus() == BMAP_STATUS_SUCCESS) {
+			var mk = new BMap.Marker(r.point);
+			map.addOverlay(mk);
+			map.panTo(r.point);
+			// alert('您的位置：' + r.point.lng + ',' + r.point.lat);
+
+			var pt = r.point;
+			gc.getLocation(pt, function(rs) {
+				var addComp = rs.addressComponents;
+				//alert(addComp.city);
+				posi.value = addComp.province + addComp.city + addComp.district + addComp.street + addComp.streetNumber
+				// alert(addComp.province + addComp.city + addComp.district + addComp.street + addComp.streetNumber);
+				tosave.addEventListener('click',()=>{
+					alert('保存成功')
+					localStorage.setItem('position',JSON.stringify(posi.value))
+				})
+			});
+
+		} else {
+			alert('failed' + this.getStatus());
+		}
+		
+	});
+
+</script>
+</html>
+
+<!-- <html>
+	<head>
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<link rel="stylesheet" href="../../outSouces/jquery.mobile-1.4.5.min.css" />
   	<script src="../../outSouces/jquery.min.js"></script>
@@ -129,4 +241,4 @@
 		}
 		
 	})
-</script>
+</script> -->

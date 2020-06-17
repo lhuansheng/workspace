@@ -63,8 +63,8 @@
   <div data-role="page" id="pageone">
     <div data-role="header">
       <div class="position">
-        <a href="地点.html" rel="external" style="color: #000000; display: inline-block;">当前位置</a>
-		<a href="综合排序.html" rel="external" style="float:right; color: #000000;display: inline-block;">附近商家</a>
+        <a href="地点.html" rel="external" style="color: #000000; display: inline-block; text-decoration: none;" id="posi">当前位置</a>
+		<a href="综合排序.html" rel="external" style="float:right; color: #000000;display: inline-block;text-decoration: none;">附近商家</a>
       </div>
       <div class="swiper-container">
 		  <form class="ui-filterable">
@@ -150,7 +150,9 @@
     	var myurl = "research.html";
 	  	window.location.href= myurl;
     })
-	  
+	  let posi = document.getElementById('posi')
+    let info = JSON.parse(localStorage.getItem('position'))
+    posi.innerHTML = info || 当前位置
   </script>
 </body>
 </html>

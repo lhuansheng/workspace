@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="../../outSouces/jquery.mobile-1.4.5.min.css" />
     <script src="../../outSouces/jquery.min.js"></script>
     <script src="../../outSouces/jquery.mobile-1.4.5.min.js"></script>
-    <title>订单</title>
+    <title>历史订单</title>
     <style>
       /* header */
       * {
@@ -22,17 +22,14 @@
         border: none;
       }
       .back-to-userPage {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
         padding: 10px;
         color: white;
         background-color: rgb(108, 203, 247);
-      }
-      .back-to-userPage a {
-        text-decoration: none;
-        color: rgb(77, 75, 75);
-      }
-      .back-to-userPage .arrow-left {
-        width: 20px;
-        vertical-align: middle;
+        text-align: center;
       }
       .back-to-userPage span {
         vertical-align: middle;
@@ -78,7 +75,10 @@
       #listview {
         height: 500px;
       }
-
+      #order_wrap{
+        margin-bottom: 60px;
+        margin-top: 50px;
+      }
       .footer {
         position: fixed;
         bottom: 0;
@@ -92,36 +92,11 @@
     <div data-role="page" id="pageone">
     <div data-role="none" id="header">
       <div class="back-to-userPage">
-        <a href="./userPage.html" rel="external">
-          <img
-            src="../../img/icon/箭头左.png"
-            alt=""
-            class="arrow arrow-left"
-          />
-          <span>外卖</span>
-        </a>
+          <span>历史订单</span>
       </div>
     </div>
     <div id="order_wrap">
-      <!-- <div class="order">
-        <div class="order_detail order_top">
-          <div class="order_top_left">
-            <img src="../../img/logoImg/panda.png" alt="" class="foodImg" />
-            <span class="title">三叔公炸酱面</span>
-          </div>
-          <div class="order_top_right">
-            已送达
-          </div>
-        </div>
-        <div class="order_detail order_center">
-          <div class="order_center_left">
-            总共 <span class="num">1</span> 件商品
-          </div>
-          <div class="order_center_right">
-            ￥16
-          </div>
-        </div>
-      </div> -->
+      <!-- 插入动态html -->
     </div>
     <div data-role="none" class="footer">
       <div data-role="navbar">
@@ -138,7 +113,7 @@
     <script>
       let info = JSON.parse(localStorage.getItem('bought')) || [];
       let order_wrap = document.getElementById('order_wrap');
-      $('#order_wrap').append(info.map((ele)=>
+      $('#order_wrap').prepend(info.map((ele)=>
         `<div class="order">
         <div class="order_detail order_top">
           <div class="order_top_left">
