@@ -1,0 +1,52 @@
+<script>
+  
+  const NOP = () => {
+    'use strict';
+  }
+  // EOF end of file 文件结束的符号
+  // 函数调用的位置
+  // 严格模式 
+  function foo(a,b,c){
+    console.log(this)
+  }
+  foo()
+  // 1: 默认指向 window
+
+  // 2: obj , 方式调用， this 指向这个 obj
+  let obj = {
+    name: 'lihua',
+    foo: foo
+  }
+  obj.foo()
+  // 注意
+  let fn = obj.foo
+  fn()  // window 
+
+
+ let newObj = {}
+  // 3. call apply bind
+  // call/apply 指定 this 调用函数 foo()
+  // 进阶版本
+  foo.apply(newObj,[])
+  foo.call(newObj,'a','b','c')
+  // bind 只绑定 this，给这个函数部分参数
+  // 但不调用的
+  foo.bind(newObj)
+  
+  let that = null
+  function Animal(){
+    // this
+    console.log(this)
+  }
+  var dog = new Animal()
+  console.log(that === dog)
+
+  // 看函数在哪里调用
+  // 4：new： this 指向 new 创建完的对象
+  // 3：call/apply 和bind：第一个参数
+  // 2：obj. : 指向这个对象
+  // 1：默认指向window， 严格模式指向 underfined
+
+  // es6 箭头函数看函数在哪里定义的, this 看外层函数
+
+</script>

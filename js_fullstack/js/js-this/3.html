@@ -1,0 +1,28 @@
+<script>
+  this.a = 20;  //30
+function go() {
+  // new 原理
+  // 创建一个对象 {}.__proto__ = go.prototype
+   console.log(this.a);
+  //  this 上面的 a 被改了
+   this.a = 30;
+}
+go.prototype.a = 40;
+var test = {
+   a: 50,
+   init: function (fn) {
+    //  fn 是一个普通的函数
+    // 在哪里以上面样的方式调用
+    // 只影响这里面的this，不影响 fn里面的this
+     fn();
+     console.log(this.a);
+     return fn;
+   }
+};
+console.log((new go()).a); // 40
+// test.init(go); // this === test //20 50 
+// // 坑
+// // 加了括号就会调用
+// var p = test.init(go); // init 返回值 // 30 50
+// p(); 
+</script>
