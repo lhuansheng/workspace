@@ -10,10 +10,10 @@ import { fromJS } from 'immutable'
 // export const getHomeList = () => {
 //   console.log(1);
 // }
-export const getHomeList = {
+export const homeListActionCreator =(homeList)=> ({
   type: GET_HOME_LIST,
-  homeList: fromJS([0,1,2,3])
-}
+  homeList
+})
 // 
 // dispatch({
 
