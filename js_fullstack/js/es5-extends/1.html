@@ -1,0 +1,36 @@
+<script>
+  function Animal(){
+    this.live = 'land'
+    this.eat = []
+  }
+  function Cat () {
+    // new + this
+    Animal.call(this) // 继承属性的： 父类有的属性，继承到自己的内部属性上
+    this.sound = '喵喵喵'
+  }
+  Cat.prototype = new Animal()
+  Cat.prototype.jump = () =>{
+    console.log(40)
+  }
+  // let ani = new Animal()
+  // ani 包含了 Animal 内部的属性以及 Animal.prototype 
+  /*
+  ani = {
+    live: land,
+    __proto__: Animal.prototype
+  }
+  */
+  // Cat.prototype = ani;//cat 的原型对象指向了 ani
+  /* Cat.prototype = {
+    live: land,
+    __proto__: Animal.protptype
+  } */
+
+  let c1 = new Cat()
+  let c2 = new Cat()
+  let c3 = new Cat()
+  let c4 = new Cat()
+
+  /* c1 有 Cat 内部的属性，也有 cat.prototype 的属性 */
+  console.log(c1)
+</script>

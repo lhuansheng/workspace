@@ -1,0 +1,42 @@
+<script>
+  function Animal() {
+    this.live = "land";
+    this.eat = [];
+  }
+  function Cat() {
+    Animal.call(this);
+    this.sound = "喵喵喵";
+  }
+  // Cat.prototype = new Animal();
+  // cat.Prototype 没有 但是我能 找到 Animal.prototype
+  // 继承方法的写法： 目的： 让子类的 Cat.protype 能够在原型链查找到 Animal.protype
+  // 1
+  // Object.setPrototypeOf(Cat.prototype,Animal.prototype)
+  // Cat.prototype.__proto__ = Animal.prototype
+  // 2
+  // Object.create() 接受一个对象(obj), 会返回一个 继承自obj的新对象
+  // function create(obj){
+  //   function f(){}
+  //   f.prototype = obj
+  //   // 产生一个新对象
+  //   // 这个对象 继承了 f.prototype 继承了 obj
+  //   return new f();
+  // }
+  // 3
+  // 官方  Object.create() 接受一个对象(obj), 会返回一个 继承自obj的新对象
+  Cat.prototype = Object.create(Animal.prototype)
+
+
+
+  Animal.prototype.run = () => {
+    console.log(40);
+  };
+  Cat.prototype.jump = () => {
+    console.log('jump')
+  }
+  let c1 = new Cat()
+  let c2 = new Cat()
+  let c3 = new Cat()
+  let c4 = new Cat()
+  console.log(c1)
+</script>
