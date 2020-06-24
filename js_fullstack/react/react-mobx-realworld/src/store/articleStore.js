@@ -1,16 +1,22 @@
 import { observable, action } from 'mobx';
 import axios from 'axios';
 const LIMIT = 10;
-
+// observable: 可观测的 === react state
+// action: 修改你的 action 必须 发起一个 action
 class ArticleStore {
   // observable state 用 observable 修饰过的变量 变量被修改了 页面就会就会重新渲染
   // es @ 装饰器
   LIMIT = LIMIT
+  // react state 响应式 VM
   @observable articles = {
-    all: []
+    all: [],
+    tag1:[],
+    tag2:[]
   }
   @observable total = 0;
   // 繁杂的逻辑 尽量 写到 store
+  @observable tags = []
+
   @action
   getArticle(tag, offset = 0) {
     axios.get('/articles', {
@@ -26,7 +32,17 @@ class ArticleStore {
       this.total = res.articlesCount
     })
   }
-
+  handleTabChange=(key)=>{
+    // console.log(key)
+    this.getArticle(key)
+  }
+  @action
+  getTags() {
+    axios.get('./tags').then(res => {
+      // 修改 state
+      this.tags = res.tags
+    })
+  }
 }
 
 export default new ArticleStore();
