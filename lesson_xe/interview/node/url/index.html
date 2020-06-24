@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- <script src="index.js">
+  </script> -->
+  <script>
+    // 实际应用场景 中 url 不需要传的,我们可以通过 ? 获得
+    function getQueryString(){
+      let url = location.search;
+      console.log(url)
+      let obj = new Object()
+      if(url.indexOf('?') != -1){
+        var str = url.substr(1)
+        console.log(str)
+      }
+      let strs = str.split('&')
+      for (var i = 0; i < strs.length; i++) {
+        // 怎么解决编码问题
+      obj[strs[i].split("=")[0]] = decodeURI(strs[i].split("=")[1]);
+      console.log(obj)
+    }
+    }
+    console.log(getQueryString())
+  </script>
+</body>
+</html>
