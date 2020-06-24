@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  *{
+    padding: 0;
+    margin: 0;
+  }
+  .main{
+    width: 400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+  }
+  .wrap{
+    display: flex;
+    margin-top: 20px;
+    justify-content: space-between;
+  }
+  .numSer{
+    align-self: start;
+  }
+  .btn{
+    align-self: start;
+  }
+  #cal_btn{
+    padding: 5px;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    margin-bottom: 20px;
+    background-color: rgb(82, 192, 243);
+  }
+  #cal_btn:hover{
+    background-color: rgb(37, 174, 238);
+  }
+  #cal_btn:active{
+    background-color: rgb(8, 134, 192);
+  }
+  .footer{
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+  }
+  .table{
+    margin: 0 auto;
+  }
+  .value_title{
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .row{
+    display: flex;
+    margin: 0 auto;
+  }
+  .flag{
+    border: 1px solid #000;
+    display: flex;
+    flex-direction: column;
+    text-align: center; 
+  }
+  .value_title{
+    background-color: rgb(255, 187, 0);
+  }
+  .value{
+    height: 30px;
+    padding-top: 3px;
+  }
+</style>
+<body>
+  <div class="main">
+    <div class="wrap">
+      <label for="arri" class="title">Arrivalrate: </label>
+      <input type="number" id="arri">
+      <span class="time">cust/hour</span>
+    </div>
+    <div class="wrap">
+      <label for="serv" class="title">Servicerate: </label>
+      <input type="number" id="serv">
+      <span class="time">cust/hour</span>
+    </div>
+    <div class="wrap numSer">
+      <label for="numSer" class="title">Number of Servers: </label>
+      <input type="number" id="numSer">
+     
+    </div>
+    <div class="wrap btn">
+      <input type="button" id="cal_btn" value="Calculate...">
+    </div>
+    
+  </div>
+  <div class="footer">
+    <div class="table">
+      <div class="row flag_wrap">
+        <div class="flag">
+          <div class="value_title">Lambda</div>
+          <div class="value"></div>
+        </div>
+        <div class="flag">
+          <div class="value_title"> My</div>
+          <div class="value"></div>
+        </div>
+        <div class="flag">
+          <div class="value_title">Servers</div>
+          <div class="value"></div>
+        </div>
+        <div class="flag">
+          <div class="value_title"> Num cust in queue</div>
+          <div class="value"></div>
+        </div>
+        <div class="flag">
+          <div class="value_title">Num cust in system</div>
+          <div class="value"></div>
+        </div>
+        <div class="flag">
+          <div class="value_title">waittime in queue</div>
+          <div class="value"></div>
+        </div>
+        <div class="flag">
+          <div class="value_title">waittime in system</div>
+          <div class="value"></div>
+        </div>
+        <div class="flag">
+          <div class="value_title">Utilization</div>
+          <div class="value"></div>
+        </div>
+        <div class="flag">
+          <div class="value_title">Prob of 0 cust in system</div>
+          <div class="value"></div>
+        </div>
+      </div>
+    </div>
+   </div>
+   <script>
+      const arri = document.getElementById('arri')
+      const serv = document.getElementById('serv')
+      const numSer = document.getElementById('numSer')
+      const cal_btn = document.getElementById('cal_btn')
+      const val = document.getElementsByClassName('value')
+      cal_btn.addEventListener('click',()=>{
+       let arri_val = arri.value
+       let serv_val = serv.value
+      let numSer_val = numSer.value
+       val[0].innerHTML = arri_val
+       val[1].innerHTML = serv_val
+       val[2].innerHTML = 1
+       val[3].innerHTML =Lq()
+       val[4].innerHTML = Ls()
+       val[5].innerHTML = Wq()
+       val[6].innerHTML = Ws()
+       val[7].innerHTML = Utilization()
+       val[8].innerHTML = Prob()
+
+      //  console.log(p0(0,numSer_val))
+      })
+      // 阶乘
+      let factorial = function(a){
+            let sum = 1;
+            for(let i=1;i<=a;i++){
+                sum *= i;
+                
+            }
+            return sum;
+        };
+
+      let p0 = function(k,c){
+        let sum = 0;
+        for(let i = k; i<c; i++){
+          let v = arri.value, 
+          u = serv.value, 
+          p = 1/(1-(v/(c*u))), 
+          v_u = v/u
+          sum = parseFloat(sum) + 
+          1/((1/factorial(k))*Math.pow(v_u,k) +
+          (1/factorial(c))*p*Math.pow(v_u,c))
+          // console.log(i,'----')
+          // console.log((1/factorial(k))*Math.pow(v_u,k))
+          // console.log(1/factorial(c)) //1
+          // console.log(p) //6
+          // console.log(Math.pow(v_u,c)) // 5/6
+        }
+        return sum.toFixed(4)
+      }
+      let Lq = function(){
+        let v = arri.value, 
+          u = serv.value, 
+          c = numSer.value,
+          p = v/(c*u);
+          let sum = (Math.pow((c*p),c)*p*p0(0,c))/(factorial(c)*Math.pow(1-p,2))
+          // console.log(Math.pow((c*p),c)*p*p0(0,c))
+          // console.log(factorial(c))
+          // console.log(Math.pow(1-p))
+          return parseFloat(sum).toFixed(4)
+         
+      }
+      let Ls = function(){
+        let v = arri.value, 
+          u = serv.value,  
+          v_u = v/u;
+          
+      let sum = parseFloat(Lq()) + v_u
+      return sum.toFixed(4)
+          
+      }
+      let Wq = function(){
+        return (parseFloat(Lq()) / arri.value).toFixed(4)
+      }
+      let Ws = function(){
+        return (parseFloat(Ls())/arri.value).toFixed(4)
+      }
+      let Utilization = function(){
+        let v = arri.value, 
+          u = serv.value, 
+          c = numSer.value,
+          p = v/(c*u);
+          return p.toFixed(4)
+      }
+      let Prob = function(){
+        return  (1-parseFloat(Utilization())).toFixed(4)
+      }
+   </script>
+</body>
+</html>
