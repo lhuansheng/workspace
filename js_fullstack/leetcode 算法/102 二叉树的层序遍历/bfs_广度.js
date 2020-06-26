@@ -1,11 +1,18 @@
 var levelOrder = function (root) {
   // if (!root) return [];
   let queue = [root]
+  let res = []
+ while(queue.length){
+    // 上一层的都出队列
+  let rowNodes = queue.splice(0)
   // 下一层的元素, 拿到上一层的所有元素, 遍历上一层的所有元素,取出所有 .left .right
-  for(let node of queue){
+  for(let node of rowNodes){
+    res.push(node.val)
+    // 假设 既没有 left right 二叉树最底下这层， queue.length === 0
     if(node.left) queue.push(node.left)
     if(node.right) queue.push(node.right)
   }
-
-  // 55:00:00
+  
+ }
+ return res
 }
