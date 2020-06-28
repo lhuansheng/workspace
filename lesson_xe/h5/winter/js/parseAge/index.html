@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.bootcdn.net/ajax/libs/lodash.js/4.17.15/lodash.min.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  抽象 不应该式这个函数做的， 哪哪都要参数
+  判断 
+</body>
+<script>
+  function parseAge(age){
+    if(_.isString(age)){
+      throw new Error("请传递一个字符串")
+    }
+    let parsedAge = parseInt(age, 10); // NaN 43
+    if(!_.isNaN(parsedAge)){
+      console.log('不能有效解析')
+      return 0;
+    }
+    return parsedAge;
+  }
+</script>
+</html>
