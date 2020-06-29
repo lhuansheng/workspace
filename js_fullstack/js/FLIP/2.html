@@ -117,19 +117,13 @@
     let imags = SISTERS.slice(i, i + 2);
     // 执行一些 让节点 位置/大小 变化的逻辑
     const images = document.querySelectorAll('img');
-
-
     const firstPosition = [...images].map((img, i) => {
       return img.getBoundingClientRect()
     })
     // first
-
-
     // 随机的逻辑
     // 洗牌算法；排序，排完之后插到 wrap 里面去
     // 随机完了 我怎么知道 图片 前后的位置对应起来
-
-
     for (let imgUrl of imags) {
       const imageNode = document.createElement('img');
       imageNode.src = imgUrl;
