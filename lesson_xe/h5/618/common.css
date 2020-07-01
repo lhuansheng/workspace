@@ -1,0 +1,38 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+#app {
+  font-family: Avenir,Helvetica,Arial,sans-serif;
+  /* 抗锯齿 使得字体更加平滑 */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  top: 50%;
+}
+#app, .win {
+  position: absolute;
+  width: 750px;
+  height: 100%;
+  left: 50%;
+  overflow: hidden;
+  margin-left: -375px;
+}
+#playVideo {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+.innerwin, .vvw {
+  position: absolute;
+  width: 750px;
+  margin-left: -375px;
+  left: 50%;
+}
+.innerwin[data-v-317b8af1] {
+  /* height: 1206px; */
+  top: 50%;
+  /* margin-top: -603px; */
+}
