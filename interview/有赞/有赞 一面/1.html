@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* 选择第一个li后面所有的标签，第一个不选择 */
+    li + li {
+      border-left: 1px solid #000;
+    }
+    ul li{
+      color: red;
+    }
+    /* 子选择器，只能选择儿子这一层 */
+    ul > li{
+      color: blue;
+    }
+  </style>
+</head>
+<body>
+  <ul>
+    <li>1
+     
+    </li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <div><li>0000</li></div>
+  </ul>
+  <script>
+    console.log(document.querySelectorAll('li + li'))
+    // 立即 resolve 的promise
+    let promise = Promise.resolve(1)
+    let promise2 = new Promise((resolve,reject)=>{
+      setTimeout(() => {
+        reject(2)
+      }, 1000);
+    })
+    let promise3 = new Promise((resolve,reject)=>{
+      setTimeout(() => {
+        resolve(3)
+      }, 1000);
+    })
+    let promise4 = new Promise((resolve,reject)=>{
+      // setTimeout(() => {
+        resolve(4)
+      // }, 1000);
+    })
+    // 所有的异步任务是成功的才会成功
+    // Promise.all([promise,promise2,promise3]) // 返回 promise
+    // .then(res =>{
+    //    console.log(res)
+    // })
+    // .catch() //失败时
+
+    // Promise.race([promise3,promise2]) // 返回最快执行的那个promise,错则返回错，对返回对
+    // .then(res =>{
+    //   console.log(res)
+    // })
+    // .catch()
+    
+    Promise.allSettled([promise,promise2,promise3]) // 数组方式返回所有promise,对错都返回
+    .then(res =>{
+       console.log(res)
+    })
+    .catch() //失败时
+
+    let name = 'lilei'
+    function fo(){
+      console.log(name)
+    }
+    function changeName(){
+     let  name = 'lihua'
+      fo()
+    }
+    changeName()
+  </script>
+</body>
+</html>
