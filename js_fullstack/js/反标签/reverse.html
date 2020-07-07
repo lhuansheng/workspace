@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="wrap">
+    <p>1</p>
+    <div>2</div>
+    <span>3</span>
+  </div>
+  <!-- 
+    <li>3</li>
+    <span>2</span>
+    <p>1</p>
+   -->
+   <div class="wrap2"></div>
+  <script>
+    // document.createElement()
+    // document.appendChild()
+    // document.removeChild()
+    // 同一个dom节点只能有一个 父节点， (同一个dom 节点不能从属于两个父节点)
+    const childs = document.querySelector('.wrap')
+    const eles = childs.childNodes
+    const copy = [...eles];
+    // console.log(eles)
+    // childs.innerHTML = ''
+    for(let len = eles.length - 1; len>=0; len --){
+      console.log(eles)
+      // childs.appendChild(eles[len])
+      childs.appendChild(eles[len])
+      childs.appendChild(eles[len])
+     
+    
+
+    }
+    // document.querySelector('.wrap2').appendChild(eles[1])
+
+  </script>
+</body>
+</html>
