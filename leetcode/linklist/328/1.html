@@ -1,0 +1,31 @@
+<script>
+  
+  var oddEvenList = function(head) {
+    let l1 = {val: null, next: null}, l1Curr = l1,
+        l2 = {val: null, next: null}, l2Curr = l2,
+        curr = head,
+        i = 1;
+    while(curr){
+      if(i % 2 !==0){
+        l1Curr.next = curr
+        l1Curr = l1Curr.next
+      }
+      else{
+        l2Curr.next = curr
+        l2Curr = l2Curr.next
+      }
+      i ++;
+      curr = curr.next
+    }
+    if( i % 2 != 0){
+      l1Curr.next = null
+    }
+    else{
+      l2Curr.next = null
+    }
+    l1Curr.next = l2
+    return l1
+};
+console.log(oddEvenList({ val: 1, next: { val: 2, next: {val: 3, next: { val: 4, next: {val: 5, next: null}}} } })
+)
+</script>
