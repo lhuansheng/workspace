@@ -1,81 +1,82 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+// 数据与组件分离
+import axios from 'axios'
+import './mock/data.js'
+// JSX state MVVM 行为 oo面向对象
 
-class Dog extends Component {
-  constructor() {
-    super();
-    this.state = {
-      isRunning: false,
-      isBarking: false
-    }
-  }
-  bark () {
-    this.setState({
-      isBarking: true
-    })
-    console.log('bark------');
-  }
-  run() {
-    this.setState({
-      isRunning: true
-    })
-    console.log('run');
-  }
-  barkAndRun () {
-    this.bark();
-    this.run();
-    setTimeout(() => {
-      this.setState({
-        isRunning: false,
-        isBarking: false
-      }, () => {
-        console.log('不叫了， 停下来了');
-      });
-    }, 2000)
-  }
-  render() {
+// 函数的返回值是一个组件
+// /post/ axios api url
+// Post 组件作为参数 高阶组件
+// 通用性的提供数据请求及更新的解决方案
+// 有人为它服务
+
+class Post extends Component {
+  render(){
     return (
-      <div onClick={this.barkAndRun.bind(this)} ref='dg'>
-        Dog
-        
+      <div>
+        <p>{this.props.msg}</p>
+        <p>{this.props.content}</p>
       </div>
     )
   }
-  componentDidMount(){
-
-  }
 }
-class Poem extends Component{
-  componentDidMount(){
-    console.log(this.p.offsetHeight)
-  }
+class Comment extends Component{
   render(){
-    const {content} = this.props
     return(
-      <p ref={(p)=>{this.p = p}}>
-        {content}
-      </p>
+      <div>
+        Comment
+      </div>
     )
   }
 }
-class Message extends Component{
-  render(){
-    let {count} = this.props
-   return(
-    <div>
-      {console.log((count>0 && count <100)? count: 0)}
-    </div>
-   )
+const loadAndRefresh=(url)=>(WrappedComponent)=>{
+  return class extends Component {
+    constructor(){
+      super()
+      this.state={
+        msg:'',
+        content:''
+      }
+    }
+    componentDidMount(){
+      // 管理数据请求
+      this._loadData();
+    }
+    async _loadData(){
+      this.setState({
+        msg:'数据加载中...'
+      })
+      axios.get(url)
+      .then(res =>{
+        // console.log(res.data)
+        this.setState({
+          msg: res.data.title
+        })
+      })
+    }
+    render(){
+      const props = {
+        msg: this.state.msg,
+        content: this.state.content
+      }
+      return (
+        <WrappedComponent {...props} />
+      )
+    }
   }
 }
 
+const WrappedPost = loadAndRefresh('/posts/')(Post)
+const WrappedComment = loadAndRefresh('/comments/')(Comment)
 function App() {
   return (
     <div className="App">
-      {/* <Dog ref='dog'/> */}
-      <Poem content = "addadfadfadfsada"/>
-      <Message count={23}/>
+      {/* message */}
+     {/* <Post /> */}
+     <WrappedPost />
+     <WrappedComment />
     </div>
   );
 }
