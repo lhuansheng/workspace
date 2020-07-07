@@ -1,0 +1,40 @@
+<script>
+  // 元编程 对编程语言的再编程
+  class myArr{
+    static a = 1
+    // 可以自定义是否能有实例，
+    static [Symbol.hasInstance](obj){
+      return true;
+    }
+    
+    push(){
+      console.log('发生了 push, 和原生 push 一样')
+    }
+  }
+  let r= '23023232'
+  let obj = {
+      [r]:'123',
+      'r':'233',
+    }
+    
+    console.log(obj)
+    console.log(obj[r],obj['r'],obj.r)// 有[] 可以动态变化 .是固定获取某个值
+    for(let key in obj){
+      console.log(obj[key])
+    }
+    let arr1 = []
+  let arr = new myArr()
+  // console.log(arr.foo())
+  console.log(arr instanceof myArr)
+  console.log(arr1 instanceof myArr)
+
+  function myInstance(obj, Constructor){
+    if(Constructor[Symbol.hasInstance])
+    proto = obj.__proto__;
+    if(proto === null) return false
+    if(proto === Constructor.prototype){
+      return true
+    }
+    return myInstance(proto, Constructor)
+  }
+</script>
