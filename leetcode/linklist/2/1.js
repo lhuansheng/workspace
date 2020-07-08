@@ -6,6 +6,7 @@ let str2 = '9'
 let addTwoNumbers = (l1, l2)=>{
   
   let len1 = l1.length
+  
   let len2 = l2.length
   let str=''
   
@@ -23,6 +24,7 @@ let addTwoNumbers = (l1, l2)=>{
     let str1char = parseInt(l1.charAt(i))
     let str2char = parseInt(l2.charAt(j))
     let sum = str1char+str2char
+    
     
     
     if(sum+count<10 ){
