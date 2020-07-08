@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import counter from './components/counter'
+import Counter from './components/counter'
 
 class App extends Component {
+ 
  render(){
+  const {store} = this.props
    return (
-     <counter />
+     <Counter store = {store}/>
    )
  }
 }

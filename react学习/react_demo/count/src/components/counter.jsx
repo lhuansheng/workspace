@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-export default class extends Component{
+class Counter extends Component{
   constructor() {
     super();
     // this.state = {
@@ -22,13 +22,13 @@ export default class extends Component{
   };
   incrementIfOdd = () => {
     // const { count } = this.state;
-    if (count % 2 !== 0 ) {
+    // if (count % 2 !== 0 ) {
       const { select_number } = this.refs;
 
       // this.setState({
       //   count: count + select_number.value * 1,
       // });
-    }
+    // }
   };
   incrementAsync = () => {
     setTimeout(() => {
@@ -43,7 +43,7 @@ export default class extends Component{
     // let { count } = this.state;
     return (
       <div className="App">
-        <p>counter: 21</p>
+        <p>counter: { this.props.store.getState()}</p>
         <select ref="select_number">
           <option value="1">1</option>
           <option value="2">2</option>
@@ -58,3 +58,5 @@ export default class extends Component{
     );
   }
 }
+
+export default Counter

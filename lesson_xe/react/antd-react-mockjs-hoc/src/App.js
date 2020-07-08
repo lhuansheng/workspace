@@ -2,7 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import  { Table} from 'antd'
-import 'antd/dist/antd.css'
+// import 'antd/dist/antd.css'
 // 全局的就可以 css 是一定要引入的
 // antd 全局引入方式 babel
 const dataSource = [
