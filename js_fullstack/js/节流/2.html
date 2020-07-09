@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+      body{
+      width: 100vw;
+      height: 100vh;
+    }
+</style>
+<body>
+  <script>
+    const body = document.body;
+    function getUserInfo(){
+      console.log('发出请求')
+    }
+    body.onmousemove = throttled(getUserInfo,3000)
+    function throttled(func, wait){
+      let previous = 0
+      let time = null
+      return function() {
+        let now = new Date().getTime()
+        // 修正了 timeout 时间间隔
+        let remain = wait - (now - previous)
+        if(now - previous > wait){
+          func()
+          previous = now
+        }
+        else if(!time){
+          time = setTimeout(() => {
+              func()
+              time = null
+              // 时间戳只运用于 头事件，
+              // 之后中间的 事件触发 (时间戳和 timeout 是互斥的)
+              // 为了不让 时间错触发 事件，更新 previous
+              previous = new Date().getTime()
+            }, remain);
+          }
+      }
+    }
+  </script>
+</body>
+</html>

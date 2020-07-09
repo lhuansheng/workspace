@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* view port width */
+    body{
+      width: 100vw;
+      height: 100vh;
+    }
+  </style>
+</head>
+<body>
+  <script>
+    // 节流， 使用时间戳
+    const body = document.body;
+    function getUserInfo(){
+      console.log('发出请求')
+      
+    }
+    body.onmousemove = throttled1(getUserInfo,1000)
+    // scroll
+    // resize
+    // 时间戳
+    // 头部时间有了，尾巴没有
+    // 方法 1
+    function throttled(func,wait){
+      let previous = 0;
+      // console.log('外')
+      return function (){
+        let now = new Date().getTime()
+        // console.log('里面')
+        if(now - previous > wait){
+          func();
+          previous = now
+        }
+      }
+    }
+    // 方法 2
+    // 定时器实现
+    // 头没有 尾部事件有
+    function throttled1(func,wait){
+      let timeout = null
+      return function (){
+        if(!timeout){
+          timeout = setTimeout(() => {
+            func()
+            timeout = null
+          }, wait);
+        }
+      }
+    }
+  </script>
+</body>
+</html>
