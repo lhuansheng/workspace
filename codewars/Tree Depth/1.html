@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let tree = { a: 1, b: 2, c: { d: { e: 3 } } }
+// 递归的特性是什么，每一层都有相似的遍历
+let count = -1
+debugger
+function recordDepth(tree) {
+  count++
+  for (const key in tree) {
+    if (tree.hasOwnProperty(key)) {
+      const element = tree[key];
+      if(typeof element=='object'){
+        recordDepth(element)
+        return tree
+        tree.depth=count
+      }
+    }
+  }
+  
+}
+console.log(recordDepth(tree))
+  </script>
+</body>
+</html>
