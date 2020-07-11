@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //  该方法未成功 未成功，，，，，，
+      let str = "au";
+      /**
+       * @param {string} s
+       * @return {number}
+       */
+      var lengthOfLongestSubstring = function (s) {
+        // 基本思路，双指针，开始 m = 0, n = 1,  如果n之前的所有值都不等于n,那么 n往前走， 否则，m 往前走，n同时到 m 后面
+        debugger
+        let m = 0,
+          n = 1,
+          MaxLen = 0,
+          temp = 0,
+          len = 0;
+        while (n < s.length) {
+          m = temp;
+          len = n - temp;
+          while (m < n) {
+            if (s.charAt(m) == s.charAt(n)) {
+              len = n - temp;
+              temp++;
+              m = temp;
+              n = m;
+              if (len > MaxLen) {
+                MaxLen = len;
+              }
+              break;
+            }
+            m++;
+          }
+
+          n++;
+        }
+        console.log(MaxLen);
+        return MaxLen;
+      };
+      lengthOfLongestSubstring(str);
+    </script>
+  </body>
+</html>
