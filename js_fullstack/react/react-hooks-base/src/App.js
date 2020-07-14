@@ -1,9 +1,14 @@
 import React from 'react';
 import DemoUseEffect from './useEffect'
-
+import P from './useContext'
+import Counter from './useReducer'
 function App() {
   return (
-   <DemoUseEffect />
+   <div>
+     <DemoUseEffect />
+   <P />
+   <Counter />
+   </div>
   );
 }
 

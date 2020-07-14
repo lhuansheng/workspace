@@ -1,14 +1,19 @@
 import React, { useEffect,useState,useCallback,useMemo } from 'react';
 let arr = [1, 3]
+let set = new Set(); // 无重复的数据集，约等于数组，不允许重复的数据
+
+console.log(set)
 function Demo(){
  const [ inputVal, setVal ] = useState('海阔天空')
  const [list, setList] = useState([])
 //  const [val, setVal] = ['', () => {}]
 // const val = [1, 2]
 // 该val 不会被重新创建，也不会被销毁, 
-const val = useMemo(() => arr)
+// 缓存检查依赖，只有依赖没有变化才会使用上次的值
+const val = useMemo(() => arr,[])
+set.add(val)
+console.log(set.size)
 
-console.log(val === arr)
  const handleChange = useCallback((event) => {
   setVal(event.target.value);
  })
