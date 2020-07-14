@@ -1,0 +1,28 @@
+.stars{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+
+}
+.img_warp{
+  width: 120px;
+  height: 120px;
+  background-color: blue;
+}
+.star{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin: 20px;
+  width: 120px;
+  height: 168px;
+ 
+}
+.star:last-child{
+  border: 1px dotted #000;
+  
+}
+.create{
+  width: 50px;
+}

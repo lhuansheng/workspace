@@ -14,9 +14,36 @@
  * @return {number}
  */
 let str = 'abcdabd'
-var lengthOfLongestSubstring = function(s) {
-  let maxLen = 0,arr=['a','b','c']
+/**
+ * @param {string} s
+ * @return {number}
+ */
+ var lengthOfLongestSubstring = function(s) {
+   debugger
+    if(s=''){
+        return 0
+    }
+    let a = 0,b=1,maxLen=0,len=0
+    let queue = [s.charAt(0)]
+    while(b<s.length){
+        for(let i = a; i < b; i++){
+            len=b-a
+            if(s.charAt(a)==s.charAt(b)){
+                a=b
+                break;
+            }
+            if(b==s.length-1){
+                len=b-a
+            }
+             if(len > maxLen){
+                    maxLen=len
+                }
+        }
+        b++
+    }
+    return maxLen
 };
+console.log(lengthOfLongestSubstring(str))
   </script>
 </body>
 </html>

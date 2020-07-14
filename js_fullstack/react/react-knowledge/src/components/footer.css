@@ -1,0 +1,25 @@
+.footer{
+  margin-left: 5%;
+  margin-right: 5%;
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+.bottom{
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  
+}
+
+.bottom_icon{
+  width: 25px;
+}
+.title{
+  font-size: 16px;
+  transform: none;
+}
