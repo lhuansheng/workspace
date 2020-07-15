@@ -1,11 +1,17 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
-import "./App.css";
+
+
 import Counter_container from './container/counter_container'
+import Person_container from './container/person_container'
 class App extends Component {
  render(){
    return (
-     <Counter_container />
+     <div>
+       <h2>Count 组件</h2>
+       <Counter_container />
+       <hr/>
+       <h2>Person 组件</h2>
+     <Person_container /></div>
    )
  }
 }

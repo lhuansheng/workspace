@@ -37,7 +37,7 @@ class Counter extends Component{
     // let { count } = this.state;
     return (
       <div className="App">
-        <p>counter: { this.props.count}, person 总人数为：{this.props.persons.length}</p>
+        <p>counter: { this.props.count}</p>
         <select ref="select_number">
           <option value="1">1</option>
           <option value="2">2</option>
