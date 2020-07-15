@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import './Header.css';
 
 export default function Header(props) {
-  const { title } = props;
+  const { title, onBack } = props;
   return (
     <div className="header">
-      <div className="header-back">
+      <div className="header-back" onClick={onBack}>
         {/* 矢量图 */}
         <svg width="42" height="42">
           {/* 折线 */}
@@ -18,11 +18,13 @@ export default function Header(props) {
           />
         </svg>
       </div>
-  <div className="header-title">{title}</div>
+    <div className="header-title">{title}</div>
     </div>
+    
   )
   
 }
 Header.propTypes = {
-  title: PropTypes.string.isRequired
+  title: PropTypes.string.isRequired,
+  onBack: PropTypes.func.isRequired
 }
