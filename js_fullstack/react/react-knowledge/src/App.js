@@ -1,27 +1,27 @@
 import React from 'react';
 import './App.css';
-import Header from './components/Header'
-import Contents from './components/Contents'
-import Footer from './components/Footer'
+import Header from './components/header/Header'
+import Contents from './components/contents/Contents'
+import Footer from './components/footer/Footer'
+import Create from './pages/createnewpage/Create'
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
 } from "react-router-dom";
 function App() {
   return (
     <Router>
       <div className='App'>
+        
+        <Switch>
+        <Route path="/" exact>
         <Header />
         <Contents />
         <Footer />
-        <Switch>
-          <Route path="/stars">
-           
           </Route>
           <Route path="/createstar">
-            
+            <Create />
           </Route>
          
          
@@ -30,15 +30,5 @@ function App() {
     </Router>
   );
 }
-function Home() {
-  return <h2>Home</h2>;
-}
 
-function About() {
-  return <h2>About</h2>;
-}
-
-function Users() {
-  return <h2>Users</h2>;
-}
 export default App;
