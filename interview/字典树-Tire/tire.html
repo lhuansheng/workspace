@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    class Tire {
+      root = {}
+      insert(str){
+        // 字符 数组都可以遍历   of 有序
+        let currNode = this.root
+        for(let c of str) {
+          // 没有就存，有就往下走一步
+          if(!currNode[c]){
+            currNode[c] = {}
+          }
+          currNode = currNode[c]
+        }
+        // 到达 最末尾的 节点
+        if(!('$' in currNode)){
+          currNode['$'] = 0
+        }
+        currNode['$'] ++;
+      }
+
+    }
+    let t= new Tire();
+    t.insert('flow')
+    t.insert('flower')
+    t.insert('dog')
+    console.log(t)
+  </script>
+</body>
+</html>
