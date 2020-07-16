@@ -45,7 +45,31 @@ class + constructor + 生命周期 + render -> function + react hooks
     3. 状态组件， 无状态组件重用方法
       
   - reducer
+    1. action 标准做法
+    返回 { type:, payload} 更新reducer状态
+    2. 组件里的事件、生命周期等功能 主要是和数据状态 打交道，归 Action 来做
+    - 所有的action export function
+    在组件里引入 需要 actions
+    - bindActionCreators
+    actions 变成本地调用的函数 
+     dispatch
+    - useMemo 缓存函数
+    - connect 中第二个参数返回 action
 
+
+  1. action 
+    from 北京
+    to 南昌
+    两个 action 思想的切换
+    修改的本质  redux
+
+- from to 的复盘
+  1. redux 哲学  编程思想
+    reducers 纯函数 返回 状态 及 接受 状态 的更新
+    那一刻只有一个状态与之对应， switch case
+    - actions actionsTypes
+      是更新reducer 的使者  dispatch action
+    from to 都有 独立的 reducer 函数和 action
 
 
 
