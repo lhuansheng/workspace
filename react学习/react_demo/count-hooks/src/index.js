@@ -1,18 +1,23 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-// import App from './App';
-import Example1 from './Example1'
-import * as serviceWorker from './serviceWorker';
+import React, { useContext } from "react";
+import ReactDOM from "react-dom";
+import Context from './Context'
+import Counter from './Counter'
 
-ReactDOM.render(
-  <React.StrictMode>
-    <Example1 />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+const AppContext = React.createContext({});
+
+function App() {
+  return (
+    <AppContext.Provider value={{
+      username: 'superawesome'
+    }}>
+      <div className="App">
+        <Context />
+        <Counter />
+      </div>
+    </AppContext.Provider>
+  );
+}
+
+const rootElement = document.getElementById("root");
+ReactDOM.render(<App />, rootElement);
