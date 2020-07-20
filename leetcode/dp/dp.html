@@ -1,0 +1,29 @@
+<script>
+  let arr = [4,1,1,9,1]
+  function maxSum(arr,i){
+    if(i===0){
+      return arr[0]
+    }
+    else if(i===1){
+      return Math.max(arr[0],arr[1])
+    }
+    else{
+      let A = maxSum(arr,i-2)+arr[i]
+      let B = maxSum(arr,i-1)
+      return Math.max(A,B)
+    }
+  }
+  function ds(arr){
+    let opt=[]
+    opt[0] = arr[0]
+    opt[1] = Math.max(arr[0],arr[1])
+    let len = arr.length
+    for(let i = 2; i < len; i++){
+      let A = opt[i-2] + arr[i]
+      let B = opt[i-1]
+      opt[i] = Math.max(A,B)
+    }
+    return opt[opt.length - 1]
+  }
+  console.log(ds(arr))
+</script>
