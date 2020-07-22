@@ -7,24 +7,32 @@ import React from 'react';
 import {Redirect} from 'react-router-dom';
 import Recommend from '../application';
 import BlankLayout from '../layouts/BlankLayout'
-export default [
-  {
-    component: BlankLayout,
-    routes: [
-      {
-      path: '/',
-      exact:true,
-      render: () => <Redirect to={'./recommend'} />
-      },
-      {path: '/recommend',
-      component: Recommend,
-      // routes: [
-      //   {
-      //     path: '/recommend/:id',
-      //     component: AlbumComponent
-      //   }
-      // ]
-      }
-    ]
-  }
-]
+import HomeLayout from '../layouts/HomeLayout'
+export default [{
+  component: BlankLayout,
+  routes:[
+    {
+      path:'/',
+      component: HomeLayout,
+      routes:[
+        {
+          path:'/',
+          exact: true,
+          render: () => <Redirect to={'/recommend'} />
+        },
+        {
+          path: '/recommend',
+          component: Recommend
+        },
+        // {
+        //   path: '/singers',
+        //   component: SingersComponent
+        // },
+        // {
+        //   path: '/rank',
+        //   component: RankComponent
+        // },
+      ]
+    }
+  ]
+}]
