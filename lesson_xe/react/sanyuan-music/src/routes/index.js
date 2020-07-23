@@ -5,7 +5,7 @@
  */
 import React from 'react';
 import {Redirect} from 'react-router-dom';
-import Recommend from '../application';
+import Recommend from '../application/Recommend';
 import BlankLayout from '../layouts/BlankLayout'
 import HomeLayout from '../layouts/HomeLayout'
 export default [{
