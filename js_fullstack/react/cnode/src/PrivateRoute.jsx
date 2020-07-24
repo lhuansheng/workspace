@@ -11,7 +11,7 @@ function PrivateRoute(props) {
     return <Redirect to='/login' />
   }
   return (
-    <Route path={} component={} />
+    <Route path={path} component={component} />
   )
 }
 export default PrivateRoute
