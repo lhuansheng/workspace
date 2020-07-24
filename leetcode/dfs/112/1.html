@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    /**
+ * Definition for a binary tree node.
+ * function TreeNode(val) {
+ *     this.val = val;
+ *     this.left = this.right = null;
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @param {number} sum
+ * @return {boolean}
+ */
+        //       5
+        //      / \
+        //     4   8
+        //    /   / \
+        //   11  13  4
+        //  /  \      \
+        // 7    2      1
+let tree = {
+  val:5,
+  left:{
+    val:4,
+    left:{
+      val:11,
+      left:{
+        val:7
+      },
+      right:{
+        val:2
+      }
+    }
+  },
+  right:{
+    val: 8,
+    left:{
+      val:13
+    },
+    right:{
+      val:4,
+      right:1
+    }
+  }
+}
+
+
+var hasPathSum = function(root, sum) {
+    debugger
+    let queue=[root]
+    if(root.val === sum) return true
+    while(queue.length){
+        let subres = queue.splice(0)
+        for(let node in subres){
+          console.log(subres[node].val)
+            if(subres[node].left){
+              subres[node].left.val += subres[node].val
+                if(subres[node].left.val == sum) return true
+                queue.push(subres[node].left)
+            }
+             if(subres[node].right){
+              subres[node].right.val += subres[node].val
+                if(subres[node].right.val == sum) return true
+                queue.push(subres[node].right)
+            }
+        }
+
+    }
+    return false
+};
+console.log(hasPathSum(tree,22))
+  </script>
+</body>
+</html>
