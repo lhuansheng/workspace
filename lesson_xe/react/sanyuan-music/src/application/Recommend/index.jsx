@@ -10,6 +10,7 @@ function Recommend(props) {
       getRecommendListDataDispatch();
     }
     console.log(recommendList,banners,enterLoading,getBannersDataDispatch())
+    console.log(getRecommendListDataDispatch(),'==================')
   },[])
   return (
     <>

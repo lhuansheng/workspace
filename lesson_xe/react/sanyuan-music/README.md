@@ -8,3 +8,13 @@
   企业级的router 配置方案react-router-config, 清晰，可以维护的 routes/index.js 配置
   layout app 总有几套皮肤， 匹配那个级别的所有路由的
   routes react-router-config renderRoutes(route,routes)
+
+
+  ## readme
+  ## 大纲
+  redux
+  1. 只有一个store
+  2. 所有的列表中的reducer(recommend,Singers,rank)都合并到最外层的reducers
+  3. 在每个组件单独建store,但是不会有store，这些reducers 都会引入外层reducers,由一个store统一管理
+  router
+
