@@ -1,0 +1,29 @@
+<style>
+  #my {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+  }
+</style>
+<div id="my"></div>
+<script>
+  const my = document.querySelector('#my')
+  const event = new CustomEvent('click')
+  // 调用 api 即使鼠标不 click 也能触发 click 事件绑定的回调
+my.addEventListener('touchstart',()=>{
+  my.dispatchEvent(event)
+})
+my.addEventListener('touchend',(e)=>{
+  e.preventDefault()
+})
+  setTimeout(() => {
+    
+  }, 3000);
+  
+  my.addEventListener('click',function() {
+    console.log('click')
+  })
+  my.dispatchEvent(event)
+  // 移动端 会先经过 touchstart touchmove touchend 再延迟300ms 执行 click
+  // 自定义事件会在touchstart 就断开
+</script>
