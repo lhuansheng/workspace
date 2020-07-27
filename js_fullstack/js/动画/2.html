@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #el {
+      width: 30px;height: 30px;
+      background-color: pink;
+    }
+  </style>
+</head>
+<body>
+  <div id="el"></div>
+  <button id="pauses" onclick="pause();">pause</button>
+  <button id="pausess" onclick="resume();">resume</button>
+  <script>
+    const el = document.getElementById('el')
+    let end = 400, duration = 5000,start = 0
+    let startTime = Date.now();
+    console.log(startTime)
+    // const pause = document.getElementById('pause')
+    // frame
+    // requestAnimationFrame 能够确保回调在每一帧调用 (屏幕渲染之前先执行完函数)
+    // 60Hz 一秒钟 刷新60次 所以 1000 / 60 = 16.666ms 每16.6ms执行一次 动画
+    let tick = () => {
+      let hasPassed = Date.now() - startTime;
+      let progress = hasPassed / duration
+      let x = progress * (end - start)
+      console.log(progress)
+      if(progress>=1){
+        el.style.transform = `translate3d(${end}px,0,0)`
+      }
+      el.style.transform = `translate3d(${x}px,0,0)`
+      rafId= requestAnimationFrame(tick)
+  
+    }
+    var rafId = null
+    var pauseTime = null
+     rafId = requestAnimationFrame(tick)
+     function pause() {
+       pauseTime = Date.now()
+       cancelAnimationFrame(rafId)
+     }
+     function resume() {
+        startTime += Date.now() - pauseTime
+        rafId= requestAnimationFrame(tick)
+     }
+  </script>
+</body>
+</html>

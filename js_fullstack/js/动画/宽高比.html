@@ -1,0 +1,42 @@
+<style>
+  /* 宽高: 16:9 */
+  :root {
+    --width: 100vw;
+  }
+  /* .ration{
+    background-color: red;
+   
+    width: 100%;
+    /* padding-top: 100% 相对于宽度 */
+  /* padding-top: calc(100% * 9 / 16);
+  } */
+  .ration {
+    height: calc(var(--width) * 9 / 16);
+    background-color: red;
+    width: var(--width);
+  }
+</style>
+<div class="ration">
+  <div>content</div>
+</div>
+<script>
+  // Symbol.toPrimitive
+  let m = '123'
+ 
+  
+  console.log(m.valueOf())
+  let obj = {
+    toString() {
+      return 1;
+    },
+    valueOf() {
+      return 2;
+    },
+    a: 1, // es6 之前 toString valueOf es6: toPrmitive
+    [Symbol.toPrimitive]: () => {
+      return 123;
+    },
+  };
+  let res = obj + 1;
+  console.log(res);
+</script>
