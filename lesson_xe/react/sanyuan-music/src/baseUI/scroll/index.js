@@ -11,6 +11,7 @@ const ScrollContainer = styled.div`
   height: 100%;
   overflow: hidden;
 `
+
 const PullUpLoading = styled.div`
   position: absolute;
   left:0; right:0;
@@ -20,6 +21,7 @@ const PullUpLoading = styled.div`
   margin: auto;
   z-index: 100;
 `
+
 export const PullDownLoading = styled.div`
   position: absolute;
   left:0; right:0;
@@ -28,6 +30,7 @@ export const PullDownLoading = styled.div`
   margin: auto;
   z-index: 100;
 `
+
 // 下为问题代码，以此为鉴
 // useEffect(() => {
 //   if(bScroll) return;
@@ -76,16 +79,20 @@ export const PullDownLoading = styled.div`
 // }, []);
 const Scroll = forwardRef((props, ref) => {
   const [bScroll, setBScroll] = useState();
-  const scrollContaninerRef = useRef();
-  const { direction, click, refresh, pullUpLoading, pullDownLoading, bounceTop, bounceBottom } = props;
-  const { pullUp, pullDown, onScroll } = props;
 
+  const scrollContaninerRef = useRef();
+
+  const { direction, click, refresh, pullUpLoading, pullDownLoading, bounceTop, bounceBottom } = props;
+  console.log(props, '++++++++++++');
+  const { pullUp, pullDown, onScroll } = props;
+  console.log(onScroll, '++++++++++++');
   let pullUpDebounce = useMemo(() => {
-    return debounce(pullUp, 500)
+    // console.log(pullUp, '--------')
+    // return debounce(pullUp, 500)
   }, [pullUp]);
 
   let pullDownDebounce = useMemo(() => {
-    return debounce(pullDown, 500)
+    // return debounce(pullDown, 500)
   }, [pullDown]);
 
   useEffect(() => {
@@ -141,6 +148,8 @@ const Scroll = forwardRef((props, ref) => {
       bScroll.off('touchEnd', handlePullDown);
     }
   }, [pullDown, pullDownDebounce, bScroll]);
+
+
   useEffect(() => {
     if(refresh && bScroll){
       bScroll.refresh();
