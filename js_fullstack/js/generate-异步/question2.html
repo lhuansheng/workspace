@@ -1,0 +1,11 @@
+<script>
+  // arguments
+  // 类数组  类似数组 但是没有操作数组的api
+  function foo(){
+    console.log(arguments)
+    // 转换为真数组
+    console.log(Array.from(arguments))
+    console.log([...arguments])
+  }
+  foo(1,23,3,4,3,2,2,2)
+</script>

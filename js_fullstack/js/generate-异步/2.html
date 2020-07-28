@@ -1,0 +1,20 @@
+<script>
+  function * foo() {
+    console.log('start')
+    let a = yield 1
+    console.log('1',a)
+    let b = yield 2
+    console.log('2',b)
+    let c = yield 3
+    console.log('3',a,b,c)
+    console.log('end')
+  }
+ let iterator = foo()  //拿到一个迭代器
+
+let val1 = iterator.next()
+let val2 = iterator.next(val1.value) //获取上一个yield 返回值
+let val3 = iterator.next(val2.value)
+let val4 = iterator.next(val3.value)
+
+
+</script>

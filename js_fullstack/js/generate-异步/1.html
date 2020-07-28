@@ -1,0 +1,30 @@
+<script>
+  // async await
+  // 协(纤)程: 意为比进程 / 线程 更小的单位
+  // 函数可以被终止，被打断
+  function * foo() {
+    console.log('9999')
+    let count=1
+    let a = yield 1 //不是返回 1 ，如果需要返回值，那么需要放到 next (返回值)
+    count++
+    console.log('1',a)
+    let b = (yield 2) * 4
+    console.log('2',b)
+    let c = yield 3
+    console.log('33',a,b,c)
+  }
+ let iterator =  foo()
+//  console.log(iterator.next())
+//  console.log(iterator.next())
+//  console.log(iterator.next())
+//  console.log(iterator.next())
+
+function autoRun(iteratorObj) {
+  let {done} = iteratorObj.next(8)
+  if(done) return;
+  autoRun(iteratorObj)
+
+}
+autoRun(iterator)
+
+</script>
