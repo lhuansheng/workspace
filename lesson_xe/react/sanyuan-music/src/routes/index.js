@@ -8,9 +8,10 @@ import { Redirect } from 'react-router-dom';
 import BlankLayout from '../layouts/BlankLayout';
 import HomeLayout from '../layouts/HomeLayout';
 // import Recommend from '../application/Recommend/';
-const RecommendComponent = lazy(() => import("../application/Recommend/"))
-const SingersComponent = lazy(() => import("../application/Singers/"))
+const RecommendComponent = lazy(() => import("../application/Recommend/"));
+const SingersComponent = lazy(() => import("../application/Singers/"));
 const SingerComponent = lazy(() => import("./../application/Singer/"));
+const SingerComponent = lazy(() => import("./../application/Search/"));
 
 const SuspenseComponent = Component => props => {
   return (
@@ -48,6 +49,12 @@ export default [{
             }
           ]
         },
+        {
+          path: "/search",
+          exact: true,
+          key: "search",
+          component: SuspenseComponent(SearchComponent)
+        }
         // {
         //   path: '/rank',
         //   component: RankComponent

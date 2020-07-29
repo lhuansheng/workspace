@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, memo } from 'react';
 import { connect } from 'react-redux';
-import { NavContainer, ListContainer, List, ListItem, } from './style';
+import { NavContainer, ListContainer, List, ListItem,} from './style';
 import { categoryTypes, alphaTypes } from '../../api/config';
 import Horizen from '../../baseUI/horizen-item/index';
 import { changeCategory, changeAlpha, getHotSingerList, refreshMoreHotSingerList, changeListOffset } from './store/actionCreators'; 

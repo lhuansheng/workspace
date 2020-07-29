@@ -9,6 +9,19 @@
   layout app 总有几套皮肤， 匹配那个级别的所有路由的
   routes react-router-config renderRoutes(route,routes)
 
+  - search 业务
+    接口文档 
+    - 热门搜索
+      /search/hot
+      参数为null
+      返回值 result.hot
+    - 搜索建议
+      suggest?keywords=%Esfq%re  前端编码 后端解码
+      参数 keywords
+      返回值 albums
+    - 搜索结果
+      /search?keywords=
+
 
   ## readme
   ## 大纲
