@@ -1,0 +1,28 @@
+<style>
+
+.box {
+  width: 100px;
+  height: 100px;
+  padding-top: 20px;
+  margin-top: 20px;
+  border: 2px solid aqua;
+  background-color: red;
+  /* 标准盒模型 content-box */
+  /* 标准的加上padding 和 border会把盒子撑高 */
+}
+.box1 {
+  box-sizing: border-box;
+ 
+  /* 怪异 盒模型 包含border以内 */
+}
+
+</style>
+<body>
+  <div class="box box1"></div>
+  <div class="box box2"></div>
+</body>
+<script>
+ let a= document.querySelector('.box1').getBoundingClientRect().width   // w  h
+ let b= document.querySelector('.box2').getBoundingClientRect().width   // w  h
+ console.log(a,b)
+</script>

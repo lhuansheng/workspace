@@ -1,0 +1,26 @@
+<style>
+
+  .box, .box1 {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+  
+  }
+  /* .box1 {
+    background-color: blue;
+  } */
+  .box{
+    background-color: yellow;
+  }
+  </style>
+  <body>
+    <!-- 同一个div 多个类名，最靠近的优先权最高 -->
+    <div class="box box1 box2"></div>
+    
+  </body>
+  <script>
+   let a= document.querySelector('.box1').getBoundingClientRect().width   // w  h
+   let b= document.querySelector('.box2').getBoundingClientRect().width   // w  h
+   console.log(a,b)
+  </script>
+  
