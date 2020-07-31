@@ -1,0 +1,55 @@
+<script>
+  // JSON XML Yaml
+
+// function ajax({ url: string, method: string, data?: object,  timeout?: number, … }): promise;
+// 封装axios
+function ajax({url,method,data,timeout}) {
+
+return new Promise((resolve,reject)=>{
+  const xhr = new XMLHttpRequest()
+  // xhr自己处理超时
+  xhr.timeout = timeout;
+  xhr.ontimeout = function(){
+    reject('timeout')
+  }
+  // true代表异步
+  // readystate 0 1 2 3 4
+  xhr.open(method,url,true)
+  xhr.onreadystatechange = () =>{
+    if(xhr.readyState===4){
+      if((xhr.status>=200 && xhr.status < 300) || xhr.status === 304 ){
+        resolve(xhr.response)
+      }
+      else{
+        reject('response error')
+      }
+    }
+   
+  }
+  // GET 数据拼接到url后面
+  // POST 要看 Content-Type:
+  // 发送请求
+
+  // 思考：Content-type 常见的类型有哪些，每个类型对数据的要求格式是怎么样的
+// Content-type: application/json 符合 json(key-value)
+// Content-type: application/x-www-form-url-encoded  form中的请求  a=1&b=2
+// Content-type: text/plain    字符串  a=1,b=2
+// Content-type: multipart/form-data   文件(大量的非ASCII，不是由0-9a-z等组成)
+
+
+  xhr.send()
+})
+}
+
+ajax({
+url:'http://neteasecloudmusicapi.zhaoboy.com/search?keywords=%E6%B5%B7%E9%98%94%E5%A4%A9%E7%A9%BA',
+method:'GET',
+timeout:'500',
+
+})
+.then((res)=>{
+console.log(res)
+})
+
+
+</script>
