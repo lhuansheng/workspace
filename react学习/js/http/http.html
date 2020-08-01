@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const xhr = new XMLHttpRequest()
+    // 接受请求的数据 实时监听
+      /* readyState 每个数字的意思
+        0	UNSENT	代理被创建，但尚未调用 open() 方法。
+        1	OPENED	open() 方法已经被调用。
+        2	HEADERS_RECEIVED	send() 方法已经被调用，并且头部和状态已经可获得。
+        3	LOADING	下载中； responseText 属性已经包含部分数据。··
+        4	DONE	下载操作已完成。 */
+    xhr.onreadystatechange = () =>{
+      if(xhr.readyState===4 && xhr.status===200){
+        console.log(xhr.response)
+
+      }
+    }
+
+    // 用何种方式发请求，给谁发请求，带着什么参数过去
+    xhr.open('post','http://localhost:8080/test_post')
+
+    // post 请求所特有的请求头，必须携带
+    xhr.setRequestHeader('content-type','application/x-www-form-urlencoded')
+    //  xhr.setRequestHeader('content-type','application/json')
+
+     let person = {name:'charlie',age:18}
+    //  真正发送请求
+    //
+    xhr.send('name=charlie&age=18')
+    // xhr.send(JSON.stringify(person))
+  </script>
+</body>
+</html>
