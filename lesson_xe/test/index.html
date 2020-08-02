@@ -1,4 +1,39 @@
 <script>
   
+  let tree = {
+  val:1,
+  left:{
+    val:9
+  },
+  right:{
+    val:20,
+    left:{
+      val:15,
+    }
+    ,right:{
+      val:7
+    }
+  }
+}
 
+var maxDepth = function (root) {
+  let maxlen = 0;
+  function help(node, len) {
+    debugger
+      if (node) {
+          len++
+          if (node.left == null && node.right == null) {
+              if (len > maxlen) {
+                  maxlen = len
+              }
+              return
+          }
+          help(node.left, len)
+          help(node.right, len)
+      }
+  }
+  help(root, 0)
+  return maxlen;
+};
+console.log(maxDepth(tree))
 </script>
