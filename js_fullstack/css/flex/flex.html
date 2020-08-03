@@ -1,0 +1,53 @@
+<style>
+  .flex {
+    display: flex;
+    height: 100vh;
+  
+    flex-wrap: wrap;
+    /* stretch 平分 */
+    /* align-content: flex-end; */
+    align-items: center;
+    /* spacef-around 剩余空间平分给每个元素的左右两边 */
+    justify-content: space-around;
+  }
+  .item1 {
+    width: 120px;
+    height: 60px;
+    background-color: aqua;
+  }
+  .item2 {
+    width: 140px;
+    height: 160px;
+    background-color: red;
+    padding-top: 30px;
+  }
+  .item3 {
+    width: 140px;
+    height: 20px;
+    background-color: green;
+    /* align-self: flex-end; */
+  }
+</style>
+<div class="flex">
+  <div class="item1">
+    English
+  </div>
+  <div class="item1">
+    English
+  </div>
+  <div class="item3">
+    English
+  </div>
+  <div class="item1">
+    English
+  </div>
+  <div class="item1">
+    English
+  </div>
+  <div class="item2">
+    English
+    <br />
+    English
+    <br />
+  </div>
+</div>

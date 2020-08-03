@@ -1,0 +1,12 @@
+<script src="https://cdn.bootcdn.net/ajax/libs/lodash.js/4.17.19/lodash.min.js"></script>
+<script>
+  // curry 柯里化
+function sum1(a, b, c) {
+  return a + b + c
+}
+// sum(1,2,3)
+let curriedSum = _.curry(sum1)
+// 柯里化的好处是 可以固定传一个参数
+curriedSum = curriedSum(1)
+console.log(curriedSum(2)(3))
+</script>
