@@ -1,0 +1,48 @@
+<script>
+  /**
+ * Definition for a binary tree node.
+ * function TreeNode(val) {
+ *     this.val = val;
+ *     this.left = this.right = null;
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {string[]}
+ */
+var binaryTreePaths = function(root) {
+  let result = []
+
+  if(!root) return []
+  debugger
+  let dfs = (node,arr)=>{
+     arr.push(node.val)
+    if(!node.left&&!node.right){
+      result.push(arr.join('->'))
+      return;
+    }
+
+  if(node.left)  dfs(node.left,[...arr])
+  
+  if(node.right) dfs(node.right,[...arr])
+  }
+  dfs(root,[])
+  return result
+};
+let tree = {
+  val: 2,
+  left:{
+    val: 3,
+    left:{
+      val: 4,
+    },
+    right:{
+      val:8
+    }
+  },
+  right:{
+    val:6
+  }
+}
+console.log(binaryTreePaths(tree))
+</script>
