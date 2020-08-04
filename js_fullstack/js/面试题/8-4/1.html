@@ -1,0 +1,26 @@
+<script>
+// 输入：
+// Tue Dec 01 2020 08:00:00 GMT+0800 (中国标准时间)
+// dateFormat(new Date('2020-12-01'), 'yyyy/MM/dd') // 2020/12/01
+// dateFormat(new Date('2020-04-01'), 'yyyy/MM/dd') // 2020/04/01
+// dateFormat(new Date('2020-04-01'), 'yyyy年MM月dd日') // 2020年04月01日
+// 写一个日期格式化函数
+const dateFormat = (dateInput, format)=>{
+  // todo
+  // str = dateInput.replace(/^\s+(.+)\s+(.+)s+(.+)/,'$1/$2/$3')
+  let year = dateInput.getFullYear()
+  let mounth = dateInput.getMonth() + 1
+  let day = dateInput.getDate()
+ return format.replace('yyyy',year).replace('MM',mounth).replace('dd',day)
+
+ 
+}
+let a=new Date('2020-01-01')
+console.log(dateFormat(new Date('2020-01-01'),'yyyy/MM/dd'))
+</script>
+
+<!-- str = str.replace(reg,(...arg) => {
+  console.log(arg[0])
+  return `${arg[2]+'-'+arg[3]+'.'+arg[1]}`
+})
+console.log(str) -->
