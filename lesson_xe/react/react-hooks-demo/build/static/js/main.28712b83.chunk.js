@@ -1,0 +1,2 @@
+(this["webpackJsonpreact-hooks-demo"]=this["webpackJsonpreact-hooks-demo"]||[]).push([[0],[,,,function(e,t,n){e.exports=n(4)},function(e,t,n){"use strict";n.r(t);var o=n(0),r=n.n(o),a=n(2),c=n.n(a);function s(){return r.a.createElement("div",null,"11")}var u=document.getElementById("root");c.a.render(r.a.createElement(s,null),u)}],[[3,1,2]]]);
+//# sourceMappingURL=main.28712b83.chunk.js.map
