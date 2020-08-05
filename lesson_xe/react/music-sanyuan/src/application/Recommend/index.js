@@ -24,12 +24,12 @@ function Recommend(props) {
   const recommendListJS = recommendList ? recommendList.toJS() :[];
   return (
     <Content>
-       <Scroll className="list" onScroll={forceCheck}>
+       {/* <Scroll className="list" onScroll={forceCheck}> */}
       <div>
         <Slider bannerList={bannerListJS}></Slider>
         <RecommendList recommendList={recommendListJS}></RecommendList>
       </div>
-      </Scroll>
+      {/* </Scroll> */}
     </Content>
   );
 }

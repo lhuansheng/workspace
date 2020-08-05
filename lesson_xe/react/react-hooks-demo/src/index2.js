@@ -1,12 +1,18 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import "./styles.css";
-import {MyComponent} from './demo'
+import {FaceComponent} from './demo2'
 function App() {
   const [satisfactionLevel, setSatisfactionLevel] = useState(300);
   return (
     <div className="App">
-     <MyComponent />
+      <input type="range" min="0" max="500" value={satisfactionLevel}
+      onChange={(event)=> setSatisfactionLevel(+event.target.value)}
+      />
+      <span>{satisfactionLevel}</span>
+      <br />
+      {/* 可以做优化 */}
+      <FaceComponent level={satisfactionLevel} />
     </div>
   );
 }
