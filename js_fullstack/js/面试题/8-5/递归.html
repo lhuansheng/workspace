@@ -1,0 +1,60 @@
+<script>
+
+var tree2 = {
+  name: "page.js",
+  require: [
+    {
+      name: "A.js",
+      require: [
+        {
+          name: "B.js",
+          require: [
+            {
+              name: "C.js"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      name: "D.js",
+      require: [
+        {
+          name: "C.js"
+        },
+        {
+          name: "E.js"
+        }
+      ]
+    }
+  ]
+};
+// let arr = []
+// function resolve(tree){
+//   if(tree.require){
+//     arr.unshift(tree.name)
+//     for(let child of tree.require){
+//         resolve(child)
+     
+//     }
+//   }
+  
+//   return arr
+// }
+function resolve(tree) {
+  let res = []
+  function walk(node) {
+    if(node.require){
+      for (const file of node.require) {
+        walk(file)
+      }
+    }
+    res.push(node.name)
+  }
+  walk(tree)
+  return res
+}
+
+console.log(resolve(tree2))//   ["C.js", "B.js", "A.js", "C.js", "E.js", "D.js", "page.js"]
+
+</script>
