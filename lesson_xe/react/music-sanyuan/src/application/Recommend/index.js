@@ -7,7 +7,7 @@ import { forceCheck } from 'react-lazyload';
 import Scroll from '../../baseUI/scroll/index';
 import RecommendList from '../../components/list/';
 function Recommend(props) {
-  const { bannerList, recommendList, enterLoading } = props;
+  const { bannerList, recommendList } = props;
   const { getBannerDataDispatch, getRecommendListDataDispatch } = props;
 
   useEffect(() => {
@@ -24,12 +24,12 @@ function Recommend(props) {
   const recommendListJS = recommendList ? recommendList.toJS() :[];
   return (
     <Content>
-       {/* <Scroll className="list" onScroll={forceCheck}> */}
+       <Scroll className="list" onScroll={forceCheck}>
       <div>
         <Slider bannerList={bannerListJS}></Slider>
         <RecommendList recommendList={recommendListJS}></RecommendList>
       </div>
-      {/* </Scroll> */}
+      </Scroll>
     </Content>
   );
 }
@@ -38,7 +38,7 @@ function Recommend(props) {
 const mapStateToProps = (state) => ({
   bannerList: state.getIn(["recommend", "bannerList"]),
   recommendList: state.getIn(['recommend', 'recommendList']),
-  enterLoading: state.getIn(['recommend', 'enterLoading'])
+  // enterLoading: state.getIn(['recommend', 'enterLoading'])
 });
 // 映射dispatch到props上
 const mapDispatchToProps = (dispatch) => {
