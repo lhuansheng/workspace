@@ -1,0 +1,30 @@
+<script>
+  window.name = "ByteDance";
+  function A() {
+    // new 的过程：
+    // 生成一个对象: {}
+    // {}.__proto__ = A.prototype
+    // 添加 name 属性
+    // return {}
+    // new 的时候拿到的就是这个 {}
+    console.log(this.name); // 指向 a.prototype
+    this.name = 123;
+  }
+  A.prototype.getA = function () {
+    console.log(this);  // 在 哪里调用  在 window下调用，window
+    return this.name + 1;  // byteDance1
+  };
+  A.prototype.name = 456;
+
+  let a = new A(); // 456
+  let funcA = a.getA; 
+  console.log(funcA());//  byteDance1  不加修饰，默认指向window
+
+    // 看函数在哪里调用
+  // 4：new： this 指向 new 创建完的对象
+  // 3：call/apply 和bind：第一个参数
+  // 2：obj. : 指向这个对象
+  // 1：默认指向window， 严格模式指向 underfined
+
+  // es6 箭头函数看函数在哪里定义的, this 看外层函数
+</script>

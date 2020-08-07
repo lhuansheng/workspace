@@ -1,0 +1,29 @@
+<script>
+  // 模拟 new 的过程 (在this中)
+  function newConstructor(Constructor) {
+    let obj = {}
+    obj.__proto__ = Constructor.prototype
+    // 给 obj 附上属性
+    // ?
+    Constructor(1, 2)
+    Constructor.apply(obj, [])
+    Constructor.call(obj, )
+    return obj;
+  }
+  newConstructor(A)
+  function A(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+  function sum(a,b){
+    this.a = a
+    this.b = b
+    return a+b
+  }
+  let obj = {}
+  // 修改 sum 指向， 
+  let c= sum.apply(obj,[1,2])
+  console.log(obj)
+  console.log(c)
+  A.prototype.__proto__
+</script>
