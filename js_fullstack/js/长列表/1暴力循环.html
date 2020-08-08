@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>长列表</title>
+</head>
+<body>
+  <ul id="container"></ul>
+  <script>
+    const container = document.getElementById("container");
+    let total = 100000;
+    for(let i = 0; i< total; i++){
+      let li = document.createElement('li')
+      li.innerText = i
+      container.appendChild(li)
+    }
+   
+  </script>
+</body>
+</html>

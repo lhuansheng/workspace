@@ -1,15 +1,13 @@
 <script>
-  // function FileComponent(path,func) {
-  //   setTimeout(() => {
-  //     func('读取完毕')
-  //   }, 1000);
-  //   }
-  
-  
-  // FileComponent('index.js', (file) => {
-  //   console.log(file)
-  //   // 3s 之后 输出 “读取完毕”
-  // })
+  function joke(func) {
+    setTimeout(() => {
+      func('surprise')
+    }, 3000);
+  }
+  funcJoke((item)=>{
+    // 3s 后输出 surprise
+    console.log(item)
+  })
   // 所有的数组都有 Array 上面的方法
   // let a = new Array()
   // Array.prototype
@@ -23,7 +21,6 @@
     }
   }
   // console.log(Array.prototype.MyForeach)
-  // let arr = [1,3]
   new Array(1,2,3).MyForeach((item,i)=>{
     console.log(item,i)
 })

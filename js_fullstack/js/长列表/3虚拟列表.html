@@ -1,0 +1,76 @@
+<style>
+  *{
+    margin: 0;
+    padding: 0;
+  }
+  .wrap {
+    height: 100%;
+    overflow-y: auto;
+    position: relative;
+  }
+  .content {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+
+  }
+  .scroll {
+    position: absolute;
+    left: 0;right: 0;bottom: 0;top: 0;
+    z-index: -1;
+  }
+  .item{
+    height: 100px;
+    border-bottom: 1px solid #000;
+    box-sizing: border-box;
+    width: 100%;
+    text-align: center;
+    background-color: rgb(210, 176, 241);
+  }
+  
+  .item:nth-child(2n+1){
+    background-color: rgb(235, 165, 125);
+  }
+  .item:nth-child(2n+4){
+    background-color: rgb(180, 237, 241);
+  }
+</style>
+<!-- 100000条列表容器 -->
+<div class="wrap">
+  <!-- 滚动高度 -->
+  <div style="height: 10000000px;" class="scroll"></div>
+  <!-- 内容  -->
+  <div class="content"></div>
+</div>
+<script>
+  let total = 100000;
+  let scrollInfo = {
+    itemSize:100
+  }
+  const wrap = document.querySelector('.wrap')
+  const height = window.innerHeight
+  // 大一点可以取多一点值
+  const visibleCount = Math.ceil(height / 100)
+  let d = [];
+  for (let i = 0; i < 100000; i++) {
+    d.push({ id: i, value: i });
+  }
+  const content = document.querySelector('.content')
+  console.log(height)
+  wrap.addEventListener('scroll',handleScroll)
+
+  function handleScroll() {
+    let scrollTop = wrap.scrollTop;
+    // 区间起点 小一点可以取得上面的值
+    let start = Math.floor(scrollTop / 100)
+    let end = start + visibleCount
+    console.log(start,end)
+    let list = d.slice(start,Math.min(end,d.length))
+    content.innerHTML = list.map((item)=>{
+      return `<div class='item'>${item.value}</div>`
+    }).join('')
+    content.style.transform = `translate3d(0,${start*100}px,0)`
+  }
+  handleScroll()
+</script>
