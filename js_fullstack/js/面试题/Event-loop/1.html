@@ -1,0 +1,17 @@
+<script>
+  // [settimeout,settimeout]
+  // [promise,p.then3]
+  setTimeout(() => {
+    console.log(1)
+    // Promise.resolve(6).then(console.log)
+  }, 0);
+  new Promise((resolve,reject)=>{
+    console.log(2)
+    resolve(3)
+  })
+  .then((r)=>{
+    console.log(r)
+  })
+  console.log(4)
+  // 2 4 3 underfined 1
+</script>

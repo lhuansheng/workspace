@@ -1,0 +1,21 @@
+<body>
+</body>
+<script>
+  document.body.style.backgroundColor = 'red'
+  setTimeout(() => {
+    document.body.style.backgroundColor = 'black'
+  }, 0);
+  // 小于一帧 不会渲染， background最终为blue 拿到宏任务最终执行的结果
+  // 看两个宏任务执行的间隔，如果大于 1帧，有可能渲染
+  document.body.addEventListener('click',()=>{
+    console.log(1)
+    Promise.resolve(2).then(console.log)
+  })
+  document.body.addEventListener('click',()=>{
+    console.log(3)
+    Promise.resolve(4).then(console.log)
+  })
+  // 两个addeventListener都是宏任务 先执行完一个宏任务，执行里面的微任务。 
+  // 宏任务(macrotask):[]
+  // 微任务(microtask):[]
+</script>
