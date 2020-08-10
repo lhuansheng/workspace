@@ -1,0 +1,18 @@
+<script>
+  var merge = function(intervals) {
+  // 判断一个元素的末尾是否小于第二个元素的第一个元素，小于则不和并，否者合并
+    let arr = []
+    intervals = intervals.sort((a,b)=>a[0] - b[0])
+    for(let i = 0; i < intervals.length; i++){
+      if(!arr.length || (arr[arr.length - 1][1]<intervals[i][0])){
+        arr.push(intervals[i])
+      }
+      else {
+        arr[arr.length - 1][1] = Math.max(arr[arr.length - 1][1],intervals[i][1])
+      }
+    }
+
+    return arr
+};
+console.log(merge([[1,4],[0,4]]))
+</script>
