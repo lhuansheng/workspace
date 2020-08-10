@@ -17,7 +17,10 @@ app.all('*', function (req, res, next) {
   next();
 });
 app.get('/persons',(req,res)=>{
+  setTimeout(() => {
   res.send({state:1,data:persons})
+    
+  }, 3000);
 })
 app.listen(8080,(err)=>{
   if(!err) console.log('http://localhost:8080/persons')

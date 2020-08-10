@@ -9,13 +9,25 @@
   <script>
     const xhr = new XMLHttpRequest()
     xhr.responseType = 'json'
+    // xhr.timeout = 2000
+    // xhr.ontimeout=()=>{
+    //   console.log('超时了')
+    // }
+    xhr.onerror = () =>{
+      console.log('请求出错了')
+    }
     xhr.onreadystatechange = () =>{
+      
       if(xhr.readyState === 4 && xhr.status === 200){
         console.log(xhr.response)
+        console.log(xhr.getResponseHeader('date'))
+        console.log(xhr.getAllResponseHeaders())
       }
     }
     xhr.open('get','http://localhost:8080/persons')
     xhr.send()
+    // 可直接中断请求
+    xhr.abort()
   </script>
 </body>
 </html>
