@@ -1,0 +1,30 @@
+<script>
+  /**
+ * @param {string} path
+ * @return {string}
+ */
+var simplifyPath = function(path) {
+    if(path.length===1){
+      return path
+    }
+    // // -> /
+    // ./ -> /
+    // /a/../ -> /
+    // 
+    let reg1 = /\/\/+/g  // 匹配 //以上
+    let reg2 = /\.\./g // 匹配.. 
+    let reg3 = /(\/\.)||(\.)/g  // 匹配./ 或 /.
+    let reg4 = /\/$/  //匹配 /末尾
+    // let reg5 = /(\/?.+\/\.\.)||(\/.+..)/g     // /something/.. 
+    let reg5 = /(\/[a-zA-Z0-9]+?\/\.\.\/)|(\/[a-zA-Z0-9]+?\/\.\.)/g     // /something/.. 
+    path = path.replace(reg1,'/')
+    
+    path = path.replace(reg5,'/') //去除 /../  ../ 
+
+
+    path = path.replace(reg3,'') // 去除 .
+    path = path.replace(reg4,'') //去除末尾
+    return path
+};
+console.log(simplifyPath("/a//b////c/d//././/.."))
+</script>
