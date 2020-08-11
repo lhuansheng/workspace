@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+.center {
+  text-align: center;
+  background-color: rgb(149, 149, 231);
+}
+body {
+  background-color: rgb(61, 139, 184);
+}
+</style>
+<body>
+  <div class="center">
+    hello:<%=useName%>
+  </div>
+  <% for (let i = 0; i < lists.length; i++){%>
+    <li><%=lists[i]%></li>
+    <%}%>
+  <button onclick="btn">btn</button>
+  <div id="box">dd</div>
+</body>
+</html>
