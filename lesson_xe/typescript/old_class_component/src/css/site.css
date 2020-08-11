@@ -19,3 +19,6 @@
      background: #e7e7e7 !important;
      color: #333 !important;
    }
+    .avatar {
+        max-width: 80px
+     }
