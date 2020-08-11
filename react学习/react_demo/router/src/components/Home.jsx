@@ -6,7 +6,7 @@ function Home(props) {
 
   return (
     // <CSSTransition timeout={500} classNames='msg' in={isIn==='true'?true:false} >
-    <div>
+    <div style={{backgroundColor:'red'}}>
     Home
     </div>
     // </CSSTransition>
