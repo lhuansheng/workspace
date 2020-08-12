@@ -1,0 +1,9 @@
+/* 全局样式 */
+/* 小程序 px 兼容性有问题 rpx 750rpx 认为所有手机大小 750rpx  */
+/* 设计稿是750 */
+.container {
+  padding: 15rpx 15rpx;
+}
+.flex-container {
+  display: flex;
+}

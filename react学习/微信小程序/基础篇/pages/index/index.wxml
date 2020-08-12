@@ -1,0 +1,4 @@
+<view class="container">
+<view hover-class="boxClass" hover-start-time='1' hover-stay-time='1' hover-stop-propagation='true'>微信小程序</view>
+
+</view>
