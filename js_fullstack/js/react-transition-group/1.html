@@ -1,0 +1,21 @@
+<script>
+  // 数组拍平
+let a = [1, 2, [3,6, [4, [5]]]];
+// a.push(a)
+let map = new Map()
+function flat(a) {
+  let arr = []
+  // if(map.get(a)) return map.get(a)
+  // map.set(a,arr)
+  for (let i = 0; i < a.length; i++) {
+    debugger
+    if (Array.isArray(a[i])) {
+      arr.push(...flat(a[i]))
+    } else arr.push(a[i]);
+  }
+
+  return arr;
+}
+console.log(flat(a));
+
+</script>
