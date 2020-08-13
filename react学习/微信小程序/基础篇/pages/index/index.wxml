@@ -1,4 +1,27 @@
-<view class="container">
-<view hover-class="boxClass" hover-start-time='1' hover-stay-time='1' hover-stop-propagation='true'>微信小程序</view>
 
+<view hover-class="boxClass" class="box">
+<view hover-class="box1Class" class="box1" hover-stop-propagation>
+按不出dd
 </view>
+</view>
+<scroll-view scroll-x>
+  <view class="out">
+  <view class="scr-in">111</view>
+  <view class="scr-in">222</view>
+  <view class="scr-in">333</view>
+  <view class="scr-in">444</view>
+  <view class="scr-in">555</view>
+  <view class="scr-in">666</view>
+  <view class="scr-in">777</view>
+  </view>
+</scroll-view>
+<navigator url="/pages/logs/logs">跳转到logs</navigator>
+<image class="img1" mode="aspectFit" show-menu-by-longpress src="/images/wallhaven-0q697l.jpg"></image>
+<image class="img2" mode="widthFix" src="/images/img1.png"></image>
+<text selectable>
+小明在打游戏小明在打游戏小明在打游戏小明在打游戏小明在打游戏小明在打游戏小明在打游戏小明在打游戏小明在打游戏小明在打游戏小明在打游戏小明在打游戏小明在打游戏小明在打游戏小明在打游戏小明在打游戏小明在打游戏小明在打游戏小明在打游戏小明在打游戏小明在打游戏小明在打游戏小明在打游戏小明在打游戏小明在打游戏小明在打游戏小明在打游戏小明在打游戏小明在打游戏小明在打游戏小明在打游戏小明在打游戏小明在打游戏小明在打游戏小明在打游戏小明在打游戏
+</text>
+<view>
+小猫在上厕所小猫在上厕所小猫在上厕所小猫在上厕所小猫在上厕所小猫在上厕所小猫在上厕所小猫在上厕所小猫在上厕所小猫在上厕所小猫在上厕所小猫在上厕所小猫在上厕所小猫在上厕所小猫在上厕所小猫在上厕所小猫在上厕所小猫在上厕所小猫在上厕所小猫在上厕所小猫在上厕所小猫在上厕所小猫在上厕所小猫在上厕所小猫在上厕所小猫在上厕所小猫在上厕所小猫在上厕所
+</view>
+
