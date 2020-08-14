@@ -25,7 +25,7 @@
 			"outputPath": ""
 		},
 		"useIsolateContext": true,
-		"useCompilerModule": false,
+		"useCompilerModule": true,
 		"userConfirmedUseCompilerModuleSwitch": false
 	},
 	"appid": "wx80c3155fcd149260",
@@ -66,6 +66,13 @@
 					"id": -1,
 					"name": "pages/userConsole/userConsole",
 					"pathName": "pages/userConsole/userConsole",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/index/index",
+					"pathName": "pages/index/index",
 					"scene": null
 				}
 			]
