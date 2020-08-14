@@ -16,6 +16,7 @@
   </view>
 </scroll-view>
 <navigator url="/pages/logs/logs">跳转到logs</navigator>
+<navigator url="/pages/detail/detail">跳转到detail</navigator>
 <image class="img1" mode="aspectFit" show-menu-by-longpress src="/images/wallhaven-0q697l.jpg"></image>
 <image class="img2" mode="widthFix" src="/images/img1.png"></image>
 <text selectable>
