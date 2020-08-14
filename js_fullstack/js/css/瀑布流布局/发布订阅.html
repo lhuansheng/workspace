@@ -1,0 +1,59 @@
+<script>
+  let listeners = {
+
+  }
+  let price1 = () => {
+    console.log('price1')
+  }
+  let price2 = () => {
+    console.log('price2')
+  }
+  let blog1 = () => {
+    console.log('blog1')
+  }
+  let blog2 = () => {
+    console.log('blog2')
+  }
+  function on(name, fn) {
+    // listeners 结构和 下面一样
+    // {
+      // 'price': [price1,price2]
+      // 'blog': [blog1,blog2]
+    // }
+    if(!listeners[name]){
+      listeners[name] = []
+    }
+    listeners[name].push(fn)
+  }
+  function emit(name) {
+    // 已知listeners 结构
+    // 可选链 ?.
+    // 找到 name 下面所有的订阅者 并执行 (通知他们)
+    let listen = listeners[name] || []
+    for (const item of listen) {
+      item()
+    }
+    listeners[name] = listen.filter(listen => !listen.once)
+    
+  }
+  function off(name,fn) {
+    let listen = listeners[name] || []
+    listeners[name] = listen.filter(listened => listened!==fn)
+  }
+  function once(name,fn) {
+    fn.once = true 
+    on(name,fn)
+  }
+  on('price',price1)
+  once('price',price2)
+  on('blog',() => {
+    console.log('blog update')
+  })
+  console.log(listeners)
+  off('price',price1)
+    emit('price')
+    emit('price')
+ 
+  emit('blog')
+
+</script>
