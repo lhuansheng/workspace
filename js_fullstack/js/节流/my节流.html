@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    // 节流
+    document.addEventListener("mousemove", throttled2(count, 1000));
+    let i = 0;
+    function count() {
+      i++;
+      console.log(i);
+    }
+    // 有开头，无结尾
+    function throttled(func, wait) {
+      let previous = 0;
+      return function () {
+        let times = new Date().getTime();
+        if (times - previous >= wait) {
+          func();
+          previous = times;
+        }
+      };
+    }
+    // 无头有尾  一般就是这样了
+    function throttled1(func, wait) {
+      let flag = true;
+      return function () {
+        if (!flag) return;
+        flag = false;
+        setTimeout(() => {
+          func();
+          flag = true;
+        }, wait);
+      };
+    }
+    
+    function throttled2(func, wait) {
+      let flag = true;
+      let count = 0
+      return function () {
+        if (!flag) return;
+        flag = false;
+        if(count===0){func();count = -1}
+        setTimeout(() => {
+          func();
+          flag = true;
+        }, wait);
+      };
+    }
+  </script>
+</html>

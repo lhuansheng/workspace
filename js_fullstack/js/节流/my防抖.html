@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button id="btn">防抖按钮</button>
+  <script>
+      // document.addEventListener("mousemove", debounce(count, 1000));
+      let btn = document.getElementById('btn')
+      btn.addEventListener("click", debounce(count, 1000));
+    function count(i) {
+      console.log(i);
+    }
+    function debounce(func, wait) {
+      let timer = null
+      return (...args)=>{
+        // 连续点击的话，在中途打断setTimeout然后重新计时
+      clearTimeout(timer)
+       timer = setTimeout(() => {
+          func()
+        }, wait);
+      }
+    }
+  </script>
+</body>
+</html>
