@@ -13,8 +13,8 @@ Page({
 console.log(e)
     console.log(e.detail.value.author)
     let {title,content,author} = e.detail.value
-
-    this.insertData(title,content,[],author,'')
+    
+    this.insertData(title,'bala',[],author,'',content)
   },
   getData(){
     // demolistdb.get()
@@ -30,7 +30,7 @@ console.log(e)
     })
   },
   // 封装 插入
-  insertData(title='',content='',labels='[]',author='',time='') {
+  insertData(title='',content='',labels='[]',author='',time='',hints=1) {
     wx.showLoading({
       title: '数据插入中',
       mask:true
@@ -41,7 +41,8 @@ console.log(e)
         content,
         labels,
         author,
-        time
+        time,
+        hints
       }})
       .then(res=>{
         wx.hideLoading()

@@ -1,0 +1,7 @@
+<button bindtap="getData" type="primary">获取数据</button>
+
+<view wx:for="{{datalist}}" wx:key="index">
+<view>{{item.title}} </view>
+<view>{{item.hints}} </view>
+  -----------
+</view>

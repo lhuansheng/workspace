@@ -1,5 +1,7 @@
 {
   "pages": [
+    "pages/cloudfunc/cloudfunc",
+    "pages/commend/commend",
     "pages/index/index",
     "pages/updates/updates"
   ],

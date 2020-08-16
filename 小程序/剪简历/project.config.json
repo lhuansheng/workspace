@@ -30,7 +30,7 @@
 	},
 	"appid": "wx80c3155fcd149260",
 	"projectname": "%E5%89%AA%E7%AE%80%E5%8E%86",
-	"libVersion": "2.8.1",
+	"libVersion": "2.10.4",
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
 	"condition": {
@@ -80,6 +80,20 @@
 					"id": -1,
 					"name": "pages/updates/updates",
 					"pathName": "pages/updates/updates",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/commend/commend",
+					"pathName": "pages/commend/commend",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/cloudfunc/cloudfunc",
+					"pathName": "pages/cloudfunc/cloudfunc",
 					"scene": null
 				}
 			]

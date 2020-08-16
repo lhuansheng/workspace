@@ -1,0 +1,9 @@
+/* pages/cloudfunc/cloudfunc.wxss */
+.row {
+  padding: 35px 10px;
+  border-bottom: 1px solid #ccc;
+  margin: 5px;
+}
+.row .title {
+  font-size: 25px;
+}

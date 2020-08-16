@@ -1,0 +1,4 @@
+<view class="row" wx:for="{{datalist}}" data-id="{{item._id}}" data-idx="{{index}}" wx:key="index" bindtap="clickrow">
+  <view class="title">{{index + 1}}、{{item.title}} </view>
+  <view>阅读量： {{item.hints}}</view>
+</view>
