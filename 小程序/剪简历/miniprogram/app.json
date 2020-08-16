@@ -1,6 +1,7 @@
 {
   "pages": [
-    "pages/index/index"
+    "pages/index/index",
+    "pages/updates/updates"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -9,6 +10,7 @@
     "navigationBarTitleText": "demo",
     "navigationBarTextStyle": "black"
   },
+  "style":"v2",
   "sitemapLocation": "sitemap.json"
  
 }

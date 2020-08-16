@@ -1,1 +1,15 @@
-<view>首页</view>
+<button bindtap="getData" type="primary">获取数据</button>
+<view wx:for="{{objData}}" wx:key="index">
+<view>{{item.title}} </view></view>
+
+
+------------
+<button type="primary" bindtap="addData">插入数据</button>
+--------------
+<form bindsubmit="btnSub">
+  <input name='title' placeholder="请输入标题"></input>
+  <input name='author' placeholder="请输入作者"></input>
+  <textarea name="content" placeholder="请输入内容"></textarea>
+  <button form-type="submit" type="primary">提交</button>
+  <button form-type="reset" type="primary">重置</button>
+</form>
