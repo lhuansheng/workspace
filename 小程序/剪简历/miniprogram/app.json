@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/cloudsave/cloudsave",
     "pages/cloudfunc/cloudfunc",
     "pages/commend/commend",
     "pages/index/index",

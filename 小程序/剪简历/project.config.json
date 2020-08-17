@@ -94,6 +94,13 @@
 					"id": -1,
 					"name": "pages/cloudfunc/cloudfunc",
 					"pathName": "pages/cloudfunc/cloudfunc",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/cloudsave/cloudsave",
+					"pathName": "pages/cloudsave/cloudsave",
 					"scene": null
 				}
 			]
