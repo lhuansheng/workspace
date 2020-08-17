@@ -1,9 +1,14 @@
 import React from 'react'
-
+import styles from './style.css';
 function App() {
   return (
-    <div>
-       小马哥打裂缝
+    <div 
+    // className="swiper-container"
+    className={styles['swiper-container']}
+    // className= {styles.aaa}
+    >
+       <div>小明</div>
+       <img src="/img/1.png" alt="图片加载出错"/>
     </div>
   )
 }
