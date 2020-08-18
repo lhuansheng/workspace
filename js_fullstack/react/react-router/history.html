@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>小明</title>
+  </head>
+  <body>
+    <button id="push">push</button>
+    <script>
+      const push = document.getElementById("push");
+      console.log(history.length , '1')
+      // 监听前进后退
+      window.addEventListener('popstate', () => {
+        console.log('history change')
+      })
+      push.onclick = function () {
+        const state = { page_id: 1, user_id: 5 };
+        const title = "abcd";
+        const url = "/push1";
+        history.pushState(state, title, url);
+        console.log(history.length , '2')
+        history.replaceState(null,null,'/history.html')
+        console.log(history.length , '3')
+      };
+    </script>
+  </body>
+</html>
