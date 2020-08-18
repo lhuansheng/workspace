@@ -1,0 +1,24 @@
+<script>
+  function MyPromise(fn) {
+    this.value = undefined
+    // 首先将 this 存起来， 让他指向 MyPromise的实例
+    let self = this
+    function resolve(value) {
+      self.value = value
+       console.log(value)
+       }
+    function reject() {}
+    fn(resolve,reject)
+  }
+  MyPromise.prototype.then = function(onFulfilled, onRejected) {
+    onFulfilled(this.value)
+  }
+  new MyPromise((resolve,reject) => {
+    // setTimeout(() => {
+      resolve(1)
+    // }, 200);
+  })
+  .then(res => {
+    console.log(res)
+  },()=>{})
+</script>

@@ -1,0 +1,21 @@
+<script>
+  new Promise((resolve,reject) => {
+    setTimeout(() => {
+      resolve(1)
+    }, 2000);
+  })
+  .then((r)=>{
+    // 决议： 根据不同的返回值有不同的处理方法
+    // 7种数据类型
+    // promise
+    // 具有 then 属性的对象
+    return {
+      then:(...args) => {
+        console.log(args)
+      }
+    }
+  })
+  .then(r =>{
+    console.log(r)
+  })
+</script>
