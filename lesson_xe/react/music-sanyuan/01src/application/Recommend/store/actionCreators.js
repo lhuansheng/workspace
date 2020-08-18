@@ -12,10 +12,10 @@ export const changeRecommendList = (data) => ({
   data: fromJS(data)
 });
 
-export const changeEnterLoading = (data) => ({
-  type: actionTypes.CHANGE_ENTER_LOADING,
-  data
-});
+// export const changeEnterLoading = (data) => ({
+//   type: actionTypes.CHANGE_ENTER_LOADING,
+//   data
+// });
 // 获取 轮播图数据
 export const getBannerList = () => {
   return (dispatch) => {

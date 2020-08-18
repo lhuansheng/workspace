@@ -6,11 +6,8 @@ import { Content } from "./style";
 import { forceCheck } from 'react-lazyload';
 import Scroll from '../../baseUI/scroll/index';
 import RecommendList from '../../components/list/';
-import { EnterLoading } from './../Singers/style';
-import Loading from '../../baseUI/loading-v2/index';
-import { renderRoutes } from 'react-router-config';
 function Recommend(props) {
-  const { bannerList, recommendList, enterLoading  } = props;
+  const { bannerList, recommendList } = props;
   const { getBannerDataDispatch, getRecommendListDataDispatch } = props;
 
   useEffect(() => {
@@ -33,8 +30,6 @@ function Recommend(props) {
         <RecommendList recommendList={recommendListJS}></RecommendList>
       </div>
       </Scroll>
-      {enterLoading? <EnterLoading><Loading></Loading></EnterLoading> : null}
-      { renderRoutes(props.route.routes) }
     </Content>
   );
 }
@@ -43,8 +38,7 @@ function Recommend(props) {
 const mapStateToProps = (state) => ({
   bannerList: state.getIn(["recommend", "bannerList"]),
   recommendList: state.getIn(['recommend', 'recommendList']),
-  // songsCount: state.getIn(['player', 'playList']).size,
-  enterLoading: state.getIn(['recommend', 'enterLoading'])
+  // enterLoading: state.getIn(['recommend', 'enterLoading'])
 });
 // 映射dispatch到props上
 const mapDispatchToProps = (dispatch) => {

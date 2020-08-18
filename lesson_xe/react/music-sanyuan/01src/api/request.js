@@ -6,6 +6,3 @@ export const getBannerRequest = () => {
 export const getRecommendListRequest = () => {
   return axiosInstance.get("/personalized");
 };
-export const getAlbumDetailRequest = id => {
-  return axiosInstance.get(`/playlist/detail?id=${id}`);
-};
