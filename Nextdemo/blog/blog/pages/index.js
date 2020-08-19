@@ -8,10 +8,11 @@ import Author from "../components/Author";
 import Advert from "../components/Advert";
 import Footer from "../components/Footer";
 import axios from "axios";
+import  servicePath  from '../config/apiUrl'
+import {marked} from'../components/MarkdownParse'
 // list似乎只能传个对象
 const Home = (list) => {
-  console.log(list);
-
+  // console.log(list);
   return (
     <>
       <Head>
@@ -40,7 +41,10 @@ const Home = (list) => {
                     <span>{item.typeName}</span>
                     <span>{item.view_count}人</span>
                   </div>
-                  <div className="list-context">{item.introduce}</div>
+                  <div className="list-context"
+                  dangerouslySetInnerHTML={{__html:marked(item.introduce)}}
+                  >
+                  </div>
                 </List.Item>
               )}
             />
@@ -58,8 +62,8 @@ const Home = (list) => {
 };
 Home.getInitialProps = async () => {
   const promise = new Promise((resolve) => {
-    axios("http://127.0.0.1:7001/default/getArticleList").then((res) => {
-      console.log("远程获取数据结果:", res.data);
+    axios(servicePath.getArticleList).then((res) => {
+      // console.log("远程获取数据结果:", res.data);
       resolve(res.data);
     });
   });
