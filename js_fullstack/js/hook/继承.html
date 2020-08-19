@@ -1,0 +1,39 @@
+<script>
+//   题目
+// 填充 inherit 完成输出。
+
+// 继承父类 属性
+// 继承父类 方法
+function inherit(ParentConstructor,prototypeObj) {
+    // this.ParentConstructor = ParentConstructor
+    // this.ParentConstructor.prototype.say = options.say
+  function Cat(name) {
+    // 继承属性 super()
+   ParentConstructor.call(this,name)
+   
+  }
+  Cat.prototype = prototypeObj
+  // Cat.prototype.__proto__ = ParentConstructor.prototype
+  Object.setPrototypeOf(Cat.prototype,ParentConstructor.prototype)
+    
+    return Cat
+}
+
+let animalNum = 0;
+function Animal(name) {
+  animalNum ++;
+  this.name = name;
+}
+Animal.prototype.getName = function() {
+  return this.name;
+};
+const Cat = inherit(Animal, {  
+    say:function() {
+        console.log(`NO${animalNum}:${this.getName()}`);
+    }
+});
+const cat1 = new Cat('小花');
+console.log(cat1)
+cat1.say(); // NO1:小花
+
+</script>
