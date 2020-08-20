@@ -7,6 +7,8 @@ import {
   FileOutlined,
   UserOutlined,
 } from "@ant-design/icons";
+import AddArticle from './AddArticle'
+import { Route } from "react-router-dom";
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
 
@@ -57,7 +59,7 @@ function AdminIndex() {
             <Breadcrumb.Item>工作台</Breadcrumb.Item>
           </Breadcrumb>
           <div style={{ padding: 24, background: "#fff", minHeight: 360 }}>
-            博客工作台.
+          <Route path="/index/" exact  component={AddArticle} />
           </div>
         </Content>
         <Footer style={{ textAlign: "center" }}>JSPang.com</Footer>
