@@ -1,0 +1,13 @@
+// 函数和构造函数 即 统一 又分离
+const Person = function(name) { // 风格
+  this.name = name;
+  return {
+    name: 'Jascon'
+  };
+}
+Person.prototype.sayName = function () {
+  console.log(this.name)
+}
+const person = new Person('Tony')
+console.log(person)
+// console.log(person instanceof Person)
