@@ -1,0 +1,25 @@
+<script>
+  var moveZeroes = function(nums) {
+    let len = nums.length
+  let j = 1
+  for (let i = 0; i < len - 1; i++) {
+   if(nums[i]===0){
+   
+     while(nums[j]===0){
+       j++
+     }
+     if(j>len-1){
+       break
+     }
+     nums[i]=nums[j]
+     nums[j]=0
+     j++
+   }
+  else {
+    j++
+  }
+  }
+  return nums
+};
+console.log(moveZeroes([4,2,4,0,0,3,0,5,1,0]))
+</script>
