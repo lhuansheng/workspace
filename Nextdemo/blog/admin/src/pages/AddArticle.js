@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import marked from "marked";
 import "../assets/css/AddArticle.css";
+import axios from 'axios'
+import servicePath from '../config/aipUrl'
 import { Row, Col, Input, Select, Button, DatePicker } from "antd";
 
 const { Option } = Select;
@@ -15,7 +17,7 @@ marked.setOptions({
   smartLists: true,
   smartypants: false,
 }); 
-function AddArticle() {
+function AddArticle(props) {
   const [articleId,setArticleId] = useState(0)  // 文章的ID，如果是0说明是新增加，如果不是0，说明是修改
   const [articleTitle,setArticleTitle] = useState('')   //文章标题
   const [articleContent , setArticleContent] = useState('')  //markdown的编辑内容
@@ -25,7 +27,7 @@ function AddArticle() {
   const [showDate,setShowDate] = useState()   //发布日期
   const [updateDate,setUpdateDate] = useState() //修改日志的日期
   const [typeInfo ,setTypeInfo] = useState([]) // 文章类别信息
-  const [selectedType,setSelectType] = useState(1) //选择的文章类别
+  const [selectedType,setSelectType] = useState('选择文章类别') //选择的文章类别
   const changeContent = (e)=>{
     setArticleContent(e.target.value)
     let html=marked(e.target.value)
@@ -37,6 +39,25 @@ const changeIntroduce = (e)=>{
      let html=marked(e.target.value)
      setIntroducehtml(html)
  }
+ const getTypeInfo = ()=>{
+  axios({
+    method:'get',
+    url:servicePath.getTypeInfo,
+    header:{ 'Access-Control-Allow-Origin':'*' },
+    withCredentials:true
+  }).then(res=>{
+    console.log(res)
+    if(res.data.data == '没有登录'){
+      localStorage.removeItem('openId')
+       props.history.push('/')
+    } else {
+      setTypeInfo(res.data.data)
+    }
+  })
+ }
+ useEffect(() => {
+  getTypeInfo()
+ }, [])
   return (
     <div>
       <Row gutter={5}>
@@ -49,8 +70,13 @@ const changeIntroduce = (e)=>{
                 </Col>
                 <Col span={4}>
                     &nbsp;
-                    <Select defaultValue="Sign Up" size="large">
-                        <Option value="Sign Up">视频教程</Option>
+                    <Select defaultValue={selectedType} size="large">
+                      {
+                        typeInfo.map(item=>{
+                        return <Option key={item.id} value={item.id}>{item.typeName}</Option>
+                        })
+                      }
+                        
                     </Select>
                 </Col>
             </Row>
