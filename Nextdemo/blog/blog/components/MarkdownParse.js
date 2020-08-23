@@ -21,6 +21,7 @@ renderer.heading = function(text, level, raw) {
     html: false,
     highlight: function (code) {
             return hljs.highlightAuto(code).value;
+            
     }
 
   }); 

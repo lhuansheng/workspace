@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Layout, Menu, Breadcrumb} from "antd";
 import "../assets/css/AdminIndex.css";
+import ArticleList from './ArticleList'
 import {
   PieChartOutlined,
   AntCloudOutlined,
@@ -8,17 +9,25 @@ import {
   UserOutlined,
 } from "@ant-design/icons";
 import AddArticle from './AddArticle'
-import { Route } from "react-router-dom";
+import { Route,Switch } from "react-router-dom";
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
 
-function AdminIndex() {
+function AdminIndex(props) {
   const [collapsed, setCollapsed] = useState(false);
 
   const onCollapse = (collapsed) => {
     setCollapsed(collapsed);
   };
+  const handleClickArticle = e=>{
+    console.log(e.item.props)
+    if(e.key=='addArticle'){
+      props.history.push('/index/add')
+    }else{
+      props.history.push('/index/list')
+    }
 
+  }
   return (
     <Layout style={{ minHeight: "100vh" }}>
       <Sider collapsible collapsed={collapsed} onCollapse={onCollapse}>
@@ -34,6 +43,7 @@ function AdminIndex() {
           </Menu.Item>
           <SubMenu
             key="sub1"
+            onClick={handleClickArticle}
             title={
               <span>
                 <UserOutlined />
@@ -41,8 +51,8 @@ function AdminIndex() {
               </span>
             }
           >
-            <Menu.Item key="3">添加文章</Menu.Item>
-            <Menu.Item key="4">文章列表</Menu.Item>
+            <Menu.Item key="addArticle">添加文章</Menu.Item>
+            <Menu.Item key="articleList">文章列表</Menu.Item>
           </SubMenu>
 
           <Menu.Item key="9">
@@ -59,7 +69,13 @@ function AdminIndex() {
             <Breadcrumb.Item>工作台</Breadcrumb.Item>
           </Breadcrumb>
           <div style={{ padding: 24, background: "#fff", minHeight: 360 }}>
-          <Route path="/index/" exact  component={AddArticle} />
+            <Switch>
+          <Route path="/index/add/:id"     component={AddArticle} />
+          <Route path="/index/add/"    component={AddArticle} />
+          <Route path="/index/list"   component={ArticleList} />
+            {/* <Route path="/"   component={AddArticle} /> */}
+            </Switch>
+         
           </div>
         </Content>
         <Footer style={{ textAlign: "center" }}>JSPang.com</Footer>
