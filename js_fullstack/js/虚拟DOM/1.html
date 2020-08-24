@@ -1,0 +1,53 @@
+<div>
+  <!-- <ul class="wrap">
+    <li>1</li>
+    <li>2</li>
+  </ul>
+  <div class="wrap">
+    <span>3</span>
+    <span>4</span>
+  </div>
+
+</div> -->
+<div id="root"></div>
+<script>
+  // react.createElement 返回的就是 虚拟dom
+  let Vnode = {
+    type: 'div',
+    props: {
+      children:[
+        {type: 'ul',
+        className: 'wrap',
+        props: {
+          children: [
+            {type:'li', props: {children:['1']}},
+            {type:'li', props: {children:['2']}},
+          ]
+        }},
+      ]
+    }
+  }
+// jsx => 虚拟DOM
+// 虚拟DOM => 渲染出来
+  function render(vnode, container){
+    const { type, props } = vnode
+
+    if(!type) {
+      container.textContent = vnode
+      return;
+    };
+    const dom = document.createElement(type)
+    props.children?.forEach(child => {
+      render(child, dom)
+    })
+    container.appendChild(dom)
+  }
+  render(Vnode, document.getElementById('root'))
+  
+  // Vnode.props.children
+  // document.querySelector('div').childNodes
+  // 跨平台： Node Browser
+  // document.querySelector('div').appendChild(xxx)
+  // Vnode.props.children.push(xxxx)
+  // 保证性能下线 
+</script>
