@@ -1,0 +1,18 @@
+.app {
+  background-color: #edf1f5;
+  
+}
+.header {
+  display: flex;
+  position: relative;
+  height: 32px;
+}
+.dropdown {
+position: absolute;
+right: 220px;
+}
+.search {
+  width: 200px;
+  position: absolute;
+  right: 10px;
+}
