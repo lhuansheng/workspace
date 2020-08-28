@@ -11,6 +11,7 @@ function App() {
   const [list, setList] = useState([]);
   const [kind, setKind] = useState('全部品类')
   const [loading, setLoading] = useState(true)
+  const [inputVal, serInputVal] = useState('')
   useEffect(() => {
     setLoading(true)
     axios.get(`/list/${0}`).then((data) => {
@@ -42,23 +43,26 @@ function App() {
       </Menu.Item>
     </Menu>
   );
- const handleInput = (e) => {
-  console.log(e)
+ const handleInput = function(e) {
+  // serInputVal(inputVal)
+  console.log(e.target.value)
+  console.log(list.filter(item => e.target.value))
+  // setList(list.find(item => e.target.value))
  }
+
   return (
     <div className="app">
     <div className="header">
-    <Dropdown overlay={menu} className="dropdown" >
+    <Dropdown overlay={menu} className="dropdown">
       <Button>
       {kind}<DownOutlined />
       </Button>
     </Dropdown>
-    <Input className="search" size="defalut" placeholder="search" prefix={<SearchOutlined />} onChange={handleInput.bind(this)} />
+    <Input className="search" size="defalut"  placeholder="search" prefix={<SearchOutlined />} onChange={handleInput} />
     </div>
       <Table
         dataSource={list}
         loading={loading}
-        onClick={e => console.log(e)}
         pagination={{
           size: "middle",
           
