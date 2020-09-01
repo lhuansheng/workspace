@@ -1,0 +1,24 @@
+<button onclick="add()">add</button>
+<button onclick="show()">show</button>
+<script>
+  // let i = 1
+  // function show () {
+  //   setTimeout(() => {
+  //     console.log(i)
+  //   }, 3000);
+  // } 
+
+  // function add () {
+  //   i++
+  // } 
+  for(let i = 0; i < 5; i++) {
+    // 每个函数都会保存一个状态 闭包
+    function crea() {
+      setTimeout(() => {
+        console.log(i)
+      }, 1000*i);
+    }
+    crea()
+  }
+
+</script>
