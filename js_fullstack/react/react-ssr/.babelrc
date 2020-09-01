@@ -1,0 +1,9 @@
+{
+  // 编译出来的文件匹配什么环境
+  // react js 语法转换
+  // @babel/preset-env和@babel/preset-react是多个插件的组合
+  "presets": [
+    "@babel/preset-env",
+    "@babel/preset-react"
+  ]
+}
