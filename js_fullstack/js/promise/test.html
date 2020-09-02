@@ -1,0 +1,13 @@
+<script>
+  const pro1 = Promise.resolve('aaa')
+  const pro2 = 'bbb'
+  const pro3 = new Promise((resolve,reject) => {
+    setTimeout(() => {
+      resolve('cccc')
+    }, 1000);
+  })
+  Promise.any([pro1,pro2,pro3]).then(res => {
+    console.log(res)
+   
+  })
+</script>
