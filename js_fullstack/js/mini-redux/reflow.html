@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="a"></div>
+    <div id="b"></div>
+    <div id="c"></div>
+  </body>
+  <script>
+    const DomA = document.querySelector("#a");
+    const DomB = document.querySelector("#b");
+    const DomC = document.querySelector("#c");
+
+    function timer() {
+      // 前面没有任何对DomA的样式的变更 比如 DomA.style.width = '200px'
+   
+      DomA.style.width = DomA.offsetWidth + 1 + "px";   
+      DomB.style.width = DomA.offsetWidth + 1 + "px";   //offsetWidth
+      DomC.style.width = DomA.offsetWidth + 1 + "px";   // offsetWidth
+
+      // width 最后执行一次 layout
+    }
+    // 题目1 触发几次回流 ?
+    setTimeout(() => {
+      timer()
+    }, 2000);
+
+
+    // 题目2 引发几次回流?几次重绘?
+    // let el = document.getElementById('app');
+    // el.style.width = (el.offsetWidth+1) + 'px';  //前面el样式没有变更，不会发生回流，
+    // el.style.width = 1 + 'px'      // 最后 width发生一次回流
+    // 答案 1次
+  </script>
+</html>
