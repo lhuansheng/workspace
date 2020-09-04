@@ -1,17 +1,19 @@
 <script>
-  var str = "aabbbbbbcdeeef";
-  var x = 0;
-  var y = "";
-  for (var i = 0; i < str.length; i++) {
-    if (str[i] == y[y.length - 1]) {
-      x++;
-    } else {
-      if (x > 0) {
-        y += x + 1;
-        x = 0;
-      }
-      y += str[i];
-    }
-  }
-  console.log(y);
+// var arr = [ [1, 2, 2], [3, 4, 5, 5], [6, 7, 8, 9, [11, 12, [12, 13, [14] ] ] ], 10];
+
+// function pat(arr) {
+//   let res = []
+//   for(let child of arr){
+//     if(typeof child==='number'){
+//      return res.push(child)
+//     }
+//     else {
+//       res = res.concat(pat(child))
+//     }
+//   }
+//  return res
+// }
+// pat(arr)
+// console.log(arr)
+
 </script>
