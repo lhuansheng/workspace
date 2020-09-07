@@ -24,4 +24,13 @@
 <body>
   <div>1</div>
 </body>
+<script>
+function dfs(n) {
+    if(n===0||n===1){
+        return 1;
+    }
+   return dfs(n-1)+dfs(n-2)
+}
+console.log(dfs(0))
+</script>
 </html>
