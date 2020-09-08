@@ -7,6 +7,7 @@ function fn2(str) {
   return str.toUpperCase()
 }
 // class B
+ // fn3(fn2(fn1()))
 // 继承
 // 组合
 // reduce 也可以实现
