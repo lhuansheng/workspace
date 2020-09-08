@@ -1,36 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=0.5">
-  <title>Document</title>
-</head>
-<style>
-  *{
-    margin: 0;
-    padding: 0;
-  }
-  @media screen and (min-width: 375px){
-    html{
-     font-size: 75px;
-    }
-  }
-  div {
-   width: 5rem;
-    height: 100px;
-    background-color: pink;
-  }
-</style>
-<body>
-  <div>1</div>
-</body>
 <script>
-function dfs(n) {
-    if(n===0||n===1){
-        return 1;
-    }
-   return dfs(n-1)+dfs(n-2)
-}
-console.log(dfs(0))
+  let arr = [12, 5, 8, 130, 44]
+  console.log(arr.reverse())
+  console.log(arr)
 </script>
-</html>
