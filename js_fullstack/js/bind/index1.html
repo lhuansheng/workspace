@@ -1,0 +1,20 @@
+<script>
+  function sum(a,b,c) {
+    console.log(this, a+b+c)
+  }
+  Function.prototype.mybind = function(THIS,...args1) {
+    let fn = this
+    function test(...args2){
+      let args = args1.concat(args2)
+      // 谁 bind 调用谁?
+      // fn.prototype
+     return fn.apply(THIS,args) // obj.XXX
+    }
+    test.prototype = Object.create(this.prototype)
+    return test
+  }
+  // sum Function
+  let sum10 = sum.mybind(null,10)
+  sum10(20,30)
+ 
+</script>

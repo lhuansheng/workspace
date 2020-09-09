@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    .fang3 {
+      width: 10vw;
+      height: 10vw;
+      background-color: rgb(235, 159, 159);
+    }
+    .fang {
+      width: 50%;
+      /* 按照父元素宽度百分比 */
+      padding-top: 50%;
+      border: 1px solid;
+      background-color: rgb(228, 171, 225);
+    }
+    .fang2 {
+      width: 3rem;
+      height: 3rem;
+      background-color: rgb(206, 238, 180);
+    }
+    .fang4 {
+     width: 30vw;
+     border: 1px solid #000;
+     background-color: red;
+    }
+    .fang4::before {
+      content: '';
+      display: block;
+      margin-top: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div class="fang3"></div>
+  <!-- BFC 上下文环境 -->
+  <div>
+    <div class="fang"></div>
+  </div>
+  <div>
+    <div class="fang2"></div>
+  </div>
+  <div>
+    <div class="fang4"></div>
+  </div>
+</body>
+</html>

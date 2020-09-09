@@ -1,16 +1,12 @@
 const mid1 = (next) => (action) => {
-  console.log('mid1 start')
   if(typeof action === 'function') {
+    console.log('aaa')
     return action()
   }
   return next(action)
 }
-// function a(next) {
-//   return function b(action) {
-   
-//     return next(action)
-//   }
-// }
+
+// chain 拿到的就是 middleware2的结果
 const mid2 = (next) => (action) => {
   console.log('mid2 start')
   next(action)
