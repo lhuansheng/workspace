@@ -1,0 +1,41 @@
+<script>
+  // proxy
+  // 监听数组的 push
+  // let originPush = Array.prototype.push
+  // Array.prototype.push = function() {
+  //   // 监听
+  //   return originPush()
+  // }
+
+  let obj = {a:1, b:2}
+  let handlers = []
+  // 监听 obj的变化 代理对象
+  let pObj = new Proxy(obj, {
+    set(obj,prop,val) {
+      console.log('set')
+      return Reflect.set(obj,prop,val)
+    },
+    get(obj,prop) {
+      console.log('get')
+      handlers.push([obj,prop])
+      return Reflect.get(obj,prop)
+    }
+  })
+  pObj.a = 123
+  console.log(pObj.b)
+  let obj = new Map();
+  
+  function autoRun(handler) {
+      console.log(handlers)
+      for (const [obj, prop] of handlers) {
+        let arr = []
+        arr.push(prop)
+        let map = new Map()
+        map.set(prop,arr)
+        obj.set(obj,map)
+      }
+    }
+  autoRun(() => {
+    console.log(pObj.a)
+  })
+</script>
