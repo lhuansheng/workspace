@@ -9,6 +9,7 @@ app.get('/big.js',(req,res) => {
   const Etag = md5(jsContent)
   const oldEtag = req.headers['if-none-match']
   if(Etag === oldEtag){
+    
     // 文件没有变化
     // 从缓存里面读取 304 (not modified) 
     res.sendStatus(304).end('')
