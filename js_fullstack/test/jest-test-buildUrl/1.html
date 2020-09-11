@@ -1,5 +1,34 @@
 <script>
-  let arr = [12, 5, 8, 130, 44]
-  console.log(arr.reverse())
-  console.log(arr)
+/**
+ * @param {number[]} candidates
+ * @param {number} target
+ * @return {number[][]}
+ */
+ var combinationSum = function(candidates, target) {
+  // 回溯暴力求解 剪枝
+  // debugger
+  let res = []
+  // debugger
+  backtrack([],target,0)
+  function backtrack(path,result,begin) {
+
+    if(result===0) {
+      res.push([...path])
+      return;
+    }
+    if(result < 0){
+      return;
+    }
+    for(let i = begin; i < candidates.length; i++) {
+      path.push(candidates[i])
+      result = result - candidates[i]
+      backtrack(path,result,i)
+      path.pop()
+      result = result + candidates[i]
+    }
+  }
+  return res
+};
+console.log(combinationSum([2,3,5],8))
+
 </script>
