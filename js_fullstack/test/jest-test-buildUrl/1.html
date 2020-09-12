@@ -1,34 +1,21 @@
 <script>
-/**
- * @param {number[]} candidates
- * @param {number} target
+  /**
+ * @param {number[]} nums
  * @return {number[][]}
  */
- var combinationSum = function(candidates, target) {
-  // 回溯暴力求解 剪枝
-  // debugger
+var subsets = function(nums) {
   let res = []
-  // debugger
-  backtrack([],target,0)
-  function backtrack(path,result,begin) {
-
-    if(result===0) {
-      res.push([...path])
-      return;
-    }
-    if(result < 0){
-      return;
-    }
-    for(let i = begin; i < candidates.length; i++) {
-      path.push(candidates[i])
-      result = result - candidates[i]
-      backtrack(path,result,i)
+  debugger
+  backtrack([],0)
+  function backtrack(path,start) {
+    res.push([...path])
+    for(let i = start; i < nums.length; i++) {
+      path.push(nums[i])
+      backtrack(path,i+1)
       path.pop()
-      result = result + candidates[i]
     }
   }
   return res
 };
-console.log(combinationSum([2,3,5],8))
-
+console.log(subsets([1,2,3]))
 </script>
