@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="box"></div>
+  <!-- <script src="http://localhost:9090/content"></script> -->
+  <script>
+    const box = document.getElementById('box')
+    const xhr = new XMLHttpRequest()
+    xhr.open('get','http://localhost:9090/content',true)
+    xhr.onreadystatechange = function(){
+      if(xhr.status===200&&xhr.readyState===4){
+        let res = xhr.response
+        let k = JSON.parse(res)
+        box.innerHTML = k.a
+      }
+    }
+    xhr.send()
+  </script>
+</body>
+</html>
