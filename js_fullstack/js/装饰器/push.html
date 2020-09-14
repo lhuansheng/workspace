@@ -1,0 +1,13 @@
+<script>
+  const originPush = Array.prototype.push
+  Array.prototype.push = function(...args) {
+    console.log('监听到了')
+    return originPush.apply(this,args)
+  }
+  let arr = []
+  arr.push('abc')
+  console.log(arr)
+  // hook
+  // @observer
+  // mobx 后端框架 注解
+</script>
