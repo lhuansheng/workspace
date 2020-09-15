@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    img {
+      display: block;
+      float: left;
+    }
+    /* 在最高的元素下面，撑高了 */
+    /* .clear::after {
+      content: '';
+      clear: both;
+      display: block;
+    } */
+    /* .cls {
+      clear: left;
+    } */
+    .clear {
+      /* BFC: 计算父高度， float 元素参与在内 
+      overflow: 不为 visiable 就会创建 BFC*/
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+  <div style="border: 2px solid blue; padding:3px;" class="clear">
+    <img src="https://aecpm.alicdn.com/tfscom/TB1B8q1iP39YK4jSZPcXXXrUFXa.jpg"/>
+    <img src="https://img.alicdn.com/tps/i4/https://img.alicdn.com/tps/i4//TB1tjr.e4vbeK8jSZPfSuuriXXa.jpg_400x400q90.jpg"/>
+    <!-- <div class="clear"></div> -->
+    <!-- <div class="cls">hhhh</div> -->
+</div>
+</body>
+</html>
