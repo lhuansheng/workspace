@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="out">
+      阿道夫
+      <div class="in">in</div>
+    </div>
+    <script>
+      const out = document.querySelector(".out");
+      const inDom = document.querySelector(".in");
+      inDom.addEventListener("click", (e) => {
+        // e.currentTarget === m
+        // 阻止冒泡
+        // e.stopPropagation()
+        console.log(e.currentTarget,'in')
+      });
+      out.addEventListener("click", (e) => {
+        // e.currentTarget  事件绑定给谁指向谁
+        // e.target 鼠标点中那个元素 指向谁
+        console.log(e.currentTarget,'out')
+      });
+    </script>
+  </body>
+</html>
