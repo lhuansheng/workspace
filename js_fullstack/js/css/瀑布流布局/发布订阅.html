@@ -38,6 +38,7 @@
   }
   function off(name,fn) {
     let listen = listeners[name] || []
+    // 除去 name 为 fn的订阅
     listeners[name] = listen.filter(listened => listened!==fn)
   }
   function once(name,fn) {

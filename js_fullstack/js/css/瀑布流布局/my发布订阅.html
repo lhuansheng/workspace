@@ -1,0 +1,44 @@
+<script>
+  let listeners = {};
+  // listeners={'price':[price1,price2]}
+  function on(name,fn) {
+    // 如果有新的订阅要放进来
+    if(!listeners[name]) {
+      listeners[name] = []
+    }
+    listeners[name].push(fn)
+  }
+  function emit(name) {
+    if(listeners[name]){
+      for (const listen of listeners[name]) {
+        listen()
+      }
+      listeners[name] = listeners[name].filter(item => !item.once)
+    }
+  }
+  function off(name,fn) {
+    let listen = listeners[name] || [] 
+    listeners[name] = listen.filter(item => item!==fn)
+  }
+  let price1 = () => {
+    console.log('price1')
+  }
+  let price2 = () => {
+    console.log('price2')
+  }
+  function once(name,fn) {
+    fn.once=true
+    if(!listeners[name]) {
+      listeners[name] = []
+    }
+    listeners[name].push(fn)
+  }
+  // 多次订阅
+  on("price", price1);
+  once("price", price2);
+  // on('run',()=>{console.log('run1')})
+  // on('run',()=>{console.log('run2')})
+  // 一次发布
+  emit("price");
+  emit("price");
+</script>
