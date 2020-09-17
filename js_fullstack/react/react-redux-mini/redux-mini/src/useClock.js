@@ -1,4 +1,4 @@
-import React,{useState,useEffect, useMemo, useRef} from 'react'
+import React,{useState,useEffect, useMemo} from 'react'
 let obj = {
   0:'星期日',
   4:'星期五',
@@ -30,7 +30,7 @@ function Clock() {
   //  const ref = useRef(0)
   const [count, setCount] = useState(0)
    useEffect(() => {
-    let timer = setInterval(() => {
+    setInterval(() => {
     //  ref.current++
       // 永远能够拿到上一次的 state
         setCount(count=>count+1)
