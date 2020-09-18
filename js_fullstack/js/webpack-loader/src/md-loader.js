@@ -8,3 +8,6 @@ module.exports = function(source) {
 }
   `
 }
+
+// import xxx from 'xxx.js'
+// .js文件结尾 -> babel-loader -> js文件原始内容(class -> Function) -> js -> 解析 -> 转换 -> 生成另外一份代码 
