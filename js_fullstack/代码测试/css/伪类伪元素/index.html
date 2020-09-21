@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* 全局观赏 */
+      .d1 {
+        border-bottom: 50px solid rgb(236, 140, 140);
+        border-left: 50px solid rgb(151, 151, 245);
+        border-right: 50px solid pink;
+        border-top: 50px solid rgb(206, 235, 140);
+        height: 100px;
+        width: 100px;
+      }
+      /* 三角形 */
+      .d2 {
+        border-bottom: 50px solid rgb(236, 140, 140);
+        border-left: 50px solid transparent;
+        border-right: 50px solid transparent;
+        width: 0;
+        height: 0;
+      }
+      /* 梯形 */
+      .d3 {
+        width: 100px;
+        height: 0;
+        border-bottom: 50px solid rgb(236, 140, 140);
+        border-left: 50px solid transparent;
+        border-right: 50px solid transparent;
+      }
+      /* 平行四边形 */
+      .d4 {
+        width: 100px;
+        height: 100px;
+        background-color: rgb(149, 149, 209);
+        transform: skewX(20deg);
+      }
+      /* 六角星 两个三角形重叠 */
+      .d5 {
+    width: 0;
+    height: 0;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-bottom: 100px solid red;
+    position: relative;
+}
+.d5:after {
+    width: 0;
+    height: 0;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-top: 100px solid red;
+    position: absolute;
+    content: "";
+    top: 30px;
+    left: -50px;
+}
+    </style>
+  </head>
+  <body>
+    <div class="d1"></div>
+    <hr />
+    <div class="d2"></div>
+    <hr />
+    <div class="d3"></div>
+    <hr />
+    <div class="d4">
+      adf
+    </div>
+    <hr />
+    <div class="d5"></div>
+    <hr />
+    <div class="d6"></div>
+    <hr />
+  </body>
+</html>
