@@ -44,11 +44,12 @@ function App() {
   const handleTabClick = (e) => {
     const ltab = e.target.getAttribute('data-ltab');
     // const activeIndex = e.target.getAttribute('data-index')
-    setTimeout(() => {
-      setActiveIndex(parseInt(activeIndex))
-    }, 1000);
+    // setTimeout(() => {
+    //   setActiveIndex(parseInt(activeIndex))
+    // }, 1000);
     // 需要滚动的那个元素.scrollIntoView
     const rtab = document.querySelector(`[data-rtab="${ltab}"]`)
+    // 让当前元素滚动到目标区域，前提是该元素可滚动
     rtab.scrollIntoView({
       behavior:'smooth'
     })
@@ -57,6 +58,7 @@ function App() {
   useEffect(() => {
     const tabDetail = ref.current
     const tabs = tabDetail.querySelectorAll('[data-rtab]')
+    // 计算高度，每个item的最上与最下的值
     for(let tab of tabs){
       let h = tab.getBoundingClientRect().height;
       let newH = base + h;
@@ -65,6 +67,8 @@ function App() {
     }
     function onScroll(e) {
       const scrollTop = tabDetail.scrollTop;
+      // console.log(scrollTop)
+      // tabeltail距离顶部的高度 如果在0 newH,之间，则左边是1
       const index = ranges.findIndex(range => scrollTop >= range[0] && scrollTop < range[1])
       setActiveIndex(index)
     }
