@@ -1,0 +1,35 @@
+<script>
+    const pending = Symbol('PENDING')
+  const fulfilled = Symbol('FULFILLED')
+  const rejected = Symbol('REJECTED')
+  function MyPromise(fn) {
+    this.status = pending
+    this.value = undefined
+    let self = this
+    this.fulfilled = ()=>{}
+    function resolve(value) {
+      self.status = fulfilled
+      self.value = value
+      self.fulfilled(value)
+    }
+    function reject() {
+
+    }
+    fn(resolve,reject)
+  }
+  MyPromise.prototype.then = function(onfulfilled,onrejected){
+    if(this.status === fulfilled) onfulfilled(this.value)
+    else if(this.status === pending) {
+      this.fulfilled = onfulfilled
+    }
+  }
+  
+  new MyPromise((resolve,reject) => {
+    setTimeout(() => {
+      resolve(11)
+    }, 2000);
+  })
+  .then((res)=>{
+    console.log(res)
+  })
+</script>

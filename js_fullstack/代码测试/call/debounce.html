@@ -1,0 +1,20 @@
+<button id="btn">按钮</button>
+<script>
+  // 防抖
+  // 在一段时间内只能执行一次，防抖在规定时间不能再次触发，如果触发重新计时
+let btn = document.getElementById('btn')
+btn.addEventListener('click',debounce(handleClick,500))
+function handleClick() {
+  console.log('按钮点击了')
+}
+function debounce(fn,delay) {
+  let timer = null
+  return function(...args) {
+    if(timer) clearTimeout(timer); 
+   timer =  setTimeout(() => {
+      fn(...args)
+     timer = null
+    }, delay);
+  }
+}
+</script>

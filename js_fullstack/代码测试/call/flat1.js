@@ -7,7 +7,7 @@ function flat(arr) {
   for (let i = 0; i < arr.length; i++) {
     if(Array.isArray(arr[i])) {
       // a.push(...flat(arr[i]))
-      a.concat(flat(arr[i]))
+      a = a.concat(flat(arr[i]))
     }
     else {
       a.push(arr[i])

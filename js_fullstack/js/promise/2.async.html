@@ -11,7 +11,7 @@
     function resolve(value) {
       self.value = value
       self.status = FULFILLED
-       console.log(value)
+      //  console.log(value)
       //  resolve被执行了才能执行 onFulfilled,也就是 .then(res=>{})
        self.onFulfilled(value)
        }

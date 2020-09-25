@@ -48,7 +48,7 @@ module.exports = (appInfo) => {
     domainWhiteList: ["*"],
   };
   config.cors = {
-    origin: 'http://localhost:3000', //只允许这个域进行访问接口
+    origin: 'http://localhost:3000,http://localhost:3001', //只允许这个域进行访问接口
     allowMethods: "GET,HEAD,PUT,POST,DELETE,PATCH,OPTIONS",
     credentials:true  //运行cookie跨域
   };
