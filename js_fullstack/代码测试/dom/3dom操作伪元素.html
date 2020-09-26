@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #box3::after {
+      content: 'aa';
+      display: block;
+      width: 100px;
+      height: 100px;
+      background-color: aqua;
+    }
+  </style>
+</head>
+<body>
+  <div id="box3">
+  </div>
+  <script>
+    // css  getComputedStyle() 可以操作伪元素
+    let box = document.getElementById('box3')
+    let boxSty = window.getComputedStyle(box,'::after')
+    console.log(document.styleSheets.length)
+    // 通过styleSeets 也就是 一个css文档，styleSheets代表这个文件里面的style文档
+    document.styleSheets[0].addRule('#box3::after','width:399px;')
+  </script>
+</body>
+</html>

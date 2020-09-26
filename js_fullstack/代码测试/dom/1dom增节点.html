@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="box1">
+  </div>
+  <script>
+    // dom复习手册
+    // https://www.cnblogs.com/lrzw32/p/5008913.html
+    // 增节点，删除节点, 加id，className
+    let box1 = document.getElementById('box1')
+    let spanNode = document.createElement('span')
+    spanNode.setAttribute('id','span1')
+    let textspanNode = document.createTextNode('先干为敬')
+    spanNode.appendChild(textspanNode)
+    box1.appendChild(spanNode)
+    // box1.removeChild(spanNode)
+    // console.log(spanNode.parentElement)
+    // console.log(spanNode.parentNode)
+  </script>
+ 
+</body>
+</html>

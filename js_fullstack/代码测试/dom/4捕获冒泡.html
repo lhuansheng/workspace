@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="box">
+    <div id="box1">box1</div>
+    <button id="btn">button</button>
+  </div>
+  <div id="box2"></div>
+  <script>
+    // https://juejin.im/post/6844903834075021326#heading-0
+    // 
+    /*
+    DOM2级事件”中规定的事件流同时
+    支持了事件捕获阶段和事件冒泡阶段，
+    而作为开发者，我们可以选择事件处理函数在哪一个阶段被调用。
+      addeventListener(event,function,useCapture) 
+      useCapture为true，代表事件在捕获阶段调用处理函数
+      useCapture为false,代表事件在冒泡阶段执行 默认为false
+    */
+    const box = document.getElementById('box')
+    const box2 = document.getElementById('box2')
+    const btn = document.getElementById('btn')
+    btn.addEventListener('click',()=>{
+      box2.innerHTML+='click\n'
+    })
+    // 若为true,从外往里，一捕获 box立即执行，
+    // 若为false,从外往里，找到了不会执行，等冒泡回来再执行
+    box.addEventListener('click',()=>{
+      box2.innerHTML+='box1\n'
+    },true)
+    // 阻止冒泡 e.stopPropagation
+    // 阻止默认比如a标签跳转 e.preventDefault
+  </script>
+</body>
+</html>

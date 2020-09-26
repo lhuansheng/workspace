@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="box2">
+    <div id="sub1">sub1 <span>tt</span></div>
+    <div id="sub3">sub3</div>
+    <div id="sub2">sub2</div>
+  </div>
+  <script>
+    // 交换两个节点的顺序 克隆节点
+    let box2 = document.getElementById('box2')
+    let sub1 = document.getElementById('sub1')
+    let sub2 = document.getElementById('sub2')
+    box2.insertBefore(sub2,sub1)
+    // true代表连子节点也复制，不然false只复制parent节点,默认false
+    let sub4 = sub1.cloneNode(true)
+    sub4.id = 'sub4'
+    box2.appendChild(sub4)
+  </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <ul id="poem">
+    <li>鹅鹅鹅</li>
+    <li>曲项向天歌</li>
+    <li>白毛浮绿水</li>
+    <li>红掌拨清波</li>
+    <li>锄禾日当午</li>
+    <li>汗滴禾下土</li>
+    <li>谁知盘中餐</li>
+    <li>粒粒皆辛苦</li>
+    <li>背不动了</li>
+    <li>我背不动了</li>
+  </ul>
+</body>
+<script>
+  // http://www.imooc.com/read/70/article/1851
+  const ul = document.getElementById('poem')
+  ul.addEventListener('click', (e) => {
+    console.log(e.target)
+    console.log(e.currentTarget)
+  })
+  // Event 接口的只读属性 currentTarget 表示的，
+  // 标识是当事件沿着 DOM 触发时事件的当前目标。
+  // 它总是指向事件绑定的元素，而 Event.target 则是事件触发的元素。
+
+  // 简单来说 currentTarget 识别 触发元素本身， target触发被点击的元素
+</script>
+</html>
