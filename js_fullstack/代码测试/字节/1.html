@@ -1,0 +1,21 @@
+<script>
+  // 给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度
+  let str = 'cdaddc'
+  let longerst = (s) => {
+    let len = s.length
+    if(len===0) return 0
+    let res = 0
+    let right = 0
+    let myset = new Set()
+    for(let i = 0; i < len; i++) {
+      if(i!==0) myset.delete(s[i-1])
+      while(!myset.has(s[right])&&right<len) {
+        myset.add(s[right])
+        right++
+      }
+      res = Math.max(res,right-i)
+    }
+    return res
+  }
+ console.log(longerst(str))
+</script>

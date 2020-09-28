@@ -1,20 +1,4 @@
 <script>
-  var addStrings = function(num1, num2) {
-  let len1 = num1.length
-  let len2 = num2.length
-  let len = Math.max(len1,len2)
-  let res = ''
-  let exceed = 0
-  for(let i = len-1; i >= 0; i--) {
-    // 超出部分  余数
-    let val = parseInt(num1[len1]?num1[i]:0)+parseInt(num2[i]?num2[i]:0)+exceed
-    console.log(val)
-    res+=val%10
-    exceed = parseInt(val/10)
-    
-    
-  }
-  return res
-};
-console.log(addStrings('112','9923'))
+  
+
 </script>
