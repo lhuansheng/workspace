@@ -12,6 +12,8 @@ body 根元素
 display 为 inline-block、table-cells、flex
 overflow 除了 visible 以外的值 (hidden、auto、scroll)
 
+https://www.cnblogs.com/v10258/p/3530290.html
+这个链接让我明白了为什么浮动元素是bfc，看起来
  
 ## bgc 规则
  bfc 解决 float 原理之一
