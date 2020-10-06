@@ -1,0 +1,60 @@
+<script>
+  // 封装 ajax
+  // 可中断的ajax请求
+  function ajax(json) {
+  let oajax = new XMLHttpRequest()
+  let data = ''
+ if(json.data){
+  for (const item in json.data) {
+    if (json.data.hasOwnProperty(item)) {
+      data += json.data[item] + '&'
+    }
+  }
+ data = data.slice(0,data.length-1)
+ console.log(data)
+ }
+  if(json.type&&json.type.toUpperCase()==='GET') {
+    oajax.open('GET',json.url,true)
+    oajax.send()
+  }
+  else {
+    oajax.open('POST',json.url,true)
+    oajax.setRequestHeader('content-type','application/x-www-form-urlencoded')
+    oajax.send(data)
+  }
+  oajax.onreadystatechange = function() {
+    if(oajax.readyState !== 4) return;
+    if(oajax.status === 200 && oajax.readyState === 4) {
+      json.success&&json.success(oajax.response)
+    }
+    else json.error&&json.error(oajax.status)
+  }
+  if(json.timeout) {
+   const timer = setTimeout(() => {
+      oajax.abort()
+    }, json.timeout);
+  }
+  ajax.abort = function() {
+    oajax.abort()
+}
+  // return {
+  //   stopajax
+  // }
+}
+
+ajax({
+  type:'get',
+  url:'http://neteasecloudmusicapi.zhaoboy.com/search?keywords=%E6%B5%B7%E9%98%94%E5%A4%A9%E7%A9%BA',
+  data:{
+    a:'xxx',
+    b:'bbb'
+  },
+  success: res => {
+    console.log(JSON.parse(res))
+  },
+  error: res => {
+    console.log(res,'失败了')
+  }
+})
+// ajax.abort()
+</script>
