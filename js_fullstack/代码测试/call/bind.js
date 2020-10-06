@@ -5,6 +5,7 @@ let obj = {
 function say(age,play){
   console.log(`her name is ${this.name}, age is ${age}, hobby is ${play}`)
 }
+// bind与 call 和 apply 不同，调用bind之后不会立即调用，并且可能需要参数，需要返回一个function
 Function.prototype.myBind = function (ctx,...args1) {
   let THAT = this
   let arr = []
