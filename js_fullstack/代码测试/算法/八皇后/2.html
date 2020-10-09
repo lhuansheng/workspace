@@ -1,0 +1,18 @@
+<script>
+  
+  var foo = (function () {
+    var secret = "secret";
+    //“闭包”内的函数可以访问 secret变量，而secret变量对于外部却是隐藏的
+    return {
+      get_secret: function () {
+        //通过定义的接口来访问secret
+        return secret;
+      },
+      new_secret: function (new_secret) {
+        // 通过定义的接口来修改secret
+        secret = new_secret;
+      },
+    };
+  })();
+  console.log(foo.get_secret())
+</script>
