@@ -12,9 +12,10 @@ Function.prototype.myBind = function (ctx,...args1) {
   arr.push(...args1)
   return function(...args2) {
     arr = arr.concat(args2)
-    // ctx.fn = THAT
-    // ctx.fn(...arr)
-    THAT.apply(ctx,arr)
+   // 将 fn(谁调用就是谁) 的this指向 ctx
+    ctx.fn = THAT
+    ctx.fn(...arr)
+    // THAT.apply(ctx,arr)
   }
 }
 // say.bind(obj,18)('jump')
