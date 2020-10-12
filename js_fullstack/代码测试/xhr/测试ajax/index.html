@@ -1,0 +1,43 @@
+<script>
+  function ajax(config) {
+   const xhr = new XMLHttpRequest()
+   const {url,type,data,success,fail} = config
+   if(type.toUpperCase()==='GET') {
+    xhr.open(type,url,true)
+    xhr.send()
+   }
+   if(type.toUpperCase()==='POST') {
+     xhr.open(type,url,true)
+     xhr.setRequestHeader('content-type','application/x-www-form-urlencoded')
+     let values
+     if(data) {
+      values = Object.keys(data).reduce((pre,cur)=>obj[pre]+'&'+obj[cur])
+     }
+     xhr.send(values)
+   }
+   xhr.onreadystatechange = function() {
+     if(xhr.readyState!==4) return;
+     if(xhr.readyState===4&&xhr.status===200) {
+       success(xhr.response)
+     } 
+     else {
+       fail(xhr.status)
+     }
+   }
+
+  }
+  ajax({
+    url:'http://neteasecloudmusicapi.zhaoboy.com/search?keywords=%E6%B5%B7%E9%98%94%E5%A4%A9%E7%A9%BA',
+    type:'get',
+    data:{
+      a:1,
+      b:2
+    },
+    success:res => {
+      console.log(JSON.parse(res))
+    },
+    fail:res => {
+      console.log(res)
+    }
+  })
+</script>
