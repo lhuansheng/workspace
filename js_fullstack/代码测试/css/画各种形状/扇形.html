@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* 两个半圆，可以一个透明，或者两个不透明 */
+     .contain {
+			position: relative;
+			width: 200px;
+			height: 200px;
+      overflow: hidden;
+		}
+    .main{
+      width: 100%;
+      height: 100%;
+      border-radius: 100px;
+      /* background-color: rgb(247, 213, 213); */
+    }
+    .mask1{
+      position: absolute;
+      top: 0;
+      width: 50%;
+      height: 100%;
+      background-color: rgb(235, 232, 232);
+      border-radius: 100px 0 0 100px;
+    }
+    .mask2 {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 50%;
+      height: 100%;
+      transform: rotate(23deg);
+      background-color: rgb(230, 160, 160);
+
+      border-radius: 100px 0 0 100px;
+      transform-origin: right center;
+    }
+  </style>
+</head>
+<body>
+  <div class="contain">
+		<div class="main"></div>
+		<div class="mask1 common"></div>
+		<div class="mask2 common"></div>
+	</div>
+</body>
+</html>
