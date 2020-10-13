@@ -1,0 +1,17 @@
+<script>
+ function fn() {
+    return 'this is a function'
+ 
+}
+let newFn = new Proxy(fn,{
+  apply: function(target,thisArg,args) {
+    // thisArg代表谁调用这个function就指向谁，window就指向 undefined
+    console.log(target,thisArg,this,args)
+    return Reflect.apply(target,thisArg,args)
+  }
+})
+let obj = {
+  a: newFn
+}
+obj.a()
+</script>
