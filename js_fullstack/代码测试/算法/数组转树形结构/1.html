@@ -1,0 +1,35 @@
+<script>
+  var locationList = [
+      { id: 1, pid: 0 },
+      { id: 2, pid: 1 },
+      { id: 3, pid: 2 },
+      { id: 4, pid: 0 },
+];
+
+var res = trans(locationList)
+console.log(res);
+function trans(arr) {
+  let root = arr.shift();
+  function insertChild(pid, child) {
+    function walk(node) {
+      if (!node) return;
+      if (node.id === pid) {
+        if (!node.sub) node.sub = [];
+        node.sub.push(child);
+        return;
+      }
+      if (node.sub) {
+        for (let c of node.sub) {
+          walk(c);
+        }
+      }
+    }
+    walk(root);
+  }
+  for (let child of arr) {
+    let { id, pid } = child
+    insertChild(pid, child);
+  }
+  return root;
+}
+</script>
