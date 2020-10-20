@@ -1,0 +1,37 @@
+<script>
+  let list = [
+      { id: 1, parentId: 0 },
+      { id: 2, parentId: 1 },
+      { id: 3, parentId: 2 },
+      { id: 4, parentId: 0 },
+  ]
+  // 通过 parentId 找到 父节点，并插到父节点下面
+  function fn(list) {
+    let res = []
+    for (const item of list) {
+      if(item.parentId===0) {
+        res.push(item)
+      }
+      else dps(item,res)
+    }
+    function dps(item,res) {
+      for (const sub of res) {
+        // 找到 parentid, 然后插入
+        if(sub.id===item.parentId){
+          sub['children']=[item]
+        }
+        else if(sub['children']){
+          // 没找到，继续往深处找
+          dps(item,sub['children'])
+        }
+      }
+    }
+    console.log(res)
+    return res
+  }
+  fn(list)
+  // 小小总结一下，这类将数组转换成类似于树的形式的题目，有以下步骤，
+  // 1 遍历数组 找到所有的根节点，将之放入res中
+  // 2 如果不是根节点，那么递归(深度优先)的找到在哪个树的下面，然后赋值给它
+  // 这样就可以把所有的值插入了
+</script>
