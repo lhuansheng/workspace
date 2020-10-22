@@ -1,0 +1,21 @@
+<script>
+  function Animal(){
+    this.live = 'land'
+    this.eat = []
+  }
+  function Cat () {
+    Animal.call(this) // 继承属性的： 父类有的属性，继承到自己的内部属性上
+    this.sound = '喵喵喵'
+  }
+  Cat.prototype = new Animal()
+  Cat.prototype.jump = () =>{
+    console.log(40)
+  }
+
+
+  let c1 = new Cat()
+  let c2 = new Cat()
+  c1.eat.push('aa')
+  let k = new Animal()
+  console.log(c1,k.live)
+</script>
