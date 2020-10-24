@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      *{
+        padding: 0;
+        margin: 0;
+      }
+      ul {
+        margin: 0 auto;
+        margin-top: 30px;
+        width: 300px;
+        height: 300px;
+        display: flex;
+        flex-wrap: wrap;
+       
+      }
+      li {
+        width: 100px;
+        border: 5px solid #000;
+        background-color: aqua;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: -5px;
+        margin-top: -5px;
+      }
+      li:nth-child(3n+1) {
+        margin-left: 0;
+      }
+      li:nth-child(-n+3) {
+        margin-top: 0;
+      }
+      .bling {
+        border: 5px solid red;
+        z-index: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <ul>
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+      <li>5</li>
+      <li>6</li>
+      <li>7</li>
+      <li>8</li>
+      <li>9</li>
+    </ul>
+    <script>
+      const ul = document.getElementsByTagName('ul')[0]
+      ul.addEventListener('mouseover', e => {
+        e.target.classList.add("bling")
+        console.log(e.target)
+      })
+      ul.addEventListener('mouseout', e => {
+        e.target.classList.remove("bling")
+      })
+    </script>
+  </body>
+</html>
