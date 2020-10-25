@@ -1,0 +1,31 @@
+<script>
+  class Queue {
+    constructor() {
+      this.tasks = [];
+    }
+    task(wait, fn) {
+      this.tasks.push({ wait: wait, fn: fn });
+      return this;
+    }
+    start() {
+      let timestart = 0;
+      for (const item of this.tasks) {
+        timestart += item.wait;
+        setTimeout(() => {
+          item.fn();
+        }, timestart);
+      }
+    }
+  }
+  new Queue()
+    .task(1000, () => {
+      console.log(1);
+    })
+    .task(2000, () => {
+      console.log(2);
+    })
+    .task(1000, () => {
+      console.log(3);
+    })
+    .start();
+</script>
