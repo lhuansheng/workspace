@@ -1,66 +1,23 @@
-import React, { useState } from "react";
-import './mockjs.js'
-import axios from 'axios'
-function ajax(config) {
-  const {url,type,success,fail} = config
-  const xhr = new XMLHttpRequest()
-  if(type.toUpperCase()==="GET"){
-    xhr.open(type,url,true)
-    xhr.send()
+import React, { useState,useEffect } from "react";
+function useCountDown(init){
+  let [count, setCount] = useState(init)
+  useEffect(() => {
+   let time =  setInterval(() => {
+     console.log(count)
+      setCount(() => --count)
+      if(count===-1) {
+        clearInterval(time)
+      }
+    }, 1000);
+  },[])
+      return [count,setCount]
   }
-  xhr.onreadystatechange = function() {
-    if(xhr.readyState!==4) return;
-    if(xhr.readyState===4&&xhr.status===200) {
-      success(xhr.response)
-    }
-    else {
-      fail(xhr.status)
-    }
-  }
-  ajax.abort = function() {
-    xhr.abort()
-  }
-}
-// 节流
-function debounce(fn,timeout) {
-let timer = null
- return function(...args) {
-   
-    if(timer) clearTimeout(timer)
-    timer = setTimeout(()=>{
-      timer = null
-    return fn(...args)
+  function App(){
+  let [count, setCount] =useCountDown(10)
+    useEffect(() => {
+      setCount(()=>60)
       
-  },timeout)
- }
-}
-
-function App() {
-  let [suggest,setSuggest] = useState([])
-  const handleInput = debounce((e) => {
-    axios({
-      method:'get',
-      url:'/post1',
-      timeout:1
-    })
-    .then(res => {
-      console.log(res)
-      setSuggest(res.data.data)
-    })
-  },500)
-  return (
-    <div>
-    <div>
-    <input type='text' onChange = {handleInput}/>
-    <button>搜索</button>
-    </div>
-    <ul>
-    {
-      suggest.map((res,i) => <li key={res.key}>{res.mock}</li>
-      )
-    }
-  </ul>
-    </div>
-  )
-}
+    }, [])
+      return (<div>{count}</div>)
+  }
 export default App;

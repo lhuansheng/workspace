@@ -1,0 +1,18 @@
+<script>
+  function fn(str) {
+    let count = str.length
+    while(count>3) {
+      count = count - 3
+      str = str.slice(0,count)+','+str.slice(count)
+    }
+    return str
+  }
+  function fn1(str) {
+    str = str.reverse()
+    let reg = /([0-9]{3})/g
+    str = str.replace(reg,'$1,')
+    str = str.reverse()
+    return str
+  }
+  console.log(fn1('1234567893'))
+</script>
