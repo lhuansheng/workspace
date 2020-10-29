@@ -1,0 +1,31 @@
+<script>
+  function fn(num) {
+    let pre = '1';
+    let cur = '1';
+    let sum = 0
+    for (let i = 0; i < num - 2; i++) {
+      sum = toSum(pre,cur)
+      pre = cur
+      cur = sum
+    }
+    return cur;
+  }
+  function toSum(num1,num2) {
+    let exceed = 0
+    let sum=0
+    let res = ''
+    for(let i = num1.length-1,j = num2.length - 1; i>=0,j>=0; i--,j--) {
+      let a = num1[i] || 0
+      let b = num2[j] || 0
+      sum = parseInt(a)+parseInt(b) + exceed
+      exceed = parseInt(sum / 10)
+      res = sum%10 + res
+    }
+    if(exceed>0){
+      res = exceed + res
+    }
+    return res
+  }
+  console.log(fn(5));
+  // console.log(toSum('8','99'))
+</script>
