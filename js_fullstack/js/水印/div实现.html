@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>element-watermark</title>
+
+</head>
+
+<body>
+    <div class="app">
+        <h1>秋风</h1>
+        <p>hello</p>
+    </div>
+    <script>
+        // 将对象属性样式添加到 el上
+        function cssHelper(el, prototype) {
+            for (let i in prototype) {
+                el.style[i] = prototype[i]
+            }
+        }
+        // 外层容器
+        const waterWrapper = document.createElement('div');
+        cssHelper(waterWrapper, {
+            position: 'fixed',
+            top: '0px',
+            right: '0px ',
+            bottom: '0px',
+            left: '0px',
+            overflow: 'hidden',
+            display: 'flex',
+            'flex-wrap': 'wrap',
+            // 'pointer-events': 'none'
+        })
+        // 通过计算 每个水的宽高，以及屏幕的宽高，算出屏幕可以放下多少个水印
+        const waterHeight = 100;
+        const waterWidth = 180;
+        const { clientWidth, clientHeight } = document.documentElement || document.body;
+        const column = Math.ceil(clientWidth / waterWidth);
+        const rows = Math.ceil(clientHeight / waterHeight);
+
+        // 每个水印的样式，内容。
+        function createItem() {
+            const item = document.createElement('div')
+            item.innerHTML = '秋风的笔记'
+            cssHelper(item, {
+                position: 'absolute',
+                top: `50px`,
+                left: `50px`,
+                fontSize: `16px`,
+                color: '#000',
+                lineHeight: 1.5,
+                opacity: 0.1,
+                transform: `rotate(-15deg)`,
+                transformOrigin: '0 0',
+                // 能否选中文字
+                userSelect: 'none',
+                whiteSpace: 'nowrap',
+                overflow: 'hidden',
+            })
+            return item
+        }
+        // 将水印放到一个个容器里面
+        for (let i = 0; i < column * rows; i++) {
+            const wrap = document.createElement('div');
+            cssHelper(wrap, Object.create({
+                position: 'relative',
+                width: `${waterWidth}px`,
+                height: `${waterHeight}px`,
+            }));
+            wrap.appendChild(createItem());
+            // 将容器一个个放到大容器里面
+            waterWrapper.appendChild(wrap)
+        }
+        // 然后将大容器插入html
+        document.body.appendChild(waterWrapper)
+    </script>
+</body>
+
+</html>

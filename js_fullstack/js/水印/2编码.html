@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <canvas id="canvas" width="256" height="256"></canvas>
+    <script>
+      var ctx = document.getElementById("canvas").getContext("2d");
+      var img = new Image();
+      var originalData;
+      img.onload = function () {
+        ctx.drawImage(img, 0, 0);
+        // 获取指定区域的canvas像素信息
+        originalData = ctx.getImageData(
+          0,
+          0,
+          ctx.canvas.width,
+          ctx.canvas.height
+        );
+        // processData(originalData)
+        console.log(originalData);
+      };
+      img.src = "xiaolan.png";
+
+      // 在图片中加文字信息，首先获取文字的像素信息
+      var textData;
+      ctx.font = "30px Microsoft Yahei";
+      ctx.fillText("帅气小伙", 60, 130);
+      textData = ctx.getImageData(0, 0, ctx.canvas.width, ctx.canvas.height)
+        .data;
+
+      var mergeData = function (newData, color) {
+        var oData = originalData.data;
+        var bit, offset; // offset的作用是找到alpha通道值，这里需要大家自己动动脑筋
+
+        switch (color) {
+          case "R":
+            bit = 0;
+            offset = 3;
+            break;
+          case "G":
+            bit = 1;
+            offset = 2;
+            break;
+          case "B":
+            bit = 2;
+            offset = 1;
+            break;
+        }
+        for (var i = 0; i < oData.length; i++) {
+          if (i % 4 == bit) {
+            // 只处理目标通道
+            if (newData[i + offset] === 0 && oData[i] % 2 === 1) {
+              // 没有信息的像素，该通道最低位置0，但不要越界
+              // 将没用的信息变成了偶数
+              if (oData[i] === 255) {
+                oData[i]--;
+              } else {
+                oData[i]++;
+              }
+            } else if (newData[i + offset] !== 0 && oData[i] % 2 === 0) {
+              // // 有信息的像素，该通道最低位置1，可以想想上面的斑点效果是怎么实现的
+              // 将有信息的变成了奇数
+              if (oData[i] === 255) {
+                oData[i]--;
+              } else {
+                oData[i]++;
+              }
+            }
+          }
+        }
+        ctx.putImageData(originalData, 0, 0);
+      };
+    </script>
+  </body>
+</html>
