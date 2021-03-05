@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "note-card": "/components/NoteCard/NoteCard",
+    "create-card": "/components/CreateCard/CreateCard",
+    "collection-card": "/components/CollectionCard/CollectionCard"
+  }
+}

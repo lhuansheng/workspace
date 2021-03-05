@@ -1,0 +1,41 @@
+{
+  "pages": [
+    "pages/newnote/newnote",
+    "pages/index/index",
+    "pages/mine/mine",
+    "pages/notice/notice"
+  ],
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarTitleText": "树苗笔记",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#aaa",
+    "selectedColor": "#2c2c2c",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "笔记",
+        "selectedIconPath": "images/note_1.png",
+        "iconPath": "images/note_2.png"
+      },
+      {
+        "pagePath": "pages/notice/notice",
+        "text": "通知",
+        "selectedIconPath": "images/notice_1.png",
+        "iconPath": "images/notice_2.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的",
+        "selectedIconPath": "images/mine_1.png",
+        "iconPath": "images/mine_2.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2"
+}

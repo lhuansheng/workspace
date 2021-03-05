@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "create-card": "/components/CreateCard/CreateCard",
+    "date-info": "/components/DateInfo/DateInfo"
+  },
+  "disableScroll": true
+}

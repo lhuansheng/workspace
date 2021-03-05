@@ -1,8 +1,11 @@
 {
-	"miniprogramRoot": "miniprogram/",
-	"cloudfunctionRoot": "cloudfunctions/",
+	"cloudfunctionRoot": "functions/",
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
 		"enhance": true,
 		"postcss": true,
@@ -26,13 +29,23 @@
 		},
 		"useIsolateContext": true,
 		"useCompilerModule": false,
-		"userConfirmedUseCompilerModuleSwitch": false
+		"userConfirmedUseCompilerModuleSwitch": false,
+		"useMultiFrameRuntime": true,
+		"useApiHook": true,
+		"packNpmManually": false,
+		"packNpmRelationList": []
 	},
-	"appid": "wx80c3155fcd149260",
-	"projectname": "%E6%98%9F%E7%A9%BA",
-	"libVersion": "2.8.1",
+	"compileType": "miniprogram",
+	"libVersion": "2.12.2",
+	"appid": "wxf9fe1644856c5abc",
+	"projectname": "Simple-Note",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"isGameTourist": false,
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
+	"cloudfunctionTemplateRoot": "cloudfunctionTemplate",
 	"condition": {
 		"search": {
 			"current": -1,
@@ -47,15 +60,57 @@
 			"list": []
 		},
 		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"gamePlugin": {
+			"current": -1,
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": -1,
 			"list": [
 				{
+					"id": 1,
+					"name": "启动页",
+					"pathName": "pages/launch/launch",
+					"query": "",
+					"scene": null
+				},
+				{
 					"id": -1,
-					"name": "db guide",
-					"pathName": "pages/databaseGuide/databaseGuide"
+					"name": "日记页",
+					"pathName": "pages/diary/diary",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 2,
+					"name": "编辑页",
+					"pathName": "pages/cardpage/cardpage",
+					"query": "mode=READING",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "Editor",
+					"pathName": "pages/editor/editor",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 4,
+					"name": "ABOUT ME",
+					"pathName": "pages/aboutMe/aboutMe",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "ALARM",
+					"pathName": "pages/alarm/alarm",
+					"query": "",
+					"scene": null
 				}
 			]
 		}

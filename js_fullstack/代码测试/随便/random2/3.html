@@ -1,0 +1,28 @@
+<script>
+  /**
+ * @param {number[]} prices
+ * @return {number}
+ */
+var maxProfit = function(prices) {
+    let maxsell = 0
+    let sumval = 0
+    let minbuy = Infinity
+    for(let i = 0; i < prices.length; i++) {
+      debugger
+      minbuy = minbuy>prices[i]?prices[i]:minbuy
+      let sell = prices[i] - minbuy
+      console.log(minbuy,sell)
+      if(sell>= maxsell) {
+        maxsell = sell
+      }
+      else {
+        sumval +=maxsell          
+        maxsell = 0
+        minbuy = Infinity
+      }
+    }
+    console.log(sumval)
+    return sumval
+};
+maxProfit([7,1,5,3,6,4])
+</script>

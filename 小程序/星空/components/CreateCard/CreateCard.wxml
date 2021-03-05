@@ -1,0 +1,19 @@
+<view class="card-box">
+  <navigator url="/pages/cardpage/cardpage?id=0" hover-class="none">
+    <view class="date">
+    <view class="day">
+      {{day}}
+    </view>
+    <view class="month">
+      {{month}}.{{year}}
+    </view>
+    <!-- 竖线 -->
+    <view class="splice"></view>
+  </view>
+  <view class="add" bindtap="createCard">
+    <view class="plus">
+      <view class="cuIcon-roundaddfill"></view>
+    </view>
+  </view>
+  </navigator>
+</view>

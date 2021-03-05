@@ -1,0 +1,71 @@
+@import "../../colorui/main.wxss";
+@import "../../colorui/icon.wxss";
+
+.icon-box{
+  position: relative;
+  height: 100%;
+}
+.leftIcon{
+  position: absolute;
+  left: 35rpx;
+  font-size: 50rpx;
+  bottom: 18rpx;
+}
+.date{
+  animation: flipInX 1s;
+  color: rgb(60, 60, 60);
+  font-size: 40rpx;
+  font-weight: 700;
+  position: absolute;
+  bottom: 20rpx;
+  left: 37%;
+  letter-spacing: 5rpx;
+}
+.hover{
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-color: white;
+  z-index: 100;
+}
+.icon{
+  position: absolute;
+  left: 35rpx;
+  font-size: 50rpx;
+  bottom: 17rpx;
+}
+.txt{
+  /* margin-top: 260rpx; */
+  text-align: center;
+  font-size: 45rpx;
+  font-weight: 700;
+  letter-spacing: 3rpx;
+}
+.hover{
+  animation-duration: 0.3s;
+}
+button::after{
+  border: none;
+}
+.txt-item{
+  background-color: white;
+  font-size: 45rpx;
+  font-weight: 700;
+  animation-duration: 0.3s;
+  color: rgb(112, 112, 112);
+}
+.alarm{
+  animation-delay: 0.05s;
+}
+.shareUs{
+  animation-delay: 0.1s;
+}
+.nightMode{
+  animation-delay: 0.15s;
+}
+.feedBack{
+  animation-delay: 0.2s;
+}
+.aboutUs{
+  animation-delay: 0.25s;
+}

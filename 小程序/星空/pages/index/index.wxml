@@ -1,0 +1,21 @@
+<view class="bg-white" style="height:{{CustomBar}}px">
+	<view class="hover animated {{MenuAnimate}}" wx:if="{{leftFlag}}">
+		<view class="icon" style="top: {{CustomBar-35}}px">
+			<view class="cuIcon-close animated " bindtap="close"></view>
+		</view>
+		<view class="txt" style="margin-top:{{CustomBar+40}}px">
+			<button open-type="{{item.type}}" class="txt-item animated {{txtItemAnimate}} {{item.class}}" style="margin-bottom:{{CustomBar-40}}px" wx:for="{{HoverText}}" wx:key="id" bindtap="{{item.class}}">{{item.text}}</button>
+		</view>
+	</view>
+	<view class="icon-box">
+		<view class="date">
+			{{month}}.{{year}}
+		</view>
+		<view class="leftIcon">
+			<view class="cuIcon-sort" bindtap="leftmenu"></view>
+		</view>
+	</view>
+</view>
+<create-card></create-card>
+<note-card ></note-card>
+<!-- <collection-card></collection-card> -->

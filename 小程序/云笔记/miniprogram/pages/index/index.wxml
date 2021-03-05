@@ -1,0 +1,29 @@
+<view class="all">
+	<!-- 名言 -->
+	<view class="saying">
+		<image src="../../images/sun.png" mode="aspectFit" class='icon' />
+		<text style="color:#707070">你在的地方一定是天晴吧</text>
+		<view></view>
+	</view>
+	<!-- 列表 -->
+	<view class="list-wrap">
+		<view class="list-item" wx:for="{{10}}" wx:key="index">
+			<view class="list-left">
+				<view>05</view>
+				<view>周五</view>
+			</view>
+			<view class="list-right">
+				<view class="title">什么时候</view>
+				<view class="content">每一次都在徘徊</view>
+				<image src="../../images/test.png" class="img" mode="aspectFill" />
+				<view class="time-wrap">
+					<view class="time">09:02</view>
+                    <view class="location-wrap">
+                    <image src="../../images/location.png" mode="aspectFill" class="location"/>
+                    <view class="location-place">地球上的某个角落</view>
+                    </view>
+				</view>
+			</view>
+		</view>
+	</view>
+</view>

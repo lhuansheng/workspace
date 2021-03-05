@@ -1,0 +1,43 @@
+<view class="card-box" wx:for="{{notes}}">
+  <navigator url="/pages/cardpage/cardpage?id={{item._id}}" hover-class="none">
+    <view class="date">
+      <view class="day">
+        {{item.day}}
+      </view>
+      <view class="month">
+        {{item.month}}.{{item.year}}
+      </view>
+      <!-- 竖线 -->
+      <view class="splice" hidden="{{isImg}}"></view>
+    </view>
+    <view class="add" bindtap="createCard">
+      <view class="txt text-overflow" style="word-break:break-all;">
+        {{item.preview}}
+      </view>
+      <!-- <view class="pic">
+      <image src="{{imgsrc}}" mode="widthFix"></image>
+    </view> -->
+    </view>
+  </navigator>
+
+  <view class="bottom-area">
+    <view class="weather">
+      <view class="weather-icon">
+        <view class="iconfont icon-fine_icon" style="font-size: 40rpx;font-weight: 600;"></view>
+      </view>
+      <view class="weather-txt">
+        SUNNY
+      </view>
+    </view>
+    <view class="edit">
+      <view class="reedit">
+        <view class="cuIcon-write"></view>
+      </view>
+      <view class="delete" bindtap="deleteCard" data-id="{{item._id}}">
+        <view class="cuIcon-delete"></view>
+      </view>
+    </view>
+
+  </view>
+
+</view>

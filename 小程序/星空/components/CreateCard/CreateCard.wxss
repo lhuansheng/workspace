@@ -1,0 +1,48 @@
+@import "../../colorui/main.wxss";
+@import "../../colorui/icon.wxss";
+
+.card-box{
+  margin: 30rpx auto;
+  width: 690rpx;
+  height: 220rpx;
+  background-color: white;
+}
+.date{
+  position: relative;
+  width: 180rpx;
+  height: 100%;
+  /* background-color: #66ccff; */
+  float: left;
+}
+.add{
+  animation: flipInX 0.5s;
+  float: left;
+  width: 470rpx;
+  height: 100%;
+  /* background-color: pink; */
+}
+.day{
+  animation: flipInX 0.5s;
+  margin-top: 40rpx;
+  text-align: center;
+  font-weight: 600;
+  font-size: 65rpx;
+}
+.month{
+  margin-top: 0rpx;
+  text-align: center;
+  font-size: 23rpx;
+}
+.splice{
+  position: absolute;
+  width: 5rpx;
+  height: 100rpx;
+  background-color: rgb(235, 235, 235);
+  right: 0rpx;
+  top: 67rpx;
+}
+.plus{
+  text-align: center;
+  font-size: 125rpx;
+  line-height: 220rpx;
+}

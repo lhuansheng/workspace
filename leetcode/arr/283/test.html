@@ -1,0 +1,22 @@
+<form name="formA" id="aaa">
+  <select name="a" size="1" id=”obj”>
+  <option value="a" type="radio" name="ch">1</option>
+  <option value="b" type="radio" name="ch">2</option>
+  <option value="c" type="radio" name="ch">3</option>
+  </select>
+  </form>
+  <script>
+    let option = document.getElementById('aaa')
+    let obj = document.getElementsByName('ch')
+    let selected = null;
+    option.addEventListener("click", () => {
+      console.log(obj)
+      for (let i = 0; i < obj.length; i++) {
+      if(obj[i].selected == true) {
+        console.log(i)
+      }
+    }
+    })
+   
+   
+  </script>

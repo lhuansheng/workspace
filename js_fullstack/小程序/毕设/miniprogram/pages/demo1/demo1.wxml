@@ -1,0 +1,6 @@
+<button type="primary" bindtap="updateData">更新记录</button>
+----------
+<input placeholder="请输入id" bindinput="myIpt"></input>
+<button type="primary" bindtap="delData">删除记录</button>
+
+<button type="primary" bindtap="btnNum">查询个数</button>
