@@ -1,29 +1,28 @@
 <view class="all">
 	<!-- 名言 -->
-	<view class="saying">
-		<image src="../../images/sun.png" mode="aspectFit" class='icon' />
-		<text style="color:#707070">你在的地方一定是天晴吧</text>
-		<view></view>
+	<view class="saying" >
+		<view bindtap="clickall">
+			<image src="../../images/sun.png" mode="aspectFit" class='icon' />
+			<text style="color:#707070">你在的地方一定是天晴吧时间世家得到大大的埃里克打扫房间阿里第三方接口</text></view>
+			<picker bindchange="bindPickerChange" value="{{pickerindex}}" range="{{arrpicker}}">
+				<view class="picker">
+					<view class="c" style="background-color:{{arrColor[pickerindex]}};"></view>
+					<text>{{arrpicker[pickerindex]}}</text>
+				</view>
+			</picker>
 	</view>
 	<!-- 列表 -->
 	<view class="list-wrap">
-		<view class="list-item" wx:for="{{10}}" wx:key="index">
-			<view class="list-left">
-				<view>05</view>
-				<view>周五</view>
-			</view>
+		<view class="list-item" wx:for="{{datalist}}" data-id="{{item._id}}" data-idx="{{index}}" wx:key="index" bindtap="modify" style="background-color:{{arrColor[item.category]}};">
+
 			<view class="list-right">
-				<view class="title">什么时候</view>
-				<view class="content">每一次都在徘徊</view>
-				<image src="../../images/test.png" class="img" mode="aspectFill" />
+				<view class="title">{{item.preview}}</view>
+				<image src="{{item.imgsrc}}" class="img" mode="aspectFill" />
 				<view class="time-wrap">
-					<view class="time">09:02</view>
-                    <view class="location-wrap">
-                    <image src="../../images/location.png" mode="aspectFill" class="location"/>
-                    <view class="location-place">地球上的某个角落</view>
-                    </view>
+					<view class="time">{{item.month}}月{{item.day}}日 | {{item.week}} | {{item.hour}}:{{item.minute}}</view>
 				</view>
 			</view>
 		</view>
 	</view>
+	<image src="../../images/add.png" class="add" bindtap="add"></image>
 </view>

@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/newnote/newnote",
     "pages/index/index",
+    "pages/newnote/newnote",
     "pages/mine/mine",
     "pages/notice/notice"
   ],
@@ -37,5 +37,10 @@
     ]
   },
   "sitemapLocation": "sitemap.json",
-  "style": "v2"
+  "style": "v2",
+  "permission":{
+    "scope.userLocation":{
+      "desc": "展示用户自己是在哪里写的笔记"
+    }
+  }
 }

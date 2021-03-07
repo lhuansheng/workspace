@@ -1,10 +1,16 @@
 .all {
-  margin-left: 20rpx;
+  margin-left: 30rpx;
+  margin-right: 30rpx;
+  /* position: relative; */
 }
 .saying {
   display: flex;
   align-items: center;
-  /* justify-content: space-between; */
+  justify-content: space-between;
+}
+.saying view {
+  display: flex;
+  align-items: center;
 }
 .icon {
   width: 50rpx;
@@ -20,41 +26,31 @@
   display: flex;
   margin-top: 20rpx;
   position: relative;
+  background-color: #fff;
+  height: 140rpx;
+  border-radius: 25rpx;
+ 
 }
-.list-left::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 60rpx;
-  width: 630rpx;
-  height: 0.5rpx;
-  color: #c9c2c2;
-  border-top: 0.5rpx solid #dddada;
-  /* border: 1px solid #ccc; */
-}
-.list-left {
-  color: #707070;
-  font-size: small;
-  font-weight: 700;
-  margin-right: 20rpx;
-  margin-top: 20rpx;
-}
+
+
 .list-right{
   flex:1;
   margin-top: 20rpx;
   position: relative;
+  margin-left: 30rpx;
   /* border-top: 1px solid #ccc; */
 }
 .img {
-  width: 150rpx;
-  height: 150rpx;
+  width: 120rpx;
+  height: 120rpx;
   position: absolute;
   right: 40rpx;
-  top: 20rpx;
-  border-radius: 20rpx;
+  top: -8rpx;
+  border-radius: 18rpx;
+  box-shadow: -2rpx 2rpx 10rpx rgb(136, 133, 133);
 }
 .time-wrap {
-  margin-top: 100rpx;
+  margin-top: 30rpx;
   display: flex;
   justify-content: space-between;
   margin-right: 30rpx;
@@ -64,25 +60,28 @@
   color: #707070;
   font-size: x-small;
 }
-.location-wrap {
-  display: flex;
-  align-items: center;
+.add {
+  width: 100rpx;
+  height: 100rpx;
+  background-color: rgb(101, 220, 220);
+  position: fixed;
+  bottom: 50rpx;
+  right: 60rpx;
+  border-radius: 50%;
+  box-shadow: -3rpx 3rpx 10rpx rgb(136, 133, 133);
 }
-.location {
+.picker {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 130rpx;
+  color: #707070;
+  font-size: small;
+}
+.c {
   width: 30rpx;
   height: 30rpx;
+  background-color: red;
+  border-radius: 50%;
   margin-right: 5rpx;
-}
-.location-place {
-  color: #707070;
-  font-size: x-small;
-}
-.title {
-  /* font-size: small; */
-}
-.content {
-  font-size: x-small;
-  color: #707070;
-  padding-top: 10rpx;
-
 }
