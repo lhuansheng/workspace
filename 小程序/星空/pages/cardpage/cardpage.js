@@ -3,7 +3,7 @@ Page({
   data: {
     formats: {},
     readOnly: false,
-    placeholder: '',
+    placeholder: '111',
     editorHeight: 300,
     CustomBar: app.globalData.CustomBar,
     keyboardHeight: 0,

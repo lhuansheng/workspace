@@ -1,10 +1,10 @@
 {
   "pages": [
-    "pages/cloudsave/cloudsave",
     "pages/cloudfunc/cloudfunc",
-    "pages/commend/commend",
+    "pages/updates/updates",
     "pages/index/index",
-    "pages/updates/updates"
+    "pages/cloudsave/cloudsave",
+    "pages/commend/commend"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

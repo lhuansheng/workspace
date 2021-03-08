@@ -10,11 +10,12 @@
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#F6F6F6",
     "navigationBarTitleText": "树苗笔记",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "black",
+    "navigationStyle": "custom"
   },
   "tabBar": {
     "color": "#aaa",
-    "selectedColor": "#2c2c2c",
+    "selectedColor": "#D370FA",
     "list": [
       {
         "pagePath": "pages/index/index",
