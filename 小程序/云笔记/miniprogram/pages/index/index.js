@@ -14,7 +14,8 @@ Page({
         selectVal: '',
         arrpicker:['未分类','学习','生活','工作','摄影','旅游','交友',],
         arrColor:['#ffffff','#ed5b18','#dff233','#3bf71e','#f71e1e','#1e49f7','#bf1cf5'],
-        pickerindex:0,
+        pickerindex: -1,
+        ischange: false,
   },
 
 modify(e) {
@@ -35,17 +36,9 @@ imgUrlFun(str){
       });
   return data
 },
-bindPickerChange: function (e) {
-  console.log('picker发送选择改变，携带值为', e.detail.value)
-  console.log(typeof e.detail.value)
- 
-  this.setData({
-    pickerindex: e.detail.value
-  })
-  this.getDataList(this.data.pickerindex)
-},
+
 getDataList(category,num=10,page=0) {
-  wx.cloud.callFunction({
+ return wx.cloud.callFunction({
     name:"getNoteList",
     data:{
       category: parseInt(category),
@@ -53,32 +46,40 @@ getDataList(category,num=10,page=0) {
       page
     }
   }).then(res => {
-    const arr = res.result.data
-    const list = []
-    arr.forEach(item => {
-      const {day,month,preview,week,year,_id,html,hour,minute,category} = item
-     list.push({
-      day,
-      month,
-      preview,
-      week: weekday[week],
-      year,
-      hour,
-      minute,
-      _id,
-      html,
-      imgsrc: this.imgUrlFun(html)|| '../../images/book.jpeg',
-      category,
-      all:1
-     })
-    });
+    let oldData = this.data.datalist
+    const newData = oldData.concat(res.result.data)    
     this.setData({
-      datalist: list
+      datalist: newData,
     })
   })
 },
+bindPickerChange: function (e) {
+  console.log('picker发送选择改变，携带值为', e.detail.value)
+  this.setData({
+    pickerindex: parseInt(e.detail.value),
+    datalist: [],
+    ischange:true,
+  })
+  const len = this.data.datalist.length
+  this.getDataList(this.data.pickerindex,10,len)
+},
 clickall() {
-  this.getDataList(-1)
+  // 如果点过 分类，那么 oldData得清空
+ if(this.data.ischange){
+   this.setData({
+     datalist:[],
+     pickerindex:-1
+   })
+}
+this.getDataList(-1).then(res => {
+  this.setData({
+    ischange:false
+  })
+})
+
+},
+clickDelete(e){
+console.log(e)
 },
   /**
    * 生命周期函数--监听页面加载
@@ -91,6 +92,7 @@ clickall() {
    */
   onReachBottom: function () {
     const len = this.data.datalist.length
+    this.getDataList(this.data.pickerindex || -1,10,len)
   },
 
   /**

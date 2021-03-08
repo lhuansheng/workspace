@@ -8,13 +8,14 @@
 			<picker bindchange="bindPickerChange" value="{{pickerindex}}" range="{{arrpicker}}">
 				<view class="picker">
 					<view class="c" style="background-color:{{arrColor[pickerindex]}};"></view>
-					<text style="color: white">{{arrpicker[pickerindex]}}</text>
+					<text style="color: white" wx:if="{{arrpicker[pickerindex]}}">{{arrpicker[pickerindex]}}</text>
+					<text style="color: white" wx:else>全部</text>
 				</view>
 			</picker>
 	</view>
 	<!-- 列表 -->
 	<view class="list-wrap">
-		<view class="list-item" wx:for="{{datalist}}" data-id="{{item._id}}" data-idx="{{index}}" wx:key="index" bindtap="modify" style="background-color:{{arrColor[item.category]}};">
+		<view class="list-item" wx:for="{{datalist}}" data-id="{{item._id}}" data-idx="{{index}}" wx:key="index" bindlongtap="clickDelete" bindtap="modify" style="background-color:{{arrColor[item.category]}};">
 
 			<view class="list-right">
 				<view class="title">{{item.preview}}</view>

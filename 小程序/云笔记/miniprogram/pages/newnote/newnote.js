@@ -1,6 +1,6 @@
 // pages/newnote/newnote.js
 const db = wx.cloud.database()
-
+const weekday = {0:'周日',1:'周一',2:'周二',3:'周三',4:'周四',5:'周五',6:'周六'}
 Page({
 
   /**
@@ -74,6 +74,13 @@ Page({
 
     })
    
+  },
+  imgUrlFun(str){
+    var data = '';
+        str.replace(/<img [^>]*src=['"]([^'"]+)[^>]*>/, function (match, capture) {
+              data =  capture;
+        });
+    return data
   },
   updatePosition(keyboardHeight) {
     const toolbarHeight = 50
@@ -151,11 +158,12 @@ Page({
               year: myDate.getFullYear(),
               hour: this.zero(myDate.getHours()),
               minute: this.zero(myDate.getMinutes()),
-              week: myDate.getDay(),
+              week: weekday[myDate.getDay()],
               html: res.html,
               preview: this.getTitle(res.text),
               date: myDate,
-              category:parseInt(this.data.pickerindex)
+              category:parseInt(this.data.pickerindex) || 0,
+              imgsrc: this.imgUrlFun(res.html)|| '../../images/book.jpeg',
             },
             success() {
               console.log("上传成功")
@@ -174,11 +182,12 @@ Page({
               year: myDate.getFullYear(),
               hour: this.zero(myDate.getHours()),
               minute: this.zero(myDate.getMinutes()),
-              week: myDate.getDay(),
+              week: weekday[myDate.getDay()],
               html: res.html,
               preview: this.getTitle(res.text),
               date: myDate,
-              category:parseInt(this.data.pickerindex) || 0
+              category:parseInt(this.data.pickerindex) || 0,
+              imgsrc: this.imgUrlFun(res.html)|| '../../images/book.jpeg',
             }
           }).then(res=>{
             console.log(res,'update success')

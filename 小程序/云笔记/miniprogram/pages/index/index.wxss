@@ -22,10 +22,18 @@
   align-items: center;
 }
 .icon {
+  display: block;
   width: 50rpx;
   height: 50rpx;
+  /* background-color: yellow; */
   margin-right: 7rpx;
-  padding-left: 5rpx;
+  margin-left: 5rpx;
+ animation: rotateforicon 2s ease-in-out 1s infinite normal backwards;
+}
+@keyframes rotateforicon{
+  from {transform: rotate(0); transform-origin: center;}
+  50% {transform: rotate(180deg); transform-origin: center;}
+  to {transform: rotate(360deg);}
 }
 .list-wrap {
   padding-top: 20rpx;

@@ -9,10 +9,9 @@ exports.main = async (event, context) => {
   const category = event.category
   const num = event.num
   const page = event.page
-  const coll = db.collection('cloudnotelist')
   if(category>=0)
- return await coll.where({
+ return await db.collection('cloudnotelist').where({
    category
- }).skip(num).limit(page).orderBy('date', 'desc').get()
- else return await coll.skip(num).limit(page).orderBy('date', 'desc').get()
+ }).skip(page).limit(num).orderBy('date', 'desc').get()
+ else return await db.collection('cloudnotelist').skip(page).limit(num).orderBy('date', 'desc').get()
 }
