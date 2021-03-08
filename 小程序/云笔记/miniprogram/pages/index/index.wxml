@@ -1,13 +1,14 @@
+<NavigationBar title="树苗记"></NavigationBar>
 <view class="all">
 	<!-- 名言 -->
 	<view class="saying" >
 		<view bindtap="clickall">
 			<image src="../../images/sun.png" mode="aspectFit" class='icon' />
-			<text style="color:#707070">你在的地方一定是天晴吧时间世家得到大大的埃里克打扫房间阿里第三方接口</text></view>
+			<text>你在的地方一定是天晴吧</text></view>
 			<picker bindchange="bindPickerChange" value="{{pickerindex}}" range="{{arrpicker}}">
 				<view class="picker">
 					<view class="c" style="background-color:{{arrColor[pickerindex]}};"></view>
-					<text>{{arrpicker[pickerindex]}}</text>
+					<text style="color: white">{{arrpicker[pickerindex]}}</text>
 				</view>
 			</picker>
 	</view>

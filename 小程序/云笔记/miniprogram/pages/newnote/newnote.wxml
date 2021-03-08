@@ -1,4 +1,6 @@
+<NavigationBar></NavigationBar>
 <view>
+
 <view class="top">
 <view>{{showTime}}</view>
  <picker bindchange="bindPickerChange" value="{{pickerindex}}" range="{{arrpicker}}">
@@ -11,7 +13,7 @@
 </view>
 
 
-<view class="container" style="height:{{editorHeight}}px;">
+<view class="container" >
   <editor id="editor" class="ql-container" placeholder="{{placeholder}}" bindstatuschange="onStatusChange" bindready="onEditorReady">
   </editor>
 </view>

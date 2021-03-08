@@ -3,18 +3,25 @@
 
 .top {
   display: flex;
+  position: fixed;
   justify-content: space-between;
-  margin-right: 20rpx;
-  color: #707070;
+  padding-right: 20rpx;
+  color: white;
   font-size: small;
   align-items: center;
-  margin-left: 20rpx;
+  padding-left: 20rpx;
+  top: 170rpx;
+  width: 100vw;
+  background-color: #D370FA;
+  height: 50rpx;
+  z-index: 8;
 }
 .picker {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   width: 130rpx;
+  margin-right: 10rpx;
 }
 .picker .c{
   width: 30rpx;
@@ -24,10 +31,17 @@
   margin-right: 5rpx;
 }
 .container {
-  position: absolute; 
-  top: 50rpx; 
-  left: 0; 
+  /* position: absolute;  */
+  /* top: 220rpx; 
+  left: 0;  */
+  margin-top: 220rpx;
   width: 100%;
+  height: 100%;
+  overflow: hidden;
+  /* background-color: yellow; */
+  /* display: flex;
+  flex: 1;
+  flex-direction: column; */
 }
 
 .ql-container {
@@ -36,8 +50,12 @@
   height: 100%;
   font-size: 16px;
   line-height: 1.5;
-  overflow: auto;
   padding: 10px 10px 20px 10px;
+  /* margin-bottom: 60rpx; */
+  overflow-y: scroll;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
 }
 
 .ql-active {
@@ -64,14 +82,15 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border: 1px solid #ECECEC;
+  /* border: 1px solid #ECECEC; */
   border-left: none;
   border-right: none;
+  background-color: #D370FA;
 }
 
 .save {
   position: fixed;
-  bottom: 80rpx;
+  bottom: 120rpx;
   right: 50rpx;
   /* background-color: rgb(187, 187, 214); */
   width: 120rpx;
@@ -83,19 +102,9 @@
   border-radius: 30rpx;
   height: 60rpx;
   font-size: small;
-  color: #22C704;
-  font-weight: 800;
+  color: white;
+  background-color: #D370FA;
+  font-weight: 550;
   box-shadow: -3rpx 3rpx 10rpx 5rpx #ccc;
 }
 
-/* .camera {
-  width: 750rpx;
-  height: 400rpx;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: blanchedalmond;
-}
-.camera image{
-  width: 120rpx;
-} */

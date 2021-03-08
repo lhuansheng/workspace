@@ -1,5 +1,6 @@
 // pages/newnote/newnote.js
 const db = wx.cloud.database()
+
 Page({
 
   /**
@@ -16,6 +17,7 @@ Page({
     arrpicker:['未分类','学习','生活','工作','摄影','旅游','交友'],
     arrColor:['#ffffff','#ed5b18','#dff233','#3bf71e','#f71e1e','#1e49f7','#bf1cf5'],
     pickerindex:0,
+    compareChange:null
   },
   /**
    * 生命周期函数--监听页面加载
@@ -28,7 +30,7 @@ Page({
     this.setData({
        isIOS,
        noteId:options.noteId,
-       showTime: `${this.zero(myDate.getMonth()+1)}月${this.zero(myDate.getDate())}日 ${myDate.getHours()}:${myDate.getMinutes()}`
+       showTime: `${this.zero(myDate.getMonth()+1)}月${this.zero(myDate.getDate())}日 ${this.zero(myDate.getHours())}:${this.zero(myDate.getMinutes())}`
       })
       // console.log(this.data.noteId)
       // 有数据传进来
@@ -44,7 +46,8 @@ Page({
          const {month,day,hour,minute,html,category} = res.result.data
          this.setData({
           showTime: `${month}月${day}日 ${hour}:${minute}`,
-          pickerindex:category
+          pickerindex:category,
+          compareChange:html,
          })
          this.editorCtx.setContents({
               html
@@ -146,8 +149,8 @@ Page({
               day: this.zero(myDate.getDate()),
               month: this.zero(myDate.getMonth()+1),
               year: myDate.getFullYear(),
-              hour: myDate.getHours(),
-              minute: myDate.getMinutes(),
+              hour: this.zero(myDate.getHours()),
+              minute: this.zero(myDate.getMinutes()),
               week: myDate.getDay(),
               html: res.html,
               preview: this.getTitle(res.text),
@@ -169,8 +172,8 @@ Page({
               day: this.zero(myDate.getDate()),
               month: this.zero(myDate.getMonth()+1),
               year: myDate.getFullYear(),
-              hour: myDate.getHours(),
-              minute: myDate.getMinutes(),
+              hour: this.zero(myDate.getHours()),
+              minute: this.zero(myDate.getMinutes()),
               week: myDate.getDay(),
               html: res.html,
               preview: this.getTitle(res.text),
@@ -192,7 +195,12 @@ Page({
     return str.length<2?`0${str}`:str
   },
   getTitle(str) {
+    console.log(str,' aaa')
     str = str.trim()
+    if(str.length==0) {
+      return '无标题'
+    }
+    
     str = str.split(" ")[0];
     // 标题长度不能过长
     if(str.length >13) {
@@ -229,7 +237,24 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    // this.editorCtx.getContents({
+    //   success: res => {
+    //     if(this.data.noteId){
+    //     if(res.result.data.html != this.data.compareChange){
+    //       wx.enableAlertBeforeUnload({
+    //         message: '确定不保存就离开吗'
+    //       })
+    //     }}
+    //     else {
+    //       if(res.result.data.html.length!==10){
+    //         wx.enableAlertBeforeUnload({
+    //           message: '确定不保存就离开吗'
+    //         })
+    //       }
+    //     }
+    //   }
+    // })
+   
   },
 
   /**
@@ -251,6 +276,7 @@ Page({
    */
   onUnload: function () {
     wx.enableAlertBeforeUnload({
+      message: '确定不保存就离开吗',
       success:res => {
         console.log(1)
       },

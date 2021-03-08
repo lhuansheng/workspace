@@ -44,11 +44,13 @@ bindPickerChange: function (e) {
   })
   this.getDataList(this.data.pickerindex)
 },
-getDataList(category) {
+getDataList(category,num=10,page=0) {
   wx.cloud.callFunction({
     name:"getNoteList",
     data:{
-      category: parseInt(category)
+      category: parseInt(category),
+      num,
+      page
     }
   }).then(res => {
     const arr = res.result.data
@@ -83,6 +85,12 @@ clickall() {
    */
   onLoad: function (options) {
     this.getDataList(-1)
+  },
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+    const len = this.data.datalist.length
   },
 
   /**
@@ -120,12 +128,6 @@ clickall() {
     
   },
 
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-    
-  },
 
   /**
    * 用户点击右上角分享

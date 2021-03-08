@@ -1,12 +1,21 @@
 .all {
-  margin-left: 30rpx;
-  margin-right: 30rpx;
+  /* padding-left: 30rpx; */
+  /* padding-right: 30rpx; */
+  margin-top: 220rpx;
   /* position: relative; */
 }
 .saying {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background-color: rgb(211, 112, 250);
+  border-radius:0 0 30rpx 30rpx;
+  position: fixed;
+  top:170rpx;
+  width: 100vw;
+  height: 50rpx;
+  z-index: 8;
+  color: white;
 }
 .saying view {
   display: flex;
@@ -15,16 +24,19 @@
 .icon {
   width: 50rpx;
   height: 50rpx;
-  margin-right: 20rpx;
+  margin-right: 7rpx;
+  padding-left: 5rpx;
 }
 .list-wrap {
-  margin-top: 20rpx;
+  padding-top: 20rpx;
   display: flex;
   flex-direction: column;
+  padding-left: 30rpx;
+  padding-right: 30rpx;
 }
 .list-item {
   display: flex;
-  margin-top: 20rpx;
+  margin-bottom: 20rpx;
   position: relative;
   background-color: #fff;
   height: 140rpx;
@@ -63,7 +75,7 @@
 .add {
   width: 100rpx;
   height: 100rpx;
-  background-color: rgb(101, 220, 220);
+  background-color: rgb(211, 112, 250);
   position: fixed;
   bottom: 50rpx;
   right: 60rpx;
