@@ -1,6 +1,6 @@
 // pages/newnote/newnote.js
 const db = wx.cloud.database()
-const {deleteItem, showLoading, hideLoading,imgUrlFun,zero,getTitle} = require('../../utils/util')
+const {deleteItem, showLoading, hideLoading,imgUrlFun,zero,getTitle, cloudFile } = require('../../utils/util')
 const weekday = {0:'周日',1:'周一',2:'周二',3:'周三',4:'周四',5:'周五',6:'周六'}
 Page({
 
@@ -193,20 +193,30 @@ Page({
 
   insertImage() {
     const that = this
+   
     wx.chooseImage({
       count: 1,
       success: function (res) {
-        that.editorCtx.insertImage({
-          src: res.tempFilePaths[0],
-          data: {
-            id: 'abcd',
-            role: 'god'
-          },
-          width: '80%',
-          success: function () {
-            console.log('insert image success')
-          }
+        const fileName = Date.now()+'_O'
+        wx.cloud.uploadFile({
+          cloudPath: fileName,
+          filePath: res.tempFilePaths[0]
         })
+        .then(res => {
+          that.editorCtx.insertImage({
+            src:  res.fileID,
+            data: {
+              id: 'abcd',
+              role: 'god'
+            },
+            width: '80%',
+            success: function () {
+              console.log('insert image success')
+            }
+          })
+         
+        })
+      
       }
     })
   },
@@ -220,23 +230,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    // this.editorCtx.getContents({
-    //   success: res => {
-    //     if(this.data.noteId){
-    //     if(res.result.data.html != this.data.compareChange){
-    //       wx.enableAlertBeforeUnload({
-    //         message: '确定不保存就离开吗'
-    //       })
-    //     }}
-    //     else {
-    //       if(res.result.data.html.length!==10){
-    //         wx.enableAlertBeforeUnload({
-    //           message: '确定不保存就离开吗'
-    //         })
-    //       }
-    //     }
-    //   }
-    // })
+    
    
   },
 
@@ -251,22 +245,13 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-    console.log('hide')
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    // wx.enableAlertBeforeUnload({
-    //   message: '确定不保存就离开吗',
-    //   success:res => {
-    //     console.log(1)
-    //   },
-    //   fail: res => {
-    //     console.log(2)
-    //   }
-    // })
+    
 
   },
 
