@@ -30,4 +30,5 @@
   <i class="iconfont icon-wuxupailie {{formats.list === 'bullet' ? 'ql-active' : ''}}" data-name="list" data-value="bullet"></i>
 </view>
 <view class="save" bindtap="save">保存</view>
+<view class="delete" bindtap="delete">删除</view>
 </view>

@@ -1,5 +1,5 @@
 <view class="navbar" bindtap="clickback">
 <image src="../../images/back.png" mode="aspectFit" />
-<view >留个脚印 </view>
+<view >{{title}} </view>
 
 </view>

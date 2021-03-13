@@ -51,7 +51,11 @@
   border-radius: 25rpx;
  
 }
-
+.checkbox {
+  /* position: absolute;
+  z-index: 6;
+  top: 10rpx; */
+}
 
 .list-right{
   flex:1;

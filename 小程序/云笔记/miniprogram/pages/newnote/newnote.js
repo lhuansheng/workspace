@@ -1,5 +1,6 @@
 // pages/newnote/newnote.js
 const db = wx.cloud.database()
+const {deleteItem, showLoading, hideLoading,imgUrlFun,zero,getTitle} = require('../../utils/util')
 const weekday = {0:'周日',1:'周一',2:'周二',3:'周三',4:'周四',5:'周五',6:'周六'}
 Page({
 
@@ -30,12 +31,13 @@ Page({
     this.setData({
        isIOS,
        noteId:options.noteId,
-       showTime: `${this.zero(myDate.getMonth()+1)}月${this.zero(myDate.getDate())}日 ${this.zero(myDate.getHours())}:${this.zero(myDate.getMinutes())}`
+       showTime: `${zero(myDate.getMonth()+1)}月${zero(myDate.getDate())}日 ${zero(myDate.getHours())}:${zero(myDate.getMinutes())}`
       })
       // console.log(this.data.noteId)
       // 有数据传进来
       
       if (this.data.noteId != null) {
+        showLoading("加载笔记中")
         wx.cloud.callFunction({
           name:'getNoteItem',
           data: {
@@ -49,6 +51,7 @@ Page({
           pickerindex:category,
           compareChange:html,
          })
+         hideLoading()
          this.editorCtx.setContents({
               html
             })
@@ -75,39 +78,24 @@ Page({
     })
    
   },
-  imgUrlFun(str){
-    var data = '';
-        str.replace(/<img [^>]*src=['"]([^'"]+)[^>]*>/, function (match, capture) {
-              data =  capture;
-        });
-    return data
-  },
+
   updatePosition(keyboardHeight) {
     const toolbarHeight = 50
     const { windowHeight, platform } = wx.getSystemInfoSync()
     let editorHeight = keyboardHeight > 0 ? (windowHeight - keyboardHeight - toolbarHeight) : windowHeight
     this.setData({ editorHeight, keyboardHeight })
   },
-  calNavigationBarAndStatusBar() {
-    const systemInfo = wx.getSystemInfoSync()
-    const { statusBarHeight, platform } = systemInfo
-    const isIOS = platform === 'ios'
-    const navigationBarHeight = isIOS ? 44 : 48
-    return statusBarHeight + navigationBarHeight
-  },
+  
   onEditorReady() {
     const that = this
     wx.createSelectorQuery().select('#editor').context(function (res) {
       that.editorCtx = res.context
     }).exec()
   },
-  blur() {
-    this.editorCtx.blur()
-  },
+  
   format(e) {
     let { name, value } = e.target.dataset
     if (!name) return
-    // console.log('format', name, value)
     this.editorCtx.format(name, value)
 
   },
@@ -115,23 +103,7 @@ Page({
     const formats = e.detail
     this.setData({ formats })
   },
-  insertDivider() {
-    this.editorCtx.insertDivider({
-      success: function () {
-        console.log('insert divider success')
-      }
-    })
-  },
-  clear() {
-    this.editorCtx.clear({
-      success: function (res) {
-        console.log("clear success")
-      }
-    })
-  },
-  removeFormat() {
-    this.editorCtx.removeFormat()
-  },
+  
   insertDate() {
     const date = new Date()
     const formatDate = `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`
@@ -140,30 +112,27 @@ Page({
     })
   },
   save() {
-    wx.showLoading({
-      title: '正在保存',
-    })
+    showLoading('正在保存')
     this.editorCtx.getContents({
-      
       success: res => {
         const myDate = new Date()
-        wx.hideLoading()
+        hideLoading()
         console.log(this.data.pickerindex)
         if (this.data.noteId == null) {
          
           db.collection('cloudnotelist').add({
             data: {
-              day: this.zero(myDate.getDate()),
-              month: this.zero(myDate.getMonth()+1),
+              day: zero(myDate.getDate()),
+              month: zero(myDate.getMonth()+1),
               year: myDate.getFullYear(),
-              hour: this.zero(myDate.getHours()),
-              minute: this.zero(myDate.getMinutes()),
+              hour: zero(myDate.getHours()),
+              minute: zero(myDate.getMinutes()),
               week: weekday[myDate.getDay()],
               html: res.html,
-              preview: this.getTitle(res.text),
+              preview:getTitle(res.text),
               date: myDate,
               category:parseInt(this.data.pickerindex) || 0,
-              imgsrc: this.imgUrlFun(res.html)|| '../../images/book.jpeg',
+              imgsrc: imgUrlFun(res.html)|| '../../images/book.jpeg',
             },
             success() {
               console.log("上传成功")
@@ -177,17 +146,17 @@ Page({
           console.log("处理更新")
           db.collection('cloudnotelist').doc(this.data.noteId).update({
             data:{
-              day: this.zero(myDate.getDate()),
-              month: this.zero(myDate.getMonth()+1),
+              day: zero(myDate.getDate()),
+              month: zero(myDate.getMonth()+1),
               year: myDate.getFullYear(),
-              hour: this.zero(myDate.getHours()),
-              minute: this.zero(myDate.getMinutes()),
+              hour: zero(myDate.getHours()),
+              minute: zero(myDate.getMinutes()),
               week: weekday[myDate.getDay()],
               html: res.html,
-              preview: this.getTitle(res.text),
+              preview: getTitle(res.text),
               date: myDate,
               category:parseInt(this.data.pickerindex) || 0,
-              imgsrc: this.imgUrlFun(res.html)|| '../../images/book.jpeg',
+              imgsrc: imgUrlFun(res.html)|| '../../images/book.jpeg',
             }
           }).then(res=>{
             console.log(res,'update success')
@@ -199,24 +168,29 @@ Page({
       }
     })
   },
-  zero(str){
-    str = str + ''
-    return str.length<2?`0${str}`:str
+  delete() {
+    wx.showModal({
+      title: '删除数据',
+      content: '确定要删除吗',
+      success: (res)=> {
+      if (res.confirm) {
+      console.log('用户点击确定')
+      // 如果是修改数据，有 id，不是修改，直接返回
+      if(this.data.noteId){
+        deleteItem([this.data.noteId])
+      }
+      wx.reLaunch({
+        url: '/pages/index/index',
+      })
+      } 
+      else if (res.cancel) {
+      console.log('用户点击取消')
+     
+      }
+      }})
   },
-  getTitle(str) {
-    console.log(str,' aaa')
-    str = str.trim()
-    if(str.length==0) {
-      return '无标题'
-    }
-    
-    str = str.split(" ")[0];
-    // 标题长度不能过长
-    if(str.length >13) {
-      str = str.slice(0,14)+ '...'
-    }
-    return str
-  },
+
+
   insertImage() {
     const that = this
     wx.chooseImage({
@@ -284,15 +258,15 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    wx.enableAlertBeforeUnload({
-      message: '确定不保存就离开吗',
-      success:res => {
-        console.log(1)
-      },
-      fail: res => {
-        console.log(2)
-      }
-    })
+    // wx.enableAlertBeforeUnload({
+    //   message: '确定不保存就离开吗',
+    //   success:res => {
+    //     console.log(1)
+    //   },
+    //   fail: res => {
+    //     console.log(2)
+    //   }
+    // })
 
   },
 

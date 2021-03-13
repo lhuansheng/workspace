@@ -1,30 +1,32 @@
 <NavigationBar title="树苗记"></NavigationBar>
 <view class="all">
 	<!-- 名言 -->
-	<view class="saying" >
+	<view class="saying">
 		<view bindtap="clickall">
 			<image src="../../images/sun.png" mode="aspectFit" class='icon' />
 			<text>你在的地方一定是天晴吧</text></view>
-			<picker bindchange="bindPickerChange" value="{{pickerindex}}" range="{{arrpicker}}">
-				<view class="picker">
-					<view class="c" style="background-color:{{arrColor[pickerindex]}};"></view>
-					<text style="color: white" wx:if="{{arrpicker[pickerindex]}}">{{arrpicker[pickerindex]}}</text>
-					<text style="color: white" wx:else>全部</text>
-				</view>
-			</picker>
+		<picker bindchange="bindPickerChange" value="{{pickerindex}}" range="{{arrpicker}}">
+			<view class="picker">
+				<view class="c" style="background-color:{{arrColor[pickerindex]}};"></view>
+				<text style="color: white" wx:if="{{arrpicker[pickerindex]}}">{{arrpicker[pickerindex]}}</text>
+				<text style="color: white" wx:else>全部</text>
+			</view>
+		</picker>
 	</view>
 	<!-- 列表 -->
 	<view class="list-wrap">
-		<view class="list-item" wx:for="{{datalist}}" data-id="{{item._id}}" data-idx="{{index}}" wx:key="index" bindlongtap="clickDelete" bindtap="modify" style="background-color:{{arrColor[item.category]}};">
-
+		<checkbox-group bindchange="checkboxChange">
+		<view class="list-item" wx:for="{{datalist}}" data-id="{{item._id}}" data-idx="{{index}}" wx:key="index" bindlongtap="longclickDelete" bindtap="{{modify}}" style="background-color:{{arrColor[item.category]}};" bindtouchstart="touchstart" bindtouchend="touchend">
 			<view class="list-right">
+				<checkbox value='{{item._id}}' wx:if="{{isLongTap}}" class="checkbox"></checkbox>
 				<view class="title">{{item.preview}}</view>
-				<image src="{{item.imgsrc}}" class="img" mode="aspectFill" />
+				<image src="{{item.imgsrc}}" class="img" mode="aspectFill"/>
 				<view class="time-wrap">
-					<view class="time">{{item.month}}月{{item.day}}日 | {{item.week}} | {{item.hour}}:{{item.minute}}</view>
+					<view class="time"  wx:if="{{!isLongTap}}">{{item.month}}月{{item.day}}日 | {{item.week}} | {{item.hour}}:{{item.minute}}</view>
 				</view>
 			</view>
 		</view>
+		</checkbox-group>
 	</view>
-	<image src="../../images/add.png" class="add" bindtap="add"></image>
+	<image src="{{deletebtn||'../../images/add.png'}}" class="add" bindtap="add"></image>
 </view>

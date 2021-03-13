@@ -1,1 +1,43 @@
-/* pages/mine/mine.wxss */
+.user {
+  position: fixed;
+  z-index: 9;
+  top: 100rpx;
+  left: 30rpx; 
+}
+.avawrap {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.username {
+  position: fixed;
+  /* width: 300rpx; */
+  left:160rpx;
+  top: 145rpx;
+  color: white;
+  /* background-color: aqua; */
+}
+.list{
+  margin: 280rpx 0rpx 0rpx;
+}
+.list:nth-child(1){
+  margin-bottom: 40rpx;
+  background-color: blue;
+}
+.item {
+  display: flex;
+  width: 750rpx !important;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  height: 100rpx;
+  padding: 0 20rpx 0;
+  margin-bottom: 5rpx;
+  font-weight: 500 !important;
+}
+
+.item image {
+  width: 40rpx;
+  height: 40rpx;
+}

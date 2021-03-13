@@ -1,0 +1,8 @@
+.content {
+   margin: 180rpx 20rpx 20rpx;
+}
+.t {
+  font-weight: 700;
+  margin-bottom: 20rpx;
+  margin-top: 20rpx;
+}

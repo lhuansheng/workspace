@@ -88,14 +88,11 @@
   background-color: #D370FA;
 }
 
-.save {
+.save, .delete{
   position: fixed;
   bottom: 120rpx;
   right: 50rpx;
-  /* background-color: rgb(187, 187, 214); */
   width: 120rpx;
-  /* text-align: center;
-  vertical-align: middle; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -106,5 +103,8 @@
   background-color: #D370FA;
   font-weight: 550;
   box-shadow: -3rpx 3rpx 10rpx 5rpx #ccc;
+}
+.delete {
+  right: 580rpx;
 }
 
