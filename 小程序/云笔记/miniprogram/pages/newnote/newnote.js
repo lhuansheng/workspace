@@ -3,7 +3,6 @@ const db = wx.cloud.database()
 const {deleteItem, showLoading, hideLoading,imgUrlFun,zero,getTitle } = require('../../utils/util')
 const weekday = {0:'周日',1:'周一',2:'周二',3:'周三',4:'周四',5:'周五',6:'周六'}
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -24,7 +23,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options){
-    // console.log(options)
     const platform = wx.getSystemInfoSync().platform
     const isIOS = platform === 'ios'
     const myDate = new Date()
@@ -33,9 +31,7 @@ Page({
        noteId:options.noteId,
        showTime: `${zero(myDate.getMonth()+1)}月${zero(myDate.getDate())}日 ${zero(myDate.getHours())}:${zero(myDate.getMinutes())}`
       })
-      // console.log(this.data.noteId)
       // 有数据传进来
-      
       if (this.data.noteId != null) {
         showLoading("加载笔记中")
         wx.cloud.callFunction({
@@ -44,7 +40,6 @@ Page({
             id: this.data.noteId
           }
          }).then(res => {
-         console.log(res.result)
          const {month,day,hour,minute,html,category} = res.result.data
          this.setData({
           showTime: `${month}月${day}日 ${hour}:${minute}`,
@@ -117,7 +112,6 @@ Page({
       success: res => {
         const myDate = new Date()
         hideLoading()
-        console.log(this.data.pickerindex)
         if (this.data.noteId == null) {
          
           db.collection('cloudnotelist').add({
@@ -170,7 +164,7 @@ Page({
   },
   delete() {
     wx.showModal({
-      title: '删除数据',
+      title: '删除笔记',
       content: '确定要删除吗',
       success: (res)=> {
       if (res.confirm) {
@@ -216,58 +210,8 @@ Page({
     })
   },
   bindPickerChange: function (e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       pickerindex: e.detail.value
     })
   },
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-    
-   
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-    
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

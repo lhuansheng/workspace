@@ -1,12 +1,10 @@
-# 云开发 quickstart
+## 树苗记
 
-这是云开发的快速启动指引，其中演示了如何上手使用云开发的三大基础能力：
+### 项目简介：
+基于微信小程序云开发的一款简单的笔记项目
 
-- 数据库：一个既可在小程序前端操作，也能在云函数中读写的 JSON 文档型数据库
-- 文件存储：在小程序前端直接上传/下载云端文件，在云开发控制台可视化管理
-- 云函数：在云端运行的代码，微信私有协议天然鉴权，开发者只需编写业务逻辑代码
-
-## 参考文档
-
-- [云开发文档](https://developers.weixin.qq.com/miniprogram/dev/wxcloud/basis/getting-started.html)
-
+### 主要功能：
+主要有 写笔记，插入图片，对笔记分类的功能。
+![ex1.jpg](https://636c-cloudserver-exy4x-1302852641.tcb.qcloud.la/ex1.png?sign=2f944bc5cb960850039752e8b8adc35b&t=1615810134)
+![ex2.jpg](https://636c-cloudserver-exy4x-1302852641.tcb.qcloud.la/ex2.png?sign=5efcba014bcad44a73ac34bc71a02ec4&t=1615810099)
+![ex3.jpg](https://636c-cloudserver-exy4x-1302852641.tcb.qcloud.la/ex3.png?sign=150a5a2251024bd351efdcc24f235040&t=1615809413)

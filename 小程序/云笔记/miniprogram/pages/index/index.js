@@ -2,7 +2,6 @@ let startTime = 0, endTime = 0
 let deleteArr = []
 const { deleteItem, showLoading, hideLoading } = require('../../utils/util')
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -32,13 +31,11 @@ Page({
   add() {
     if (this.data.isLongTap) {
       wx.showModal({
-        title: '删除数据',
+        title: '删除笔记',
         content: '确定要删除吗',
         success: (res) => {
           if (res.confirm) {
-            console.log('用户点击确定')
             deleteItem(deleteArr).then(res => {
-              console.log(res, ' delete')
               this.setData({
                 isLongTap: false,
                 deletebtn: '',
@@ -47,7 +44,7 @@ Page({
               })
               // 删除了数据之后要重新渲染
               const len = this.data.datalist.length
-              this.getDataList(-1, 10, len)
+              this.getDataList(-1, 20, len)
             })
           }
           else if (res.cancel) {
@@ -68,12 +65,11 @@ Page({
       })
   },
   checkboxChange(e) {
-    // console.log(e.detail.value)
     deleteArr = e.detail.value
   },
 
 
-  getDataList(category, num = 10, page = 0) {
+  getDataList(category, num = 20, page = 0) {
     showLoading()
     return wx.cloud.callFunction({
       name: "getNoteList",
@@ -86,21 +82,19 @@ Page({
       hideLoading()
       let oldData = this.data.datalist
       const newData = oldData.concat(res.result.data)
-      console.log(newData)
       this.setData({
         datalist: newData,
       })
     })
   },
   bindPickerChange: function (e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       pickerindex: parseInt(e.detail.value),
       datalist: [],
       ischange: true,
     })
     const len = this.data.datalist.length
-    this.getDataList(this.data.pickerindex, 10, len)
+    this.getDataList(this.data.pickerindex, 20, len)
   },
   clickall() {
     // 如果点过 分类，那么 oldData得清空
@@ -111,7 +105,7 @@ Page({
       })
     }
     const len = this.data.datalist.length
-    this.getDataList(-1, 10, len).then(res => {
+    this.getDataList(-1, 20, len).then(res => {
       this.setData({
         ischange: false
       })
@@ -131,16 +125,12 @@ Page({
       deletebtn: this.data.isLongTap ? '' : '../../images/delete.png',
     })
 
-    console.log(e)
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     // 可以通过 wx.getSetting 先查询一下用户是否授权了 "scope.record" 这个 scope
-
-
-
     this.getDataList(-1)
   },
   /**
@@ -148,77 +138,6 @@ Page({
    */
   onReachBottom: function () {
     const len = this.data.datalist.length
-    this.getDataList(this.data.pickerindex || -1, 10, len)
+    this.getDataList(this.data.pickerindex || -1, 20, len)
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-    wx.getUserInfo({
-      success: (res) => {
-        var userInfo = res.userInfo
-        var nickName = userInfo.nickName
-        var avatarUrl = userInfo.avatarUrl
-        console.log('aaa')
-        console.log(nickName, avatarUrl)
-      }
-    })
-    // wx.getSetting({
-    //   success(res) {
-    //     console.log(res, 'setting')
-    //     // if (!res.authSetting['scope.userInfo']) {
-    //       wx.authorize({
-    //         scope: 'scope.userInfo',
-    //         success() {
-    //          wx.getUserInfo({
-    //           success:(res)=>{
-    //             var userInfo = res.userInfo
-    //             var nickName = userInfo.nickName
-    //             var avatarUrl = userInfo.avatarUrl
-    //             console.log(nickName,avatarUrl)
-    //           }
-    //          })
-    //         }
-    //       })
-    //     }
-    //   // }
-    // })
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })
