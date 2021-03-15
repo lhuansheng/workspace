@@ -1,1 +1,8 @@
 <NavigationBar title="通知"></NavigationBar>
+<view class="item">
+<image src="../../images/phone.png"></image>
+<!-- 第一次更新 -->
+<view>
+小程序第一版更新啦!在这里你可以记录你的所想，可以很好的将笔记归类，写笔记的同时还可以填入几张精美的图片，你值得拥有!
+</view>
+</view>

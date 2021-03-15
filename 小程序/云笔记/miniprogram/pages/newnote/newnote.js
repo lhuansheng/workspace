@@ -1,6 +1,6 @@
 // pages/newnote/newnote.js
 const db = wx.cloud.database()
-const {deleteItem, showLoading, hideLoading,imgUrlFun,zero,getTitle, cloudFile } = require('../../utils/util')
+const {deleteItem, showLoading, hideLoading,imgUrlFun,zero,getTitle } = require('../../utils/util')
 const weekday = {0:'周日',1:'周一',2:'周二',3:'周三',4:'周四',5:'周五',6:'周六'}
 Page({
 
@@ -189,11 +189,8 @@ Page({
       }
       }})
   },
-
-
   insertImage() {
     const that = this
-   
     wx.chooseImage({
       count: 1,
       success: function (res) {
@@ -214,9 +211,7 @@ Page({
               console.log('insert image success')
             }
           })
-         
         })
-      
       }
     })
   },

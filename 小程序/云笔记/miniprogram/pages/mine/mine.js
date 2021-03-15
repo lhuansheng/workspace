@@ -14,7 +14,9 @@ Page({
     ]
   },
   personal() {
-
+    wx.navigateTo({
+      url: '/pages/personal/personal',
+    })
   },
 
   settingfunc() {

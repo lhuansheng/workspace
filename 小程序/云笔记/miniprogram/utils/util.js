@@ -44,35 +44,5 @@ export function getTitle(str) {
   return str
 }
 
-// 上传图片到云数据库
-export function updateFiles(){
-  wx.chooseImage({
-    count: 9,
-    success: res => {
-      let files = res.tempFilePaths
-      files.forEach((path,idx) => {
-        const fileName = Date.now() + '_' +idx
-        this.cloudFile(fileName,path)
-      });
-    }
-  })
-}
-export async function cloudFile(fileName,path){
-  let imgsrc = ''
- return await wx.cloud.uploadFile({
-    cloudPath: 'expam.png',
-    filePath: path, // 文件路径
-    // success: res=>{
-    // //  this.setData({
-    // //    filePath:res.fileID
-    // //  })
-    // // console.log('fileID ',res.fileID)
-    // // imgsrc = res.fileID
-    // //  console.log(this.data.filePath)
-    // },
-    
-  }).then(res => {
-    return  res.fileID
-  })
- 
-}
+
+
