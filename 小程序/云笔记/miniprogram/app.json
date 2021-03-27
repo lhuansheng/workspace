@@ -44,5 +44,11 @@
     "scope.userLocation":{
       "desc": "展示用户自己是在哪里写的笔记"
     }
+  },
+  "plugins": {
+    "ocr-plugin": {
+      "version": "3.0.4",
+      "provider": "wx4418e3e031e551be"
+    }
   }
 }

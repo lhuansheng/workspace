@@ -45,4 +45,37 @@ Page({
   bindGetUserInfo(e) {
     // console.log(e.detail.userInfo)
   },
+  identifyText(e) {
+    wx.chooseImage({
+      count: 1,
+      success: res => {
+        const filePath = res.tempFilePaths[0]
+        wx.cloud.uploadFile({
+          cloudPath: 'aa.png',
+          filePath
+        }).then(res => {
+          console.log('fileId: ', res.fileID)
+          wx.cloud.getTempFileURL({
+            fileList:[{fileID:res.fileID}]
+          }).then(res => {
+            console.log('url: ',res.fileList[0])
+
+
+            wx.cloud.callFunction({
+              name: 'getImageText',
+              data: {
+                imgUrl: res.fileList[0].tempFileURL
+              }
+            }).then(res => {
+              console.log('text:',res)
+            })
+          })
+        })
+       
+
+
+     
+      }
+    })
+  }
 })

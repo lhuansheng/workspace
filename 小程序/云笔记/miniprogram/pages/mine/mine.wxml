@@ -20,3 +20,7 @@
 <image src="../../images/go.png"></image>
 </button>
 </view>
+<!-- <ocr-navigator bind:onSuccess="blankSuccess"  certificateType="bankCard">
+  <button type="primary">银行卡识别</button>
+</ocr-navigator> -->
+<view bindtap="identifyText">图片识别</view>

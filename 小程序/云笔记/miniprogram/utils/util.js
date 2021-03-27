@@ -43,6 +43,11 @@ export function getTitle(str) {
   }
   return str
 }
+export async function getUrlById() {
+  await wx.cloud.getTempFileURL({
+    
+  })
+}
 
 
 

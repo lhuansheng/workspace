@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-    "NavigationBar": "../../components/navigationbar/navigationbar"
+    "NavigationBar": "../../components/navigationbar/navigationbar",
+    "ocr-navigator": "plugin://ocr-plugin/ocr-navigator"
   }
 }
