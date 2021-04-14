@@ -44,19 +44,12 @@ module.exports = class extends Generator {
     this.log("app name", answers.name);
     this.log("cool feature", answers.cool);
     this.log("installTool", answers.installTool);
-    if(this.cool) {
-      this.fs.extendJSON(
-        this.destinationPath('package.json'),
-        {
-          dependencies: {
-            lodash: '4.17.15'
-          }
-        }
-      )
-    }
-    install() {
-      this.installTool === 'yarn'? this.yarnInstall() : this.npmInstall()
-    }
+ 
+  }
+  install() {
+    // 这里会通过 yarn 或者 npm 自动安装 package.json里面的依赖
+    this.installTool === 'yarn'? this.yarnInstall() : this.npmInstall()
+    // 如何用 cnpm install
   }
 
   writing() {
@@ -69,6 +62,16 @@ module.exports = class extends Generator {
         installTool: this.installTool, 
       }
     );
+    if(this.cool) {
+      this.fs.extendJSON(
+        this.destinationPath('package.json'),
+        {
+          dependencies: {
+            lodash: "^4.17.15"
+          }
+        }
+      )
+    }
   }
  
 

@@ -1,4 +1,4 @@
 import React from 'react'
-<% if (cool) {%>
+<% if (cool) { %>
 import lodash from 'lodash'
-}
+<% } %>
