@@ -1,0 +1,15 @@
+@font-face {
+  font-family: 'myfont';
+  src: url('./myfont.ttf') format('ttf'),
+  url('./myfont1.ttf') format('ttf');
+  font-weight: 600;
+  font-style: normal;
+}
+.hello {
+  color: red;
+  font-family: 'myfont';
+  background: url('./icon.jpg');
+}
+.myimg {
+  width: 50px;
+}
