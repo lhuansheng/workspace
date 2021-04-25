@@ -1,7 +1,7 @@
 // 删除笔记 ids 是数组
-export function deleteItem(ids) {
+export function deleteItem(ids,name='deleteItem') {
   return wx.cloud.callFunction({
-    name: 'deleteItem',
+    name,
     data: {
       ids
     }
@@ -43,11 +43,7 @@ export function getTitle(str) {
   }
   return str
 }
-export async function getUrlById() {
-  await wx.cloud.getTempFileURL({
-    
-  })
-}
+
 
 
 

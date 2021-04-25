@@ -1,0 +1,12 @@
+.text {
+  display: flex;
+  margin-left: 15rpx;
+  margin-right: 15rpx;
+  flex-direction: column;
+  justify-content: center;
+}
+.items {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}

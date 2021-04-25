@@ -1,0 +1,75 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+  background-image: url('https://636c-cloudserver-exy4x-1302852641.tcb.qcloud.la/note/musicbackground.jpg?sign=b423fa4f0180d6408b53e9d4e13bcb37&t=1619143350');
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  overflow:hidden;
+}
+.songwrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.songName {
+  color: white;
+  font-size: large;
+  font-weight: 700;
+  margin-bottom: 10rpx;
+  margin-top: 20rpx;
+}
+.singer {
+  color: white;
+  font-size: small;
+  margin-bottom: 30rpx;
+}
+.circle {
+  width: 600rpx;
+  height: 600rpx;
+  border-radius: 50%;
+  border: 8px solid rgb(212, 210, 207,.3);
+  transform-origin: center;
+  animation: circlerotate 8s linear infinite;
+
+}
+.circle1 {
+  animation-play-state: paused;
+}
+@keyframes circlerotate {
+  from{
+    transform: rotate(0);
+  }
+  to{
+    transform: rotate(360deg);
+  }
+}
+.circle>image {
+  /* width: 100%;
+  height: 100%; */
+  width: 600rpx;
+  height: 600rpx;
+  border-radius: 50%;
+}
+.playwrap {
+  display: flex;
+  width: 650rpx;
+  height: 300rpx;
+  justify-content: space-between;
+  align-items: center;
+}
+.playwrap image {
+  width: 80rpx;
+  height: 80rpx;
+}
+.playwrap .play {
+  width: 120rpx;
+  height: 120rpx;
+}
+.search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

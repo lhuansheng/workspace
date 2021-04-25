@@ -1,0 +1,61 @@
+.mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 3;
+  background-color: rgb(7, 7, 7, .3);
+}
+
+.a {
+  z-index: 4;
+}
+
+.listwrap {
+  width: 100vw;
+  height: 50vh;
+  background: linear-gradient(rgb(180, 175, 224), rgb(189, 198, 212));
+  border-top-left-radius: 15rpx;
+  border-top-right-radius: 15rpx;
+  position: absolute;
+  bottom: -50vh;
+  /* animation: goup 1s linear 1; */
+  transition: bottom 0.5s;
+  z-index: 4;
+  overflow-y: scroll;
+}
+
+.listwrap1 {
+  bottom: 0;
+}
+
+@keyframes goup {
+  from {
+    bottom: -50vh;
+  }
+
+  to {
+    bottom: 0;
+  }
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  margin: 10rpx 10rpx 10rpx;
+}
+
+.songName {
+  display: flex;
+  color: white;
+}
+
+.songName :nth-child(2) {
+  color: rgb(226, 225, 225);
+}
+
+.item image {
+  width: 50rpx;
+  height: 50rpx;
+}

@@ -1,0 +1,9 @@
+<NavigationBar title="返回"></NavigationBar>
+<view class="text">
+<image src="{{imgurl}}" mode="aspectFit"></image>
+<button bindtap='copy'>复制</button>
+
+<view wx:for="{{items}}" wx:key="index" class="items" >
+<text user-select="true">{{item.text}}</text>
+</view>
+</view>

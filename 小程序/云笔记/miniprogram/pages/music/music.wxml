@@ -1,0 +1,25 @@
+<!--index.wxml-->
+<view class="container">
+	<view class="songwrap">
+		<view class="songName">{{songName}}</view>
+		<view class="singer">{{singer}}</view>
+	</view>
+	<!-- 圆盘 -->
+	<view class="circle {{!isPlay?'circle1':''}}">
+		<image mode="aspectFill" src="{{singerImg}}"></image>
+	</view>
+	<!-- 快进播放之类的 -->
+	<view class="playwrap">
+		<image src="../../images/list.png" bindtap="btnDialog" />
+		<image src="../../images/pre.png" bindtap="btnPre" />
+		<image src="{{isPlay?'../../images/pause.png': '../../images/play.png'}}" class="play" bindtap="btnPlay" />
+		<image src="../../images/next.png" bindtap="btnNext" />
+		<navigator url="plugin://kugouPlayer/search-page?keyword=华晨宇" class="search">
+			<image src="../../images/search.png" />
+		</navigator>
+	</view>
+	<!-- <view class="top">
+
+ </view> -->
+</view>
+<HalfDialog isOpen="{{isOpen}}" bind:play="btnplay" />

@@ -10,17 +10,10 @@
 		</view>
 	</view>
 </view>
-
-<!-- 需要使用 button 来授权登录 -->
-<!-- <button wx:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权登录</button>
-<view wx:else>请升级微信版本</view> -->
 <view class="list">
 <button class="item"  wx:for="{{arrlist}}" bindtap="{{item.func}}" wx:key="index" open-type="{{item.openType}}">
 <view>{{item.title}}</view>
 <image src="../../images/go.png"></image>
 </button>
 </view>
-<!-- <ocr-navigator bind:onSuccess="blankSuccess"  certificateType="bankCard">
-  <button type="primary">银行卡识别</button>
-</ocr-navigator> -->
-<view bindtap="identifyText">图片识别</view>
+

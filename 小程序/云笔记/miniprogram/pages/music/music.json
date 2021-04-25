@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "kugou-play": "plugin://kugouPlayer/kugou-play",
+    "NavigationBar": "../../components/navigationbar/navigationbar",
+    "HalfDialog": "../../components/halfDialog/halfDialog"
+  },
+  "disableScroll":true
+}

@@ -110,6 +110,7 @@ Page({
     showLoading('正在保存')
     this.editorCtx.getContents({
       success: res => {
+        console.log(res.html)
         const myDate = new Date()
         hideLoading()
         if (this.data.noteId == null) {
@@ -153,6 +154,7 @@ Page({
               imgsrc: imgUrlFun(res.html)|| '../../images/book.jpeg',
             }
           }).then(res=>{
+           
             console.log(res,'update success')
           })
         }

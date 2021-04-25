@@ -1,0 +1,15 @@
+<view class='{{isOpen?"mask":""}}' bindtap="btnMask"></view>
+<view  class='listwrap {{isOpen?"listwrap1":""}}'>
+<view wx:for="{{musicList}}" wx:key="index" class="list" bindtap="btnItem" data-id="{{item.id}}" data-idx="{{index}}">
+
+<view class="item" wx:if="{{!item.isDelete}}">
+<view class="songName" >
+<view data-name="mus" data-idx="{{index}}" data-id="{{item.albumAudioId}}" data-hash="{{item.fileHash}}">{{item.songName}}</view>
+<view data-name="mus" data-idx="{{index}}" data-id="{{item.albumAudioId}}" data-hash="{{item.fileHash}}">-{{item.singerName}}</view>
+</view>
+<image data-name="del" data-idx="{{index}}" data-id="{{item.albumAudioId}}" src="../../images/delete.png"></image>
+</view>
+</view>
+</view>
+
+

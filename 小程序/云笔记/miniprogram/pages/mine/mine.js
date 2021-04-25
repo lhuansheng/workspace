@@ -7,6 +7,7 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     arrlist: [
       { title: "分享好友", openType: 'share' },
+      { title: "文档识别", func: "identifyText", },
       { title: "隐私权限", func: "personal", },
       { title: "bug反馈", openType: "contact", },
       { title: "设置", func: "settingfunc", },
@@ -51,30 +52,48 @@ Page({
       success: res => {
         const filePath = res.tempFilePaths[0]
         wx.cloud.uploadFile({
-          cloudPath: 'aa.png',
+          cloudPath: Date.now() + '.png',
           filePath
         }).then(res => {
-          console.log('fileId: ', res.fileID)
+          wx.showLoading({
+            title:'正在识别...'
+          })
+          // console.log('fileId: ', res.fileID)
           wx.cloud.getTempFileURL({
-            fileList:[{fileID:res.fileID}]
+            fileList: [{ fileID: res.fileID }]
           }).then(res => {
-            console.log('url: ',res.fileList[0])
-
+            // console.log('url: ',res.fileList[0].tempFileURL)
+            let imgurl = res.fileList[0].tempFileURL
 
             wx.cloud.callFunction({
               name: 'getImageText',
               data: {
                 imgUrl: res.fileList[0].tempFileURL
               }
-            }).then(res => {
-              console.log('text:',res)
+            }).then(imageres => {
+              wx.hideLoading()
+              // console.log('text:',imageres.result.items)
+              let items = imageres.result.items
+              // console.log(items)
+              if (items) {
+                wx.navigateTo({
+                  url: '/pages/imageText/imageText' + '?imgurl=' + imgurl + '&items=' + JSON.stringify(items),
+                })
+              } else {
+                wx.showToast({
+                  title: '无法识别该图片',
+                  icon: 'error',
+                  duration: 500
+                })
+              }
+
             })
           })
         })
-       
 
 
-     
+
+
       }
     })
   }

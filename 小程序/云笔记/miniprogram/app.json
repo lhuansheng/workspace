@@ -1,18 +1,18 @@
 {
   "pages": [
+    "pages/music/music",
     "pages/index/index",
+    "pages/imageText/imageText",
     "pages/personal/personal",
     "pages/newnote/newnote",
-    "pages/mine/mine",
-    "pages/notice/notice"
+    "pages/mine/mine"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#F6F6F6",
-    "navigationBarTitleText": "树苗笔记",
-    "navigationBarTextStyle": "black",
-    "navigationStyle": "custom"
+    "navigationBarBackgroundColor": "#D370FA",
+    "navigationBarTitleText": "MUSIC",
+    "navigationBarTextStyle": "white"
   },
   "tabBar": {
     "color": "#aaa",
@@ -25,8 +25,8 @@
         "iconPath": "images/note_2.png"
       },
       {
-        "pagePath": "pages/notice/notice",
-        "text": "通知",
+        "pagePath": "pages/music/music",
+        "text": "音乐",
         "selectedIconPath": "images/notice_1.png",
         "iconPath": "images/notice_2.png"
       },
@@ -40,8 +40,8 @@
   },
   "sitemapLocation": "sitemap.json",
   "style": "v2",
-  "permission":{
-    "scope.userLocation":{
+  "permission": {
+    "scope.userLocation": {
       "desc": "展示用户自己是在哪里写的笔记"
     }
   },
@@ -49,6 +49,13 @@
     "ocr-plugin": {
       "version": "3.0.4",
       "provider": "wx4418e3e031e551be"
+    },
+    "kugouPlayer": {
+      "version": "1.0.12",
+      "provider": "wx4f38007b839da9d3"
     }
-  }
+  },
+  "requiredBackgroundModes": [
+    "audio"
+  ]
 }
