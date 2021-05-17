@@ -1,49 +1,95 @@
-<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://cdn.staticfile.org/jquery/2.2.4/jquery.min.js"></script>
-<h1 class="text-center head1">你喜欢我吗?</h1>
-<div class="container-fluid">
-  <!-- row of buttons --> 
-  <div class="row">
-    <div class="col-xs-6 text-right"> <button class="btn btn-primary">是的！</button></div>
-    <div class="col-xs-6"> <button class="btn btn-danger" id="no-btn">喜欢个锤子！</button></div>
-
-  </div>
-
-</div>
-<script>
-  var count=0;
-$(document).ready(function(){
-  $('.btn-danger').mouseenter(function(){   
-    $('.btn-danger').css('animation', 'buttonMove 0.5s infinite');
-    count++;
-    console.log(count);
-    if(count>=3){
-      $('.btn-danger').css('animation', '');
-      $('.btn-danger').css('top','500px');
-      $('.btn-danger').css('left','-300px');
-      $('.btn-danger').addClass('animated tada');
-    }
-    if(count>=4){
-      $('.btn-danger').css('animation', 'buttonMove2  0.5s infinite ');
-    }
-    if(count>=6){
-      $('.btn-danger').css('animation', '');
-      $('.btn-danger').addClass('animated shake');
-      $('#no-btn').css('top','200px');
-      $('#no-btn').css('left','-400px');
-    }
-    if(count>=7){
-      $('#no-btn').removeClass('btn-danger').addClass('btn-primary');
-      $('#no-btn').text('是的！');
-    }
-
-  });  
-  // code continues here
-  //btn-clicked
-  $('.btn-primary').click(function(){
-    $('.head1').text("哈哈，我也喜欢你！！！");
-    $('.head1').addClass("animated wobble");
-  });
-
-});
-</script>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>骑上我心爱的小摩托</title>
+    <style>
+      .yes {
+        background-color: rgb(243, 55, 55);
+        border: none;
+        width: 100px;
+        height: 50px;
+        font-size: 25px;
+        border-radius: 10px;
+      }
+      #no {
+        background-color: rgb(71, 171, 238);
+        border: none;
+        width: 150px;
+        height: 50px;
+        font-size: 25px;
+        border-radius: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1
+    id="content"
+      style="
+        position: absolute;
+        left: 280px;
+        top: 155px;
+        width: auto;
+        height: 210px;
+      "
+    >
+      你喜欢我吗?
+    </h1>
+    <div id="By" style="position: absolute; left: 285px; top: 235px">
+      <input type="button" value=" 是的！ " onclick="f1()" class="yes" />
+    </div>
+    <div id="Bn" style="position: absolute; left: 500px; top: 235px">
+      <input
+        type="button"
+        value=" 喜欢个锤子！ "
+        onmouseover="f()"
+        onclick="f2()"
+        id="no"
+      />
+    </div>
+    <script>
+      const h1 = document.getElementById('content')
+      const no = document.getElementById('no')
+      no.addEventListener('touchstart',() => {
+        f()
+      })
+      function f1() {
+        // alert("太好来，晚上一起吃饭看电影！！！");
+        h1.innerHTML = '哈哈，我也喜欢你！！'
+      }
+      var flag = 1;
+      function f() {
+        var Bn = document.getElementById("Bn");
+        var aWidth =
+          document.body.clientWidth || document.documentElement.clientWidth;
+        var aHeight =
+          document.body.clientHeight || document.documentElement.clientHeight;
+        var sJs1 = Math.floor(Math.random() * aHeight);
+        var sJs2 = Math.floor(Math.random() * aWidth);
+        if (flag == 1) {
+          Bn.style.top = sJs1 + "px";
+          Bn.style.left = sJs2 + "px";
+          flag = 2;
+        } else if (flag == 2) {
+          Bn.style.top = sJs1 + "px";
+          Bn.style.left = sJs2 + "px";
+          flag = 3;
+        } else if (flag == 3) {
+          Bn.style.top = 235 + "px";
+          Bn.style.left = 286 + "px";
+          flag = 4;
+        } else if (flag == 4) {
+          Bn.style.top = 235 + "px";
+          Bn.style.left = 360 + "px";
+          flag = 1;
+        }
+      }
+      function f2() {
+        // alert("这不是你的真心话！");
+        h1.innerHTML = '这不是你的真心话！！'
+      }
+    </script>
+  </body>
+</html>
